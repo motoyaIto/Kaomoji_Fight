@@ -28,7 +28,7 @@ public class PlaySceneManager : MonoBehaviour {
     public void Damage(GameObject Attack_player, GameObject Damage_player)
     {
         PlayerController Aplayer = Attack_player.GetComponent<PlayerController>();
-        Playercontroller Dplayer = Damage_player.GetComponent<PlayerController>();
+        //Playercontroller Dplayer = Damage_player.GetComponent<PlayerController>();
 
         //ダメージを数値に反映
 
