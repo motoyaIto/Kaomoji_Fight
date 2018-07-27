@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlaySceneManager : MonoBehaviour {
+public class PlaySceneManager : MonoBehaviour
+{
+    private GameObject[] players;   //プレイヤー
+    private GameObject[] HPgage;    //HPゲージ
 
-    [SerializeField]
-    private Slider slider1;
-
-    [SerializeField]
-    private Slider slider2;
-
-    [SerializeField]
-    private GameObject[] players;
-  
     // Use this for initialization
     void Start()
     {
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        players = GameObject.FindGameObjectsWithTag("Player");//プレイヤーの数を取得
 
-        Slider HpVer = new Slider[players.GetLength()];
+        //HPゲージを生成
+        HPgage = new GameObject[players.Length];
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            HPgage[i] = (GameObject)Resources.Load("prefab//UI//HPgage");
+
+            CreateHPgage(HPgage[i], i);
+        }
+       
     }
 
     // Update is called once per frame
@@ -28,6 +31,7 @@ public class PlaySceneManager : MonoBehaviour {
 
     }
 
+  
     public void Damage(GameObject Attack_player, GameObject Damage_player)
     {
         //Wepon Aplayer_wepon = Attack_player.GetComponent<PlayerController>().gameObject.GetComponent<Wepon>();
@@ -40,5 +44,34 @@ public class PlaySceneManager : MonoBehaviour {
 
 
 
+    }
+
+    /// <summary>
+    /// HPゲージの生成
+    /// </summary>
+    /// <param name="HPgage">HPゲージ</param>
+    /// <param name="i">何番目か</param>
+    public void CreateHPgage(GameObject HPgage, int i)
+    {
+        switch (i)
+        {
+            case 0:
+                Instantiate(HPgage, new Vector3(-5, -5, 0), Quaternion.identity);
+                break;
+
+            case 1:
+                Instantiate(HPgage, new Vector3(5, -5, 0), Quaternion.identity);
+                break;
+
+            case 2:
+                Instantiate(HPgage, new Vector3(-5, 5, 0), Quaternion.identity);
+                break;
+
+            case 3:
+                Instantiate(HPgage, new Vector3(5, 5, 0), Quaternion.identity);
+                break;
+
+
+        }
     }
 }
