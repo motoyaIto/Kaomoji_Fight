@@ -13,7 +13,7 @@ public class PlaySceneManager : MonoBehaviour
     {
         players = GameObject.FindGameObjectsWithTag("Player");//プレイヤーの数を取得
 
-
+        //HPゲージを生成
         HPgage = new GameObject[players.Length];
 
         for (int i = 0; i < players.Length; i++)
@@ -31,6 +31,7 @@ public class PlaySceneManager : MonoBehaviour
 
     }
 
+  
     public void Damage(GameObject Attack_player, GameObject Damage_player)
     {
         //Wepon Aplayer_wepon = Attack_player.GetComponent<PlayerController>().gameObject.GetComponent<Wepon>();
@@ -45,7 +46,11 @@ public class PlaySceneManager : MonoBehaviour
 
     }
 
-
+    /// <summary>
+    /// HPゲージの生成
+    /// </summary>
+    /// <param name="HPgage">HPゲージ</param>
+    /// <param name="i">何番目か</param>
     public void CreateHPgage(GameObject HPgage, int i)
     {
         switch (i)
