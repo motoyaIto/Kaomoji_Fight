@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class PlaySceneManager : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject UICanvases;//UI用キャンバス
+
     private GameObject[] players;   //プレイヤー
     private GameObject[] HPgage;    //HPゲージ
 
@@ -18,7 +21,7 @@ public class PlaySceneManager : MonoBehaviour
 
         for (int i = 0; i < players.Length; i++)
         {
-            HPgage[i] = (GameObject)Resources.Load("prefab//UI//HPgage");
+            HPgage[i] = (GameObject)Resources.Load("prefab/UI/HPgage");
 
             CreateHPgage(HPgage[i], i);
         }
@@ -28,7 +31,7 @@ public class PlaySceneManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+     
     }
 
   
@@ -53,25 +56,28 @@ public class PlaySceneManager : MonoBehaviour
     /// <param name="i">何番目か</param>
     public void CreateHPgage(GameObject HPgage, int i)
     {
+
         switch (i)
         {
-            case 0:
-                Instantiate(HPgage, new Vector3(-5, -5, 0), Quaternion.identity);
+            case 0://元のトランス(281.5, 124)
+                Instantiate(HPgage, new Vector3(100, 234, 0f), Quaternion.identity, UICanvases.transform);
                 break;
 
             case 1:
-                Instantiate(HPgage, new Vector3(5, -5, 0), Quaternion.identity);
+                Instantiate(HPgage, new Vector3(462, 234, 0), Quaternion.identity, UICanvases.transform);
                 break;
 
             case 2:
-                Instantiate(HPgage, new Vector3(-5, 5, 0), Quaternion.identity);
+                Instantiate(HPgage, new Vector3(100, 14, 0), Quaternion.identity, UICanvases.transform);
                 break;
 
             case 3:
-                Instantiate(HPgage, new Vector3(5, 5, 0), Quaternion.identity);
+                Instantiate(HPgage, new Vector3(462, 14, 0), Quaternion.identity, UICanvases.transform);
                 break;
 
 
         }
+
+      
     }
 }
