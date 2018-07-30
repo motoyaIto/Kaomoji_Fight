@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 Base path: C:/Program Files/Unity/Editor/Data
 Cmd: initializeCompiler
+=======
+Base path: C:/Unity/Editor/Data
+Cmd: initializeCompiler
+>>>>>>> master
