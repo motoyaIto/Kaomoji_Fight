@@ -32,4 +32,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+<<<<<<< HEAD
 Kaomoji_Fight/Temp/UnityLockfile
+=======
+>>>>>>> master

@@ -6,9 +6,9 @@ using XboxCtrlrInput;
 [RequireComponent(typeof(Controller2D))]
 public class PlayerController : MonoBehaviour {
 
-    #region
+    #region 変数
     // 非公開
-    private Rigidbody2D rgb2d;
+    //private Rigidbody2D rgb2d;
     private int Max_Hp = 100;
 
     // 公開
@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour {
     public float timeToJumpApex = .4f;
     float accelerationTimeAirborne = .2f;
     float accelerationTimeGrounded = .1f;
+    [Header("移動速度")]
     float moveSpeed = 6;
 
     public Vector2 wallJumpClimb;
@@ -45,10 +46,10 @@ public class PlayerController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        rgb2d = GetComponent<Rigidbody2D>();
+        //rgb2d = GetComponent<Rigidbody2D>();
         controller = GetComponent<Controller2D>();
 
-        gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
+        gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);    // origin
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
         print("Gravity: " + gravity + "  Jump Velocity: " + maxJumpVelocity);
@@ -72,8 +73,13 @@ public class PlayerController : MonoBehaviour {
         Vector2 direction = new Vector2(axisX, axisY).normalized;
 
         // 移動
-        rgb2d.velocity = direction * speed;
+        //rgb2d.velocity = direction * speed;
         #endregion
+
+        if (XCI.GetButton(XboxButton.A, XboxController.First))
+        {
+            //rgb2d.position += new Vector2(0, maxJumpHeight);
+        }
 
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         int wallDirX = (controller.collisions.left) ? -1 : 1;
@@ -96,14 +102,14 @@ public class PlayerController : MonoBehaviour {
                 velocityXSmoothing = 0;
                 velocity.x = 0;
 
-                if (input.x != wallDirX && input.x != 0)
-                {
-                    timeToWallUnstick -= Time.deltaTime;
-                }
-                else
-                {
-                    timeToWallUnstick = wallStickTime;
-                }
+                //if (input.x != wallDirX && input.x != 0)
+                //{
+                //    timeToWallUnstick -= Time.deltaTime;
+                //}
+                //else
+                //{
+                //    timeToWallUnstick = wallStickTime;
+                //}
             }
             else
             {
@@ -116,21 +122,21 @@ public class PlayerController : MonoBehaviour {
         {
             if (wallSliding)
             {
-                if (wallDirX == input.x)
-                {
-                    velocity.x = -wallDirX * wallJumpClimb.x;
-                    velocity.y = wallJumpClimb.y;
-                }
-                else if (input.x == 0)
-                {
-                    velocity.x = -wallDirX * wallJumpOff.x;
-                    velocity.y = wallJumpOff.y;
-                }
-                else
-                {
-                    velocity.x = -wallDirX * wallLeap.x;
-                    velocity.y = wallLeap.y;
-                }
+                //if (wallDirX == input.x)
+                //{
+                //    velocity.x = -wallDirX * wallJumpClimb.x;
+                //    velocity.y = wallJumpClimb.y;
+                //}
+                //else if (input.x == 0)
+                //{
+                //    velocity.x = -wallDirX * wallJumpOff.x;
+                //    velocity.y = wallJumpOff.y;
+                //}
+                //else
+                //{
+                //    velocity.x = -wallDirX * wallLeap.x;
+                //    velocity.y = wallLeap.y;
+                //}
             }
             if (controller.collisions.below)
             {

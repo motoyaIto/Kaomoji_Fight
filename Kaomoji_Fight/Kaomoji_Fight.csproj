@@ -229,6 +229,15 @@
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>Library\UnityAssemblies\UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
+<<<<<<< HEAD
+=======
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
+>>>>>>> master
     <Reference Include="XInputDotNetPure">
       <HintPath>Assets\Plugins\XInputDotNetPure.dll</HintPath>
     </Reference>
@@ -245,6 +254,8 @@
     <Compile Include="Assets\#script\Player\Jump\PlatformController.cs" />
     <Compile Include="Assets\#script\Player\Jump\RaycastController.cs" />
     <Compile Include="Assets\#script\Player\PlayerController.cs" />
+    <Compile Include="Assets\#script\Player\Test\Contoroller2d.cs" />
+    <Compile Include="Assets\#script\Player\Test\Player.cs" />
     <Compile Include="Assets\#script\Stage\StageControll.cs" />
     <Compile Include="Assets\XboxCtrlrInputExample\MoveLaser.cs" />
     <Compile Include="Assets\XboxCtrlrInputExample\MovePlayer.cs" />
