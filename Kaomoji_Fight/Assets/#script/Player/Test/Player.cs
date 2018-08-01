@@ -6,14 +6,17 @@ using XboxCtrlrInput;
 [RequireComponent(typeof(Contoroller2d))]
 public class Player : MonoBehaviour {
 
-    public float jumpHeight = 4;
+    public float maxJumpHeight = 4;
+    public float minJumpHeight = 1;
     public float timeToJumpApex = .4f;
     float accelerationTimeAirborne = .2f;
     float accelerationTimeGrounded = .1f;
+    [Header("移動速度")]
     float moveSpeed = 6;
 
     float gravity;
-    float jumpVelocity;
+    float maxJumpVelocity;
+    float minJumpVelocity;
     Vector3 velocity;
     float velocityXSmoothing;
 
@@ -23,9 +26,11 @@ public class Player : MonoBehaviour {
     {
         controller = GetComponent<Contoroller2d>();
 
-        gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
-        jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
-        print("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);
+        gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
+        maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
+        minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
+        Debug.Log("Gravity: " + gravity + "  Max Jump Velocity: " + maxJumpVelocity);
+        Debug.Log("Gravity: " + gravity + "  Min Jump Velocity: " + minJumpVelocity);
     }
 
     void Update()
@@ -40,12 +45,27 @@ public class Player : MonoBehaviour {
 
         if (XCI.GetButton(XboxButton.A, XboxController.First) && controller.collisions.below)
         {
-            velocity.y = jumpVelocity;
+            velocity.y = maxJumpVelocity;
+            Debug.Log("(≧▽≦)");
+        }
+        if (XCI.GetButtonUp(XboxButton.A, XboxController.First) && controller.collisions.below)
+        {
+            if (velocity.y > minJumpVelocity)
+            {
+                velocity.y = minJumpVelocity;
+                Debug.Log(";つД｀)");
+            }
         }
 
         float targetVelocityX = input.x * moveSpeed;
-        velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
+        velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, 
+                                    (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+        if (controller.collisions.above || controller.collisions.below)
+        {
+            velocity.y = 0;
+        }
     }
 }
