@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Windows;
+
 
 public class PlaySceneManager : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class PlaySceneManager : MonoBehaviour
 
     private GameObject[] players;   //プレイヤー
     private GameObject[] HPgage;    //HPゲージ
+
 
     // Use this for initialization
     void Start()
@@ -56,28 +59,26 @@ public class PlaySceneManager : MonoBehaviour
     /// <param name="i">何番目か</param>
     public void CreateHPgage(GameObject HPgage, int i)
     {
+        RectTransform size = HPgage.GetComponent<RectTransform>();
 
         switch (i)
         {
             case 0://元のトランス(281.5, 124)
-                Instantiate(HPgage, new Vector3(100, 234, 0f), Quaternion.identity, UICanvases.transform);
+                Instantiate(HPgage, new Vector3(size.sizeDelta.x / 2, Screen.height - 10, 0f), Quaternion.identity, UICanvases.transform);
+                Debug.Log(size.sizeDelta.x);
                 break;
 
             case 1:
-                Instantiate(HPgage, new Vector3(462, 234, 0), Quaternion.identity, UICanvases.transform);
+                Instantiate(HPgage, new Vector3(Screen.width - size.sizeDelta.x / 2, Screen.height - 10, 0), Quaternion.identity, UICanvases.transform);
                 break;
 
             case 2:
-                Instantiate(HPgage, new Vector3(100, 14, 0), Quaternion.identity, UICanvases.transform);
+                Instantiate(HPgage, new Vector3(size.sizeDelta.x / 2, 10, 0), Quaternion.identity, UICanvases.transform);
                 break;
 
             case 3:
-                Instantiate(HPgage, new Vector3(462, 14, 0), Quaternion.identity, UICanvases.transform);
+                Instantiate(HPgage, new Vector3(Screen.width - size.sizeDelta.x / 2, 10, 0), Quaternion.identity, UICanvases.transform);
                 break;
-
-
         }
-
-      
     }
 }
