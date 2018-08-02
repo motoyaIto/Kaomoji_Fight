@@ -6,21 +6,30 @@ using XboxCtrlrInput;
 [RequireComponent(typeof(Contoroller2d))]
 public class Player : MonoBehaviour {
 
+    #region 変数群
+    // 公開
+    [Header("プレイヤー指定")]
+    public GameObject player;
+    [Header("ジャンプの高さ")]
     public float maxJumpHeight = 4;
     public float minJumpHeight = 1;
+    [Header("ジャンプの頂点までの時間")]
     public float timeToJumpApex = .4f;
-    float accelerationTimeAirborne = .2f;
-    float accelerationTimeGrounded = .1f;
+    [Header("加速時間")]
+    public float accelerationTimeAirborne = .2f;
+    public float accelerationTimeGrounded = .1f;
     [Header("移動速度")]
-    float moveSpeed = 6;
+    public float moveSpeed = 6;
 
-    float gravity;
-    float maxJumpVelocity;
-    float minJumpVelocity;
-    Vector3 velocity;
-    float velocityXSmoothing;
+    // 非公開
+    private float gravity;
+    private float maxJumpVelocity;
+    private float minJumpVelocity;
+    private Vector3 velocity;
+    private float velocityXSmoothing;
 
     Contoroller2d controller;
+    #endregion
 
     void Start()
     {
@@ -66,6 +75,13 @@ public class Player : MonoBehaviour {
         if (controller.collisions.above || controller.collisions.below)
         {
             velocity.y = 0;
+        }
+
+
+        // 落ちた時の対処
+        if (player.transform.position.y <= -30)
+        {
+            player.transform.position = new Vector2(-5.8f, -0.4f);
         }
     }
 }
