@@ -65,7 +65,6 @@ public class PlaySceneManager : MonoBehaviour
         {
             case 0://元のトランス(281.5, 124)
                 Instantiate(HPgage, new Vector3(size.sizeDelta.x / 2, Screen.height - 10, 0f), Quaternion.identity, UICanvases.transform);
-                Debug.Log(size.sizeDelta.x);
                 break;
 
             case 1:
