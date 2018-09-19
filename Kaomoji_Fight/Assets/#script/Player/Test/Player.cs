@@ -28,6 +28,8 @@ public class Player : MonoBehaviour {
     private Vector3 velocity;
     private float velocityXSmoothing;
 
+    private float nowHp;    // プレイヤーのHP
+
     Contoroller2d controller;
     #endregion
 
@@ -38,8 +40,8 @@ public class Player : MonoBehaviour {
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
-        Debug.Log("Gravity: " + gravity + "  Max Jump Velocity: " + maxJumpVelocity);
-        Debug.Log("Gravity: " + gravity + "  Min Jump Velocity: " + minJumpVelocity);
+        //Debug.Log("Gravity: " + gravity + "  Max Jump Velocity: " + maxJumpVelocity);
+        //Debug.Log("Gravity: " + gravity + "  Min Jump Velocity: " + minJumpVelocity);
     }
 
     void Update()
@@ -55,7 +57,6 @@ public class Player : MonoBehaviour {
         if (XCI.GetButton(XboxButton.A, XboxController.First) && controller.collisions.below)
         {
             velocity.y = maxJumpVelocity;
-            Debug.Log("(≧▽≦)");
         }
         if (XCI.GetButtonUp(XboxButton.A, XboxController.First) && controller.collisions.below)
         {
@@ -81,7 +82,7 @@ public class Player : MonoBehaviour {
         // 落ちた時の対処
         if (player.transform.position.y <= -30)
         {
-            player.transform.position = new Vector2(-5.8f, -0.4f);
+            player.transform.position = new Vector2(0f, 3f);
         }
     }
 }
