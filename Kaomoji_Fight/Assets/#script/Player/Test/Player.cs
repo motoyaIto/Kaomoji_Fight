@@ -8,8 +8,6 @@ public class Player : MonoBehaviour {
 
     #region 変数群
     // 公開
-    [Header("プレイヤー指定")]
-    public GameObject player;
     [Header("ジャンプの高さ")]
     public float maxJumpHeight = 4;
     public float minJumpHeight = 1;
@@ -20,6 +18,10 @@ public class Player : MonoBehaviour {
     public float accelerationTimeGrounded = .1f;
     [Header("移動速度")]
     public float moveSpeed = 6;
+    [SerializeField, Header("復帰時の場所指定")]
+    private float RevivalPosX = 0f;
+    [SerializeField]
+    private float RevivalPosY = 3.0f;
 
     // 非公開
     private float gravity;
@@ -40,8 +42,6 @@ public class Player : MonoBehaviour {
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
-        //Debug.Log("Gravity: " + gravity + "  Max Jump Velocity: " + maxJumpVelocity);
-        //Debug.Log("Gravity: " + gravity + "  Min Jump Velocity: " + minJumpVelocity);
     }
 
     void Update()
@@ -54,17 +54,17 @@ public class Player : MonoBehaviour {
 
         Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, XboxController.First), XCI.GetAxis(XboxAxis.LeftStickY, XboxController.First));
 
+        // ジャンプ
         if (XCI.GetButton(XboxButton.A, XboxController.First) && controller.collisions.below)
         {
             velocity.y = maxJumpVelocity;
         }
-        if (XCI.GetButtonUp(XboxButton.A, XboxController.First) && controller.collisions.below)
+        if (XCI.GetButton(XboxButton.B, XboxController.First) && controller.collisions.below)
         {
-            if (velocity.y > minJumpVelocity)
-            {
+            //if (velocity.y > minJumpVelocity)
+            //{
                 velocity.y = minJumpVelocity;
-                Debug.Log(";つД｀)");
-            }
+            //}
         }
 
         float targetVelocityX = input.x * moveSpeed;
@@ -80,9 +80,9 @@ public class Player : MonoBehaviour {
 
 
         // 落ちた時の対処
-        if (player.transform.position.y <= -30)
+        if (this.transform.position.y <= -30)
         {
-            player.transform.position = new Vector2(0f, 3f);
+            this.transform.position = new Vector2(RevivalPosX, RevivalPosY);
         }
     }
 }
