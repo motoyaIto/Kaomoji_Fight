@@ -231,10 +231,25 @@
       <HintPath>C:/Users/s162079/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
+<<<<<<< HEAD
+      <HintPath>Library\UnityAssemblies\UnityEngine.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="XInputDotNetPure">
+      <HintPath>Assets\Plugins\XInputDotNetPure.dll</HintPath>
+=======
       <HintPath>C:/Users/s162079/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
+>>>>>>> master
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Plugins\KY_effects\Script\ConGUI.cs" />
+    <Compile Include="Assets\Plugins\KY_effects\Script\Lighting.cs" />
     <Compile Include="Assets\Plugins\XboxCtrlrInput.cs" />
     <Compile Include="Assets\Standard Assets\Cameras\Scripts\AbstractTargetFollower.cs" />
     <Compile Include="Assets\Standard Assets\Cameras\Scripts\AutoCam.cs" />
@@ -258,6 +273,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Cinemachine\ReleaseNotes.txt" />
+<<<<<<< HEAD
+    <None Include="Assets\Plugins\KY_effects\MagicEffectsPackFree\ReadMe.txt" />
+=======
+>>>>>>> master
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\resources\Texts\test.txt" />
