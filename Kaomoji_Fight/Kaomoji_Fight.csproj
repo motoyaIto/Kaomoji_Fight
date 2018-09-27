@@ -257,6 +257,7 @@
     <Compile Include="Assets\%23script\Player\Test\Contoroller2d.cs" />
     <Compile Include="Assets\%23script\Player\Test\Player.cs" />
     <Compile Include="Assets\%23script\Stage\StageControll.cs" />
+    <Compile Include="Assets\%23script\TestItem\TestAitem.cs" />
     <Compile Include="Assets\XboxCtrlrInputExample\MoveLaser.cs" />
     <Compile Include="Assets\XboxCtrlrInputExample\MovePlayer.cs" />
   </ItemGroup>

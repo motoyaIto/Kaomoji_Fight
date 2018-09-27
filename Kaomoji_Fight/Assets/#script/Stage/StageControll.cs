@@ -7,15 +7,22 @@ using System.Text;
 
 public class StageControll : MonoBehaviour
 {
+    //文字ブロック管理
+    private struct Bloc
+    {
+        public GameObject StageBloc;
+        public int countTime;
+    }
 
-    //文字数分の配列
-    private GameObject[] StageBloc;
+    //ブロックの配列
+    private Bloc[] StageBloc;
     //テキストの文字数
     private int textnam;
+
     //x座標の移動
-    int xCount = 0;
+    private int xCount = 0;
     //y座標の移動
-    int yCount = 0;
+    private int yCount = 0;
 
     void Start()
     {
@@ -24,9 +31,9 @@ public class StageControll : MonoBehaviour
         textnam = text.Length;
 
         //文字数分の配列
-        StageBloc = new GameObject[textnam];
+        StageBloc = new Bloc[textnam];
         //文字を表示するボックスをResourcesから読み込む
-        StageBloc[0] = (GameObject)Resources.Load("prefab/Stage/StageBloc");
+        StageBloc[0].StageBloc = (GameObject)Resources.Load("prefab/Stage/StageBloc");
 
         //一文字ずつ設定する
         for (int i = 0; i < textnam; i++)
@@ -40,24 +47,26 @@ public class StageControll : MonoBehaviour
             {
                 //新しく作るオブジェクトの座標
                 Vector3 pos = new Vector3(
-                   this.transform.position.x + StageBloc[i].transform.localScale.x / 2 + StageBloc[i].transform.localScale.x * xCount,
-                   this.transform.position.y + StageBloc[i].transform.localScale.y / 2 + StageBloc[i].transform.localScale.y * yCount,
+                   this.transform.position.x + StageBloc[i].StageBloc.transform.localScale.x / 2 + StageBloc[i].StageBloc.transform.localScale.x * xCount,
+                   this.transform.position.y + StageBloc[i].StageBloc.transform.localScale.y / 2 + StageBloc[i].StageBloc.transform.localScale.y * yCount,
                     0.0f);
 
                 //オブジェクトを生成する
-                StageBloc[i] = Instantiate(StageBloc[i], pos, Quaternion.identity, this.transform);
+                StageBloc[i].StageBloc = Instantiate(StageBloc[i].StageBloc, pos, Quaternion.identity, this.transform);
                 //ボックスの下のテキストを取得する
-                GameObject textdata = StageBloc[i].transform.Find("Text").gameObject;
+                GameObject textdata = StageBloc[i].StageBloc.transform.Find("Text").gameObject;
                 //テキストに文字を書き込む
                 textdata.GetComponent<TextMesh>().text = text.Substring(i, 1);
+                StageBloc[i].StageBloc.name = "StageBloc" +  "(" + text.Substring(i, 1) + ")";
 
-                StageBloc[i].name = "StageBloc" + "(" + i + ")";
-
+                //右に一文字ずらす
                 xCount++;
             }
             else
             {
+                //一行下にずらす
                 yCount--;
+                //文字位置をスタートに戻す
                 xCount = 0;
             }
 
@@ -66,6 +75,6 @@ public class StageControll : MonoBehaviour
 
     void Update()
     {
-
+       
     }
 }
