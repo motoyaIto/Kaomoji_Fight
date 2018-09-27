@@ -34,5 +34,11 @@ public class TestAitem : MonoBehaviour {
         }
 
         this.transform.position = pos;
+
+
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            
+        }
 	}
 }
