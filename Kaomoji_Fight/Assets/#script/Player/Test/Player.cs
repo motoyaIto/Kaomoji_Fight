@@ -32,7 +32,7 @@ public class Player : MonoBehaviour {
 
     private float nowHp;    // プレイヤーのHP
 
-    Contoroller2d controller;
+    Contoroller2d controller;   // コントローラー
     #endregion
 
     void Start()
@@ -63,7 +63,7 @@ public class Player : MonoBehaviour {
         {
             //if (velocity.y > minJumpVelocity)
             //{
-                velocity.y = minJumpVelocity;
+            velocity.y = minJumpVelocity;
             //}
         }
 
@@ -76,6 +76,12 @@ public class Player : MonoBehaviour {
         if (controller.collisions.above || controller.collisions.below)
         {
             velocity.y = 0;
+        }
+
+        // 地面を引っこ抜く
+        if(XCI.GetButton(XboxButton.X,XboxController.First) && controller.collisions.below)
+        {
+
         }
 
 
