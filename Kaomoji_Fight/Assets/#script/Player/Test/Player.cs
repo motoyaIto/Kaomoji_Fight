@@ -22,6 +22,8 @@ public class Player : MonoBehaviour {
     private float RevivalPosX = 0f;
     [SerializeField]
     private float RevivalPosY = 3.0f;
+    [SerializeField, Header("エフェクト関係")]
+    private ParticleSystem _deth;   // プレイヤーが死んだときのエフェクト
 
     // 非公開
     private float gravity;
@@ -38,7 +40,9 @@ public class Player : MonoBehaviour {
     void Start()
     {
         controller = GetComponent<Contoroller2d>();
-
+        _deth = this.GetComponent<ParticleSystem>();
+        //_deth.Stop();
+  
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
@@ -81,12 +85,19 @@ public class Player : MonoBehaviour {
         // 地面を引っこ抜く
         if(XCI.GetButton(XboxButton.X,XboxController.First) && controller.collisions.below)
         {
-
+            //_deth.Play();
         }
 
 
-        // 落ちた時の対処
-        if (this.transform.position.y <= -30)
+        if (XCI.GetButton(XboxButton.RightBumper, XboxController.First) && controller.collisions.below)
+        {
+            //Instantiate()
+            float rand = Random.Range(1.0f, 10.0f);
+        }
+
+
+            // 落ちた時の対処
+            if (this.transform.position.y <= -30)
         {
             this.transform.position = new Vector2(RevivalPosX, RevivalPosY);
         }
