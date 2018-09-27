@@ -241,6 +241,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <Compile Include="Assets\%23script\Manager\PlaySceneManager.cs" />
+    <Compile Include="Assets\%23script\Player\Jump\Controller2D.cs" />
+    <Compile Include="Assets\%23script\Player\Jump\PlatformController.cs" />
+    <Compile Include="Assets\%23script\Player\Jump\RaycastController.cs" />
+    <Compile Include="Assets\%23script\Player\PlayerController.cs" />
+    <Compile Include="Assets\%23script\Player\Test\Contoroller2d.cs" />
+    <Compile Include="Assets\%23script\Player\Test\Player.cs" />
+    <Compile Include="Assets\%23script\Stage\StageControll.cs" />
+    <Compile Include="Assets\%23script\TestItem\TestAitem.cs" />
+=======
     <Compile Include="Assets\#script\Camera\MultipleTargetCamera.cs" />
     <Compile Include="Assets\#script\Manager\PlaySceneManager.cs" />
     <Compile Include="Assets\#script\Player\Jump\Controller2D.cs" />
@@ -305,6 +316,7 @@
     <Compile Include="Assets\Cinemachine\Timeline\CinemachineMixer.cs" />
     <Compile Include="Assets\Cinemachine\Timeline\CinemachineShot.cs" />
     <Compile Include="Assets\Cinemachine\Timeline\CinemachineTrack.cs" />
+>>>>>>> master
     <Compile Include="Assets\XboxCtrlrInputExample\MoveLaser.cs" />
     <Compile Include="Assets\XboxCtrlrInputExample\MovePlayer.cs" />
   </ItemGroup>
