@@ -11,6 +11,8 @@ public class Contoroller2d : RaycastController {
     public CollisionInfo collisions;
     Vector2 playerInput;
 
+    [SerializeField]
+    private int CheckFootRay_time = 3;
     public override void Start()
     {
         base.Start();
@@ -45,6 +47,17 @@ public class Contoroller2d : RaycastController {
             rayOrigin += Vector2.up * (horizontalRaySpacing * i);
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, collisionMask);
 
+            if(i == 0)
+            {
+                float directionY = Mathf.Sign(velocity.y);        //float型の値が正か負かを返す
+                //rayLength = Mathf.Abs(velocity.y) + skinWidth;    //絶対値に画像の幅を足す
+
+                Vector2 rayline = new Vector2(0, -1f);
+                hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionY + rayline, rayLength, collisionMask);
+                Debug.DrawRay(rayOrigin, Vector2.right * directionX * rayLength + rayline, Color.red, CheckFootRay_time);
+
+                Debug.Log(hit.collider.gameObject.name);
+            }
             Debug.DrawRay(rayOrigin, Vector2.right * directionX * rayLength, Color.red);
 
             if (hit)
@@ -60,15 +73,20 @@ public class Contoroller2d : RaycastController {
 
     void VerticalCollisions(ref Vector3 velocity)
     {
-        float directionY = Mathf.Sign(velocity.y);
-        float rayLength = Mathf.Abs(velocity.y) + skinWidth;
+        float directionY = Mathf.Sign(velocity.y);              //float型の値が正か負かを返す
+        float rayLength = Mathf.Abs(velocity.y) + skinWidth;    //絶対値に画像の幅を足す
 
+        //縦の点の数分回す
         for (int i = 0; i < verticalRayCount; i++)
         {
+            //velocityが-の時、bottomを+の時、topを入れる
             Vector2 rayOrigin = (directionY == -1) ? raycastOrigins.bottomLeft : raycastOrigins.topLeft;
+
+            //rayを描画する座標
             rayOrigin += Vector2.right * (verticalRaySpacing * i + velocity.x);
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, collisionMask);
 
+            
             Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength, Color.red);
 
             if (hit)
