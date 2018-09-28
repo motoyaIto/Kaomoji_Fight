@@ -269,7 +269,10 @@
   <ItemGroup>
     <None Include="Assets\Cinemachine\ReleaseNotes.txt" />
     <None Include="Assets\Plugins\KY_effects\MagicEffectsPackFree\ReadMe.txt" />
+<<<<<<< HEAD
+=======
     <None Include="Assets\Resources\Texts\test.txt" />
+>>>>>>> master
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
   </ItemGroup>

@@ -249,6 +249,21 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <Compile Include="Assets\#script\Camera\MultipleTargetCamera.cs" />
+    <Compile Include="Assets\#script\Manager\PlaySceneManager.cs" />
+    <Compile Include="Assets\#script\Player\Jump\Controller2D.cs" />
+    <Compile Include="Assets\#script\Player\Jump\PlatformController.cs" />
+    <Compile Include="Assets\#script\Player\Jump\RaycastController.cs" />
+    <Compile Include="Assets\#script\Player\PlayerController.cs" />
+    <Compile Include="Assets\#script\Player\Test\Contoroller2d.cs" />
+    <Compile Include="Assets\#script\Player\Test\MoveTest.cs" />
+    <Compile Include="Assets\#script\Player\Test\Player.cs" />
+    <Compile Include="Assets\#script\Player\Test\PlayerTest.cs" />
+    <Compile Include="Assets\#script\Stage\CreateStage.cs" />
+    <Compile Include="Assets\#script\TestItem\TestAitem.cs" />
+    <Compile Include="Assets\BlockController.cs" />
+=======
     <Compile Include="Assets\%23script\Camera\MultipleTargetCamera.cs" />
     <Compile Include="Assets\%23script\Manager\PlaySceneManager.cs" />
     <Compile Include="Assets\%23script\Player\Jump\Controller2D.cs" />
@@ -261,6 +276,7 @@
     <Compile Include="Assets\%23script\Player\Test\PlayerTest.cs" />
     <Compile Include="Assets\%23script\Stage\CreateStage.cs" />
     <Compile Include="Assets\%23script\TestItem\TestAitem.cs" />
+>>>>>>> master
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBlendListCamera.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBrain.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineClearShot.cs" />
@@ -320,7 +336,10 @@
   <ItemGroup>
     <None Include="Assets\Cinemachine\ReleaseNotes.txt" />
     <None Include="Assets\Plugins\KY_effects\MagicEffectsPackFree\ReadMe.txt" />
+<<<<<<< HEAD
+=======
     <None Include="Assets\Resources\Texts\test.txt" />
+>>>>>>> master
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
   </ItemGroup>
