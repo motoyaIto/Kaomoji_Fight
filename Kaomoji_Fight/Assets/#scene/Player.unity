@@ -794,6 +794,10 @@ Prefab:
       propertyPath: _deth
       value: 
       objectReference: {fileID: 201831090}
+    - target: {fileID: 1009987158381430, guid: c8eb14ca03617f74b980f98d76221036, type: 2}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8eb14ca03617f74b980f98d76221036, type: 2}
   m_IsPrefabParent: 0

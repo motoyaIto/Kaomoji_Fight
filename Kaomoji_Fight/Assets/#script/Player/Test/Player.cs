@@ -4,7 +4,7 @@ using UnityEngine;
 using XboxCtrlrInput;
 
 [RequireComponent(typeof(Contoroller2d))]
-public class Player : MonoBehaviour {
+public class Player : RaycastController {
 
     #region 変数群
     // 公開
@@ -31,10 +31,13 @@ public class Player : MonoBehaviour {
     private float minJumpVelocity;
     private Vector3 velocity;
     private float velocityXSmoothing;
+    private bool JumpFlag;  // ジャンプ中かどうか？（true = ジャンプ中, false = ジャンプしていない）
 
     private float nowHp;    // プレイヤーのHP
 
     Contoroller2d controller;   // コントローラー
+    [HideInInspector]
+    public CollisionInfo collisions;
     #endregion
 
     void Start()
@@ -46,6 +49,8 @@ public class Player : MonoBehaviour {
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
+
+        JumpFlag = false;
     }
 
     void Update()
@@ -54,6 +59,7 @@ public class Player : MonoBehaviour {
         if (controller.collisions.above || controller.collisions.below)
         {
             velocity.y = 0;
+            JumpFlag = false;
         }
 
         Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, XboxController.First), XCI.GetAxis(XboxAxis.LeftStickY, XboxController.First));
@@ -62,6 +68,7 @@ public class Player : MonoBehaviour {
         if (XCI.GetButton(XboxButton.A, XboxController.First) && controller.collisions.below)
         {
             velocity.y = maxJumpVelocity;
+            JumpFlag = true;
         }
         if (XCI.GetButton(XboxButton.B, XboxController.First) && controller.collisions.below)
         {
@@ -82,24 +89,73 @@ public class Player : MonoBehaviour {
             velocity.y = 0;
         }
 
-        // 地面を引っこ抜く
-        if(XCI.GetButton(XboxButton.X,XboxController.First) && controller.collisions.below)
-        {
-            //_deth.Play();
-        }
 
-
+        // 回避をしたい
         if (XCI.GetButton(XboxButton.RightBumper, XboxController.First) && controller.collisions.below)
         {
             //Instantiate()
             float rand = Random.Range(1.0f, 10.0f);
         }
 
+        // Ｒａｙだぞ～
+        float directionX = Mathf.Sign(velocity.x);
+        float rayLength = Mathf.Abs(velocity.x) + skinWidth;
+        for (int i = 0; i < horizontalRayCount; i++)
+        {
+            Vector2 rayOrigin = (directionX == -1) ? raycastOrigins.bottomLeft : raycastOrigins.bottomRight;
+            rayOrigin += Vector2.up * (horizontalRaySpacing * i);
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, collisionMask);
 
-            // 落ちた時の対処
-            if (this.transform.position.y <= -30)
+            // アイテムゲットするかも
+            if (XCI.GetButton(XboxButton.X, XboxController.First) && controller.collisions.below)
+            {
+                //Rayやるかー
+                float rayLine = 2.0f;
+
+                RaycastHit2D hitFoot = Physics2D.Raycast(this.transform.position, -Vector2.up, rayLine);
+                if (hitFoot)
+                {
+                    //Debug.DrawRay(this.transform.position, -Vector2.up, Color.red);
+                    BlockController blockcontroller = hitFoot.collider.gameObject.GetComponent<BlockController> ();
+
+                    string mozi = blockcontroller.GetBlockMozi();
+                    Debug.Log(mozi);
+                }
+
+                if (hit)
+                {
+                    velocity.x = (hit.distance - skinWidth) * directionX;
+                    rayLength = hit.distance;
+
+                    collisions.left = directionX == -1;
+                    collisions.right = directionX == 1;
+                }
+
+            }
+
+
+        }
+
+
+        // 落ちた時の対処
+        if (this.transform.position.y <= -30)
         {
             this.transform.position = new Vector2(RevivalPosX, RevivalPosY);
         }
     }
+
+
+    public struct CollisionInfo
+    {
+        public bool above, below;
+        public bool left, right;
+        public int faceDir;
+
+        public void Reset()
+        {
+            above = below = false;
+            left = right = false;
+        }
+    }
+
 }
