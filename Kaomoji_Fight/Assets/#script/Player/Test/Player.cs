@@ -35,6 +35,9 @@ public class Player : RaycastController {
 
     private float nowHp;    // プレイヤーのHP
 
+    private GameObject Weapon;      //武器
+    private bool HaveWeapon = false;//武器を持っている(true)いない(false)
+
     Contoroller2d controller;   // コントローラー
     [HideInInspector]
     public CollisionInfo collisions;
@@ -51,6 +54,9 @@ public class Player : RaycastController {
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
 
         JumpFlag = false;
+
+        //文字を表示するボックスをResourcesから読み込む
+       Weapon = (GameObject)Resources.Load("prefab/Weapon/WeaponBloc");
     }
 
     void Update()
@@ -98,46 +104,7 @@ public class Player : RaycastController {
         }
 
         // Ｒａｙだぞ～
-        float directionX = Mathf.Sign(velocity.x);
-        float rayLength = Mathf.Abs(velocity.x) + skinWidth;
-        for (int i = 0; i < horizontalRayCount; i++)
-        {
-            //directionXが-の時、bottomLeft+の時、bottomRightを入れる
-            Vector2 rayOrigin = (directionX == -1) ? raycastOrigins.bottomLeft : raycastOrigins.bottomRight;
-            //rayを描画する中心座標
-            rayOrigin += Vector2.up * (horizontalRaySpacing * i);
-            //rayを生成してあたったものを入れる
-            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, collisionMask);
-
-            // アイテムゲットするかも
-            if (XCI.GetButton(XboxButton.X, XboxController.First) && controller.collisions.below)
-            {
-                //Rayやるかー
-                float rayLine = 2.0f;
-
-                RaycastHit2D hitFoot = Physics2D.Raycast(this.transform.position, -Vector2.up, rayLine);
-                if (hitFoot)
-                {
-                    //Debug.DrawRay(this.transform.position, -Vector2.up, Color.red);
-                    BlockController blockcontroller = hitFoot.collider.gameObject.GetComponent<BlockController> ();
-
-                    string mozi = blockcontroller.GetBlockMozi();
-                    Debug.Log(mozi);
-                }
-
-                if (hit)
-                {
-                    velocity.x = (hit.distance - skinWidth) * directionX;
-                    rayLength = hit.distance;
-
-                    collisions.left = directionX == -1;
-                    collisions.right = directionX == 1;
-                }
-
-            }
-
-
-        }
+        this.RayController();
 
 
         // 落ちた時の対処
@@ -158,6 +125,71 @@ public class Player : RaycastController {
         {
             above = below = false;
             left = right = false;
+        }
+    }
+
+
+    /// <summary>
+    /// rayを飛ばしてアイテムを取得する
+    /// </summary>
+    private void RayController()
+    {
+        float directionX = Mathf.Sign(velocity.x);          //float型の値が正か負かを返す
+        float rayLength = Mathf.Abs(velocity.x) + skinWidth;//rayの長さを計算する
+
+        //rayの数分回す
+        for (int i = 0; i < horizontalRayCount; i++)
+        {
+            //右を向いているか左を向いているか
+            Vector2 rayOrigin = (directionX == -1) ? raycastOrigins.bottomLeft : raycastOrigins.bottomRight;
+            
+            //rayを描画し始める場所
+            rayOrigin += Vector2.up * (horizontalRaySpacing * i);
+            //rayを飛ばした先で獲得できたものを入れる
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, collisionMask);
+
+            // 武器をゲットするかも
+            if (XCI.GetButton(XboxButton.X, XboxController.First) && controller.collisions.below)
+            {
+                //Rayを伸ばす
+                float rayLine = 2.0f;
+                //当たっている物があれば
+                RaycastHit2D hitFoot = Physics2D.Raycast(this.transform.position, -Vector2.up, rayLine);
+                //当たっている物があれば
+                if (hitFoot)
+                {
+                    this.GetWeapon(hitFoot, directionX);
+
+                    break;
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    ///  武器を獲得する
+    /// </summary>
+    /// <param name="hitFoot">足元にあった武器</param>
+    /// <param name="directionX">右か左か</param>
+    private void GetWeapon(RaycastHit2D hitFoot, float directionX)
+    {
+        //Debug.DrawRay(this.transform.position, -Vector2.up, Color.red);
+        BlockController blockcontroller = hitFoot.collider.gameObject.GetComponent<BlockController>();
+
+        if (HaveWeapon == false)
+        {
+            //オブジェクトを生成する
+            Weapon = Instantiate(Weapon, this.transform.position, Quaternion.identity, this.transform);
+            //ボックスの下のテキストを取得する
+            GameObject textdata = Weapon.transform.Find("Text").gameObject;
+            //テキストに文字を書き込む
+            textdata.GetComponent<TextMesh>().text = blockcontroller.GetBlockMozi;
+
+            HaveWeapon = true;
+
+            //武器の位置を調整
+            WeaponBlocController WBController = Weapon.gameObject.GetComponent<WeaponBlocController>();
+            WBController.SetPosition = new Vector3((this.transform.position.x + this.transform.localScale.x) * directionX, this.transform.position.y + this.transform.localScale.y, 0.0f);
         }
     }
 
