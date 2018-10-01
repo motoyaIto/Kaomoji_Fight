@@ -102,8 +102,11 @@ public class Player : RaycastController {
         float rayLength = Mathf.Abs(velocity.x) + skinWidth;
         for (int i = 0; i < horizontalRayCount; i++)
         {
+            //directionXが-の時、bottomLeft+の時、bottomRightを入れる
             Vector2 rayOrigin = (directionX == -1) ? raycastOrigins.bottomLeft : raycastOrigins.bottomRight;
+            //rayを描画する中心座標
             rayOrigin += Vector2.up * (horizontalRaySpacing * i);
+            //rayを生成してあたったものを入れる
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, collisionMask);
 
             // アイテムゲットするかも
