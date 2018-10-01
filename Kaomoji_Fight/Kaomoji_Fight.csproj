@@ -259,9 +259,10 @@
     <Compile Include="Assets\%23script\Player\Test\MoveTest.cs" />
     <Compile Include="Assets\%23script\Player\Test\Player.cs" />
     <Compile Include="Assets\%23script\Player\Test\PlayerTest.cs" />
+    <Compile Include="Assets\%23script\Player\Weapon\WeaponBlocController.cs" />
+    <Compile Include="Assets\%23script\Stage\BlockController.cs" />
     <Compile Include="Assets\%23script\Stage\CreateStage.cs" />
     <Compile Include="Assets\%23script\TestItem\TestAitem.cs" />
-    <Compile Include="Assets\BlockController.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBlendListCamera.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBrain.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineClearShot.cs" />
