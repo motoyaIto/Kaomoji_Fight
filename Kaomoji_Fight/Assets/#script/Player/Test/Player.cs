@@ -38,6 +38,9 @@ public class Player : RaycastController {
     private GameObject Weapon;      //武器
     private bool HaveWeapon = false;//武器を持っている(true)いない(false)
 
+    [SerializeField]
+    private float thrust = 50000f;//推進力
+
     Contoroller2d controller;   // コントローラー
     [HideInInspector]
     public CollisionInfo collisions;
@@ -102,9 +105,43 @@ public class Player : RaycastController {
             //Instantiate()
             float rand = Random.Range(1.0f, 10.0f);
         }
+        
+        //武器
+        if (HaveWeapon)
+        {
+            //武器の位置を調整
+            WeaponBlocController WBController = Weapon.gameObject.GetComponent<WeaponBlocController>();
+            Vector3 direction = Vector3.zero;
+            if (velocity.x < 0.0f)
+            {
+                direction = Vector3.left;
+                WBController.SetPosition = new Vector3(this.transform.position.x - this.transform.localScale.x, this.transform.position.y + this.transform.localScale.y * 2, 0.0f);
+            }
+            else if(velocity.x > 0.0f)
+            {
+                direction = Vector3.right;
+                WBController.SetPosition = new Vector3(this.transform.position.x + this.transform.localScale.x + 0.5f, this.transform.position.y + this.transform.localScale.y * 2, 0.0f);
+            }
 
-        // Ｒａｙだぞ～
-        this.RayController();
+            //武器を使う
+            if (XCI.GetButtonDown(XboxButton.X, XboxController.First) && controller.collisions.below)
+            {
+                //子オブジェクトをすべて解除(修正必須)
+                this.transform.DetachChildren();
+
+                WBController.Attack(direction, thrust);
+
+                
+                //新しいウエポンブロックをロード
+                Weapon = (GameObject)Resources.Load("prefab/Weapon/WeaponBloc"); 
+
+                HaveWeapon = false;
+            }
+        }
+
+
+            // Ｒａｙだぞ～
+            this.RayController();
 
 
         // 落ちた時の対処
@@ -149,7 +186,7 @@ public class Player : RaycastController {
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, collisionMask);
 
             // 武器をゲットするかも
-            if (XCI.GetButton(XboxButton.X, XboxController.First) && controller.collisions.below)
+            if (XCI.GetButtonDown(XboxButton.X, XboxController.First) && controller.collisions.below)
             {
                 //Rayを伸ばす
                 float rayLine = 2.0f;
@@ -189,7 +226,14 @@ public class Player : RaycastController {
 
             //武器の位置を調整
             WeaponBlocController WBController = Weapon.gameObject.GetComponent<WeaponBlocController>();
-            WBController.SetPosition = new Vector3((this.transform.position.x + this.transform.localScale.x) * directionX, this.transform.position.y + this.transform.localScale.y, 0.0f);
+            if (directionX == -1)
+            {
+                WBController.SetPosition = new Vector3(0.5f, this.transform.position.y + this.transform.localScale.y * 2, 0.0f);
+            }
+            else
+            {
+                WBController.SetPosition = new Vector3(this.transform.position.x + this.transform.localScale.x + 0.5f, this.transform.position.y + this.transform.localScale.y * 2, 0.0f);
+            }
         }
     }
 
