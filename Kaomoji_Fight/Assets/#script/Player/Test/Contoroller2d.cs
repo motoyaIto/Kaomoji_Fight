@@ -49,14 +49,9 @@ public class Contoroller2d : RaycastController {
 
             if(i == 0)
             {
-                float directionY = Mathf.Sign(velocity.y);        //float型の値が正か負かを返す
-                //rayLength = Mathf.Abs(velocity.y) + skinWidth;    //絶対値に画像の幅を足す
-
                 Vector2 rayline = new Vector2(0, -1f);
-                hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionY + rayline, rayLength, collisionMask);
+                hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX + rayline, rayLength, collisionMask);
                 Debug.DrawRay(rayOrigin, Vector2.right * directionX * rayLength + rayline, Color.red, CheckFootRay_time);
-
-                Debug.Log(hit.collider.gameObject.name);
             }
             Debug.DrawRay(rayOrigin, Vector2.right * directionX * rayLength, Color.red);
 
@@ -79,7 +74,7 @@ public class Contoroller2d : RaycastController {
         //縦の点の数分回す
         for (int i = 0; i < verticalRayCount; i++)
         {
-            //velocityが-の時、bottomを+の時、topを入れる
+            //directionYが-の時、bottomを+の時、topを入れる
             Vector2 rayOrigin = (directionY == -1) ? raycastOrigins.bottomLeft : raycastOrigins.topLeft;
 
             //rayを描画する座標
