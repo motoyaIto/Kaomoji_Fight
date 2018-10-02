@@ -41,7 +41,7 @@ public class PlaySceneManager : MonoBehaviour
     public void Damage(GameObject Attack_player, GameObject Damage_player)
     {
         //Wepon Aplayer_wepon = Attack_player.GetComponent<PlayerController>().gameObject.GetComponent<Wepon>();
-        PlayerController Dplayer = Damage_player.GetComponent<PlayerController>();
+        Player Dplayer = Damage_player.GetComponent<Player>();
 
         //ダメージを数値に反映
         //Damage_player.HP -= Aplayer_wepon.attack;
