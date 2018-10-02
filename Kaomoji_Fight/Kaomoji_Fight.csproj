@@ -231,7 +231,20 @@
       <HintPath>C:/Users/s162079/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/UnityEngine.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
+<<<<<<< HEAD
+      <HintPath>Library\UnityAssemblies\UnityEngine.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="XInputDotNetPure">
+      <HintPath>Assets\Plugins\XInputDotNetPure.dll</HintPath>
+=======
       <HintPath>C:/Users/s162079/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
+>>>>>>> master
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -246,6 +259,11 @@
     <Compile Include="Assets\#script\Player\Jump\Controller2D.cs" />
     <Compile Include="Assets\#script\Player\Jump\PlatformController.cs" />
     <Compile Include="Assets\#script\Player\Jump\RaycastController.cs" />
+<<<<<<< HEAD
+    <Compile Include="Assets\#script\Player\Test\Contoroller2d.cs" />
+    <Compile Include="Assets\#script\Player\Test\Player.cs" />
+    <Compile Include="Assets\#script\Player\Weapon\WeaponBlocController.cs" />
+=======
     <Compile Include="Assets\#script\Player\PlayerController.cs" />
     <Compile Include="Assets\#script\Player\Test\Contoroller2d.cs" />
     <Compile Include="Assets\#script\Player\Test\MoveTest.cs" />
@@ -253,6 +271,7 @@
     <Compile Include="Assets\#script\Player\Test\PlayerTest.cs" />
     <Compile Include="Assets\#script\Player\Weapon\WeaponBlocController.cs" />
     <Compile Include="Assets\#script\Select\SelectControll.cs" />
+>>>>>>> master
     <Compile Include="Assets\#script\Stage\BlockController.cs" />
     <Compile Include="Assets\#script\Stage\CreateStage.cs" />
     <Compile Include="Assets\#script\TestItem\TestAitem.cs" />
