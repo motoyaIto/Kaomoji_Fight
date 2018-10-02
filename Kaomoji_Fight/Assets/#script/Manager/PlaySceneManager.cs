@@ -63,10 +63,15 @@ public class PlaySceneManager : MonoBehaviour
 
     public void CreatePlayer(GameObject Player, int i)
     {
+<<<<<<< HEAD
         switch(i)
         {
             case 0:
                 Instantiate(Player, new Vector3(-0.2f, 0.0f, 0.0f), Quaternion.identity, UICanvases.transform);
+=======
+        //Wepon Aplayer_wepon = Attack_player.GetComponent<PlayerController>().gameObject.GetComponent<Wepon>();
+        Player Dplayer = Damage_player.GetComponent<Player>();
+>>>>>>> master
 
                 break;
 
