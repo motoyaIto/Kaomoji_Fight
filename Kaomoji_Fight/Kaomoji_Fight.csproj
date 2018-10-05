@@ -241,6 +241,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\%23script\Camera\MultipleTargetCamera.cs" />
+    <Compile Include="Assets\%23script\DummySceneStart.cs" />
     <Compile Include="Assets\%23script\Manager\PlaySceneManager.cs" />
     <Compile Include="Assets\%23script\Player\Jump\Controller2D.cs" />
     <Compile Include="Assets\%23script\Player\Jump\PlatformController.cs" />
@@ -248,6 +249,8 @@
     <Compile Include="Assets\%23script\Player\Test\Contoroller2d.cs" />
     <Compile Include="Assets\%23script\Player\Test\Player.cs" />
     <Compile Include="Assets\%23script\Player\Weapon\WeaponBlocController.cs" />
+    <Compile Include="Assets\%23script\SceneManagerController.cs" />
+    <Compile Include="Assets\%23script\SceneTimer.cs" />
     <Compile Include="Assets\%23script\SelectPN\SelectPNControll.cs" />
     <Compile Include="Assets\%23script\Stage\BlockController.cs" />
     <Compile Include="Assets\%23script\Stage\CreateStage.cs" />

@@ -61,7 +61,7 @@ public class SelectPNControll : MonoBehaviour {
         //プレイ人数を決定
         if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButton(XboxButton.B, XboxController.First))
         {
-            Debug.Log(playerNum);
+            SceneManagerController.ChangeCene();
         }
     }
 }
