@@ -252,7 +252,7 @@
     <Compile Include="Assets\#script\Player\Test\Player.cs" />
     <Compile Include="Assets\#script\Player\Test\PlayerTest.cs" />
     <Compile Include="Assets\#script\Player\Weapon\WeaponBlocController.cs" />
-    <Compile Include="Assets\#script\Select\SelectControll.cs" />
+    <Compile Include="Assets\#script\SelectPN\SelectPNControll.cs" />
     <Compile Include="Assets\#script\Stage\BlockController.cs" />
     <Compile Include="Assets\#script\Stage\CreateStage.cs" />
     <Compile Include="Assets\#script\TestItem\TestAitem.cs" />
