@@ -17,7 +17,7 @@ public class Player : RaycastController {
     public float accelerationTimeAirborne = .2f;
     public float accelerationTimeGrounded = .1f;
     [Header("移動速度")]
-    public float moveSpeed = 6;
+    public float moveSpeed = 10;
     [SerializeField, Header("復帰時の場所指定")]
     private float RevivalPosX = 0f;
     [SerializeField]
@@ -26,9 +26,9 @@ public class Player : RaycastController {
     private ParticleSystem _deth;   // プレイヤーが死んだときのエフェクト
 
     // 非公開
-    private float gravity;
-    private float maxJumpVelocity;
-    private float minJumpVelocity;
+    private float gravity;  // 重力
+    private float maxJumpVelocity;  // 最大ジャンプ時の勢い
+    private float minJumpVelocity;  // 最小ジャンプ時の勢い
     private Vector3 velocity;
     private float velocityXSmoothing;
     private bool JumpFlag;  // ジャンプ中かどうか？（true = ジャンプ中, false = ジャンプしていない）
@@ -39,7 +39,7 @@ public class Player : RaycastController {
     private bool HaveWeapon = false;//武器を持っている(true)いない(false)
 
     [SerializeField]
-    private float thrust = 50000f;//推進力
+    private float thrust = 5f;//推進力
 
     Contoroller2d controller;   // コントローラー
     [HideInInspector]
@@ -126,6 +126,8 @@ public class Player : RaycastController {
             //武器を使う
             if (XCI.GetButtonDown(XboxButton.X, XboxController.First) && controller.collisions.below)
             {
+                //GameObject re = Weapon.GetComponent<GameObject>();
+                Weapon.AddComponent<Rigidbody2D>();
                 //子オブジェクトをすべて解除(修正必須)
                 this.transform.DetachChildren();
 
@@ -140,7 +142,7 @@ public class Player : RaycastController {
         }
 
 
-            // Ｒａｙだぞ～
+            // Ｒａｙ
             this.RayController();
 
 
@@ -210,8 +212,7 @@ public class Player : RaycastController {
     /// <param name="directionX">右か左か</param>
     private void GetWeapon(RaycastHit2D hitFoot, float directionX)
     {
-        //Debug.DrawRay(this.transform.position, -Vector2.up, Color.red);
-        BlockController blockcontroller = hitFoot.collider.gameObject.GetComponent<BlockController>();
+        BlockController blockcontroller = hitFoot.collider.gameObject.transform.GetComponent<BlockController>();
 
         if (HaveWeapon == false)
         {
@@ -234,6 +235,19 @@ public class Player : RaycastController {
             {
                 WBController.SetPosition = new Vector3(this.transform.position.x + this.transform.localScale.x + 0.5f, this.transform.position.y + this.transform.localScale.y * 2, 0.0f);
             }
+        }
+    }
+
+    // Hpのゲッターセッター
+    public float SetHP
+    {
+        set
+        {
+            nowHp = value;
+        }
+        get
+        {
+            return nowHp;
         }
     }
 

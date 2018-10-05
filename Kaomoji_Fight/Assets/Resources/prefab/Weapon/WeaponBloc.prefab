@@ -23,8 +23,6 @@ GameObject:
   - component: {fileID: 23268456678053114}
   - component: {fileID: 61649617006949168}
   - component: {fileID: 114501318490583942}
-  - component: {fileID: 50677164918673592}
-  - component: {fileID: 114800614810798690}
   m_Layer: 2
   m_Name: WeaponBloc
   m_TagString: Untagged
@@ -151,26 +149,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1686641389382646}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!50 &50677164918673592
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1686641389382646}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!61 &61649617006949168
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -218,17 +196,6 @@ TextMesh:
     serializedVersion: 2
     rgba: 4278190080
 --- !u!114 &114501318490583942
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1686641389382646}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e17227ca845fc8468e7f48f6b5a3048, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114800614810798690
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

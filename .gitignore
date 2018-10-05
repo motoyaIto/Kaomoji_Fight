@@ -4,6 +4,7 @@
 /[Bb]uild/
 /[Bb]uilds/
 /Assets/AssetStoreTools*
+/KaomojiFight_Data/
 
 # Visual Studio 2015 cache directory
 /.vs/
@@ -32,7 +33,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
-<<<<<<< HEAD
-Kaomoji_Fight/Temp/UnityLockfile
-=======
->>>>>>> master
+
+
