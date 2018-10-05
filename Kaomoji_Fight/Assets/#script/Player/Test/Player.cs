@@ -124,10 +124,10 @@ public class Player : RaycastController {
             }
 
             //武器を使う
-            if (XCI.GetButton(XboxButton.X, XboxController.First) && controller.collisions.below)
+            if (XCI.GetButtonDown(XboxButton.X, XboxController.First) && controller.collisions.below)
             {
-                GameObject re = Weapon.GetComponent<GameObject>();
-                re.AddComponent<Rigidbody2D>();
+                //GameObject re = Weapon.GetComponent<GameObject>();
+                Weapon.AddComponent<Rigidbody2D>();
                 //子オブジェクトをすべて解除(修正必須)
                 this.transform.DetachChildren();
 
@@ -212,8 +212,7 @@ public class Player : RaycastController {
     /// <param name="directionX">右か左か</param>
     private void GetWeapon(RaycastHit2D hitFoot, float directionX)
     {
-        //Debug.DrawRay(this.transform.position, -Vector2.up, Color.red);
-        BlockController blockcontroller = hitFoot.collider.gameObject.GetComponent<BlockController>();
+        BlockController blockcontroller = hitFoot.collider.gameObject.transform.GetComponent<BlockController>();
 
         if (HaveWeapon == false)
         {
