@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Windows;
+using XboxCtrlrInput;
 
 
 public class PlaySceneManager : MonoBehaviour
@@ -11,7 +12,7 @@ public class PlaySceneManager : MonoBehaviour
     [SerializeField]
     private GameObject UICanvases;      //UI用キャンバス
 
-    private int player_nam = 1;          //生成するプレイヤーの数
+    private int player_nam = 2;          //生成するプレイヤーの数
     private GameObject[] player_textuer; //各プレイヤーの画像
 
     private GameObject[] players;       //プレイヤー
@@ -27,9 +28,6 @@ public class PlaySceneManager : MonoBehaviour
         {
             player_nam = PLAYERMAX;
         }
-
-        //配列の値に調整
-        player_nam -= 1;
 
         //プレイヤー分の配列を確保
         players = new GameObject[player_nam];
@@ -48,8 +46,9 @@ public class PlaySceneManager : MonoBehaviour
             {
                 players[i] = player_textuer[i];
                 HPgage[i] = player_textuer[i];
-            }            
+            }
 
+            CreatePlayer(players[i], i);
             CreateHPgage(HPgage[i], i);
         }
        
@@ -61,36 +60,59 @@ public class PlaySceneManager : MonoBehaviour
      
     }
 
-    public void CreatePlayer(GameObject Player, int i)
+    private void CreatePlayer(GameObject player, int i)
     {
+        
         switch(i)
         {
             case 0:
-                Instantiate(Player, new Vector3(-0.2f, 0.0f, 0.0f), Quaternion.identity, UICanvases.transform);
+                GameObject FirstPlayer = Instantiate(player, new Vector3(-0.2f, 0.0f, 0.0f), Quaternion.identity);
 
+                FirstPlayer.name = "First";
+                this.SetPlayerStatus(FirstPlayer, XboxController.First);
+               
                 break;
 
             case 1:
-                Instantiate(Player, new Vector3(-0.2f, 0.0f, 0.0f), Quaternion.identity, UICanvases.transform);
+                GameObject SecondPlayer = Instantiate(player, new Vector3(-0.2f, 0.0f, 0.0f), Quaternion.identity);
 
+                SecondPlayer.name = "Second";
+                this.SetPlayerStatus(SecondPlayer, XboxController.Second);
                 break;
 
             case 2:
-                Instantiate(Player, new Vector3(1.0f, 0.0f, 0.0f), Quaternion.identity, UICanvases.transform);
+                GameObject ThirdPlayer = Instantiate(player, new Vector3(1.0f, 0.0f, 0.0f), Quaternion.identity);
+
+                ThirdPlayer.name = "Third";
+                this.SetPlayerStatus(ThirdPlayer, XboxController.Third);
                 break;
 
             case 3:
-                Instantiate(Player, new Vector3(1.0f, 0.0f, 0.0f), Quaternion.identity, UICanvases.transform);
+                GameObject FourthPlayer = Instantiate(player, new Vector3(1.0f, 0.0f, 0.0f), Quaternion.identity);
 
+                FourthPlayer.name = "Fourth";
+                this.SetPlayerStatus(FourthPlayer, XboxController.Fourth);
                 break;
         }
     }
+
+    /// <summary>
+    /// プレイヤーのステータスを設定する
+    /// </summary>
+    /// <param name="player">プレイヤー</param>
+    /// <param name="controllerNamber">コントローラー番号</param>
+    private void SetPlayerStatus(GameObject player, XboxController controllerNamber)
+    {
+        Player playerScript = player.GetComponent<Player>();
+        playerScript.GetControllerNamber = controllerNamber;
+    }
+
     /// <summary>
     /// HPゲージの生成
     /// </summary>
     /// <param name="HPgage">HPゲージ</param>
     /// <param name="i">何番目か</param>
-    public void CreateHPgage(GameObject HPgage, int i)
+    private void CreateHPgage(GameObject HPgage, int i)
     {
         RectTransform size = HPgage.GetComponent<RectTransform>();
 

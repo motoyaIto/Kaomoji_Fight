@@ -32,8 +32,10 @@ public class Player : RaycastController {
     private float thrust = 5f;//推進力
 
 
-
     // 非公開
+    [SerializeField]
+    private XboxController ControlerNamber = XboxController.First;//何番目のコントローラーを適用するか
+
     private float gravity;  // 重力
     private float maxJumpVelocity;  // 最大ジャンプ時の勢い
     private float minJumpVelocity;  // 最小ジャンプ時の勢い
@@ -74,15 +76,15 @@ public class Player : RaycastController {
             JumpFlag = false;
         }
 
-        Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, XboxController.First), XCI.GetAxis(XboxAxis.LeftStickY, XboxController.First));
+        Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, ControlerNamber), XCI.GetAxis(XboxAxis.LeftStickY, ControlerNamber));
 
         // ジャンプ
-        if (XCI.GetButton(XboxButton.A, XboxController.First) && controller.collisions.below)
+        if (XCI.GetButton(XboxButton.A, ControlerNamber) && controller.collisions.below)
         {
             velocity.y = maxJumpVelocity;
             JumpFlag = true;
         }
-        if (XCI.GetButton(XboxButton.B, XboxController.First) && controller.collisions.below)
+        if (XCI.GetButton(XboxButton.B, ControlerNamber) && controller.collisions.below)
         {
             //if (velocity.y > minJumpVelocity)
             //{
@@ -103,7 +105,7 @@ public class Player : RaycastController {
 
 
         // 回避をしたい
-        if (XCI.GetButton(XboxButton.RightBumper, XboxController.First) && controller.collisions.below)
+        if (XCI.GetButton(XboxButton.RightBumper, ControlerNamber) && controller.collisions.below)
         {
             //Instantiate()
             float rand = Random.Range(1.0f, 10.0f);
@@ -127,7 +129,7 @@ public class Player : RaycastController {
             }
 
             //武器を使う
-            if (XCI.GetButtonDown(XboxButton.X, XboxController.First) && controller.collisions.below)
+            if (XCI.GetButtonDown(XboxButton.X, ControlerNamber) && controller.collisions.below)
             {
                 //GameObject re = Weapon.GetComponent<GameObject>();
                 Weapon.AddComponent<Rigidbody2D>();
@@ -191,7 +193,7 @@ public class Player : RaycastController {
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, collisionMask);
 
             // 武器をゲットするかも
-            if (XCI.GetButtonDown(XboxButton.X, XboxController.First) && controller.collisions.below)
+            if (XCI.GetButtonDown(XboxButton.X, ControlerNamber) && controller.collisions.below)
             {
                 //Rayを伸ばす
                 float rayLine = 2.0f;
@@ -251,6 +253,16 @@ public class Player : RaycastController {
         get
         {
             return nowHp;
+        }
+    }
+
+    public XboxController GetControllerNamber
+    {
+        set
+        {
+            ControlerNamber = value;
+
+            Debug.Log(ControlerNamber);
         }
     }
 
