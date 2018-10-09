@@ -13,7 +13,6 @@ public class PlaySceneManager : MonoBehaviour
     [SerializeField]
     private GameObject UICanvases;      //UI用キャンバス
 
-    private int player_nam = 2;             //生成するプレイヤーの数
     private GameObject[] player_textuer;    //各プレイヤーの画像
 
     private GameObject[] players;       //プレイヤー
@@ -25,17 +24,17 @@ public class PlaySceneManager : MonoBehaviour
     void Start()
     {
         //プレイヤーが最大値を超えて生成しようとしたときに抑える
-        if (player_nam > PLAYERMAX)
+        if (SelectPNControll.playerNum > PLAYERMAX)
         {
-            player_nam = PLAYERMAX;
+            SelectPNControll.playerNum = PLAYERMAX;
         }
 
         //プレイヤー分の配列を確保
-        players = new GameObject[player_nam];
-        HPgage = new GameObject[player_nam];
+        players = new GameObject[SelectPNControll.playerNum];
+        HPgage = new GameObject[SelectPNControll.playerNum];
 
         //プレイヤーとHPを生成
-        for (int i = 0; i < player_nam; i++)
+        for (int i = 0; i < SelectPNControll.playerNum; i++)
         {
             //画像が送られてきていなかったら
             if (player_textuer == null)
@@ -166,18 +165,6 @@ public class PlaySceneManager : MonoBehaviour
         }
     }
     
-    //プレイヤーの合計
-    public int Playernam
-    {
-        set
-        {
-            player_nam = value;
-        }
-        get
-        {
-            return player_nam;
-        }
-    }        
 
     //各プレイヤーの画像
     public GameObject[] Player_textuer

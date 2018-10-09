@@ -5,9 +5,8 @@ using XboxCtrlrInput;
 
 public class SelectPNControll : MonoBehaviour {
 
-    [SerializeField]
     private static readonly int PLAYERMAX = 4;
-    private static int playerNum = 1;
+    public static int playerNum = 1;
     // Use this for initialization
     void Start () {
 
