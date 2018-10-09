@@ -133,6 +133,7 @@ public class Player : RaycastController {
             {
                 //GameObject re = Weapon.GetComponent<GameObject>();
                 Weapon.AddComponent<Rigidbody2D>();
+
                 //子オブジェクトをすべて解除(修正必須)
                 this.transform.DetachChildren();
 
@@ -261,8 +262,6 @@ public class Player : RaycastController {
         set
         {
             ControlerNamber = value;
-
-            Debug.Log(ControlerNamber);
         }
     }
 
