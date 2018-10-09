@@ -254,15 +254,6 @@
     <Reference Include="UnityEditor.Graphs">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.Android.Extensions">
-      <HintPath>Library\UnityAssemblies\UnityEditor.Android.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.WSA.Extensions">
-      <HintPath>Library\UnityAssemblies\UnityEditor.WSA.Extensions.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
@@ -288,30 +279,17 @@
       <HintPath>C:/Users/s162079/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
-<<<<<<< HEAD
-      <HintPath>Library\UnityAssemblies\UnityEngine.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="XInputDotNetPure">
-      <HintPath>Assets\Plugins\XInputDotNetPure.dll</HintPath>
-=======
       <HintPath>C:/Users/s162079/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
->>>>>>> b9a62aa32bbe497b3f87964906353ffc44503f37
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Kaomoji_Fight.csproj">
-      <Project>{3DAB67FE-294F-A2DE-16C2-F59F0D0C1BD4}</Project>
-      <Name>Kaomoji_Fight</Name>
-    </ProjectReference>
     <ProjectReference Include="Kaomoji_Fight.Plugins.csproj">
       <Project>{A11D8077-9D39-1018-BF33-07D6C5845471}</Project>
       <Name>Kaomoji_Fight.Plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="Kaomoji_Fight.csproj">
+      <Project>{3DAB67FE-294F-A2DE-16C2-F59F0D0C1BD4}</Project>
+      <Name>Kaomoji_Fight</Name>
     </ProjectReference>
     <ProjectReference Include="Kaomoji_Fight.Editor.Plugins.csproj">
       <Project>{1F5B32EA-4CAF-E4DA-D194-0F8F1422934E}</Project>

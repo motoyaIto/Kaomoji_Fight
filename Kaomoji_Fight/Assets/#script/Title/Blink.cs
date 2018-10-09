@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using XboxCtrlrInput;
 
 public class Blink : MonoBehaviour
 {
@@ -46,6 +47,11 @@ public class Blink : MonoBehaviour
         else if (thisObjType == ObjType.TEXT)
         {
             text.color = GetAlphaColor(text.color);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, XboxController.First))
+        {
+            SceneManagerController.ChangeCene();
         }
     }
 
