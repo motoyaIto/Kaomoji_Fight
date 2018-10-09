@@ -11,19 +11,27 @@ public class Player : RaycastController {
     [Header("ジャンプの高さ")]
     public float maxJumpHeight = 4;
     public float minJumpHeight = 1;
+
     [Header("ジャンプの頂点までの時間")]
     public float timeToJumpApex = .4f;
+
     [Header("加速時間")]
     public float accelerationTimeAirborne = .2f;
     public float accelerationTimeGrounded = .1f;
+
     [Header("移動速度")]
     public float moveSpeed = 10;
+
     [SerializeField, Header("復帰時の場所指定")]
     private float RevivalPosX = 0f;
+
     [SerializeField]
     private float RevivalPosY = 3.0f;
-    [SerializeField, Header("エフェクト関係")]
-    private ParticleSystem _deth;   // プレイヤーが死んだときのエフェクト
+
+    [SerializeField, Header("投げるものの推進力")]
+    private float thrust = 5f;//推進力
+
+
 
     // 非公開
     private float gravity;  // 重力
@@ -38,9 +46,6 @@ public class Player : RaycastController {
     private GameObject Weapon;      //武器
     private bool HaveWeapon = false;//武器を持っている(true)いない(false)
 
-    [SerializeField]
-    private float thrust = 5f;//推進力
-
     Contoroller2d controller;   // コントローラー
     [HideInInspector]
     public CollisionInfo collisions;
@@ -49,8 +54,6 @@ public class Player : RaycastController {
     void Start()
     {
         controller = GetComponent<Contoroller2d>();
-        _deth = this.GetComponent<ParticleSystem>();
-        //_deth.Stop();
   
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
