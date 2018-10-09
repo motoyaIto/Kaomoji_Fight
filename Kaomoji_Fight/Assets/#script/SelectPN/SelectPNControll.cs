@@ -18,7 +18,7 @@ public class SelectPNControll : MonoBehaviour {
     {
         Transform myTransform = this.transform;
         Vector3 pos = myTransform.position;
-        if (Input.GetKeyDown(KeyCode.DownArrow) || XCI.GetButton(XboxButton.DPadDown, XboxController.First))
+        if (Input.GetKeyDown(KeyCode.DownArrow) || XCI.GetDPadDown(XboxDPad.Down, XboxController.First))
         {
             if (pos.y <= -3.3f)
             {
@@ -37,7 +37,7 @@ public class SelectPNControll : MonoBehaviour {
                 playerNum = 1;
             }
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow) || XCI.GetButton(XboxButton.DPadUp, XboxController.All))
+        if (Input.GetKeyDown(KeyCode.UpArrow) || XCI.GetDPadDown(XboxDPad.Up, XboxController.First))
         {
             if (pos.y >= 2.0f)
             {
@@ -59,7 +59,7 @@ public class SelectPNControll : MonoBehaviour {
         myTransform.position = pos;  // 座標を設定
 
         //プレイ人数を決定
-        if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButton(XboxButton.B, XboxController.First))
+        if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, XboxController.First))
         {
             SceneManagerController.ChangeCene();
         }
