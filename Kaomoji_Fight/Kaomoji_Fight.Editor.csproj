@@ -255,6 +255,7 @@
 <<<<<<< HEAD
 =======
     </Reference>
+<<<<<<< HEAD
     <Reference Include="UnityEditor.Android.Extensions">
       <HintPath>Library\UnityAssemblies\UnityEditor.Android.Extensions.dll</HintPath>
     </Reference>
@@ -265,6 +266,8 @@
       <HintPath>Library\UnityAssemblies\UnityEditor.WSA.Extensions.dll</HintPath>
 >>>>>>> master
     </Reference>
+=======
+>>>>>>> 033ddeac8471d03b8b558a48c375a35e3004a67e
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>Library\UnityAssemblies\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
@@ -287,20 +290,24 @@
       <HintPath>Library\UnityAssemblies\UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
+<<<<<<< HEAD
       <HintPath>Library\UnityAssemblies\UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="XInputDotNetPure">
       <HintPath>Assets\Plugins\XInputDotNetPure.dll</HintPath>
+=======
+      <HintPath>C:/Users/s162079/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
+>>>>>>> 033ddeac8471d03b8b558a48c375a35e3004a67e
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Kaomoji_Fight.csproj">
-      <Project>{3DAB67FE-294F-A2DE-16C2-F59F0D0C1BD4}</Project>
-      <Name>Kaomoji_Fight</Name>
-    </ProjectReference>
     <ProjectReference Include="Kaomoji_Fight.Plugins.csproj">
       <Project>{A11D8077-9D39-1018-BF33-07D6C5845471}</Project>
       <Name>Kaomoji_Fight.Plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="Kaomoji_Fight.csproj">
+      <Project>{3DAB67FE-294F-A2DE-16C2-F59F0D0C1BD4}</Project>
+      <Name>Kaomoji_Fight</Name>
     </ProjectReference>
     <ProjectReference Include="Kaomoji_Fight.Editor.Plugins.csproj">
       <Project>{1F5B32EA-4CAF-E4DA-D194-0F8F1422934E}</Project>
