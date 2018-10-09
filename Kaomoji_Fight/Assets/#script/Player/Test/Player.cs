@@ -108,7 +108,9 @@ public class Player : RaycastController {
         if (XCI.GetButton(XboxButton.RightBumper, ControlerNamber) && controller.collisions.below)
         {
             //Instantiate()
-            float rand = Random.Range(1.0f, 10.0f);
+            float rand = Random.Range(-1.0f, 1.0f);
+            // アニメーションに差し替え予定
+            this.gameObject.transform.position = new Vector2(this.gameObject.transform.position.x + rand, this.gameObject.transform.position.y);
         }
         
         //武器
