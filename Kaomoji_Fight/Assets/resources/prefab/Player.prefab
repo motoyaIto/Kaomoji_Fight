@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114829612007268248}
   - component: {fileID: 114303809425252302}
   m_Layer: 2
-  m_Name: Player
+  m_Name: Second
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,6 +116,7 @@ MonoBehaviour:
   RevivalPosX: 10
   RevivalPosY: 15
   thrust: 5
+  ControlerNamber: 2
 --- !u!212 &212827996856301432
 SpriteRenderer:
   m_ObjectHideFlags: 1
