@@ -9,11 +9,12 @@ using XboxCtrlrInput;
 public class PlaySceneManager : MonoBehaviour
 {
     static readonly int PLAYERMAX = 4;
+
     [SerializeField]
     private GameObject UICanvases;      //UI用キャンバス
 
-    private int player_nam = 2;          //生成するプレイヤーの数
-    private GameObject[] player_textuer; //各プレイヤーの画像
+    private int player_nam = 2;             //生成するプレイヤーの数
+    private GameObject[] player_textuer;    //各プレイヤーの画像
 
     private GameObject[] players;       //プレイヤー
     private GameObject[] HPgage;        //HPゲージ
@@ -48,6 +49,7 @@ public class PlaySceneManager : MonoBehaviour
                 HPgage[i] = player_textuer[i];
             }
 
+            //プレイヤーとHPバーを生成
             CreatePlayer(players[i], i);
             CreateHPgage(HPgage[i], i);
         }
@@ -60,38 +62,39 @@ public class PlaySceneManager : MonoBehaviour
      
     }
 
+    /// <summary>
+    /// プレイヤーを生成
+    /// </summary>
+    /// <param name="player">プレイヤーオブジェクトデータ</param>
+    /// <param name="i">何番目のプレイヤーか</param>
     private void CreatePlayer(GameObject player, int i)
     {
         
         switch(i)
         {
             case 0:
-                GameObject FirstPlayer = Instantiate(player, new Vector3(-0.2f, 0.0f, 0.0f), Quaternion.identity);
+                GameObject P1 = Instantiate(player, new Vector3(-0.2f, 0.0f, 0.0f), Quaternion.identity);
 
-                FirstPlayer.name = "First";
-                this.SetPlayerStatus(FirstPlayer, XboxController.First);
+                this.SetPlayerStatus(P1, XboxController.First, "P1");
                
                 break;
 
             case 1:
-                GameObject SecondPlayer = Instantiate(player, new Vector3(-0.2f, 0.0f, 0.0f), Quaternion.identity);
+                GameObject P2 = Instantiate(player, new Vector3(-0.2f, 0.0f, 0.0f), Quaternion.identity);
 
-                SecondPlayer.name = "Second";
-                this.SetPlayerStatus(SecondPlayer, XboxController.Second);
+                this.SetPlayerStatus(P2, XboxController.Second, "P2");
                 break;
 
             case 2:
-                GameObject ThirdPlayer = Instantiate(player, new Vector3(1.0f, 0.0f, 0.0f), Quaternion.identity);
+                GameObject P3 = Instantiate(player, new Vector3(1.0f, 0.0f, 0.0f), Quaternion.identity);
 
-                ThirdPlayer.name = "Third";
-                this.SetPlayerStatus(ThirdPlayer, XboxController.Third);
+                this.SetPlayerStatus(P3, XboxController.Third, "P3");
                 break;
 
             case 3:
-                GameObject FourthPlayer = Instantiate(player, new Vector3(1.0f, 0.0f, 0.0f), Quaternion.identity);
+                GameObject P4 = Instantiate(player, new Vector3(1.0f, 0.0f, 0.0f), Quaternion.identity);
 
-                FourthPlayer.name = "Fourth";
-                this.SetPlayerStatus(FourthPlayer, XboxController.Fourth);
+                this.SetPlayerStatus(P4, XboxController.Fourth, "P4");
                 break;
         }
     }
@@ -101,10 +104,29 @@ public class PlaySceneManager : MonoBehaviour
     /// </summary>
     /// <param name="player">プレイヤー</param>
     /// <param name="controllerNamber">コントローラー番号</param>
-    private void SetPlayerStatus(GameObject player, XboxController controllerNamber)
+    private void SetPlayerStatus(GameObject player, XboxController controllerNamber, string name)
     {
+        //名前
+        player.name = name;
+
+        //コントローラーをセット
         Player playerScript = player.GetComponent<Player>();
         playerScript.GetControllerNamber = controllerNamber;
+
+        //カメラのターゲット用ダミーを取得する
+        name += "_dummy";
+
+        foreach(Transform child in this.transform)
+        {
+            if(child.name == name)
+            {
+                child.transform.parent = null;
+
+                child.transform.parent = player.gameObject.transform;
+
+                break;
+            }
+        }
     }
 
     /// <summary>
@@ -119,19 +141,27 @@ public class PlaySceneManager : MonoBehaviour
         switch (i)
         {
             case 0://元のトランス(281.5, 124)
-                Instantiate(HPgage, new Vector3(size.sizeDelta.x / 2, Screen.height - 10, 0f), Quaternion.identity, UICanvases.transform);
+                GameObject P1_HPgage = Instantiate(HPgage, new Vector3(size.sizeDelta.x / 2, Screen.height - 10, 0f), Quaternion.identity, UICanvases.transform);
+
+                P1_HPgage.name = "P1_HPgage";
                 break;
 
             case 1:
-                Instantiate(HPgage, new Vector3(Screen.width - size.sizeDelta.x / 2, Screen.height - 10, 0), Quaternion.identity, UICanvases.transform);
+                GameObject P2_HPgage = Instantiate(HPgage, new Vector3(Screen.width - size.sizeDelta.x / 2, Screen.height - 10, 0), Quaternion.identity, UICanvases.transform);
+
+                P2_HPgage.name = "P2_HPgage";
                 break;
 
             case 2:
-                Instantiate(HPgage, new Vector3(size.sizeDelta.x / 2, 10, 0), Quaternion.identity, UICanvases.transform);
+                GameObject P3_HPgage = Instantiate(HPgage, new Vector3(size.sizeDelta.x / 2, 10, 0), Quaternion.identity, UICanvases.transform);
+
+                P3_HPgage.name = "P3_HPgage";
                 break;
 
             case 3:
-                Instantiate(HPgage, new Vector3(Screen.width - size.sizeDelta.x / 2, 10, 0), Quaternion.identity, UICanvases.transform);
+                GameObject P4_HPgage = Instantiate(HPgage, new Vector3(Screen.width - size.sizeDelta.x / 2, 10, 0), Quaternion.identity, UICanvases.transform);
+
+                P4_HPgage.name = "P4_HPgage";
                 break;
         }
     }
