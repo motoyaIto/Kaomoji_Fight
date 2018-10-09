@@ -354,6 +354,7 @@
     <Compile Include="Assets\Cinemachine\PostFX\Editor\CinemachinePostProcessingEditor.cs" />
     <Compile Include="Assets\Cinemachine\PostFX\Editor\PostFXAutoImport.cs" />
     <Compile Include="Assets\Cinemachine\Timeline\Editor\CinemachineShotEditor.cs" />
+    <Compile Include="Assets\Editor\Editor_Expansion.cs" />
     <Compile Include="Assets\Editor\XboxCtrlrInput\InputManagerReplacer.cs" />
     <Compile Include="Assets\Editor\XboxCtrlrInput\PackageExporter.cs" />
   </ItemGroup>

@@ -754,15 +754,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b137ae8dabd6a7488daff4d3fe80c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxJumpHeight: 4
-  minJumpHeight: 1
-  timeToJumpApex: 0.4
-  accelerationTimeAirborne: 0.2
-  accelerationTimeGrounded: 0.1
-  moveSpeed: 6
-  RevivalPosX: 0
-  RevivalPosY: 3
-  _deth: {fileID: 0}
 --- !u!1 &1850300491
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,17 +884,8 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2010780788}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b137ae8dabd6a7488daff4d3fe80c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxJumpHeight: 4
-  minJumpHeight: 1
-  timeToJumpApex: 0.4
-  accelerationTimeAirborne: 0.2
-  accelerationTimeGrounded: 0.1
-  moveSpeed: 6
-  RevivalPosX: 0
-  RevivalPosY: 3
-  _deth: {fileID: 0}
