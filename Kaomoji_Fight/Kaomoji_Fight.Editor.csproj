@@ -280,21 +280,21 @@
     <Reference Include="XInputDotNetPure">
       <HintPath>Assets\Plugins\XInputDotNetPure.dll</HintPath>
     </Reference>
-    <Reference Include="TextMeshPro-2017.3-Runtime">
-      <HintPath>Assets\Plugins\TextMesh Pro\Plugins\Editor DLL\TextMeshPro-2017.3-Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="TextMeshPro-2017.3-Editor">
       <HintPath>Assets\Plugins\TextMesh Pro\Plugins\Editor DLL\TextMeshPro-2017.3-Editor.dll</HintPath>
     </Reference>
+    <Reference Include="TextMeshPro-2017.3-Runtime">
+      <HintPath>Assets\Plugins\TextMesh Pro\Plugins\Editor DLL\TextMeshPro-2017.3-Runtime.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Kaomoji_Fight.csproj">
-      <Project>{3DAB67FE-294F-A2DE-16C2-F59F0D0C1BD4}</Project>
-      <Name>Kaomoji_Fight</Name>
-    </ProjectReference>
     <ProjectReference Include="Kaomoji_Fight.Plugins.csproj">
       <Project>{A11D8077-9D39-1018-BF33-07D6C5845471}</Project>
       <Name>Kaomoji_Fight.Plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="Kaomoji_Fight.csproj">
+      <Project>{3DAB67FE-294F-A2DE-16C2-F59F0D0C1BD4}</Project>
+      <Name>Kaomoji_Fight</Name>
     </ProjectReference>
     <ProjectReference Include="Kaomoji_Fight.Editor.Plugins.csproj">
       <Project>{1F5B32EA-4CAF-E4DA-D194-0F8F1422934E}</Project>
@@ -352,11 +352,11 @@
   <ItemGroup>
     <None Include="Assets\Cinemachine\ReleaseNotes.txt" />
     <None Include="Assets\Plugins\KY_effects\MagicEffectsPackFree\ReadMe.txt" />
-    <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
-    <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
-    <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\LiberationSans - OFL.txt" />
-    <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\NotoSans - License.txt" />
-    <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald Bold - OFL.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\Anton OFL.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\Bangers - OFL.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\NotoSans - License.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\Oswald Bold - OFL.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />

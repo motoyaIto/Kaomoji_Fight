@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class DummySceneStart : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    PlayersData playerdata;
+    private void Awake()
+    {
+        playerdata = new PlayersData(2);
+    }
+
+    // Use this for initialization
+    void Start () {
         SceneManagerController.LoadScene();
 		
 	}
