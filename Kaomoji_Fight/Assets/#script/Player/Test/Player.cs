@@ -31,9 +31,11 @@ public class Player : RaycastController {
     [SerializeField, Header("投げるものの推進力")]
     private float thrust = 5f;//推進力
 
+    [SerializeField, Header("無敵時間")]
+    private float Invincible_time = .5f;
 
     // 非公開
-    [SerializeField]
+    [SerializeField, Header("コントローラー番号")]
     private XboxController ControlerNamber = XboxController.First;//何番目のコントローラーを適用するか
 
     private float gravity;  // 重力
@@ -43,7 +45,7 @@ public class Player : RaycastController {
     private float velocityXSmoothing;
     private bool JumpFlag;  // ジャンプ中かどうか？（true = ジャンプ中, false = ジャンプしていない）
 
-    private float nowHp;    // プレイヤーのHP
+    private float nowHp = 100;    // プレイヤーのHP
 
     private GameObject Weapon;      //武器
     private bool HaveWeapon = false;//武器を持っている(true)いない(false)
@@ -53,7 +55,7 @@ public class Player : RaycastController {
     public CollisionInfo collisions;
     #endregion
 
-    void Start()
+    new void Start()
     {
         controller = GetComponent<Contoroller2d>();
   
@@ -79,24 +81,27 @@ public class Player : RaycastController {
         Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, ControlerNamber), XCI.GetAxis(XboxAxis.LeftStickY, ControlerNamber));
 
         // ジャンプ
-        if (XCI.GetButton(XboxButton.A, ControlerNamber) && controller.collisions.below)
+        if (XCI.GetButtonDown(XboxButton.A, ControlerNamber))
         {
-            velocity.y = maxJumpVelocity;
+            if (controller.collisions.below)
+            {
+                velocity.y = maxJumpVelocity;
+            }
+            if (XCI.GetButtonUp(XboxButton.A, ControlerNamber))
+            {
+                if (velocity.y > minJumpVelocity)
+                {
+                    velocity.y = minJumpVelocity;
+                }
+            }            
             JumpFlag = true;
-        }
-        if (XCI.GetButton(XboxButton.B, ControlerNamber) && controller.collisions.below)
-        {
-            //if (velocity.y > minJumpVelocity)
-            //{
-            velocity.y = minJumpVelocity;
-            //}
         }
 
         float targetVelocityX = input.x * moveSpeed;
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, 
                                     (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+        controller.Move(velocity * Time.deltaTime, input);
 
         if (controller.collisions.above || controller.collisions.below)
         {
@@ -109,8 +114,17 @@ public class Player : RaycastController {
         {
             //Instantiate()
             float rand = Random.Range(-1.0f, 1.0f);
+            // 回避時間
+            float Avoidance_time = .0f;
             // アニメーションに差し替え予定
-            this.gameObject.transform.position = new Vector2(this.gameObject.transform.position.x + rand, this.gameObject.transform.position.y);
+            if (Avoidance_time <= Invincible_time)
+            {
+                // 攻撃を受け付けない
+
+
+                Avoidance_time += .1f;
+            }
+
         }
         
         //武器
@@ -131,7 +145,7 @@ public class Player : RaycastController {
             }
 
             //武器を使う
-            if (XCI.GetButtonDown(XboxButton.X, ControlerNamber) && controller.collisions.below)
+            if (XCI.GetButtonDown(XboxButton.B, ControlerNamber) && controller.collisions.below)
             {
                 //GameObject re = Weapon.GetComponent<GameObject>();
                 Weapon.AddComponent<Rigidbody2D>();
@@ -141,9 +155,9 @@ public class Player : RaycastController {
 
                 WBController.Attack(direction, thrust);
 
-                
+
                 //新しいウエポンブロックをロード
-                Weapon = (GameObject)Resources.Load("prefab/Weapon/WeaponBloc"); 
+                Weapon = (GameObject)Resources.Load("prefab/Weapon/WeaponBloc");
 
                 HaveWeapon = false;
             }
@@ -206,6 +220,7 @@ public class Player : RaycastController {
                 if (hitFoot)
                 {
                     this.GetWeapon(hitFoot, directionX);
+                    this.GetComponent<RectTransform>().sizeDelta = new Vector2(1f, 1f);
 
                     break;
                 }
