@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 386700326}
   m_Layer: 0
   m_Name: P2_dummy
-  m_TagString: Untagged
+  m_TagString: Dammy_CameraControl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 387834777}
   m_Layer: 0
   m_Name: P3_dummy
-  m_TagString: Untagged
+  m_TagString: Dammy_CameraControl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 1289660445}
   m_Layer: 0
   m_Name: P4_dummy
-  m_TagString: Untagged
+  m_TagString: Dammy_CameraControl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -831,7 +831,7 @@ GameObject:
   - component: {fileID: 2123337405}
   m_Layer: 0
   m_Name: P1_dummy
-  m_TagString: Untagged
+  m_TagString: Dammy_CameraControl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

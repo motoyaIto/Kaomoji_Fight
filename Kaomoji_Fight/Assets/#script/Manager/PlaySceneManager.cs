@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Windows;
 using XboxCtrlrInput;
+using System.Collections;
 
 
 public class PlaySceneManager : MonoBehaviour
@@ -60,7 +61,7 @@ public class PlaySceneManager : MonoBehaviour
     private void CreatePlayer(GameObject player, int i)
     {
         //ステージごとにリスポンする位置を調整する必要性あり
-        switch(i)
+        switch (i)
         {
             case 0:
                 GameObject P1 = Instantiate(player, new Vector3(2.5f, 50.0f, 0.0f), Quaternion.identity);
@@ -86,8 +87,7 @@ public class PlaySceneManager : MonoBehaviour
                 this.SetPlayerStatus(P4, XboxController.Fourth, "P4");
                 break;
         }
-    }
-
+    } 
     /// <summary>
     /// プレイヤーのステータスを設定する
     /// </summary>
@@ -113,7 +113,8 @@ public class PlaySceneManager : MonoBehaviour
 
                 child.transform.parent = player.gameObject.transform;
 
-                return;
+                child.transform.position = player.transform.position;
+                break;
             }
         }
     }
