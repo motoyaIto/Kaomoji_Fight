@@ -67,10 +67,13 @@ public class Player : RaycastController {
 
         //文字を表示するボックスをResourcesから読み込む
        Weapon = (GameObject)Resources.Load("prefab/Weapon/WeaponBloc");
-    }
 
+      
+    }
+    
     void Update()
     {
+       
 
         if (controller.collisions.above || controller.collisions.below)
         {
