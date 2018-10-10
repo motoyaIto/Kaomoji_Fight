@@ -20,8 +20,6 @@ public class PlaySceneManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-       
-
         //プレイヤー分の配列を確保
         players = new GameObject[PlayersData.Instance.playerNum];
         HPgage = new GameObject[PlayersData.Instance.playerNum];
@@ -61,30 +59,29 @@ public class PlaySceneManager : MonoBehaviour
     /// <param name="i">何番目のプレイヤーか</param>
     private void CreatePlayer(GameObject player, int i)
     {
-        
+        //ステージごとにリスポンする位置を調整する必要性あり
         switch(i)
         {
             case 0:
-                GameObject P1 = Instantiate(player, new Vector3(-0.2f, 0.0f, 0.0f), Quaternion.identity);
+                GameObject P1 = Instantiate(player, new Vector3(2.5f, 50.0f, 0.0f), Quaternion.identity);
 
                 this.SetPlayerStatus(P1, XboxController.First, "P1");
-               
                 break;
 
             case 1:
-                GameObject P2 = Instantiate(player, new Vector3(-0.2f, 0.0f, 0.0f), Quaternion.identity);
+                GameObject P2 = Instantiate(player, new Vector3(15.5f, 50.0f, 0.0f), Quaternion.identity);
 
                 this.SetPlayerStatus(P2, XboxController.Second, "P2");
                 break;
 
             case 2:
-                GameObject P3 = Instantiate(player, new Vector3(1.0f, 0.0f, 0.0f), Quaternion.identity);
+                GameObject P3 = Instantiate(player, new Vector3(2.5f, 50.0f, 0.0f), Quaternion.identity);
 
                 this.SetPlayerStatus(P3, XboxController.Third, "P3");
                 break;
 
             case 3:
-                GameObject P4 = Instantiate(player, new Vector3(1.0f, 0.0f, 0.0f), Quaternion.identity);
+                GameObject P4 = Instantiate(player, new Vector3(2.5f, 50.0f, 0.0f), Quaternion.identity);
 
                 this.SetPlayerStatus(P4, XboxController.Fourth, "P4");
                 break;
@@ -116,7 +113,7 @@ public class PlaySceneManager : MonoBehaviour
 
                 child.transform.parent = player.gameObject.transform;
 
-                break;
+                return;
             }
         }
     }

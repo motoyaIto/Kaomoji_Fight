@@ -220,7 +220,7 @@ public class Player : RaycastController {
                 if (hitFoot)
                 {
                     this.GetWeapon(hitFoot, directionX);
-                    
+
                     break;
                 }
             }
