@@ -8,8 +8,7 @@ using XboxCtrlrInput;
 
 public class PlaySceneManager : MonoBehaviour
 {
-    static readonly int PLAYERMAX = 4;
-
+  
     [SerializeField]
     private GameObject UICanvases;      //UI用キャンバス
 
@@ -18,23 +17,17 @@ public class PlaySceneManager : MonoBehaviour
     private GameObject[] players;       //プレイヤー
     private GameObject[] HPgage;        //HPゲージ
 
-   
-
     // Use this for initialization
     void Start()
     {
-        //プレイヤーが最大値を超えて生成しようとしたときに抑える
-        if (SelectPNControll.playerNum > PLAYERMAX)
-        {
-            SelectPNControll.playerNum = PLAYERMAX;
-        }
+       
 
         //プレイヤー分の配列を確保
-        players = new GameObject[SelectPNControll.playerNum];
-        HPgage = new GameObject[SelectPNControll.playerNum];
+        players = new GameObject[PlayersData.Instance.playerNum];
+        HPgage = new GameObject[PlayersData.Instance.playerNum];
 
         //プレイヤーとHPを生成
-        for (int i = 0; i < SelectPNControll.playerNum; i++)
+        for (int i = 0; i < PlayersData.Instance.playerNum; i++)
         {
             //画像が送られてきていなかったら
             if (player_textuer == null)
