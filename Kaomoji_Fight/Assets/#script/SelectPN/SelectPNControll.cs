@@ -5,9 +5,9 @@ using XboxCtrlrInput;
 
 public class SelectPNControll : MonoBehaviour {
 
-    [SerializeField]
     private static readonly int PLAYERMAX = 4;
-    private static int playerNum = 1;
+    private PlayersData loadData;
+    private int PlayerNum = 1;
     // Use this for initialization
     void Start () {
 
@@ -30,11 +30,11 @@ public class SelectPNControll : MonoBehaviour {
             }
 
             //プレイヤーの合計人数
-            playerNum++;
+            PlayerNum++;
 
-            if (playerNum > PLAYERMAX)
+            if (PlayerNum > PLAYERMAX)
             {
-                playerNum = 1;
+                PlayerNum = 1;
             }
         }
         if (Input.GetKeyDown(KeyCode.UpArrow) || XCI.GetDPadDown(XboxDPad.Up, XboxController.First))
@@ -49,11 +49,11 @@ public class SelectPNControll : MonoBehaviour {
             }
 
             //プレイヤーの合計人数
-            playerNum--;
+            PlayerNum--;
 
-            if (playerNum < 1)
+            if (PlayerNum < 1)
             {
-                playerNum = PLAYERMAX;
+                PlayerNum = PLAYERMAX;
             }
         }
         myTransform.position = pos;  // 座標を設定
@@ -61,6 +61,7 @@ public class SelectPNControll : MonoBehaviour {
         //プレイ人数を決定
         if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, XboxController.First))
         {
+            loadData = new PlayersData(PlayerNum);
             SceneManagerController.ChangeCene();
         }
     }
