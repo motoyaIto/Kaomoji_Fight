@@ -249,6 +249,7 @@
     <Compile Include="Assets\%23script\Player\Test\Contoroller2d.cs" />
     <Compile Include="Assets\%23script\Player\Test\Player.cs" />
     <Compile Include="Assets\%23script\Player\Weapon\WeaponBlocController.cs" />
+    <Compile Include="Assets\%23script\PlayersData.cs" />
     <Compile Include="Assets\%23script\SceneManagerController.cs" />
     <Compile Include="Assets\%23script\SceneTimer.cs" />
     <Compile Include="Assets\%23script\SelectPN\SelectPNControll.cs" />
