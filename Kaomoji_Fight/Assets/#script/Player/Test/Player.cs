@@ -220,7 +220,7 @@ public class Player : RaycastController {
                 if (hitFoot)
                 {
                     this.GetWeapon(hitFoot, directionX);
-                    this.GetComponent<RectTransform>().sizeDelta = new Vector2(1f, 1f);
+                    //this.GetComponent<RectTransform>().sizeDelta = new Vector2(1f, 1f);
 
                     break;
                 }
