@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class DummySceneStart : MonoBehaviour {
 
+    [SerializeField, Header("プレイ人数（デバッグ用）")]
+    int Player_Num = 2;
     PlayersData playerdata;
     private void Awake()
     {
-        playerdata = new PlayersData(2);
+        playerdata = new PlayersData(Player_Num);
     }
 
     // Use this for initialization
@@ -16,8 +18,4 @@ public class DummySceneStart : MonoBehaviour {
 		
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
