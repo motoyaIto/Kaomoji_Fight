@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayersData
+public class PlayeData
 {
     private static readonly int PLAYERMAX = 4;//プレイヤーの最大人数
+
+    public int playerNum = 1;
+
 
     /// <summary>
     /// コンストラクタ
     /// </summary>
     /// <param name="players">プレイヤーの人数</param>
-    public PlayersData(int players = 1)
+    public PlayeData(int players = 1)
     {
         Instance = this;
         playerNum = players;
@@ -22,12 +25,12 @@ public class PlayersData
         }
     }
 
-    public static PlayersData Instance
+    public static PlayeData Instance
     {
         get;
         private set;
     }
 
-    public int playerNum = 1;
+   
     
 }
