@@ -6,10 +6,10 @@ public class DummySceneStart : MonoBehaviour {
 
     [SerializeField, Header("プレイ人数（デバッグ用）")]
     int Player_Num = 2;
-    PlayersData playerdata;
+    PlayeData playerdata;
     private void Awake()
     {
-        playerdata = new PlayersData(Player_Num);
+        playerdata = new PlayeData(Player_Num);
     }
 
     // Use this for initialization
