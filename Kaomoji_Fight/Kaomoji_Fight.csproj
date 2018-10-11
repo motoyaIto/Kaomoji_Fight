@@ -259,6 +259,7 @@
     <Compile Include="Assets\#script\Player\Jump\PlatformController.cs" />
     <Compile Include="Assets\#script\Player\Jump\RaycastController.cs" />
     <Compile Include="Assets\#script\Player\Status\Contoroller2d.cs" />
+    <Compile Include="Assets\#script\Player\Status\other\ControllerTest.cs" />
     <Compile Include="Assets\#script\Player\Status\Player.cs" />
     <Compile Include="Assets\#script\Player\Weapon\WeaponBlocController.cs" />
     <Compile Include="Assets\#script\PlayersData.cs" />
@@ -349,6 +350,7 @@
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\Plugins\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\Resources\Texts\stage1.txt" />
     <None Include="Assets\Resources\Texts\test.txt" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
