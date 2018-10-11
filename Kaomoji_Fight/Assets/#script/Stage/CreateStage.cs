@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-using System.Text;
+
 
 public class CreateStage : MonoBehaviour
 {     
@@ -21,7 +21,8 @@ public class CreateStage : MonoBehaviour
 
 
         //テキスト一覧の取得
-        string text = System.IO.File.ReadAllText(@"Assets\Resources\Texts\test.txt", Encoding.GetEncoding("Shift_JIS"));
+        string text = PlayeData.Instance.StageText;
+
         textnam = text.Length;
 
         //文字数分の配列
