@@ -232,6 +232,12 @@
     <Reference Include="XInputDotNetPure">
       <HintPath>Assets\Plugins\XInputDotNetPure.dll</HintPath>
     </Reference>
+    <Reference Include="TextMeshPro-2017.3-Editor">
+      <HintPath>Assets\Plugins\TextMesh Pro\Plugins\Editor DLL\TextMeshPro-2017.3-Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="TextMeshPro-2017.3-Runtime">
+      <HintPath>Assets\Plugins\TextMesh Pro\Plugins\Editor DLL\TextMeshPro-2017.3-Runtime.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Kaomoji_Fight.Plugins.csproj">
@@ -241,17 +247,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\%23script\Camera\MultipleTargetCamera.cs" />
+    <Compile Include="Assets\%23script\DummySceneStart.cs" />
     <Compile Include="Assets\%23script\Manager\PlaySceneManager.cs" />
     <Compile Include="Assets\%23script\Player\Jump\Controller2D.cs" />
     <Compile Include="Assets\%23script\Player\Jump\PlatformController.cs" />
     <Compile Include="Assets\%23script\Player\Jump\RaycastController.cs" />
-    <Compile Include="Assets\%23script\Player\Test\Contoroller2d.cs" />
-    <Compile Include="Assets\%23script\Player\Test\Player.cs" />
+    <Compile Include="Assets\%23script\Player\Status\Contoroller2d.cs" />
+    <Compile Include="Assets\%23script\Player\Status\Player.cs" />
     <Compile Include="Assets\%23script\Player\Weapon\WeaponBlocController.cs" />
-    <Compile Include="Assets\%23script\Select\SelectControll.cs" />
+    <Compile Include="Assets\%23script\PlayersData.cs" />
+    <Compile Include="Assets\%23script\SceneManagerController.cs" />
+    <Compile Include="Assets\%23script\SceneTimer.cs" />
+    <Compile Include="Assets\%23script\SelectPN\SelectPNControll.cs" />
     <Compile Include="Assets\%23script\Stage\BlockController.cs" />
     <Compile Include="Assets\%23script\Stage\CreateStage.cs" />
     <Compile Include="Assets\%23script\TestItem\TestAitem.cs" />
+    <Compile Include="Assets\%23script\Title\Blink.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBlendListCamera.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBrain.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineClearShot.cs" />
@@ -311,6 +322,27 @@
   <ItemGroup>
     <None Include="Assets\Cinemachine\ReleaseNotes.txt" />
     <None Include="Assets\Plugins\KY_effects\MagicEffectsPackFree\ReadMe.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\Anton OFL.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\Bangers - OFL.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\NotoSans - License.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\Oswald Bold - OFL.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
+    <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
+    <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\Plugins\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\Resources\Texts\test.txt" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />

@@ -3,40 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Windows;
+using XboxCtrlrInput;
+using TMPro;
 
 
 public class PlaySceneManager : MonoBehaviour
 {
-    static readonly int PLAYERMAX = 4;
+  
     [SerializeField]
     private GameObject UICanvases;      //UI用キャンバス
 
-    private int player_nam = 1;          //生成するプレイヤーの数
-    private GameObject[] player_textuer; //各プレイヤーの画像
+    [SerializeField]
+    private Color P1_nameColor = new Color(0.000f, 0.000f, 0.000f);
+    [SerializeField]
+    private Color P2_nameColor = new Color(0.000f, 0.000f, 0.000f);
+    [SerializeField]
+    private Color P3_nameColor = new Color(0.000f, 0.000f, 0.000f);
+    [SerializeField]
+    private Color P4_nameColor = new Color(0.000f, 0.000f, 0.000f);
+
+    private GameObject[] player_textuer;    //各プレイヤーの画像
 
     private GameObject[] players;       //プレイヤー
     private GameObject[] HPgage;        //HPゲージ
 
-   
-
     // Use this for initialization
     void Start()
     {
-        //プレイヤーが最大値を超えて生成しようとしたときに抑える
-        if (player_nam > PLAYERMAX)
-        {
-            player_nam = PLAYERMAX;
-        }
-
-        //配列の値に調整
-        player_nam -= 1;
-
         //プレイヤー分の配列を確保
-        players = new GameObject[player_nam];
-        HPgage = new GameObject[player_nam];
+        players = new GameObject[PlayersData.Instance.playerNum];
+        HPgage = new GameObject[PlayersData.Instance.playerNum];
 
         //プレイヤーとHPを生成
-        for (int i = 0; i < player_nam; i++)
+        for (int i = 0; i < PlayersData.Instance.playerNum; i++)
         {
             //画像が送られてきていなかったら
             if (player_textuer == null)
@@ -48,9 +47,10 @@ public class PlaySceneManager : MonoBehaviour
             {
                 players[i] = player_textuer[i];
                 HPgage[i] = player_textuer[i];
-            }            
+            }
 
-            CreateHPgage(HPgage[i], i);
+            //プレイヤーとHPバーを生成
+            this.CreatePlayer(players[i],HPgage[i], i);
         }
        
     }
@@ -61,73 +61,138 @@ public class PlaySceneManager : MonoBehaviour
      
     }
 
-    public void CreatePlayer(GameObject Player, int i)
+    /// <summary>
+    /// プレイヤーを生成
+    /// </summary>
+    /// <param name="player">プレイヤーオブジェクトデータ</param>
+    /// <param name="i">何番目のプレイヤーか</param>
+    private void CreatePlayer(GameObject player, GameObject HPgage, int i)
     {
-        switch(i)
+        //ステージごとにリスポンする位置を調整する必要性あり
+        switch (i)
         {
             case 0:
-                Instantiate(Player, new Vector3(-0.2f, 0.0f, 0.0f), Quaternion.identity, UICanvases.transform);
+                GameObject P1 = Instantiate(player, new Vector3(2.5f, 50.0f, 0.0f), Quaternion.identity);
 
+                this.SetPlayerStatus(P1, XboxController.First, "P1");
+                this.CreateHPgage(HPgage,P1.name, i);
                 break;
 
             case 1:
-                Instantiate(Player, new Vector3(-0.2f, 0.0f, 0.0f), Quaternion.identity, UICanvases.transform);
+                GameObject P2 = Instantiate(player, new Vector3(15.5f, 50.0f, 0.0f), Quaternion.identity);
 
+                this.SetPlayerStatus(P2, XboxController.Second, "P2");
+                this.CreateHPgage(HPgage, P2.name, i);
                 break;
 
             case 2:
-                Instantiate(Player, new Vector3(1.0f, 0.0f, 0.0f), Quaternion.identity, UICanvases.transform);
+                GameObject P3 = Instantiate(player, new Vector3(15.5f, 50.0f, 0.0f), Quaternion.identity);
+
+                this.SetPlayerStatus(P3, XboxController.Third, "P3");
+                this.CreateHPgage(HPgage, P3.name, i);
                 break;
 
             case 3:
-                Instantiate(Player, new Vector3(1.0f, 0.0f, 0.0f), Quaternion.identity, UICanvases.transform);
+                GameObject P4 = Instantiate(player, new Vector3(2.5f, 50.0f, 0.0f), Quaternion.identity);
 
+                this.SetPlayerStatus(P4, XboxController.Fourth, "P4");
+                this.CreateHPgage(HPgage, P4.name, i);
                 break;
         }
+    } 
+    /// <summary>
+    /// プレイヤーのステータスを設定する
+    /// </summary>
+    /// <param name="player">プレイヤー</param>
+    /// <param name="controllerNamber">コントローラー番号</param>
+    private void SetPlayerStatus(GameObject player, XboxController controllerNamber, string name)
+    {
+        //名前
+        player.name = name;
+
+        //コントローラーをセット
+        Player playerScript = player.GetComponent<Player>();
+        playerScript.GetControllerNamber = controllerNamber;
+
+        //カメラのターゲット用ダミーを取得する
+        name += "_dummy";
+
+        foreach(Transform child in this.transform)
+        {
+            if(child.name == name)
+            {
+                child.transform.parent = null;
+
+                child.transform.parent = player.gameObject.transform;
+
+                child.transform.position = player.transform.position;
+                break;
+            }
+        }
     }
+
     /// <summary>
     /// HPゲージの生成
     /// </summary>
     /// <param name="HPgage">HPゲージ</param>
     /// <param name="i">何番目か</param>
-    public void CreateHPgage(GameObject HPgage, int i)
+    private void CreateHPgage(GameObject HPgage, string name, int i)
     {
         RectTransform size = HPgage.GetComponent<RectTransform>();
 
         switch (i)
         {
             case 0://元のトランス(281.5, 124)
-                Instantiate(HPgage, new Vector3(size.sizeDelta.x / 2, Screen.height - 10, 0f), Quaternion.identity, UICanvases.transform);
+                GameObject P1_HPgage = Instantiate(HPgage, new Vector3(size.sizeDelta.x / 2, Screen.height - 10, 0f), Quaternion.identity, UICanvases.transform);
+
+                P1_HPgage.name = "P1_HPgage";
+
+                //名前の設定
+                TextMeshProUGUI P1name = P1_HPgage.transform.Find("Text").GetComponent<TextMeshProUGUI>();
+                P1name.text = name;
+                P1name.color = P1_nameColor;
+
                 break;
 
             case 1:
-                Instantiate(HPgage, new Vector3(Screen.width - size.sizeDelta.x / 2, Screen.height - 10, 0), Quaternion.identity, UICanvases.transform);
+                GameObject P2_HPgage = Instantiate(HPgage, new Vector3(Screen.width - size.sizeDelta.x / 2, Screen.height - 10, 0), Quaternion.identity, UICanvases.transform);
+
+                P2_HPgage.name = "P2_HPgage";
+
+                //名前の設定
+                TextMeshProUGUI P2name = P2_HPgage.transform.Find("Text").GetComponent<TextMeshProUGUI>();
+                P2name.text = name;
+                P2name.color = P2_nameColor;
                 break;
 
             case 2:
-                Instantiate(HPgage, new Vector3(size.sizeDelta.x / 2, 10, 0), Quaternion.identity, UICanvases.transform);
+                GameObject P3_HPgage = Instantiate(HPgage, new Vector3(size.sizeDelta.x / 2, 10, 0), Quaternion.identity, UICanvases.transform);
+
+                P3_HPgage.name = "P3_HPgage";
+
+                //名前の設定
+                TextMeshProUGUI P3name = P3_HPgage.transform.Find("Text").GetComponent<TextMeshProUGUI>();
+                P3name.text = name;
+                P3name.color = P3_nameColor;
                 break;
 
             case 3:
-                Instantiate(HPgage, new Vector3(Screen.width - size.sizeDelta.x / 2, 10, 0), Quaternion.identity, UICanvases.transform);
+                GameObject P4_HPgage = Instantiate(HPgage, new Vector3(Screen.width - size.sizeDelta.x / 2, 10, 0), Quaternion.identity, UICanvases.transform);
+
+                P4_HPgage.name = "P4_HPgage";
+
+                //名前の設定
+                TextMeshProUGUI P4name = P4_HPgage.transform.Find("Text").GetComponent<TextMeshProUGUI>();
+                P4name.text = name;
+                P4name.color = P4_nameColor;
                 break;
         }
     }
     
-    //プレイヤーの合計
-    public int Playernam
-    {
-        set
-        {
-            player_nam = value;
-        }
-        get
-        {
-            return player_nam;
-        }
-    }        
 
-    //各プレイヤーの画像
+    /// <summary>
+    /// 各プレイヤーの画像
+    /// </summary>
     public GameObject[] Player_textuer
     {
         set

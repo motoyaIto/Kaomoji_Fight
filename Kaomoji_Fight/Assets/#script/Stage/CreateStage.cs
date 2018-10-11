@@ -68,7 +68,8 @@ public class CreateStage : MonoBehaviour
                 //テキストに文字を書き込む
                 textdata.GetComponent<TextMesh>().text = mozi;
                 StageBloc.name = "StageBloc" + "(" + mozi + ")";
-
+                // RectTransformを追加
+                StageBloc.AddComponent<RectTransform>();
             }
             //右に一文字ずらす
             x++;
