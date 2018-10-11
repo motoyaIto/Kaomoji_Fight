@@ -116,6 +116,7 @@ MonoBehaviour:
   RevivalPosX: 10
   RevivalPosY: 15
   thrust: 5
+  Invincible_time: 0.5
   ControlerNamber: 2
 --- !u!212 &212827996856301432
 SpriteRenderer:
@@ -151,7 +152,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ce86c9c1aebad9f4086e88f621888727, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f258c7b022e81f34396fa2c6a3dbbdfb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Windows;
 using XboxCtrlrInput;
 using TMPro;
-using System.Linq;
+
 
 
 public class PlaySceneManager : MonoBehaviour
@@ -27,8 +27,6 @@ public class PlaySceneManager : MonoBehaviour
 
     private GameObject[] players;       //プレイヤー
     private GameObject[] HPgage;        //HPゲージ
-
-    private List<GameObject> InactiveStageBlockList;//表示されていないブロックリスト
 
     // Use this for initialization
     void Start()
@@ -55,21 +53,12 @@ public class PlaySceneManager : MonoBehaviour
             //プレイヤーとHPバーを生成
             this.CreatePlayer(players[i], HPgage[i], i);
         }
-
-        //非表示リストを作成
-        InactiveStageBlockList = new List<GameObject>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(InactiveStageBlockList.Any())
-        {
-            foreach(GameObject InactiveStageBlock in InactiveStageBlockList)
-            {
-                
-            }
-        }
+        
     }
 
     /// <summary>
@@ -85,28 +74,28 @@ public class PlaySceneManager : MonoBehaviour
             case 0:
                 GameObject P1 = Instantiate(player, new Vector3(2.5f, 50.0f, 0.0f), Quaternion.identity);
 
-                this.SetPlayerStatus(P1, XboxController.First, "P1");
+                this.SetPlayerStatus(P1, XboxController.First, "P1", PlayeData.Instance.PlayersFace[0]);
                 this.CreateHPgage(HPgage,P1.name, i);
                 break;
 
             case 1:
                 GameObject P2 = Instantiate(player, new Vector3(15.5f, 50.0f, 0.0f), Quaternion.identity);
 
-                this.SetPlayerStatus(P2, XboxController.Second, "P2");
+                this.SetPlayerStatus(P2, XboxController.Second, "P2", PlayeData.Instance.PlayersFace[1]);
                 this.CreateHPgage(HPgage, P2.name, i);
                 break;
 
             case 2:
                 GameObject P3 = Instantiate(player, new Vector3(15.5f, 50.0f, 0.0f), Quaternion.identity);
 
-                this.SetPlayerStatus(P3, XboxController.Third, "P3");
+                this.SetPlayerStatus(P3, XboxController.Third, "P3", PlayeData.Instance.PlayersFace[2]);
                 this.CreateHPgage(HPgage, P3.name, i);
                 break;
 
             case 3:
                 GameObject P4 = Instantiate(player, new Vector3(2.5f, 50.0f, 0.0f), Quaternion.identity);
 
-                this.SetPlayerStatus(P4, XboxController.Fourth, "P4");
+                this.SetPlayerStatus(P4, XboxController.Fourth, "P4", PlayeData.Instance.PlayersFace[3]);
                 this.CreateHPgage(HPgage, P4.name, i);
                 break;
         }
@@ -116,8 +105,12 @@ public class PlaySceneManager : MonoBehaviour
     /// </summary>
     /// <param name="player">プレイヤー</param>
     /// <param name="controllerNamber">コントローラー番号</param>
-    private void SetPlayerStatus(GameObject player, XboxController controllerNamber, string name)
+    private void SetPlayerStatus(GameObject player, XboxController controllerNamber, string name, Sprite FaceTextures)
     {
+        //キャラの顔をセット
+        SpriteRenderer playerFace = player.GetComponent<SpriteRenderer>();
+        playerFace.sprite = FaceTextures;
+
         //名前
         player.name = name;
 
@@ -212,14 +205,4 @@ public class PlaySceneManager : MonoBehaviour
             player_textuer = value;
         }
     }
-
-
-    public GameObject InactiveStageBlock
-    {
-        set
-        {
-            InactiveStageBlockList.Add(value);
-        }
-    }
-
 }

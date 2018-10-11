@@ -5,9 +5,6 @@ using UnityEngine;
 public class BlockController : MonoBehaviour {
 
     [SerializeField]
-    private GameObject PSManager;
-
-    [SerializeField]
     private float ResetTime = 10.0f;
 	// Use this for initialization
 	void Start () {
