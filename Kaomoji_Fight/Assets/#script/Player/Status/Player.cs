@@ -79,13 +79,13 @@ public class Player : RaycastController {
         Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, ControlerNamber), XCI.GetAxis(XboxAxis.LeftStickY, ControlerNamber));
 
         // ジャンプ
-        if (XCI.GetButtonDown(XboxButton.A, ControlerNamber))
+        if (XCI.GetButtonDown(XboxButton.Y, ControlerNamber))
         {
             if (controller.collisions.below)
             {
                 velocity.y = maxJumpVelocity;
             }
-            if (XCI.GetButtonUp(XboxButton.A, ControlerNamber))
+            if (XCI.GetButtonUp(XboxButton.Y, ControlerNamber))
             {
                 if (velocity.y > minJumpVelocity)
                 {
@@ -105,6 +105,7 @@ public class Player : RaycastController {
         {
             velocity.y = 0;
         }
+
 
 
         // 回避をしたい
@@ -145,15 +146,23 @@ public class Player : RaycastController {
             //武器を使う
             if (XCI.GetButtonDown(XboxButton.B, ControlerNamber) && controller.collisions.below)
             {
+
+            }
+
+            // 武器を捨てる
+            if (XCI.GetButton(XboxButton.X, ControlerNamber))
+            {
                 //GameObject re = Weapon.GetComponent<GameObject>();
                 weapon.AddComponent<Rigidbody2D>();
 
                 //子オブジェクトをすべて解除(修正必須)
                 this.transform.DetachChildren();
 
-                WBController.Attack(direction, thrust);
+                //WBController.Attack(direction, thrust);
+                Destroy(weapon);
 
                 HaveWeapon = false;
+
             }
         }
 
@@ -204,7 +213,7 @@ public class Player : RaycastController {
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, collisionMask);
 
             // 武器をゲットするかも
-            if (XCI.GetButtonDown(XboxButton.X, ControlerNamber) && controller.collisions.below)
+            if (XCI.GetButtonDown(XboxButton.B, ControlerNamber))
             {
                 //Rayを伸ばす
                 float rayLine = 2.0f;

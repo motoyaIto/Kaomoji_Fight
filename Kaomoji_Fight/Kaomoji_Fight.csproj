@@ -246,6 +246,26 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <Compile Include="Assets\#script\Camera\MultipleTargetCamera.cs" />
+    <Compile Include="Assets\#script\DummySceneStart.cs" />
+    <Compile Include="Assets\#script\Manager\PlaySceneManager.cs" />
+    <Compile Include="Assets\#script\Player\Jump\Controller2D.cs" />
+    <Compile Include="Assets\#script\Player\Jump\PlatformController.cs" />
+    <Compile Include="Assets\#script\Player\Jump\RaycastController.cs" />
+    <Compile Include="Assets\#script\Player\Status\Contoroller2d.cs" />
+    <Compile Include="Assets\#script\Player\Status\other\ControllerTest.cs" />
+    <Compile Include="Assets\#script\Player\Status\Player.cs" />
+    <Compile Include="Assets\#script\Player\Weapon\WeaponBlocController.cs" />
+    <Compile Include="Assets\#script\PlayersData.cs" />
+    <Compile Include="Assets\#script\SceneManagerController.cs" />
+    <Compile Include="Assets\#script\SceneTimer.cs" />
+    <Compile Include="Assets\#script\SelectPN\SelectPNControll.cs" />
+    <Compile Include="Assets\#script\Stage\BlockController.cs" />
+    <Compile Include="Assets\#script\Stage\CreateStage.cs" />
+    <Compile Include="Assets\#script\TestItem\TestAitem.cs" />
+    <Compile Include="Assets\#script\Title\Blink.cs" />
+=======
     <Compile Include="Assets\%23script\Camera\MultipleTargetCamera.cs" />
     <Compile Include="Assets\%23script\DummySceneStart.cs" />
     <Compile Include="Assets\%23script\Manager\PlaySceneManager.cs" />
@@ -263,6 +283,7 @@
     <Compile Include="Assets\%23script\Stage\CreateStage.cs" />
     <Compile Include="Assets\%23script\TestItem\TestAitem.cs" />
     <Compile Include="Assets\%23script\Title\Blink.cs" />
+>>>>>>> master
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBlendListCamera.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBrain.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineClearShot.cs" />
