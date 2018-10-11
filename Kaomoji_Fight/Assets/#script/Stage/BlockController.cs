@@ -16,20 +16,9 @@ public class BlockController : MonoBehaviour {
 	void Update () {
       
     }
-     
-    public string GetBlockMozi
+
+    public void ChangeWeapon()
     {
-        // ｂｏｘの文字を取得する
-        get
-        {
-           // ボックスの下のテキストを取得する
-            GameObject textdata = this.transform.Find("Text").gameObject;
-            GameObject bloc = this.transform.gameObject;
-
-            bloc.SetActive(false);//ブロックを消す
-
-            //文字を返す
-            return textdata.GetComponent<TextMesh>().text;
-        }
+        this.gameObject.SetActive(false);
     }
 }

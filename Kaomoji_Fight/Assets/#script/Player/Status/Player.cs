@@ -47,7 +47,7 @@ public class Player : RaycastController {
 
     private float nowHp = 100;    // プレイヤーのHP
 
-    private GameObject Weapon;      //武器
+    private GameObject weapon;
     private bool HaveWeapon = false;//武器を持っている(true)いない(false)
 
     Contoroller2d controller;   // コントローラー
@@ -63,12 +63,7 @@ public class Player : RaycastController {
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
 
-        JumpFlag = false;
-
-        //文字を表示するボックスをResourcesから読み込む
-       Weapon = (GameObject)Resources.Load("prefab/Weapon/WeaponBloc");
-
-      
+        JumpFlag = false;      
     }
     
     void Update()
@@ -134,14 +129,14 @@ public class Player : RaycastController {
         if (HaveWeapon)
         {
             //武器の位置を調整
-            WeaponBlocController WBController = Weapon.gameObject.GetComponent<WeaponBlocController>();
+            WeaponBlocController WBController = weapon.gameObject.GetComponent<WeaponBlocController>();
             Vector3 direction = Vector3.zero;
             if (velocity.x < 0.0f)
             {
                 direction = Vector3.left;
                 WBController.SetPosition = new Vector3(this.transform.position.x - this.transform.localScale.x, this.transform.position.y + this.transform.localScale.y * 2, 0.0f);
             }
-            else if(velocity.x > 0.0f)
+            else if (velocity.x > 0.0f)
             {
                 direction = Vector3.right;
                 WBController.SetPosition = new Vector3(this.transform.position.x + this.transform.localScale.x + 0.5f, this.transform.position.y + this.transform.localScale.y * 2, 0.0f);
@@ -151,16 +146,12 @@ public class Player : RaycastController {
             if (XCI.GetButtonDown(XboxButton.B, ControlerNamber) && controller.collisions.below)
             {
                 //GameObject re = Weapon.GetComponent<GameObject>();
-                Weapon.AddComponent<Rigidbody2D>();
+                weapon.AddComponent<Rigidbody2D>();
 
                 //子オブジェクトをすべて解除(修正必須)
                 this.transform.DetachChildren();
 
                 WBController.Attack(direction, thrust);
-
-
-                //新しいウエポンブロックをロード
-                Weapon = (GameObject)Resources.Load("prefab/Weapon/WeaponBloc");
 
                 HaveWeapon = false;
             }
@@ -237,33 +228,37 @@ public class Player : RaycastController {
     /// <param name="directionX">右か左か</param>
     private void GetWeapon(RaycastHit2D hitFoot, float directionX)
     {
-        BlockController blockcontroller = hitFoot.collider.gameObject.transform.GetComponent<BlockController>();
+        GameObject block = hitFoot.collider.gameObject;
 
+        //武器を持っていなかったら
         if (HaveWeapon == false)
         {
-            //オブジェクトを生成する
-            Weapon = Instantiate(Weapon, this.transform.position, Quaternion.identity, this.transform);
-            //ボックスの下のテキストを取得する
-            GameObject textdata = Weapon.transform.Find("Text").gameObject;
-            //テキストに文字を書き込む
-            textdata.GetComponent<TextMesh>().text = blockcontroller.GetBlockMozi;
+            //床を武器として取得
+            weapon = Object.Instantiate(block) as GameObject;
+            weapon.transform.parent = this.transform;
+            weapon.name = "WeaponBlock" + block.name.Substring(block.name.IndexOf("("));
+            weapon.tag = tag.Trim();
+            //武器のスクリプトに張り替える
+            Destroy(weapon.GetComponent<BlockController>());
+            weapon.AddComponent<WeaponBlocController>();
+           
+            //床から切り抜く
+            block.GetComponent<BlockController>().ChangeWeapon();
+
+            Destroy(weapon.GetComponent<BoxCollider2D>());
 
             HaveWeapon = true;
 
-            //武器の位置を調整
-            WeaponBlocController WBController = Weapon.gameObject.GetComponent<WeaponBlocController>();
+            //プレイヤーの移動する向きに合わせて位置を調整
             if (directionX == -1)
             {
-                WBController.SetPosition = new Vector3(0.5f, this.transform.position.y + this.transform.localScale.y * 2, 0.0f);
+                weapon.transform.position = new Vector3(0.5f, this.transform.position.y + this.transform.localScale.y * 2, 0.0f);
             }
             else
             {
-                WBController.SetPosition = new Vector3(this.transform.position.x + this.transform.localScale.x + 0.5f, this.transform.position.y + this.transform.localScale.y * 2, 0.0f);
+                weapon.transform.position = new Vector3(this.transform.position.x + this.transform.localScale.x + 0.5f, this.transform.position.y + this.transform.localScale.y * 2, 0.0f);
             }
         }
-        this.transform.GetChild(1).GetComponent<RectTransform>().sizeDelta = new Vector2(1f, 1f);
-
-        Debug.Log(this.transform.GetChild(1));
     }
 
     // Hpのゲッターセッター
@@ -279,6 +274,9 @@ public class Player : RaycastController {
         }
     }
 
+    /// <summary>
+    /// XBXcontrollerの番号を取得
+    /// </summary>
     public XboxController GetControllerNamber
     {
         set
