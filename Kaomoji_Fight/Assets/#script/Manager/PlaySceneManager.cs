@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Windows;
 using XboxCtrlrInput;
 using TMPro;
+using System.Linq;
 
 
 public class PlaySceneManager : MonoBehaviour
@@ -27,15 +28,17 @@ public class PlaySceneManager : MonoBehaviour
     private GameObject[] players;       //プレイヤー
     private GameObject[] HPgage;        //HPゲージ
 
+    private List<GameObject> InactiveStageBlockList;//表示されていないブロックリスト
+
     // Use this for initialization
     void Start()
     {
         //プレイヤー分の配列を確保
-        players = new GameObject[PlayersData.Instance.playerNum];
-        HPgage = new GameObject[PlayersData.Instance.playerNum];
+        players = new GameObject[PlayeData.Instance.playerNum];
+        HPgage = new GameObject[PlayeData.Instance.playerNum];
 
         //プレイヤーとHPを生成
-        for (int i = 0; i < PlayersData.Instance.playerNum; i++)
+        for (int i = 0; i < PlayeData.Instance.playerNum; i++)
         {
             //画像が送られてきていなかったら
             if (player_textuer == null)
@@ -50,15 +53,23 @@ public class PlaySceneManager : MonoBehaviour
             }
 
             //プレイヤーとHPバーを生成
-            this.CreatePlayer(players[i],HPgage[i], i);
+            this.CreatePlayer(players[i], HPgage[i], i);
         }
-       
+
+        //非表示リストを作成
+        InactiveStageBlockList = new List<GameObject>();
     }
 
     // Update is called once per frame
     void Update()
     {
-     
+        if(InactiveStageBlockList.Any())
+        {
+            foreach(GameObject InactiveStageBlock in InactiveStageBlockList)
+            {
+                
+            }
+        }
     }
 
     /// <summary>
@@ -201,4 +212,14 @@ public class PlaySceneManager : MonoBehaviour
             player_textuer = value;
         }
     }
+
+
+    public GameObject InactiveStageBlock
+    {
+        set
+        {
+            InactiveStageBlockList.Add(value);
+        }
+    }
+
 }
