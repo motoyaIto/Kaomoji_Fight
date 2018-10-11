@@ -107,9 +107,8 @@ public class Player : RaycastController {
         }
 
 
-
         // 回避をしたい
-        if (XCI.GetButton(XboxButton.RightBumper, ControlerNamber) && controller.collisions.below)
+        if (XCI.GetAxis(XboxAxis.RightTrigger) < 0.0f)
         {
             //Instantiate()
             float rand = Random.Range(-1.0f, 1.0f);
@@ -121,6 +120,7 @@ public class Player : RaycastController {
                 // 攻撃を受け付けない
 
 
+                
                 Avoidance_time += .1f;
             }
 
