@@ -111,9 +111,13 @@ MonoBehaviour:
   m_MaxSize: {x: 18010, y: 10021}
   vertical: 0
 <<<<<<< HEAD
+  controlID: 77
+=======
+<<<<<<< HEAD
   controlID: 250
 =======
   controlID: 237
+>>>>>>> master
 >>>>>>> master
 --- !u!114 &5
 MonoBehaviour:
@@ -137,8 +141,8 @@ MonoBehaviour:
 >>>>>>> master
     width: 715
     height: 162
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -172,9 +176,13 @@ MonoBehaviour:
   m_MaxSize: {x: 18010, y: 14042}
   vertical: 1
 <<<<<<< HEAD
+  controlID: 154
+=======
+<<<<<<< HEAD
   controlID: 249
 =======
   controlID: 236
+>>>>>>> master
 >>>>>>> master
 --- !u!114 &7
 MonoBehaviour:
@@ -225,9 +233,13 @@ MonoBehaviour:
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
 <<<<<<< HEAD
+  m_LastLoadedLayoutName: 
+=======
+<<<<<<< HEAD
   m_LastLoadedLayoutName: Hutuu
 =======
   m_LastLoadedLayoutName: MyScene
+>>>>>>> master
 >>>>>>> master
 --- !u!114 &9
 MonoBehaviour:
@@ -253,9 +265,13 @@ MonoBehaviour:
   m_MaxSize: {x: 22012, y: 14042}
   vertical: 0
 <<<<<<< HEAD
+  controlID: 55
+=======
+<<<<<<< HEAD
   controlID: 248
 =======
   controlID: 235
+>>>>>>> master
 >>>>>>> master
 --- !u!114 &10
 MonoBehaviour:
@@ -313,7 +329,11 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 442}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
+<<<<<<< HEAD
+  controlID: 56
+=======
   controlID: 285
+>>>>>>> master
 >>>>>>> master
 --- !u!114 &12
 MonoBehaviour:
@@ -372,9 +392,14 @@ MonoBehaviour:
 =======
     width: 382
     height: 248
+<<<<<<< HEAD
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
+=======
 >>>>>>> master
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
+>>>>>>> master
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -405,8 +430,13 @@ MonoBehaviour:
     y: 248
     width: 382
     height: 236
+<<<<<<< HEAD
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
+=======
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
+>>>>>>> master
 >>>>>>> master
   m_ActualView: {fileID: 19}
   m_Panes:
@@ -476,12 +506,16 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: d4380000
+    m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
+    m_ExpandedIDs: f2eeffff8af9ffff9cfbffff00000000
+=======
 <<<<<<< HEAD
     m_ExpandedIDs: 160fffff42defffffcf9fffff0faffff00000000
 =======
     m_ExpandedIDs: dcf1ffff00000000
+>>>>>>> master
 >>>>>>> master
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -583,6 +617,13 @@ MonoBehaviour:
     m_SearchArea: 0
     m_Folders:
 <<<<<<< HEAD
+    - Assets/Resources/textures/use
+  m_ViewMode: 1
+  m_StartGridSize: 16
+  m_LastFolders:
+  - Assets/Resources/textures/use
+=======
+<<<<<<< HEAD
     - Assets/#script/Player/Status
   m_ViewMode: 1
   m_StartGridSize: 16
@@ -595,10 +636,17 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/#script/SelectPN
 >>>>>>> master
+>>>>>>> master
   m_LastFoldersGridSize: 16
   m_LastProjectPath: "C:\\Users\\s152025\\Documents\\3\u5E74\\\u5352\u696D\u5236\u4F5C\\Kaomoji_Fight"
   m_IsLocked: 0
   m_FolderTreeState:
+<<<<<<< HEAD
+    scrollPos: {x: 0, y: 344}
+    m_SelectedIDs: 2c310000
+    m_LastClickedID: 12588
+    m_ExpandedIDs: 00000000542e0000a02e0000c02f0000c22f0000c62f0000043000000e30000034300000a03000004a31000000ca9a3bffffff7f
+=======
     scrollPos: {x: 0, y: 0}
 <<<<<<< HEAD
     m_SelectedIDs: 243a0000
@@ -608,6 +656,7 @@ MonoBehaviour:
     m_SelectedIDs: 32350000
     m_LastClickedID: 13618
     m_ExpandedIDs: 000000004e310000f831000074340000763400008e3400002c350000443500009c3500007e360000b837000000ca9a3bffffff7f
+>>>>>>> master
 >>>>>>> master
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -637,9 +686,13 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
 <<<<<<< HEAD
+    m_ExpandedIDs: 00000000542e0000a02e0000c02f0000c22f0000c62f0000043000000e30000034300000a03000004a310000
+=======
+<<<<<<< HEAD
     m_ExpandedIDs: 000000007a360000c4360000e4370000e6370000ea370000283800003238000058380000c43800007039000000ca9a3bffffff7f
 =======
     m_ExpandedIDs: 000000004e310000f831000074340000763400008e3400002c350000443500009c3500007e360000b837000000ca9a3bffffff7f
+>>>>>>> master
 >>>>>>> master
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -684,7 +737,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 12}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
