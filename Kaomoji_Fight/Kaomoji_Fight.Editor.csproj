@@ -275,6 +275,9 @@
       <HintPath>Library\UnityAssemblies\UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
+<<<<<<< HEAD
+      <HintPath>C:/Users/s162079/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
+=======
       <HintPath>Library\UnityAssemblies\UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="XInputDotNetPure">
@@ -285,6 +288,7 @@
     </Reference>
     <Reference Include="TextMeshPro-2017.3-Runtime">
       <HintPath>Assets\Plugins\TextMesh Pro\Plugins\Editor DLL\TextMeshPro-2017.3-Runtime.dll</HintPath>
+>>>>>>> master
     </Reference>
   </ItemGroup>
   <ItemGroup>
