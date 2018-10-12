@@ -79,6 +79,6 @@ public class SelectPNControll : MonoBehaviour {
     IEnumerator coRoutine() 
     {
         yield return new WaitForSeconds(1); // num秒待機
-        SceneManagerController.ChangeCene();
+        SceneManagerController.ChangeScene();
     }
 }

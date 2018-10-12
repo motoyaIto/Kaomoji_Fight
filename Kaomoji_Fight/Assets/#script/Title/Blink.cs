@@ -51,7 +51,7 @@ public class Blink : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, XboxController.First))
         {
-            SceneManagerController.ChangeCene();
+            SceneManagerController.ChangeScene();
         }
     }
 
