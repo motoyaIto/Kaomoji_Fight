@@ -69,14 +69,14 @@ public class SelectPNControll : MonoBehaviour {
 
         //プレイ人数を決定
         if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, XboxController.First))
-        
+        { 
             sound01.PlayOneShot(sound02.clip);
-            loadData = new PlayersData(PlayerNum);
+            loadData = new PlayData(PlayerNum);
             StartCoroutine("coRoutine");
         }
     }
 
-    IEnumerator coRoutine()
+    IEnumerator coRoutine() 
     {
         yield return new WaitForSeconds(1); // num秒待機
         SceneManagerController.ChangeCene();
