@@ -155,9 +155,6 @@ public class Player : RaycastController {
                 //GameObject re = Weapon.GetComponent<GameObject>();
                 weapon.AddComponent<Rigidbody2D>();
 
-                //子オブジェクトをすべて解除(修正必須)
-                this.transform.DetachChildren();
-
                 //WBController.Attack(direction, thrust);
                 Destroy(weapon);
 
