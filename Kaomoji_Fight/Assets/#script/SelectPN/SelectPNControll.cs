@@ -6,7 +6,7 @@ using XboxCtrlrInput;
 public class SelectPNControll : MonoBehaviour {
 
     private static readonly int PLAYERMAX = 4;
-    private PlayersData loadData;
+    private PlayeData loadData;
     private int PlayerNum = 1;
     private AudioSource sound01;
     private AudioSource sound02;

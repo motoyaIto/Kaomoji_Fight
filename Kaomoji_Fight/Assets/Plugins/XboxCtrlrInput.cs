@@ -762,6 +762,8 @@ namespace XboxCtrlrInput
 		
 		// >>> For Axis <<< //
 		
+        /* ƒIƒŠƒWƒiƒ‹ 
+
 		/// <summary> 
 		/// 	Returns the analog number of the specified axis from any controller. 
 		/// </summary>
@@ -946,12 +948,189 @@ namespace XboxCtrlrInput
 			return r;
 		}
 		
-		// >>> Other important functions <<< //
-		
-		/// <summary> 
-		/// 	Returns the number of Xbox controllers plugged to the computer. 
-		/// </summary>
-		public static int GetNumPluggedCtrlrs()
+
+        */
+
+        /* RT‚©LT‚Ç‚¿‚ç‚ð‰Ÿ‚µ‚½‚©‚í‚©‚é‚æ‚¤‚ÉŽæ“¾‚Å‚«‚é‚æ‚¤‚É‰ü‘¢ */
+        public static float GetAxis(XboxAxis axis)
+        {
+            float r = 0.0f;
+
+            if (OnWindowsNative())
+            {
+                #if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+                if (!XInputStillInCurrFrame())
+                {
+                    XInputUpdateAllStates();
+                }
+
+                GamePadState ctrlrState = XInputGetSingleState();
+
+                if (axis == XboxAxis.LeftTrigger)
+                {
+                    r = XInputGetAxisState(ctrlrState.Triggers, axis);
+                }
+                else if (axis == XboxAxis.RightTrigger)
+                {
+                    r = XInputGetAxisState(ctrlrState.Triggers, axis) * -1;
+                }
+                else
+                {
+                    r = XInputGetAxisState(ctrlrState.ThumbSticks, axis);
+                }
+
+                #endif
+            }
+            else
+            {
+                string axisCode = DetermineAxisCode(axis, 0);
+
+                r = Input.GetAxis(axisCode);
+                r = AdjustAxisValues(r, axis, 0);
+            }
+
+            return r;
+
+        }
+
+        public static float GetAxis(XboxAxis axis, XboxController controller)
+        {
+            if (controller == XboxController.Any)
+                return GetAxis(axis);
+
+            int controllerNumber = (int)controller;
+
+            float r = 0.0f;
+
+            if (OnWindowsNative())
+            {
+                #if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+                if (!XInputStillInCurrFrame())
+                {
+                    XInputUpdateAllStates();
+                }
+
+                GamePadState ctrlrState = XInputGetPaticularState(controllerNumber);
+
+                if (axis == XboxAxis.LeftTrigger)
+                {
+                    r = XInputGetAxisState(ctrlrState.Triggers, axis);
+                }
+                else if (axis == XboxAxis.RightTrigger)
+                {
+                    r = XInputGetAxisState(ctrlrState.Triggers, axis) * -1;
+                }
+                else
+                {
+                    r = XInputGetAxisState(ctrlrState.ThumbSticks, axis);
+                }
+
+                #endif
+            }
+            else
+            {
+                string axisCode = DetermineAxisCode(axis, controllerNumber);
+
+                r = Input.GetAxis(axisCode);
+                r = AdjustAxisValues(r, axis, controllerNumber);
+            }
+
+            return r;
+        }
+
+        public static float GetAxisRaw(XboxAxis axis)
+        {
+            float r = 0.0f;
+
+            if (OnWindowsNative())
+            {
+                #if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+                if (!XInputStillInCurrFrame())
+                {
+                    XInputUpdateAllStates();
+                }
+
+                GamePadState ctrlrState = XInputGetSingleState();
+
+                if (axis == XboxAxis.LeftTrigger)
+                {
+                    r = XInputGetAxisState(ctrlrState.Triggers, axis);
+                }
+                else if (axis == XboxAxis.RightTrigger)
+                {
+                    r = XInputGetAxisState(ctrlrState.Triggers, axis) * -1;
+                }
+                else
+                {
+                    r = XInputGetAxisState(ctrlrState.ThumbSticks, axis);
+                }
+#endif
+            }
+
+            else
+            {
+                string axisCode = DetermineAxisCode(axis, 0);
+
+                r = Input.GetAxisRaw(axisCode);
+                r = AdjustAxisValues(r, axis, 0);
+            }
+
+            return r;
+        }
+
+        public static float GetAxisRaw(XboxAxis axis, XboxController controller)
+        {
+            if (controller == XboxController.Any)
+                return GetAxisRaw(axis);
+
+            int controllerNumber = (int)controller;
+
+            float r = 0.0f;
+
+            if (OnWindowsNative())
+            {
+                #if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+                if (!XInputStillInCurrFrame())
+                {
+                    XInputUpdateAllStates();
+                }
+
+                GamePadState ctrlrState = XInputGetPaticularState(controllerNumber);
+
+                if (axis == XboxAxis.LeftTrigger)
+                {
+                    r = XInputGetAxisState(ctrlrState.Triggers, axis);
+                }
+                else if (axis == XboxAxis.RightTrigger)
+                {
+                    r = XInputGetAxisState(ctrlrState.Triggers, axis) * -1;
+                }
+                else
+                {
+                    r = XInputGetAxisState(ctrlrState.ThumbSticks, axis);
+                }
+#endif
+            }
+
+            else
+            {
+                string axisCode = DetermineAxisCode(axis, controllerNumber);
+
+                r = Input.GetAxisRaw(axisCode);
+                r = AdjustAxisValues(r, axis, controllerNumber);
+            }
+
+            return r;
+        }
+
+
+
+        // >>> Other important functions <<< //
+
+        /// <summary> 
+        /// 	Returns the number of Xbox controllers plugged to the computer. 
+        /// </summary>
+        public static int GetNumPluggedCtrlrs()
 		{
 			int r = 0;
 			

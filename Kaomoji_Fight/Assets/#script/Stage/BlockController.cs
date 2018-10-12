@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class BlockController : MonoBehaviour {
 
-    
     [SerializeField]
-    private float ResetTime = 10;
+    private float ResetTime = 10.0f;
 	// Use this for initialization
 	void Start () {
 		
@@ -16,6 +15,18 @@ public class BlockController : MonoBehaviour {
 	void Update () {
       
     }
+
+    private void OnDisable()
+    {
+        Invoke("ReStageBlock", ResetTime);
+    }
+
+
+    public void ReStageBlock()
+    {
+        this.gameObject.SetActive(true);
+    }
+
 
     public void ChangeWeapon()
     {
