@@ -6,7 +6,7 @@ using XboxCtrlrInput;
 public class SelectPNControll : MonoBehaviour {
 
     private static readonly int PLAYERMAX = 4;
-    private PlayeData loadData;
+    private PlayData loadData;
     private int PlayerNum = 1;
     // Use this for initialization
     void Start () {
@@ -61,7 +61,7 @@ public class SelectPNControll : MonoBehaviour {
         //プレイ人数を決定
         if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, XboxController.First))
         {
-            loadData = new PlayeData(PlayerNum);
+            loadData = new PlayData(PlayerNum);
             SceneManagerController.ChangeCene();
         }
     }
