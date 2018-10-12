@@ -38,12 +38,18 @@ public class WeaponBlocController : MonoBehaviour {
         }
     }
 
-    public void Attack(Vector3 shot, float thrust)
+    public void Attack(Vector3 shot)
     {
+        this.transform.gameObject.AddComponent<Rigidbody2D>();
+        this.transform.gameObject.AddComponent<BoxCollider2D>();
         Shot = shot;
-        Thrust = thrust;
+        Thrust = 2.5f;
         AttackFlag = true;
         
-        //rb.AddForce(transform.forward * thrust);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(this.gameObject);
     }
 }
