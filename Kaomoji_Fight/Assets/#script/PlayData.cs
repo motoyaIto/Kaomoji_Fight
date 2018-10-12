@@ -34,7 +34,15 @@ public class PlayData
             playerNum = PlayersFace.Length;
         }
 
-      
+       //顔がすべて設定されているかチェックする
+        for (int i = 0; i < playerNum; i++)
+        {
+            //顔が設定されていないとき
+            if (PlayersFace[i] == null)
+            {
+                PlayersFace[i] = Sprite.Create((Texture2D)Resources.Load("textures/use/Player1"), new Rect(0, 0, 584, 385), new Vector2(0.5f, 0.5f));
+            }
+        }
     }
 
     public static PlayData Instance
