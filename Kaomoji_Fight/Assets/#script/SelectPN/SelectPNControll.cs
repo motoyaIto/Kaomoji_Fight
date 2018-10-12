@@ -6,7 +6,7 @@ using XboxCtrlrInput;
 public class SelectPNControll : MonoBehaviour {
 
     private static readonly int PLAYERMAX = 4;
-    private PlayeData loadData;
+    private PlayData loadData;
     private int PlayerNum = 1;
     private AudioSource sound01;
     private AudioSource sound02;
@@ -69,7 +69,7 @@ public class SelectPNControll : MonoBehaviour {
 
         //プレイ人数を決定
         if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, XboxController.First))
-        {
+        
             sound01.PlayOneShot(sound02.clip);
             loadData = new PlayersData(PlayerNum);
             StartCoroutine("coRoutine");
