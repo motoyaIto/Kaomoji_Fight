@@ -4,6 +4,7 @@ using UnityEngine;
 using XboxCtrlrInput;
 
 [RequireComponent(typeof(Contoroller2d))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class Player : RaycastController {
 
     #region 変数群
@@ -50,6 +51,7 @@ public class Player : RaycastController {
     private bool HaveWeapon = false;//武器を持っている(true)いない(false)
 
     Contoroller2d controller;   // コントローラー
+    Rigidbody2D rig = null;
     [HideInInspector]
     public CollisionInfo collisions;
     #endregion
@@ -63,9 +65,14 @@ public class Player : RaycastController {
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
 
     }
-    
+
+    private void Reset()
+    {
+        rig = GetComponent<Rigidbody2D>();
+    }
+
     void Update()
-    { 
+    {
         if (controller.collisions.above || controller.collisions.below)
         {
             velocity.y = 0;
@@ -93,7 +100,6 @@ public class Player : RaycastController {
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, 
                                     (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         velocity.y += gravity * Time.deltaTime;
-        Debug.Log(velocity.y);
         controller.Move(velocity * Time.deltaTime, input);
 
         if (controller.collisions.above || controller.collisions.below)
@@ -261,6 +267,16 @@ public class Player : RaycastController {
             {
                 weapon.transform.position = new Vector3(this.transform.position.x + this.transform.localScale.x + 0.5f, this.transform.position.y + this.transform.localScale.y * 2, 0.0f);
             }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        velocity = rig.velocity;
+        if (velocity.y <= 0)
+        {
+            velocity.y = 6;
+            rig.velocity = velocity;
         }
     }
 
