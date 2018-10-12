@@ -17,7 +17,7 @@ public class SceneTimer : MonoBehaviour {
 
         if(countTime > 3.0f)
         {
-            SceneManagerController.ChangeCene();
+            SceneManagerController.ChangeScene();
         }
 		
 	}

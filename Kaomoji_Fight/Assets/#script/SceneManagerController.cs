@@ -39,7 +39,7 @@ public class SceneManagerController : MonoBehaviour
     /// <summary>
     /// シーン切替
     /// </summary>
-    public static void ChangeCene()
+    public static void ChangeScene()
     {
         //再生する
         ope.allowSceneActivation = true;
