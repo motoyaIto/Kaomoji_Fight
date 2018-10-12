@@ -252,6 +252,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\#scene\Test\MoveScript1.cs" />
     <Compile Include="Assets\#script\Camera\MultipleTargetCamera.cs" />
     <Compile Include="Assets\#script\DummySceneStart.cs" />
     <Compile Include="Assets\#script\Manager\PlaySceneManager.cs" />
@@ -260,7 +261,6 @@
     <Compile Include="Assets\#script\Player\Jump\PlatformController.cs" />
     <Compile Include="Assets\#script\Player\Jump\RaycastController.cs" />
     <Compile Include="Assets\#script\Player\Status\Contoroller2d.cs" />
-    <Compile Include="Assets\#script\Player\Status\other\ControllerTest.cs" />
     <Compile Include="Assets\#script\Player\Status\Player.cs" />
     <Compile Include="Assets\#script\Player\Weapon\WeaponBlocController.cs" />
     <Compile Include="Assets\#script\SceneManagerController.cs" />
