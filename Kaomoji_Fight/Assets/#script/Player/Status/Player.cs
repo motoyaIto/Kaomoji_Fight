@@ -9,8 +9,8 @@ public class Player : RaycastController {
     #region 変数群
     // 公開
     [Header("ジャンプの高さ")]
-    public float maxJumpHeight = 4;
-    public float minJumpHeight = 1;
+    public float maxJumpHeight = 5f;
+    public float minJumpHeight = .5f;
 
     [Header("ジャンプの頂点までの時間")]
     public float timeToJumpApex = .4f;
@@ -43,7 +43,6 @@ public class Player : RaycastController {
     private float minJumpVelocity;  // 最小ジャンプ時の勢い
     private Vector3 velocity;
     private float velocityXSmoothing;
-    private bool JumpFlag;  // ジャンプ中かどうか？（true = ジャンプ中, false = ジャンプしていない）
 
     private float nowHp = 100;    // プレイヤーのHP
 
@@ -63,17 +62,13 @@ public class Player : RaycastController {
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
 
-        JumpFlag = false;      
     }
     
     void Update()
-    {
-       
-
+    { 
         if (controller.collisions.above || controller.collisions.below)
         {
             velocity.y = 0;
-            JumpFlag = false;
         }
 
         Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, ControlerNamber), XCI.GetAxis(XboxAxis.LeftStickY, ControlerNamber));
@@ -85,20 +80,20 @@ public class Player : RaycastController {
             {
                 velocity.y = maxJumpVelocity;
             }
-            if (XCI.GetButtonUp(XboxButton.Y, ControlerNamber))
-            {
-                if (velocity.y > minJumpVelocity)
-                {
-                    velocity.y = minJumpVelocity;
-                }
-            }            
-            JumpFlag = true;
         }
+        if (XCI.GetButtonUp(XboxButton.Y, ControlerNamber))
+        {
+            if (velocity.y > minJumpVelocity)
+            {
+                velocity.y = minJumpVelocity;
+            }
+        }            
 
         float targetVelocityX = input.x * moveSpeed;
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, 
                                     (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         velocity.y += gravity * Time.deltaTime;
+        Debug.Log(velocity.y);
         controller.Move(velocity * Time.deltaTime, input);
 
         if (controller.collisions.above || controller.collisions.below)
@@ -115,6 +110,8 @@ public class Player : RaycastController {
             // 回避時間
             float Avoidance_time = .0f;
             // アニメーションに差し替え予定
+
+            // 回避中であれば
             if (Avoidance_time <= Invincible_time)
             {
                 // 攻撃を受け付けない
@@ -126,7 +123,7 @@ public class Player : RaycastController {
 
         }
         
-        //武器
+        //武器を持っている
         if (HaveWeapon)
         {
             //武器の位置を調整
@@ -237,7 +234,7 @@ public class Player : RaycastController {
         GameObject block = hitFoot.collider.gameObject;
 
         //武器を持っていなかったら
-        if (HaveWeapon == false)
+        if (!HaveWeapon)
         {
             //床を武器として取得
             weapon = Object.Instantiate(block) as GameObject;
