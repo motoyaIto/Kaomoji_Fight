@@ -86,6 +86,7 @@ public class Player : RaycastController {
             if (controller.collisions.below)
             {
                 velocity.y = maxJumpVelocity;
+                this.gameObject.layer = LayerName.Through;
             }
         }
         if (XCI.GetButtonUp(XboxButton.Y, ControlerNamber))
@@ -130,7 +131,7 @@ public class Player : RaycastController {
         }
         
         //武器を持っている
-        if (HaveWeapon)
+        if (HaveWeapon == true)
         {
             //武器の位置を調整
             WeaponBlocController WBController = weapon.gameObject.GetComponent<WeaponBlocController>();
@@ -138,12 +139,12 @@ public class Player : RaycastController {
             if (velocity.x < 0.0f)
             {
                 direction = Vector3.left;
-                WBController.SetPosition = new Vector3(this.transform.position.x - this.transform.localScale.x, this.transform.position.y + this.transform.localScale.y * 2, 0.0f);
+                WBController.SetPosition = new Vector3(this.transform.position.x - this.transform.localScale.x, this.transform.position.y + this.transform.localScale.y * 2.5f, 0.0f);
             }
             else if (velocity.x > 0.0f)
             {
                 direction = Vector3.right;
-                WBController.SetPosition = new Vector3(this.transform.position.x + this.transform.localScale.x + 0.5f, this.transform.position.y + this.transform.localScale.y * 2, 0.0f);
+                WBController.SetPosition = new Vector3(this.transform.position.x + this.transform.localScale.x + 0.5f, this.transform.position.y + this.transform.localScale.y * 2.5f, 0.0f);
             }
 
             //武器を使う
@@ -240,7 +241,7 @@ public class Player : RaycastController {
         GameObject block = hitFoot.collider.gameObject;
 
         //武器を持っていなかったら
-        if (!HaveWeapon)
+        if (HaveWeapon == false)
         {
             //床を武器として取得
             weapon = Object.Instantiate(block) as GameObject;
