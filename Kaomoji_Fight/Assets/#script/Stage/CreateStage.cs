@@ -21,7 +21,7 @@ public class CreateStage : MonoBehaviour
 
 
         //テキスト一覧の取得
-        string text = PlayeData.Instance.StageText;
+        string text = PlayData.Instance.StageText;
 
         textnam = text.Length;
 

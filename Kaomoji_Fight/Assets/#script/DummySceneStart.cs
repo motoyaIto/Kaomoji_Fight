@@ -7,7 +7,7 @@ public class DummySceneStart : MonoBehaviour {
 
     [SerializeField, Header("プレイ人数（デバッグ用）")]
     private int Player_Num = 2;
-    private PlayeData playerdata;
+    private PlayData playerdata;
 
     [SerializeField, Header("選択したステージ名(.txt記述しなくて良い)（デバッグ用）")]
     private string textmame = "stage1";
@@ -19,7 +19,7 @@ public class DummySceneStart : MonoBehaviour {
     {
         string DammySelectStage = System.IO.File.ReadAllText("Assets/Resources/Texts/" + textmame + ".txt", Encoding.GetEncoding("Shift_JIS"));
 
-        playerdata = new PlayeData(Player_Num, playersface, DammySelectStage);
+        playerdata = new PlayData(Player_Num, playersface, DammySelectStage);
     }
 
     // Use this for initialization
