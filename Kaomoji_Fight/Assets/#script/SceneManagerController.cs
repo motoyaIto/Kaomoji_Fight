@@ -12,8 +12,8 @@ public class SceneManagerController : MonoBehaviour
     public enum SceneName
     {
         LOGO,
-       TITLE,
-        SELECTPN,
+        TITLE,
+        SELECT,
         PLAY,
     };
 

@@ -5,6 +5,9 @@ using XboxCtrlrInput;
 
 public class SelectStage : MonoBehaviour {
 
+    [SerializeField, Header("プレイヤーの顔（デバッグ用）")]
+    Sprite[] playersface;
+
     SelectPNControll selectPN;
     bool cursor = false;
     private string stage;
@@ -17,7 +20,7 @@ public class SelectStage : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        selectPN = GetComponent<SelectPNControll>();        
+        selectPN = GameObject.Find("Cursor").GetComponent<SelectPNControll>();        
         AudioSource[] audioSources = GetComponents<AudioSource>();
         sound01 = audioSources[0];
         sound02 = audioSources[1];

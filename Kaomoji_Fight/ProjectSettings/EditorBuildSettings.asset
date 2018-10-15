@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/#scene/Title.unity
     guid: 2ba5c1aed1ae5e649bec9160690a48f6
   - enabled: 1
-    path: Assets/#scene/SelectPN.unity
+    path: Assets/#scene/Select.unity
     guid: ed38dc99dd1b1ac4f97ddf7af2d9d55d
   - enabled: 1
     path: Assets/#scene/Play.unity

@@ -1139,7 +1139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 257500d7f36219840a14be1a76304d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hue: 180
+  hue: 125
 --- !u!114 &951303548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1490,7 +1490,7 @@ GameObject:
   - component: {fileID: 1296911629}
   - component: {fileID: 1296911628}
   m_Layer: 0
-  m_Name: Cursor
+  m_Name: Cursor2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1522,6 +1522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb62f88a55a2e64ea0e991d1d2a606c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playersface: []
 --- !u!82 &1296911628
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2403,6 +2404,10 @@ Prefab:
     - target: {fileID: 4940859300506722, guid: c9529d12034635d4e9fedc91c9d6163e, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1229564129286754, guid: c9529d12034635d4e9fedc91c9d6163e, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c9529d12034635d4e9fedc91c9d6163e, type: 2}
