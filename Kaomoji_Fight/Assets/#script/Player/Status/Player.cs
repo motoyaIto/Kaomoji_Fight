@@ -78,9 +78,8 @@ public class Player : RaycastController {
             velocity.y = 0;
         }
 
-        Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, ControlerNamber), XCI.GetAxis(XboxAxis.LeftStickY, ControlerNamber));
 
-        // ジャンプ
+        // 大ジャンプ
         if (XCI.GetButtonDown(XboxButton.Y, ControlerNamber))
         {
             if (controller.collisions.below)
@@ -89,24 +88,23 @@ public class Player : RaycastController {
                 this.gameObject.layer = LayerName.Through;
             }
         }
+        // 小ジャンプ
         if (XCI.GetButtonUp(XboxButton.Y, ControlerNamber))
         {
             if (velocity.y > minJumpVelocity)
             {
                 velocity.y = minJumpVelocity;
             }
-        }            
+        }
+        
+        // Controllerの左スティックのAxisを取得            
+        Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, ControlerNamber), XCI.GetAxis(XboxAxis.LeftStickY, ControlerNamber));
 
         float targetVelocityX = input.x * moveSpeed;
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, 
                                     (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime, input);
-
-        if (controller.collisions.above || controller.collisions.below)
-        {
-            velocity.y = 0;
-        }
 
 
         // 回避をしたい
