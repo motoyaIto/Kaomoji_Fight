@@ -1,4 +1,4 @@
-﻿Shader "Custom/Cursor"
+﻿Shader "Custom/Select/Cursor"
 {
 	Properties
 	{

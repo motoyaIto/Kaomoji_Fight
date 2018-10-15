@@ -25,9 +25,13 @@ Material:
     m_Floats:
     - _ColorMask: 15
 <<<<<<< HEAD
+    - _Hue: 225
+=======
+<<<<<<< HEAD
     - _Hue: 205
 =======
     - _Hue: 175
+>>>>>>> master
 >>>>>>> master
     - _Sat: 1
     - _Stencil: 0
