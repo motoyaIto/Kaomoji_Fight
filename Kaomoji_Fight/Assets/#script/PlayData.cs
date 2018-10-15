@@ -21,7 +21,7 @@ public class PlayData
         Instance = this;
         playerNum = players;
         PlayersFace = SelectPlayersFace;
-        StageText = SelectStageText;
+        StageText = System.IO.File.ReadAllText("Assets/Resources/Texts/" + SelectStageText + ".txt", Encoding.GetEncoding("Shift_JIS"));
 
         //プレイヤーが最大値を超えて生成しようとしたときに抑える
         if (playerNum > PLAYERMAX)

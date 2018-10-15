@@ -17,7 +17,7 @@ public class DummySceneStart : MonoBehaviour {
    
     private void Awake()
     {
-        string DammySelectStage = System.IO.File.ReadAllText("Assets/Resources/Texts/" + textmame + ".txt", Encoding.GetEncoding("Shift_JIS"));
+        string DammySelectStage =textmame;
 
         playerdata = new PlayData(Player_Num, playersface, DammySelectStage);
     }
