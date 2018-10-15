@@ -5,7 +5,7 @@ Shader "Custom/StageBloc" {
 	Properties {
 		//変数名("インスペクターに表示する名前", 型) = 初期値
 		EdgeSize ("EdgeSize:縁取りのサイズ", Range (0, 1)) = 0.0
-		EdgeColor ("EdgeColor:縁取りの色", Color) = (1, 1, 1, 1)
+		_EmissionColor("EdgeColor:縁取りの色", Color) = (1, 1, 1, 1)
 
 	}
 

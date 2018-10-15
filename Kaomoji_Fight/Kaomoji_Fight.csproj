@@ -351,9 +351,11 @@
     <None Include="Assets\Plugins\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\Resources\Texts\stage1.txt" />
     <None Include="Assets\Resources\Texts\test.txt" />
-    <None Include="Assets\Shader\Cursor.shader" />
+    <None Include="Assets\Shader\Select\Cursor.shader" />
     <None Include="Assets\Shader\StageBloc.shader" />
-    <None Include="Assets\Shader\TestAlpha.shader" />
+    <None Include="Assets\Shader\Test\NotTathc.shader" />
+    <None Include="Assets\Shader\Test\TestAlpha.shader" />
+    <None Include="Assets\Shader\Test\VertexShader.shader" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
   </ItemGroup>
