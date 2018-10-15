@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using XboxCtrlrInput;
 
-public class Blink : MonoBehaviour
+public class Title : MonoBehaviour
 {
 
     //public

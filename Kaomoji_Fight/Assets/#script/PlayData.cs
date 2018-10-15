@@ -7,6 +7,7 @@ public class PlayData
 {
     private static readonly int PLAYERMAX = 4;//プレイヤーの最大人数
 
+    //public SelectPNControll selectPNControll;
     public int playerNum = 1;
     public string StageText = System.IO.File.ReadAllText("Assets/Resources/Texts/test.txt", Encoding.GetEncoding("Shift_JIS"));
     public Sprite[] PlayersFace ;
