@@ -8,6 +8,9 @@ public class SelectStage : MonoBehaviour {
     [SerializeField, Header("プレイヤーの顔（デバッグ用）")]
     Sprite[] playersface;
 
+    [SerializeField, Header("コントローラー番号")]
+    private XboxController ControlerNamber = XboxController.First;//何番目のコントローラーを適用するか
+
     SelectPNControll selectPN;
     bool cursor = false;
     private string stage;
@@ -17,6 +20,9 @@ public class SelectStage : MonoBehaviour {
     private AudioSource sound03;
     private PlayData loadData;
     private int StageNum = 1;
+    private bool SelectStop = false;
+
+
     // Use this for initialization
     void Start()
     {
@@ -33,9 +39,13 @@ public class SelectStage : MonoBehaviour {
     {
         Transform myTransform = this.transform;
         Vector3 pos = myTransform.position;
+
+        // Controllerの左スティックのAxisを取得            
+        Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, ControlerNamber), XCI.GetAxis(XboxAxis.LeftStickY, ControlerNamber));
+
         if (cursor == true)
         {
-            if (Input.GetKeyDown(KeyCode.DownArrow) || XCI.GetDPadDown(XboxDPad.Down, XboxController.First))
+            if (Input.GetKeyDown(KeyCode.DownArrow) || XCI.GetDPadDown(XboxDPad.Down, ControlerNamber) || input.y < -0.1f)
             {
                 sound01.PlayOneShot(sound01.clip);
                 if (pos.y <= -3.3f)
@@ -53,7 +63,7 @@ public class SelectStage : MonoBehaviour {
                     StageNum = 1;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.UpArrow) || XCI.GetDPadDown(XboxDPad.Up, XboxController.First))
+            if (Input.GetKeyDown(KeyCode.UpArrow) || XCI.GetDPadDown(XboxDPad.Up, ControlerNamber) || input.y > 0.1f)
             {
                 sound01.PlayOneShot(sound01.clip);
                 if (pos.y >= 2.0f)
@@ -72,7 +82,7 @@ public class SelectStage : MonoBehaviour {
                 }
 
             }
-            if (Input.GetKeyDown(KeyCode.RightArrow) || XCI.GetDPadDown(XboxDPad.Right, XboxController.First))
+            if (Input.GetKeyDown(KeyCode.RightArrow) || XCI.GetDPadDown(XboxDPad.Right, ControlerNamber) || input.x > 0.1f)
             {
                 sound01.PlayOneShot(sound01.clip);
                 if (pos.x >= 2.4f)
@@ -90,7 +100,7 @@ public class SelectStage : MonoBehaviour {
                     StageNum -=8;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.LeftArrow) || XCI.GetDPadDown(XboxDPad.Left, XboxController.First))
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || XCI.GetDPadDown(XboxDPad.Left, ControlerNamber) || input.x < -0.1f)
             {
                 sound01.PlayOneShot(sound01.clip);
                 if (pos.x <= -5.5f)
@@ -108,7 +118,7 @@ public class SelectStage : MonoBehaviour {
                     StageNum += 8;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, XboxController.First))
+            if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, ControlerNamber))
             {
                 if (StageNum == 8)
                 {
@@ -117,17 +127,18 @@ public class SelectStage : MonoBehaviour {
                 NumCount();
             }
                 myTransform.position = pos;  // 座標を設定
-            if (Input.GetKeyDown(KeyCode.Backspace) || XCI.GetButtonDown(XboxButton.A, XboxController.First))
+            if (Input.GetKeyDown(KeyCode.Backspace) || XCI.GetButtonDown(XboxButton.A, ControlerNamber))
             {
                 sound01.PlayOneShot(sound03.clip);
                 cursor = false;
             }
-            if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, XboxController.First))
+            if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, ControlerNamber))
             {
                 loadData = new PlayData(selectPN.PlayerNum, null, stage);
             }
         }
-        if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, XboxController.First))
+
+        if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, ControlerNamber))
         { 
             cursor = true;
         }        

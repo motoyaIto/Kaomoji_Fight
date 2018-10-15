@@ -5,6 +5,9 @@ using XboxCtrlrInput;
 
 public class SelectPNControll : MonoBehaviour {
 
+    [SerializeField, Header("コントローラー番号")]
+    private XboxController ControlerNamber = XboxController.First;//何番目のコントローラーを適用するか
+
     public GameObject numPlayer;
     bool cursor = true;
     private static readonly int PLAYERMAX = 4;
@@ -25,9 +28,13 @@ public class SelectPNControll : MonoBehaviour {
     {
         Transform myTransform = this.transform;
         Vector3 pos = myTransform.position;
+
+        // Controllerの左スティックのAxisを取得            
+        Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, ControlerNamber), XCI.GetAxis(XboxAxis.LeftStickY, ControlerNamber));
+
         if (cursor == true)
         {
-            if (Input.GetKeyDown(KeyCode.DownArrow) || XCI.GetDPadDown(XboxDPad.Down, XboxController.First))
+            if (Input.GetKeyDown(KeyCode.DownArrow) || XCI.GetDPadDown(XboxDPad.Down, ControlerNamber) || input.y < -0.1f)
             {
                 sound01.PlayOneShot(sound01.clip);
                 if (pos.y <= -3.3f)
@@ -47,7 +54,7 @@ public class SelectPNControll : MonoBehaviour {
                     PlayerNum = 1;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.UpArrow) || XCI.GetDPadDown(XboxDPad.Up, XboxController.First))
+            if (Input.GetKeyDown(KeyCode.UpArrow) || XCI.GetDPadDown(XboxDPad.Up, ControlerNamber) || input.y > 0.1f)
             {
                 sound01.PlayOneShot(sound01.clip);
                 if (pos.y >= 2.0f)
@@ -69,14 +76,14 @@ public class SelectPNControll : MonoBehaviour {
             }
             myTransform.position = pos;  // 座標を設定
             //プレイ人数を決定
-            if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, XboxController.First))
+            if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, ControlerNamber))
             {
                 sound01.PlayOneShot(sound02.clip);                
                 cursor = false;
                 numPlayer.transform.position += new Vector3(100, 0, 0);
             }           
         }
-        if (Input.GetKeyDown(KeyCode.Backspace) || XCI.GetButtonDown(XboxButton.A, XboxController.First))
+        if (Input.GetKeyDown(KeyCode.Backspace) || XCI.GetButtonDown(XboxButton.A, ControlerNamber))
         {
             if (cursor == false)
             {
