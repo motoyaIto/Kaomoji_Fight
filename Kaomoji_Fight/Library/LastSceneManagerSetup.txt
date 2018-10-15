@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/#scene/Play.unity
-=======
-- path: Assets/#scene/Select.unity
->>>>>>> dde72e6c8712d67f1897a450afe71cba866eced1
+- path: Assets/#scene/Player.unity
   isLoaded: 1
   isActive: 1
