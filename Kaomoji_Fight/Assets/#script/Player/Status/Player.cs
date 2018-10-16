@@ -23,14 +23,8 @@ public class Player : RaycastController {
     [Header("移動速度")]
     public float moveSpeed = 10;
 
-    [SerializeField, Header("復帰時の場所指定")]
-    private float RevivalPosX = 0f;
-
-    [SerializeField]
-    private float RevivalPosY = 50.0f;
-
     [SerializeField, Header("投げるものの推進力")]
-    private float thrust = 5f;
+    private float thrust = 2f;
 
     [SerializeField, Header("無敵時間")]
     private float Invincible_time = .5f;
@@ -54,11 +48,14 @@ public class Player : RaycastController {
     Rigidbody2D rig = null;
     [HideInInspector]
     public CollisionInfo collisions;
+    private PlaySceneManager PCM;
+
     #endregion
 
     new void Start()
     {
         controller = GetComponent<Contoroller2d>();
+        PCM = GameObject.Find("PlaySceneManager").transform.GetComponent<PlaySceneManager>();
   
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
@@ -150,7 +147,7 @@ public class Player : RaycastController {
             {
                 WeaponBlocController WB = weapon.GetComponent<WeaponBlocController>();
 
-                WB.Attack(direction);
+                WB.Attack(direction, thrust);
 
                 HaveWeapon = false;
 
@@ -159,7 +156,6 @@ public class Player : RaycastController {
             // 武器を捨てる
             if (XCI.GetButton(XboxButton.X, ControlerNamber))
             {
-                //WBController.Attack(direction, thrust);
                 Destroy(weapon);
 
                 HaveWeapon = false;
@@ -173,9 +169,9 @@ public class Player : RaycastController {
 
 
         // 落ちた時の対処
-        if (this.transform.position.y <= -30)
+        if (this.transform.position.y <= -50)
         {
-            this.transform.position = new Vector2(RevivalPosX, RevivalPosY);
+            Destroy(this.transform.gameObject);
         }
     }
 
@@ -281,8 +277,35 @@ public class Player : RaycastController {
         }
     }
 
+    private void OnDisable()
+    {
+        PCM.destroy_p = CNConvert(ControlerNamber);
+    }
+
+    // Controllerの番号をint型で取得
+    private int CNConvert(XboxController controlerNum)
+    {
+        if (controlerNum != 0)
+        {
+            switch (controlerNum)
+            {
+                case XboxController.First:
+                    return 0;
+                case XboxController.Second:
+                    return 1;
+                case XboxController.Third:
+                    return 2;
+                case XboxController.Fourth:
+                    return 3;
+                default:
+                    break;
+            }
+        }
+        return -1;
+    }
+
     // Hpのゲッターセッター
-    public float SetHP
+    public float ChangeHP
     {
         set
         {
@@ -305,4 +328,11 @@ public class Player : RaycastController {
         }
     }
 
+    //public int CNNum
+    //{
+    //    get
+    //    {
+    //        return CNConvert(ControlerNamber);
+    //    }
+    //}
 }

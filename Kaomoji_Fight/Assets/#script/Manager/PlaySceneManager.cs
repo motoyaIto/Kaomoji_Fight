@@ -23,14 +23,25 @@ public class PlaySceneManager : MonoBehaviour
     [SerializeField]
     private Color P4_nameColor = new Color(0.000f, 0.000f, 0.000f);
 
+    [SerializeField, Header("プレイヤーの復帰時の場所指定")]
+    private Vector3 RevivalPos = new Vector3(0f, 30f, 0f);
+
+
     private GameObject[] player_textuer;    //各プレイヤーの画像
 
     private GameObject[] players;       //プレイヤー
     private GameObject[] HPgage;        //HPゲージ
 
+    private Player playerCS;
+
+    private int death_player;
+
     // Use this for initialization
     void Start()
     {
+        playerCS = GetComponent<Player>();
+        death_player = -1;
+
         //プレイヤー分の配列を確保
         players = new GameObject[PlayData.Instance.playerNum];
         HPgage = new GameObject[PlayData.Instance.playerNum];
@@ -52,13 +63,39 @@ public class PlaySceneManager : MonoBehaviour
 
             //プレイヤーとHPバーを生成
             this.CreatePlayer(players[i], HPgage[i], i);
+
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (death_player >= 0)
+        {
+            // 死んだプレイヤーの生成
+            players[death_player] = (GameObject)Resources.Load("prefab/Player");
+            GameObject P = Instantiate(players[death_player], new Vector3(2.5f, 50.0f, 0.0f), Quaternion.identity);
+
+            switch (death_player)
+            {
+                case 0:
+                    this.SetPlayerStatus(P, XboxController.First, "P1", PlayData.Instance.PlayersFace[death_player]);
+                    break;
+                case 1:
+                    this.SetPlayerStatus(P, XboxController.Second, "P2", PlayData.Instance.PlayersFace[death_player]);
+                    break;
+                case 2:
+                    this.SetPlayerStatus(P, XboxController.Third, "P3", PlayData.Instance.PlayersFace[death_player]);
+                    break;
+                case 3:
+                    this.SetPlayerStatus(P, XboxController.Fourth, "P4", PlayData.Instance.PlayersFace[death_player]);
+                    break;
+                default:
+                    break;
+            }
+            
+            death_player = -1;
+        }
     }
 
     /// <summary>
@@ -205,4 +242,13 @@ public class PlaySceneManager : MonoBehaviour
             player_textuer = value;
         }
     }
+
+    public int destroy_p
+    {
+        set
+        {
+            death_player = value;
+        }
+    }
+
 }
