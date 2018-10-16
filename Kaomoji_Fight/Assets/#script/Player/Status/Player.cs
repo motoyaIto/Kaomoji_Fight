@@ -148,10 +148,9 @@ public class Player : RaycastController {
             //武器を使う
             if (XCI.GetButtonDown(XboxButton.B, ControlerNamber) && controller.collisions.below)
             {
-                //GameObject re = Weapon.GetComponent<GameObject>();
-                weapon.AddComponent<Rigidbody2D>();
+                WeaponBlocController WB = weapon.GetComponent<WeaponBlocController>();
 
-                Destroy(transform.GetChild(1).gameObject);
+                WB.Attack(direction);
 
                 HaveWeapon = false;
 
