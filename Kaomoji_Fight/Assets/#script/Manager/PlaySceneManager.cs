@@ -34,6 +34,8 @@ public class PlaySceneManager : MonoBehaviour
 
     private Player playerCS;
 
+    private Slider[] hpgage_slider;
+
     private int death_player;
 
     // Use this for initialization
@@ -41,6 +43,7 @@ public class PlaySceneManager : MonoBehaviour
     {
         playerCS = GetComponent<Player>();
         death_player = -1;
+
 
         //プレイヤー分の配列を確保
         players = new GameObject[PlayData.Instance.playerNum];
@@ -64,12 +67,16 @@ public class PlaySceneManager : MonoBehaviour
             //プレイヤーとHPバーを生成
             this.CreatePlayer(players[i], HPgage[i], i);
 
+            // HPを管理する
+            HPgage[i].GetComponent<Slider>().maxValue = players[i].transform.gameObject.GetComponent<Player>().HP;
         }
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        // プレイヤーが死んだ
         if (death_player >= 0)
         {
             // 死んだプレイヤーの生成
@@ -93,7 +100,7 @@ public class PlaySceneManager : MonoBehaviour
                 default:
                     break;
             }
-            
+            //hpgage_slider[death_player].value = players[death_player].transform.gameObject.GetComponent<Player>().Damage(players[death_player].transform.gameObject.GetComponent<Player>().HP / 10f);
             death_player = -1;
         }
     }
