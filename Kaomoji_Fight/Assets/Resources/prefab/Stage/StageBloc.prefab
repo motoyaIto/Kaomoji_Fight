@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 33283068999634186}
   - component: {fileID: 23070714555019838}
   - component: {fileID: 61993061788404006}
-  - component: {fileID: 114290165158415410}
+  - component: {fileID: 114039381274472756}
   m_Layer: 8
   m_Name: StageBloc
   m_TagString: Untagged
@@ -122,7 +122,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a38d1f7234e68f14299cadf0b0930ddb, type: 2}
+  - {fileID: 2100000, guid: 24954c4d5c48c414d8eecc832bd60c31, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -195,7 +195,7 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4278190080
---- !u!114 &114290165158415410
+--- !u!114 &114039381274472756
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
