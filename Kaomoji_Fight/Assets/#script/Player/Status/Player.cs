@@ -304,13 +304,21 @@ public class Player : RaycastController {
         return -1;
     }
 
-    // Hpのゲッターセッター
-    public float ChangeHP
+
+    // ダメージを受ける
+    public float Damage(float damage)
     {
-        set
-        {
-            nowHp = value;
-        }
+        return nowHp - damage;
+    }
+
+
+    // Hpのゲッターセッター
+    public float HP
+    {
+        //set
+        //{
+        //    nowHp = value;
+        //}
         get
         {
             return nowHp;
