@@ -13,6 +13,7 @@ public class SelectStage : MonoBehaviour {
 
     SelectPNControll selectPN;
     bool cursor = false;
+    bool move = true;
     private string stage;
     private static readonly int STAGEMAX = 8;
     private AudioSource sound01;
@@ -37,24 +38,56 @@ public class SelectStage : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        StartCoroutine("Select");      
+        StartCoroutine("coRoutine");     
+    }
+    IEnumerator coRoutine()
+    {
+        yield return new WaitForSeconds(1); // num秒待機
+        SceneManagerController.LoadScene();
+    }
+
+    IEnumerator Select()
+    {        
         Transform myTransform = this.transform;
         Vector3 pos = myTransform.position;
 
         // Controllerの左スティックのAxisを取得            
         Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, ControlerNamber), XCI.GetAxis(XboxAxis.LeftStickY, ControlerNamber));
 
+        if (input.y < -0.9f || input.y > 0.9f|| input.x < -0.9f || input.x > 0.9f)
+        {
+            move = false;
+        }
+
         if (cursor == true)
         {
-            if (Input.GetKeyDown(KeyCode.DownArrow) || XCI.GetDPadDown(XboxDPad.Down, ControlerNamber) || input.y < -0.1f)
+            if (Input.GetKeyDown(KeyCode.DownArrow) || XCI.GetDPadDown(XboxDPad.Down, ControlerNamber) || input.y < -0.9f)
             {
-                sound01.PlayOneShot(sound01.clip);
-                if (pos.y <= -3.3f)
+                if (move == true)
                 {
-                    pos.y = 2.2f;
+                    sound01.PlayOneShot(sound01.clip);
+                    if (pos.y <= -3.3f)
+                    {
+                        pos.y = 2.2f;
+                    }
+                    else
+                    {
+                        pos.y -= 1.9f;
+                    }
                 }
-                else
+                if (move == false)
                 {
-                    pos.y -= 1.9f;
+                    yield return new WaitForSeconds(0.1f); // num秒待機
+                    sound01.PlayOneShot(sound01.clip);
+                    if (pos.y <= -3.3f)
+                    {
+                        pos.y = 2.2f;
+                    }
+                    else
+                    {
+                        pos.y -= 1.9f;
+                    }
                 }
                 StageNum++;
 
@@ -63,16 +96,32 @@ public class SelectStage : MonoBehaviour {
                     StageNum = 1;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.UpArrow) || XCI.GetDPadDown(XboxDPad.Up, ControlerNamber) || input.y > 0.1f)
+            if (Input.GetKeyDown(KeyCode.UpArrow) || XCI.GetDPadDown(XboxDPad.Up, ControlerNamber) || input.y > 0.9f)
             {
-                sound01.PlayOneShot(sound01.clip);
-                if (pos.y >= 2.0f)
+                if (move == true)
                 {
-                    pos.y = -3.5f;
+                    sound01.PlayOneShot(sound01.clip);
+                    if (pos.y >= 2.0f)
+                    {
+                        pos.y = -3.5f;
+                    }
+                    else
+                    {
+                        pos.y += 1.9f;
+                    }
                 }
-                else
+                if (move == false)
                 {
-                    pos.y += 1.9f;
+                    yield return new WaitForSeconds(0.1f); // num秒待機
+                    sound01.PlayOneShot(sound01.clip);
+                    if (pos.y >= 2.0f)
+                    {
+                        pos.y = -3.5f;
+                    }
+                    else
+                    {
+                        pos.y += 1.9f;
+                    }
                 }
                 StageNum--;
 
@@ -82,34 +131,66 @@ public class SelectStage : MonoBehaviour {
                 }
 
             }
-            if (Input.GetKeyDown(KeyCode.RightArrow) || XCI.GetDPadDown(XboxDPad.Right, ControlerNamber) || input.x > 0.1f)
+            if (Input.GetKeyDown(KeyCode.RightArrow) || XCI.GetDPadDown(XboxDPad.Right, ControlerNamber) || input.x > 0.9f)
             {
-                sound01.PlayOneShot(sound01.clip);
-                if (pos.x >= 2.4f)
+                if (move == true)
                 {
-                    pos.x = -5.5f;
+                    sound01.PlayOneShot(sound01.clip);
+                    if (pos.x >= 2.4f)
+                    {
+                        pos.x = -5.5f;
+                    }
+                    else
+                    {
+                        pos.x = 2.4f;
+                    }
                 }
-                else
+                if (move == false)
                 {
-                    pos.x = 2.4f;
+                    yield return new WaitForSeconds(0.1f); // num秒待機
+                    sound01.PlayOneShot(sound01.clip);
+                    if (pos.x >= 2.4f)
+                    {
+                        pos.x = -5.5f;
+                    }
+                    else
+                    {
+                        pos.x = 2.4f;
+                    }
                 }
                 StageNum += 4;
 
                 if (StageNum > STAGEMAX)
                 {
-                    StageNum -=8;
+                     StageNum -= 8;
                 }
-            }
-            if (Input.GetKeyDown(KeyCode.LeftArrow) || XCI.GetDPadDown(XboxDPad.Left, ControlerNamber) || input.x < -0.1f)
+            }            
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || XCI.GetDPadDown(XboxDPad.Left, ControlerNamber) || input.x < -0.9f)
             {
-                sound01.PlayOneShot(sound01.clip);
-                if (pos.x <= -5.5f)
+                if (move == true)
                 {
-                    pos.x = 2.4f;
+                    sound01.PlayOneShot(sound01.clip);
+                    if (pos.x <= -5.5f)
+                    {
+                        pos.x = 2.4f;
+                    }
+                    else
+                    {
+                        pos.x = -5.5f;
+                    }
                 }
-                else
+                if (move == false)
                 {
-                    pos.x = -5.5f;
+                    yield return new WaitForSeconds(0.1f); // num秒待機
+                    sound01.PlayOneShot(sound01.clip);
+                    if (pos.x <= -5.5f)
+                    {
+                        pos.x = 2.4f;
+                    }
+                    else
+                    {
+                        pos.x = -5.5f;
+                    }
                 }
                 StageNum -= 4;
 
@@ -126,7 +207,7 @@ public class SelectStage : MonoBehaviour {
                 }
                 NumCount();
             }
-                myTransform.position = pos;  // 座標を設定
+            myTransform.position = pos;  // 座標を設定
             if (Input.GetKeyDown(KeyCode.Backspace) || XCI.GetButtonDown(XboxButton.A, ControlerNamber))
             {
                 sound01.PlayOneShot(sound03.clip);
@@ -139,13 +220,13 @@ public class SelectStage : MonoBehaviour {
         }
 
         if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, ControlerNamber))
-        { 
+        {
             cursor = true;
-        }        
+        }
     }
 
     void NumCount()
-    {        
+    {
         if (StageNum == 1)
         {
             stage = "stage1";
@@ -154,7 +235,7 @@ public class SelectStage : MonoBehaviour {
         {
             stage = "stage2";
         }
-            if (StageNum == 3)
+        if (StageNum == 3)
         {
             stage = "stage3";
         }
@@ -178,16 +259,10 @@ public class SelectStage : MonoBehaviour {
 
         if (StageNum == 8)
         {
-            StageNum =Random.Range(1, 8);
+            StageNum = Random.Range(1, 8);
         }
 
         Debug.Log(stage);
-        sound01.PlayOneShot(sound02.clip);        
-        StartCoroutine("coRoutine");     
-    }
-    IEnumerator coRoutine()
-    {
-        yield return new WaitForSeconds(1); // num秒待機
-        SceneManagerController.LoadScene();
+        sound01.PlayOneShot(sound02.clip);
     }
 }
