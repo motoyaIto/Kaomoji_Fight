@@ -252,18 +252,6 @@
     </Reference>
     <Reference Include="UnityEditor.Graphs">
       <HintPath>Library\UnityAssemblies\UnityEditor.Graphs.dll</HintPath>
-<<<<<<< HEAD
-=======
-    </Reference>
-    <Reference Include="UnityEditor.Android.Extensions">
-      <HintPath>Library\UnityAssemblies\UnityEditor.Android.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.WSA.Extensions">
-      <HintPath>Library\UnityAssemblies\UnityEditor.WSA.Extensions.dll</HintPath>
->>>>>>> master
     </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>Library\UnityAssemblies\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
@@ -388,11 +376,7 @@
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\Plugins\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
-<<<<<<< HEAD
     <None Include="Assets\Resources\Sound\BGM\Play\ButtleBGM%E3%82%AF%E3%83%AC%E3%82%B8%E3%83%83%E3%83%88.txt" />
-=======
-    <None Include="Assets\Resources\Sound\BGM\Play\ButtleBGMクレジット.txt" />
->>>>>>> master
     <None Include="Assets\Resources\Texts\stage1.txt" />
     <None Include="Assets\Resources\Texts\test.txt" />
     <None Include="Assets\Shader\Select\Cursor.shader" />

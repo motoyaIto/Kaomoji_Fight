@@ -219,18 +219,6 @@
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>Library\UnityAssemblies\UnityEngine.SpatialTracking.dll</HintPath>
-<<<<<<< HEAD
-=======
-    </Reference>
-    <Reference Include="UnityEngine.Analytics">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.StandardEvents">
-      <HintPath>Library\UnityAssemblies\UnityEngine.StandardEvents.dll</HintPath>
->>>>>>> master
     </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
@@ -258,8 +246,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Include="Assets\%23scene\Test\MoveScript1.cs" />
+    <Compile Include="Assets\%23scene\Test\SliderTest.cs" />
     <Compile Include="Assets\%23script\Camera\MultipleTargetCamera.cs" />
     <Compile Include="Assets\%23script\DummySceneStart.cs" />
     <Compile Include="Assets\%23script\LayerName.cs" />
@@ -280,30 +268,6 @@
     <Compile Include="Assets\%23script\Stage\CreateStage.cs" />
     <Compile Include="Assets\%23script\Test\TestShader.cs" />
     <Compile Include="Assets\%23script\Title\Title.cs" />
-=======
-    <Compile Include="Assets\#scene\Test\MoveScript1.cs" />
-    <Compile Include="Assets\#scene\Test\SliderTest.cs" />
-    <Compile Include="Assets\#script\Camera\MultipleTargetCamera.cs" />
-    <Compile Include="Assets\#script\DummySceneStart.cs" />
-    <Compile Include="Assets\#script\LayerName.cs" />
-    <Compile Include="Assets\#script\Manager\PlaySceneManager.cs" />
-    <Compile Include="Assets\#script\PlayData.cs" />
-    <Compile Include="Assets\#script\Player\Jump\Controller2D.cs" />
-    <Compile Include="Assets\#script\Player\Jump\PlatformController.cs" />
-    <Compile Include="Assets\#script\Player\Jump\RaycastController.cs" />
-    <Compile Include="Assets\#script\Player\Status\Contoroller2d.cs" />
-    <Compile Include="Assets\#script\Player\Status\Player.cs" />
-    <Compile Include="Assets\#script\Player\Weapon\WeaponBlocController.cs" />
-    <Compile Include="Assets\#script\SceneManagerController.cs" />
-    <Compile Include="Assets\#script\SceneTimer.cs" />
-    <Compile Include="Assets\#script\Select\CursorHue.cs" />
-    <Compile Include="Assets\#script\Select\SelectPNControll.cs" />
-    <Compile Include="Assets\#script\Select\SelectStage.cs" />
-    <Compile Include="Assets\#script\Stage\BlockController.cs" />
-    <Compile Include="Assets\#script\Stage\CreateStage.cs" />
-    <Compile Include="Assets\#script\Test\TestShader.cs" />
-    <Compile Include="Assets\#script\Title\Title.cs" />
->>>>>>> master
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBlendListCamera.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBrain.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineClearShot.cs" />
@@ -386,11 +350,7 @@
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\Plugins\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
-<<<<<<< HEAD
     <None Include="Assets\Resources\Sound\BGM\Play\ButtleBGM%E3%82%AF%E3%83%AC%E3%82%B8%E3%83%83%E3%83%88.txt" />
-=======
-    <None Include="Assets\Resources\Sound\BGM\Play\ButtleBGMクレジット.txt" />
->>>>>>> master
     <None Include="Assets\Resources\Texts\stage1.txt" />
     <None Include="Assets\Resources\Texts\test.txt" />
     <None Include="Assets\Shader\Select\Cursor.shader" />
