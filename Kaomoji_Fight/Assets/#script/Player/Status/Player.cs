@@ -235,9 +235,10 @@ public class Player : RaycastController {
     private void GetWeapon(RaycastHit2D hitFoot, float directionX)
     {
         GameObject block = hitFoot.collider.gameObject;
+        BlockController block_cs = block.GetComponent<BlockController>();
 
         //武器を持っていなかったら
-        if (HaveWeapon == false)
+        if (HaveWeapon == false && block_cs.Weapon == true)
         {
             //床を武器として取得
             weapon = Object.Instantiate(block) as GameObject;

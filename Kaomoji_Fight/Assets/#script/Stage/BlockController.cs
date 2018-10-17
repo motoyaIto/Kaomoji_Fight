@@ -6,8 +6,12 @@ public class BlockController : MonoBehaviour {
 
     [SerializeField]
     private float ResetTime = 10.0f;
-	// Use this for initialization
-	void Start () {
+
+    private bool WeaponBlock = false;//武器(true)ではない(false)
+
+    // Use this for initialization
+
+    void Start () {
         colliderOfPass = GetComponent<BoxCollider2D>();
     }
 	
@@ -25,16 +29,21 @@ public class BlockController : MonoBehaviour {
 
     private void OnDisable()
     {
+        //ResetTime後、床を復帰する
         Invoke("ReStageBlock", ResetTime);
     }
 
-
+    /// <summary>
+    /// 床の復帰処理
+    /// </summary>
     public void ReStageBlock()
     {
         this.gameObject.SetActive(true);
     }
 
-
+    /// <summary>
+    /// 床を抜く
+    /// </summary>
     public void ChangeWeapon()
     {
         this.gameObject.SetActive(false);
@@ -59,6 +68,22 @@ public class BlockController : MonoBehaviour {
         if (col.gameObject.tag == "Player")
         {
             setPass = false;
+        }
+    }
+
+    /// <summary>
+    /// 武器(true)ではない(false)
+    /// </summary>
+    public bool Weapon
+    {
+        get
+        {
+            return WeaponBlock;
+        }
+
+        set
+        {
+            WeaponBlock = value;
         }
     }
 }
