@@ -38,8 +38,7 @@ public class SelectStage : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine("Select");      
-        StartCoroutine("coRoutine");     
+        StartCoroutine("Select");              
     }
     IEnumerator coRoutine()
     {
@@ -90,10 +89,13 @@ public class SelectStage : MonoBehaviour {
                     }
                 }
                 StageNum++;
-
-                if (StageNum > STAGEMAX)
+                if (StageNum > 4 && pos.x >= -5.7 && pos.x <= 5.3)
                 {
                     StageNum = 1;
+                }
+                if(StageNum>STAGEMAX && pos.x>=2.2 && pos.x<=2.6)
+                {
+                    StageNum = 5;
                 }
             }
             if (Input.GetKeyDown(KeyCode.UpArrow) || XCI.GetDPadDown(XboxDPad.Up, ControlerNamber) || input.y > 0.9f)
@@ -124,10 +126,13 @@ public class SelectStage : MonoBehaviour {
                     }
                 }
                 StageNum--;
-
-                if (StageNum < 1)
+                if (StageNum < 1 && pos.x >= -5.7 && pos.x<=5.3)
                 {
                     StageNum = 4;
+                }
+                if (StageNum > 5 && pos.x >= 2.2 && pos.x <= 2.6)
+                {
+                    StageNum = 8;
                 }
 
             }
@@ -216,6 +221,7 @@ public class SelectStage : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, ControlerNamber))
             {
                 loadData = new PlayData(selectPN.PlayerNum, null, stage);
+                StartCoroutine("coRoutine");
             }
         }
 
