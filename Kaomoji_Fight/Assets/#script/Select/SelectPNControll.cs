@@ -48,7 +48,10 @@ public class SelectPNControll : MonoBehaviour {
             {
                 if(move==true)
                 {
-                    sound01.PlayOneShot(sound01.clip);
+                    if (sound01.isPlaying == false)
+                    {
+                        sound01.PlayOneShot(sound01.clip);
+                    }
                     if (pos.y <= -3.3f)
                     {
                         pos.y = 2.2f;
@@ -69,7 +72,10 @@ public class SelectPNControll : MonoBehaviour {
                     {
                         pos.y -= 1.9f;
                     }
-                    sound01.PlayOneShot(sound01.clip);
+                    if (sound01.isPlaying == false)
+                    {
+                        sound01.PlayOneShot(sound01.clip);
+                    }
                 }
                 //プレイヤーの合計人数
                 PlayerNum++;
@@ -83,7 +89,10 @@ public class SelectPNControll : MonoBehaviour {
             {
                 if (move == true)
                 {
-                    sound01.PlayOneShot(sound01.clip);
+                    if (sound01.isPlaying == false)
+                    {
+                        sound01.PlayOneShot(sound01.clip);
+                    }
                     if (pos.y >= 2.0f)
                     {
                         pos.y = -3.5f;
@@ -105,7 +114,10 @@ public class SelectPNControll : MonoBehaviour {
                     {
                         pos.y += 1.9f;
                     }
-                    sound01.PlayOneShot(sound01.clip);
+                    if (sound01.isPlaying == false)
+                    {
+                        sound01.PlayOneShot(sound01.clip);
+                    }
                 }
 
                 //プレイヤーの合計人数

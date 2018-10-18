@@ -65,6 +65,10 @@ public class SelectStage : MonoBehaviour {
             {
                 if (move == true)
                 {
+                    if (sound01.isPlaying == false)
+                    {
+                        sound01.PlayOneShot(sound01.clip);
+                    }
                     sound01.PlayOneShot(sound01.clip);
                     if (pos.y <= -3.3f)
                     {
@@ -78,7 +82,10 @@ public class SelectStage : MonoBehaviour {
                 if (move == false)
                 {
                     yield return new WaitForSeconds(0.1f); // num秒待機
-                    sound01.PlayOneShot(sound01.clip);
+                    if (sound01.isPlaying == false)
+                    {
+                        sound01.PlayOneShot(sound01.clip);
+                    }
                     if (pos.y <= -3.3f)
                     {
                         pos.y = 2.2f;
@@ -102,7 +109,10 @@ public class SelectStage : MonoBehaviour {
             {
                 if (move == true)
                 {
-                    sound01.PlayOneShot(sound01.clip);
+                    if (sound01.isPlaying == false)
+                    {
+                        sound01.PlayOneShot(sound01.clip);
+                    }
                     if (pos.y >= 2.0f)
                     {
                         pos.y = -3.5f;
@@ -115,7 +125,10 @@ public class SelectStage : MonoBehaviour {
                 if (move == false)
                 {
                     yield return new WaitForSeconds(0.1f); // num秒待機
-                    sound01.PlayOneShot(sound01.clip);
+                    if (sound01.isPlaying == false)
+                    {
+                        sound01.PlayOneShot(sound01.clip);
+                    }
                     if (pos.y >= 2.0f)
                     {
                         pos.y = -3.5f;
@@ -140,7 +153,10 @@ public class SelectStage : MonoBehaviour {
             {
                 if (move == true)
                 {
-                    sound01.PlayOneShot(sound01.clip);
+                    if (sound01.isPlaying == false)
+                    {
+                        sound01.PlayOneShot(sound01.clip);
+                    }
                     if (pos.x >= 2.4f)
                     {
                         pos.x = -5.5f;
@@ -153,7 +169,10 @@ public class SelectStage : MonoBehaviour {
                 if (move == false)
                 {
                     yield return new WaitForSeconds(0.1f); // num秒待機
-                    sound01.PlayOneShot(sound01.clip);
+                    if (sound01.isPlaying == false)
+                    {
+                        sound01.PlayOneShot(sound01.clip);
+                    }
                     if (pos.x >= 2.4f)
                     {
                         pos.x = -5.5f;
@@ -174,7 +193,10 @@ public class SelectStage : MonoBehaviour {
             {
                 if (move == true)
                 {
-                    sound01.PlayOneShot(sound01.clip);
+                    if (sound01.isPlaying == false)
+                    {
+                        sound01.PlayOneShot(sound01.clip);
+                    }
                     if (pos.x <= -5.5f)
                     {
                         pos.x = 2.4f;
@@ -187,7 +209,10 @@ public class SelectStage : MonoBehaviour {
                 if (move == false)
                 {
                     yield return new WaitForSeconds(0.1f); // num秒待機
-                    sound01.PlayOneShot(sound01.clip);
+                    if (sound01.isPlaying == false)
+                    {
+                        sound01.PlayOneShot(sound01.clip);
+                    }
                     if (pos.x <= -5.5f)
                     {
                         pos.x = 2.4f;
