@@ -69,6 +69,7 @@ public class PlaySceneManager : MonoBehaviour
 
             // HPを管理する
             HPgage[i].GetComponent<Slider>().maxValue = players[i].transform.gameObject.GetComponent<Player>().HP;
+            HPgage[i].GetComponent<Slider>().value = HPgage[i].GetComponent<Slider>().maxValue;
         }
 
     }
