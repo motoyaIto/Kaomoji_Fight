@@ -1,0 +1,285 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1008812913, guid: e9fbd6df3db650a40a067cea69b3b7da, type: 3}
+  m_Name: ElectronicMusic
+  m_EditorClassIdentifier: 
+  tracks:
+  - randomRadiusMax: 1
+    randomLocationMin: {x: 0, y: 0, z: 0}
+    randomLocationMax: {x: 1, y: 1, z: 1}
+    randomLocationMode: 0
+    locationMode: 0
+    location: {x: 0, y: 0, z: 0}
+    spatialBlend: 0
+    pan: 0
+    name: trance_drum
+    volumeCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    useVolumeCurve: 0
+    randomPitchEnabled: 0
+    pitchMin: 0
+    pitchMax: 0
+    randomVolumeEnabled: 0
+    volumeMin: 0
+    volumeMax: 0
+    clip: {fileID: 0}
+    audioData:
+      clips:
+      - {fileID: 8300000, guid: 96f5936510be85e4ab6d4beefe0d008e, type: 3}
+    start: 0
+    inPosition: 0
+    outPosition: 0
+    overflowPosition: 0
+    underflowPosition: 0
+    pitch: 1
+    volume: 1
+    playingProbability: 1
+    enabled: 1
+    reverse: 0
+    forceNativeLooped: 0
+  - randomRadiusMax: 1
+    randomLocationMin: {x: 0, y: 0, z: 0}
+    randomLocationMax: {x: 1, y: 1, z: 1}
+    randomLocationMode: 0
+    locationMode: 0
+    location: {x: 0, y: 0, z: 0}
+    spatialBlend: 0
+    pan: 0
+    name: trance_bass
+    volumeCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    useVolumeCurve: 0
+    randomPitchEnabled: 0
+    pitchMin: 0
+    pitchMax: 0
+    randomVolumeEnabled: 0
+    volumeMin: 0
+    volumeMax: 0
+    clip: {fileID: 0}
+    audioData:
+      clips:
+      - {fileID: 8300000, guid: 2d31f7329a4bab445bf5966df6859f49, type: 3}
+    start: 0
+    inPosition: 0
+    outPosition: 0
+    overflowPosition: 0
+    underflowPosition: 0
+    pitch: 1
+    volume: 1
+    playingProbability: 1
+    enabled: 1
+    reverse: 0
+    forceNativeLooped: 1
+  - randomRadiusMax: 1
+    randomLocationMin: {x: 0, y: 0, z: 0}
+    randomLocationMax: {x: 1, y: 1, z: 1}
+    randomLocationMode: 0
+    locationMode: 0
+    location: {x: 0, y: 0, z: 0}
+    spatialBlend: 0
+    pan: 0
+    name: trance_perc
+    volumeCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    useVolumeCurve: 0
+    randomPitchEnabled: 0
+    pitchMin: 0
+    pitchMax: 0
+    randomVolumeEnabled: 1
+    volumeMin: 0.63978493
+    volumeMax: 1
+    clip: {fileID: 0}
+    audioData:
+      clips:
+      - {fileID: 8300000, guid: 2b7b4fa849a3b364ca8eaaafc5c0b1c8, type: 3}
+    start: 0
+    inPosition: 0
+    outPosition: 0
+    overflowPosition: 0
+    underflowPosition: 0
+    pitch: 1
+    volume: 1
+    playingProbability: 0.9
+    enabled: 1
+    reverse: 0
+    forceNativeLooped: 1
+  - randomRadiusMax: 1
+    randomLocationMin: {x: 0, y: 0, z: 0}
+    randomLocationMax: {x: 1, y: 1, z: 1}
+    randomLocationMode: 0
+    locationMode: 0
+    location: {x: 0, y: 0, z: 0}
+    spatialBlend: 0
+    pan: 0
+    name: trance_ap_scream
+    volumeCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    useVolumeCurve: 0
+    randomPitchEnabled: 0
+    pitchMin: 0
+    pitchMax: 0
+    randomVolumeEnabled: 0
+    volumeMin: 0
+    volumeMax: 0
+    clip: {fileID: 0}
+    audioData:
+      clips:
+      - {fileID: 8300000, guid: c0bf17619b9642f4583011b29c3af586, type: 3}
+    start: 0
+    inPosition: 0
+    outPosition: 0
+    overflowPosition: 0
+    underflowPosition: 0
+    pitch: 1
+    volume: 0.6
+    playingProbability: 0.8
+    enabled: 1
+    reverse: 0
+    forceNativeLooped: 1
+  - randomRadiusMax: 1
+    randomLocationMin: {x: 0, y: 0, z: 0}
+    randomLocationMax: {x: 1, y: 1, z: 1}
+    randomLocationMode: 0
+    locationMode: 0
+    location: {x: 0, y: 0, z: 0}
+    spatialBlend: 0
+    pan: 0
+    name: trance_hp_seq
+    volumeCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    useVolumeCurve: 0
+    randomPitchEnabled: 0
+    pitchMin: 0
+    pitchMax: 0
+    randomVolumeEnabled: 0
+    volumeMin: 0
+    volumeMax: 0
+    clip: {fileID: 0}
+    audioData:
+      clips:
+      - {fileID: 8300000, guid: e7eb7224a28b33747b4a70337439be76, type: 3}
+    start: 0
+    inPosition: 0
+    outPosition: 0
+    overflowPosition: 0
+    underflowPosition: 0
+    pitch: 1
+    volume: 0.6
+    playingProbability: 0.715
+    enabled: 1
+    reverse: 0
+    forceNativeLooped: 1
+  - randomRadiusMax: 1
+    randomLocationMin: {x: 0, y: 0, z: 0}
+    randomLocationMax: {x: 1, y: 1, z: 1}
+    randomLocationMode: 0
+    locationMode: 0
+    location: {x: 0, y: 0, z: 0}
+    spatialBlend: 0
+    pan: 0
+    name: trance_mellow
+    volumeCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    useVolumeCurve: 0
+    randomPitchEnabled: 0
+    pitchMin: 0
+    pitchMax: 0
+    randomVolumeEnabled: 0
+    volumeMin: 0
+    volumeMax: 0
+    clip: {fileID: 0}
+    audioData:
+      clips:
+      - {fileID: 8300000, guid: 082a80182ceec304b8e2f6e4a0976d41, type: 3}
+    start: 0
+    inPosition: 0
+    outPosition: 0
+    overflowPosition: 0
+    underflowPosition: 0
+    pitch: 1
+    volume: 0.9
+    playingProbability: 0.95
+    enabled: 1
+    reverse: 0
+    forceNativeLooped: 1
+  - randomRadiusMax: 1
+    randomLocationMin: {x: 0, y: 0, z: 0}
+    randomLocationMax: {x: 1, y: 1, z: 1}
+    randomLocationMode: 0
+    locationMode: 0
+    location: {x: 0, y: 0, z: 0}
+    spatialBlend: 0
+    pan: 0
+    name: trance_mellow_high
+    volumeCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    useVolumeCurve: 0
+    randomPitchEnabled: 0
+    pitchMin: 0
+    pitchMax: 0
+    randomVolumeEnabled: 0
+    volumeMin: 0
+    volumeMax: 0
+    clip: {fileID: 0}
+    audioData:
+      clips:
+      - {fileID: 8300000, guid: ca1934cc8f920dd43ab345d9630c4e70, type: 3}
+    start: 0
+    inPosition: 0
+    outPosition: 0
+    overflowPosition: 0
+    underflowPosition: 0
+    pitch: 1
+    volume: 0.75
+    playingProbability: 0.7
+    enabled: 1
+    reverse: 0
+    forceNativeLooped: 1
+  cuePoints: []
+  loops:
+  - id: 0
+    name: 
+    start: 0
+    length: 13714
+    trackID: 0
+    mode: 3
+    passCount: 2
+  length: 13714
+  samples: 658272
+  sampleRate: 48000

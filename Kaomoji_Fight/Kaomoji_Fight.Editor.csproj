@@ -296,6 +296,24 @@
       <HintPath>Assets\Plugins\TextMesh Pro\Plugins\Editor DLL\TextMeshPro-2017.3-Runtime.dll</HintPath>
 >>>>>>> master
     </Reference>
+    <Reference Include="ch.sycoforge.Unity.Editor">
+      <HintPath>Assets\Plugins\vivaldi\nu Assets\Shared\Scripts\Editor\ch.sycoforge.Unity.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="ch.sycoforge.Vivaldi.Editor">
+      <HintPath>Assets\Plugins\vivaldi\nu Assets\Vivaldi\Scripts\Editor\ch.sycoforge.Vivaldi.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="ch.sycoforge.Imaging">
+      <HintPath>Assets\Plugins\vivaldi\nu Assets\Shared\Scripts\Editor\ch.sycoforge.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="ch.sycoforge.Logging">
+      <HintPath>Assets\Plugins\vivaldi\nu Assets\Shared\Scripts\ch.sycoforge.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="ch.sycoforge.Unity.Runtime">
+      <HintPath>Assets\Plugins\vivaldi\nu Assets\Shared\Scripts\ch.sycoforge.Unity.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="ch.sycoforge.Vivaldi">
+      <HintPath>Assets\Plugins\vivaldi\nu Assets\Vivaldi\Scripts\ch.sycoforge.Vivaldi.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Kaomoji_Fight.Plugins.csproj">
@@ -387,7 +405,12 @@
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\Plugins\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
 <<<<<<< HEAD
+    <None Include="Assets\Plugins\vivaldi\nu Assets\Vivaldi\Scripts\ch.sycoforge.Vivaldi.XML" />
+    <None Include="Assets\Plugins\vivaldi\nu Assets\Vivaldi\Shaders\WaveformUI.shader" />
 =======
+<<<<<<< HEAD
+=======
+>>>>>>> master
     <None Include="Assets\Resources\Sound\BGM\Play\ButtleBGMクレジット.txt" />
     <None Include="Assets\Resources\Texts\stage1.txt" />
     <None Include="Assets\Resources\Texts\test.txt" />
@@ -401,6 +424,8 @@
     <None Include="Assets\Shader\Test\VertexShader.shader" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+    <None Include="Assets\ーCredit\Assets.txt" />
+    <None Include="Assets\ーCredit\参考サイト.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
