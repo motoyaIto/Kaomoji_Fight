@@ -5,21 +5,21 @@ using System.Text;
 
 public class DummySceneStart : MonoBehaviour {
 
-    [SerializeField, Header("プレイ人数（デバッグ用）")]
-    private int Player_Num = 2;
-    private PlayData playerdata;
+    private PlayData playedata;//プレイデータ
 
     [SerializeField, Header("選択したステージ名(.txt記述しなくて良い)（デバッグ用）")]
     private string textmame = "stage1";
 
+    [SerializeField, Header("プレイヤーの名前(デバッグ用)")]
+    private string[] playersName = { "P1", "P2", "P3", "P4"};
     [SerializeField, Header("プレイヤーの顔（デバッグ用）")]
     Sprite[] playersface;
    
     private void Awake()
     {
-        string DammySelectStage =textmame;
+        //string DammySelectStage =textmame;
 
-        playerdata = new PlayData(Player_Num, playersface, DammySelectStage);
+        playedata = new PlayData(textmame, playersName, playersface);
     }
 
     // Use this for initialization
