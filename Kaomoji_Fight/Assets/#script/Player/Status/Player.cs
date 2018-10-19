@@ -314,10 +314,6 @@ public class Player : RaycastController {
     // Hpのゲッターセッター
     public float HP
     {
-        //set
-        //{
-        //    nowHp = value;
-        //}
         get
         {
             return nowHp;
@@ -335,11 +331,4 @@ public class Player : RaycastController {
         }
     }
 
-    //public int CNNum
-    //{
-    //    get
-    //    {
-    //        return CNConvert(ControlerNamber);
-    //    }
-    //}
 }

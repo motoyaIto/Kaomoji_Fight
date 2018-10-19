@@ -1,0 +1,164 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1008812913, guid: e9fbd6df3db650a40a067cea69b3b7da, type: 3}
+  m_Name: Minigun-B
+  m_EditorClassIdentifier: 
+  tracks:
+  - randomRadiusMax: 1
+    randomLocationMin: {x: 0, y: 0, z: 0}
+    randomLocationMax: {x: 0, y: 0, z: 0}
+    randomLocationMode: 0
+    locationMode: 0
+    location: {x: 0, y: 0, z: 0}
+    spatialBlend: 0
+    pan: 0
+    name: vsfx-minigun-B-start
+    volumeCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0.004032258
+        value: 0.36206895
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    useVolumeCurve: 1
+    randomPitchEnabled: 0
+    pitchMin: 0
+    pitchMax: 0
+    randomVolumeEnabled: 0
+    volumeMin: 0
+    volumeMax: 0
+    clip: {fileID: 0}
+    audioData:
+      clips:
+      - {fileID: 8300000, guid: 875a58273a6f11b45b9f781bb93c3191, type: 3}
+    start: 0
+    inPosition: 0
+    outPosition: 0
+    overflowPosition: 0
+    underflowPosition: 0
+    pitch: 1
+    volume: 1
+    playingProbability: 1
+    enabled: 1
+    reverse: 0
+    forceNativeLooped: 0
+  - randomRadiusMax: 7.31
+    randomLocationMin: {x: 0, y: 0, z: 0}
+    randomLocationMax: {x: 1, y: 1, z: 4}
+    randomLocationMode: 0
+    locationMode: 0
+    location: {x: 0, y: 0, z: 0}
+    spatialBlend: 0
+    pan: 0
+    name: vsfx-minigun-B-loop
+    volumeCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    useVolumeCurve: 1
+    randomPitchEnabled: 0
+    pitchMin: 0
+    pitchMax: 0
+    randomVolumeEnabled: 0
+    volumeMin: 0
+    volumeMax: 0
+    clip: {fileID: 0}
+    audioData:
+      clips:
+      - {fileID: 8300000, guid: 8f653049777dcb540a9ee72c1c95a535, type: 3}
+    start: 500
+    inPosition: 0
+    outPosition: 0
+    overflowPosition: 0
+    underflowPosition: 0
+    pitch: 1
+    volume: 1
+    playingProbability: 1
+    enabled: 1
+    reverse: 0
+    forceNativeLooped: 0
+  - randomRadiusMax: 1
+    randomLocationMin: {x: 0, y: 0, z: 0}
+    randomLocationMax: {x: 0, y: 0, z: 0}
+    randomLocationMode: 0
+    locationMode: 0
+    location: {x: 0, y: 0, z: 0}
+    spatialBlend: 0
+    pan: 0
+    name: vsfx-minigun-B-end
+    volumeCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    useVolumeCurve: 0
+    randomPitchEnabled: 0
+    pitchMin: 0
+    pitchMax: 0
+    randomVolumeEnabled: 0
+    volumeMin: 0
+    volumeMax: 0
+    clip: {fileID: 0}
+    audioData:
+      clips:
+      - {fileID: 8300000, guid: 8e80940b52e36174293e9da640fbc069, type: 3}
+    start: 1001
+    inPosition: 0
+    outPosition: 0
+    overflowPosition: 0
+    underflowPosition: 0
+    pitch: 1
+    volume: 1
+    playingProbability: 1
+    enabled: 1
+    reverse: 0
+    forceNativeLooped: 0
+  cuePoints:
+  - id: 0
+    name: 
+    start: 1000
+  loops:
+  - id: 0
+    name: 
+    start: 500
+    length: 500
+    trackID: 1
+    mode: 3
+    passCount: 1
+  length: 3000
+  samples: 144000
+  sampleRate: 48000

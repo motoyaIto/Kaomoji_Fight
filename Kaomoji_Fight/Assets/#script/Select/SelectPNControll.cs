@@ -8,7 +8,7 @@ public class SelectPNControll : MonoBehaviour {
     [SerializeField, Header("コントローラー番号")]
     private XboxController ControlerNamber = XboxController.First;//何番目のコントローラーを適用するか
 
-    public GameObject numPlayer;
+    public GameObject camera;
     bool cursor = true;
     bool move = true;
     private static readonly int PLAYERMAX = 4;
@@ -134,7 +134,7 @@ public class SelectPNControll : MonoBehaviour {
             {
                 sound01.PlayOneShot(sound02.clip);
                 cursor = false;
-                numPlayer.transform.position += new Vector3(100, 0, 0);
+                camera.transform.position += new Vector3(17.8f, 0, 0);
             }
         }
         if (Input.GetKeyDown(KeyCode.Backspace) || XCI.GetButtonDown(XboxButton.A, ControlerNamber))
@@ -142,7 +142,7 @@ public class SelectPNControll : MonoBehaviour {
             if (cursor == false)
             {
                 cursor = true;
-                numPlayer.transform.position -= new Vector3(100, 0, 0);
+                camera.transform.position -= new Vector3(17.8f, 0, 0);
             }
 
         }

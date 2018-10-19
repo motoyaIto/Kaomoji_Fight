@@ -1,0 +1,371 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1008812913, guid: e9fbd6df3db650a40a067cea69b3b7da, type: 3}
+  m_Name: HauntedAmbient
+  m_EditorClassIdentifier: 
+  tracks:
+  - randomRadiusMax: 1
+    randomLocationMin: {x: 0, y: 0, z: 0}
+    randomLocationMax: {x: 1, y: 1, z: 1}
+    randomLocationMode: 0
+    locationMode: 0
+    location: {x: 0, y: 0, z: 0}
+    spatialBlend: 0
+    pan: 0
+    name: vsfx-drone-loop-A
+    volumeCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    useVolumeCurve: 0
+    randomPitchEnabled: 0
+    pitchMin: 0
+    pitchMax: 0
+    randomVolumeEnabled: 0
+    volumeMin: 0
+    volumeMax: 0
+    clip: {fileID: 0}
+    audioData:
+      clips:
+      - {fileID: 8300000, guid: 8f0b7e1a8eda9fb45a4090acd45d1db0, type: 3}
+    start: 11
+    inPosition: 0
+    outPosition: 0
+    overflowPosition: 11
+    underflowPosition: 0
+    pitch: 1
+    volume: 1
+    playingProbability: 1
+    enabled: 1
+    reverse: 0
+    forceNativeLooped: 0
+  - randomRadiusMax: 1
+    randomLocationMin: {x: 0, y: 0, z: 0}
+    randomLocationMax: {x: 1, y: 1, z: 1}
+    randomLocationMode: 0
+    locationMode: 1
+    location: {x: 0, y: 0, z: 0}
+    spatialBlend: 0.048
+    pan: 0
+    name: vsfx-hit-B
+    volumeCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    useVolumeCurve: 0
+    randomPitchEnabled: 0
+    pitchMin: 0
+    pitchMax: 0
+    randomVolumeEnabled: 0
+    volumeMin: 0
+    volumeMax: 0
+    clip: {fileID: 0}
+    audioData:
+      clips:
+      - {fileID: 8300000, guid: 73bce28f4b7d1304aab37ebf2e851e3a, type: 3}
+    start: 10091
+    inPosition: 0
+    outPosition: 0
+    overflowPosition: 174
+    underflowPosition: 0
+    pitch: 0.96
+    volume: 0.8
+    playingProbability: 0.85
+    enabled: 1
+    reverse: 0
+    forceNativeLooped: 0
+  - randomRadiusMax: 1
+    randomLocationMin: {x: 0, y: 0, z: 0}
+    randomLocationMax: {x: 1, y: 1, z: 1}
+    randomLocationMode: 0
+    locationMode: 0
+    location: {x: 0, y: 0, z: 0}
+    spatialBlend: 0
+    pan: 0
+    name: vsfx-hit-A
+    volumeCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    useVolumeCurve: 0
+    randomPitchEnabled: 1
+    pitchMin: 0.001
+    pitchMax: 1.6144972
+    randomVolumeEnabled: 0
+    volumeMin: 0
+    volumeMax: 0
+    clip: {fileID: 0}
+    audioData:
+      clips:
+      - {fileID: 8300000, guid: 1839a83c1668441499a0fa25dd719164, type: 3}
+    start: 4512
+    inPosition: 0
+    outPosition: 0
+    overflowPosition: 0
+    underflowPosition: 0
+    pitch: 1
+    volume: 0.409
+    playingProbability: 0.5
+    enabled: 1
+    reverse: 0
+    forceNativeLooped: 0
+  - randomRadiusMax: 2
+    randomLocationMin: {x: 0, y: 0, z: 0}
+    randomLocationMax: {x: 1, y: 1, z: 1}
+    randomLocationMode: 1
+    locationMode: 1
+    location: {x: 2, y: 0, z: 0}
+    spatialBlend: 0.85
+    pan: 0
+    name: vsfx-spooky-voice
+    volumeCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    useVolumeCurve: 0
+    randomPitchEnabled: 1
+    pitchMin: 0.8944386
+    pitchMax: 1.2802749
+    randomVolumeEnabled: 0
+    volumeMin: 0
+    volumeMax: 0
+    clip: {fileID: 0}
+    audioData:
+      clips:
+      - {fileID: 8300000, guid: 38ab2926893b8d84f998c9eb84d5df40, type: 3}
+    start: 3111
+    inPosition: 0
+    outPosition: 0
+    overflowPosition: 0
+    underflowPosition: 0
+    pitch: 1
+    volume: 1
+    playingProbability: 0.3
+    enabled: 1
+    reverse: 0
+    forceNativeLooped: 0
+  - randomRadiusMax: 1
+    randomLocationMin: {x: 0, y: 0, z: 0}
+    randomLocationMax: {x: 1, y: 1, z: 1}
+    randomLocationMode: 0
+    locationMode: 0
+    location: {x: 0, y: 0, z: 0}
+    spatialBlend: 0
+    pan: 0
+    name: vsfx-hit-A (1)
+    volumeCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    useVolumeCurve: 0
+    randomPitchEnabled: 1
+    pitchMin: 0.5797544
+    pitchMax: 1.4917316
+    randomVolumeEnabled: 0
+    volumeMin: 0
+    volumeMax: 0
+    clip: {fileID: 0}
+    audioData:
+      clips:
+      - {fileID: 8300000, guid: 1839a83c1668441499a0fa25dd719164, type: 3}
+    start: 7696
+    inPosition: 0
+    outPosition: 0
+    overflowPosition: 0
+    underflowPosition: 0
+    pitch: 1
+    volume: 0.409
+    playingProbability: 0.75
+    enabled: 1
+    reverse: 0
+    forceNativeLooped: 0
+  - randomRadiusMax: 1
+    randomLocationMin: {x: 0, y: 0, z: 0}
+    randomLocationMax: {x: 1, y: 1, z: 1}
+    randomLocationMode: 0
+    locationMode: 0
+    location: {x: 0, y: 0, z: 0}
+    spatialBlend: 0
+    pan: 0
+    name: vsfx-hit-A (2)
+    volumeCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    useVolumeCurve: 0
+    randomPitchEnabled: 1
+    pitchMin: 0.001
+    pitchMax: 1.6144972
+    randomVolumeEnabled: 0
+    volumeMin: 0
+    volumeMax: 0
+    clip: {fileID: 0}
+    audioData:
+      clips:
+      - {fileID: 8300000, guid: 1839a83c1668441499a0fa25dd719164, type: 3}
+    start: 6950
+    inPosition: 0
+    outPosition: 0
+    overflowPosition: 0
+    underflowPosition: 0
+    pitch: 1
+    volume: 0.409
+    playingProbability: 0.5
+    enabled: 1
+    reverse: 0
+    forceNativeLooped: 0
+  - randomRadiusMax: 1
+    randomLocationMin: {x: 0, y: 0, z: 0}
+    randomLocationMax: {x: 1, y: 1, z: 1}
+    randomLocationMode: 0
+    locationMode: 0
+    location: {x: 0, y: 0, z: -5}
+    spatialBlend: 0.915
+    pan: 0
+    name: vsfx-swish-B
+    volumeCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 0.85057473
+        inSlope: 1.1556396
+        outSlope: 1.1556396
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    useVolumeCurve: 1
+    randomPitchEnabled: 0
+    pitchMin: 0
+    pitchMax: 0
+    randomVolumeEnabled: 0
+    volumeMin: 0
+    volumeMax: 0
+    clip: {fileID: 0}
+    audioData:
+      clips:
+      - {fileID: 8300000, guid: 7522193400719064d954eefcfee627d0, type: 3}
+    start: 1786
+    inPosition: 0
+    outPosition: 0
+    overflowPosition: 0
+    underflowPosition: 0
+    pitch: 1
+    volume: 0.9
+    playingProbability: 0.45
+    enabled: 1
+    reverse: 0
+    forceNativeLooped: 0
+  - randomRadiusMax: 1
+    randomLocationMin: {x: 0, y: 0, z: 0}
+    randomLocationMax: {x: 1, y: 1, z: 1}
+    randomLocationMode: 0
+    locationMode: 0
+    location: {x: 0, y: 0, z: 0}
+    spatialBlend: 0
+    pan: 0
+    name: vsfx-evil-grunt
+    volumeCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    useVolumeCurve: 0
+    randomPitchEnabled: 1
+    pitchMin: 0.8593626
+    pitchMax: 1.0873568
+    randomVolumeEnabled: 0
+    volumeMin: 0
+    volumeMax: 0
+    clip: {fileID: 0}
+    audioData:
+      clips:
+      - {fileID: 8300000, guid: e4ef7e6b5211eb84e8d100f1a2981da7, type: 3}
+    start: 258
+    inPosition: 0
+    outPosition: 0
+    overflowPosition: 0
+    underflowPosition: 0
+    pitch: 1
+    volume: 1
+    playingProbability: 0.05
+    enabled: 1
+    reverse: 0
+    forceNativeLooped: 0
+  - randomRadiusMax: 1
+    randomLocationMin: {x: 0, y: 0, z: 0}
+    randomLocationMax: {x: 1, y: 1, z: 1}
+    randomLocationMode: 0
+    locationMode: 0
+    location: {x: 0, y: 0, z: 0}
+    spatialBlend: 0
+    pan: 0
+    name: vsfx-white-noise
+    volumeCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    useVolumeCurve: 0
+    randomPitchEnabled: 1
+    pitchMin: 0.9119767
+    pitchMax: 1.4731923
+    randomVolumeEnabled: 1
+    volumeMin: 0.5146199
+    volumeMax: 0.8713445
+    clip: {fileID: 0}
+    audioData:
+      clips:
+      - {fileID: 8300000, guid: 8d585719b6a130a4c983e32247397c55, type: 3}
+    start: 8712
+    inPosition: 0
+    outPosition: 0
+    overflowPosition: 0
+    underflowPosition: 0
+    pitch: 1
+    volume: 1
+    playingProbability: 0.05
+    enabled: 1
+    reverse: 0
+    forceNativeLooped: 0
+  cuePoints: []
+  loops:
+  - id: 0
+    name: 
+    start: 11
+    length: 11989
+    trackID: 0
+    mode: 3
+    passCount: 1
+  length: 12000
+  samples: 576000
+  sampleRate: 48000
