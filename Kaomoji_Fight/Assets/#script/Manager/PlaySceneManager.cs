@@ -10,31 +10,113 @@ using TMPro;
 
 public class PlaySceneManager : MonoBehaviour
 {
-  
+    //プレイヤーのデータを管理する
+    [System.Serializable]
+    private class Player_data
+    {
+        [SerializeField]
+        private string m_name;          //プレイヤー名
+        [SerializeField]
+        private Color m_nameColor;      //HPバーに表示される名前の色
+
+        [SerializeField]
+        private Sprite m_playerFace;//プレイヤーの顔文字
+
+        [SerializeField]
+        private Vector3 m_initialPos;   //初期ポップ位置
+
+
+        private Slider m_hpgage_slider; //HPスライダー
+
+        //コンストラクタ
+        public Player_data(string name, Color col, Sprite player_face, Vector3 initialPos)
+        {
+            m_name = name;
+            m_nameColor = col;
+            m_playerFace = player_face;
+            m_initialPos = initialPos;
+            m_hpgage_slider = null;
+        }
+        
+        //getter:seter
+        public string Name_Data
+        {
+            get
+            {
+                return m_name;
+            }
+        }
+
+        public Color Color_Data
+        {
+            get
+            {
+                return m_nameColor;
+            }
+        }
+
+        public Sprite PlayerFace
+        {
+            get
+            {
+                return m_playerFace;
+            }
+        }
+
+        public Vector3 InitialPos_Data
+        {
+            get
+            {
+                return m_initialPos;
+            }
+        }
+
+        public Slider Hpgage_slider
+        {
+            set
+            {
+                if(m_hpgage_slider == null)
+                {
+                    m_hpgage_slider = value;
+                }
+            }
+        }
+
+    }
+
+
+    
+
+
     [SerializeField]
     private GameObject UICanvases;      //UI用キャンバス
 
+
+    //[SerializeField]
+    //Player_data P1 = new Player_data("P1", new Color(0.000f, 0.000f, 0.000f), Sprite.Create((Texture2D)Resources.Load("textures/use/Player1"), new Rect(0, 0, 584, 385), new Vector2(0.5f, 0.5f)), new Vector3(5.0f, 50.0f, 0.0f));
+    //[SerializeField]
+    //Player_data P2 = new Player_data("P2", new Color(0.000f, 0.000f, 0.000f), Sprite.Create((Texture2D)Resources.Load("textures/use/Player1"), new Rect(0, 0, 584, 385), new Vector2(0.5f, 0.5f)), new Vector3(10.0f, 50.0f, 0.0f));
+    //[SerializeField]
+    //Player_data P3 = new Player_data("P3", new Color(0.000f, 0.000f, 0.000f), Sprite.Create((Texture2D)Resources.Load("textures/use/Player1"), new Rect(0, 0, 584, 385), new Vector2(0.5f, 0.5f)), new Vector3(15.0f, 50.0f, 0.0f));
+    //[SerializeField]
+    //Player_data P4 = new Player_data("P4", new Color(0.000f, 0.000f, 0.000f), Sprite.Create((Texture2D)Resources.Load("textures/use/Player1"), new Rect(0, 0, 584, 385), new Vector2(0.5f, 0.5f)), new Vector3(20.0f, 50.0f, 0.0f));
+
     [SerializeField]
-    private Color P1_nameColor = new Color(0.000f, 0.000f, 0.000f);
+    Player_data P1;
     [SerializeField]
-    private Color P2_nameColor = new Color(0.000f, 0.000f, 0.000f);
+    Player_data P2;
     [SerializeField]
-    private Color P3_nameColor = new Color(0.000f, 0.000f, 0.000f);
+    Player_data P3;
     [SerializeField]
-    private Color P4_nameColor = new Color(0.000f, 0.000f, 0.000f);
+    Player_data P4 ;
 
     [SerializeField, Header("プレイヤーの復帰時の場所指定")]
     private Vector3 RevivalPos = new Vector3(2.5f, 50f, 0f);
-
-
-    private GameObject[] player_textuer;    //各プレイヤーの画像
 
     private GameObject[] players;       //プレイヤー
     private GameObject[] HPgage;        //HPゲージ
 
     private Player playerCS;
-
-    private Slider[] hpgage_slider;
 
     private int death_player;
 
@@ -49,27 +131,43 @@ public class PlaySceneManager : MonoBehaviour
         players = new GameObject[PlayData.Instance.playerNum];
         HPgage = new GameObject[PlayData.Instance.playerNum];
 
+        //P1 = new Player_data(PlayData.Instance.PlayersName, new Color(0.000f, 0.000f, 0.000f), PlayData.Instance.PlayersFace, );
+
         //プレイヤーとHPを生成
         for (int i = 0; i < PlayData.Instance.playerNum; i++)
         {
-            //画像が送られてきていなかったら
-            if (player_textuer == null)
-            {
-                players[i] = (GameObject)Resources.Load("prefab/Player");
-                HPgage[i] = (GameObject)Resources.Load("prefab/UI/HPgage");
-            }
-            else
-            {
-                players[i] = player_textuer[i];
-                HPgage[i] = player_textuer[i];
-            }
-
             //プレイヤーとHPバーを生成
-            this.CreatePlayer(players[i], HPgage[i], i);
+            switch (i)
+            {
+                case 0:
+                    players[i] = this.CreatePlayer( HPgage[i], P1);
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
 
-            // HPを管理する
-            HPgage[i].GetComponent<Slider>().maxValue = players[i].transform.gameObject.GetComponent<Player>().HP;
-            HPgage[i].GetComponent<Slider>().value = HPgage[i].GetComponent<Slider>().maxValue;
+                case 3:
+                    break;
+            }
+            ////画像が送られてきていなかったら
+            //if (player_textuer == null)
+            //{
+            //    players[i] = (GameObject)Resources.Load("prefab/Player");
+            //    HPgage[i] = (GameObject)Resources.Load("prefab/UI/HPgage");
+            //}
+            //else
+            //{
+            //    players[i] = player_textuer[i];
+            //    HPgage[i] = player_textuer[i];
+            //}
+
+
+
+
+            //// HPを管理する
+            //HPgage[i].GetComponent<Slider>().maxValue = players[i].transform.gameObject.GetComponent<Player>().HP;
+            //HPgage[i].GetComponent<Slider>().value = HPgage[i].GetComponent<Slider>().maxValue;
         }
 
     }
@@ -87,21 +185,21 @@ public class PlaySceneManager : MonoBehaviour
             switch (death_player)
             {
                 case 0:
-                    this.SetPlayerStatus(P, XboxController.First, "P1", PlayData.Instance.PlayersFace[death_player]);
+                    this.SetPlayerStatus(P, XboxController.First, P1.Name_Data, PlayData.Instance.PlayersFace[death_player]);
                     break;
                 case 1:
-                    this.SetPlayerStatus(P, XboxController.Second, "P2", PlayData.Instance.PlayersFace[death_player]);
+                    this.SetPlayerStatus(P, XboxController.Second, P2.Name_Data, PlayData.Instance.PlayersFace[death_player]);
                     break;
                 case 2:
-                    this.SetPlayerStatus(P, XboxController.Third, "P3", PlayData.Instance.PlayersFace[death_player]);
+                    this.SetPlayerStatus(P, XboxController.Third, P3.Name_Data, PlayData.Instance.PlayersFace[death_player]);
                     break;
                 case 3:
-                    this.SetPlayerStatus(P, XboxController.Fourth, "P4", PlayData.Instance.PlayersFace[death_player]);
+                    this.SetPlayerStatus(P, XboxController.Fourth, P4.Name_Data, PlayData.Instance.PlayersFace[death_player]);
                     break;
                 default:
                     break;
             }
-            hpgage_slider[death_player].value = players[death_player].transform.gameObject.GetComponent<Player>().Damage(players[death_player].transform.gameObject.GetComponent<Player>().HP / 10f);
+            //hpgage_slider[death_player].value = players[death_player].transform.gameObject.GetComponent<Player>().Damage(players[death_player].transform.gameObject.GetComponent<Player>().HP / 10f);
             death_player = -1;
         }
     }
@@ -111,39 +209,18 @@ public class PlaySceneManager : MonoBehaviour
     /// </summary>
     /// <param name="player">プレイヤーオブジェクトデータ</param>
     /// <param name="i">何番目のプレイヤーか</param>
-    private void CreatePlayer(GameObject player, GameObject HPgage, int i)
+    private GameObject CreatePlayer(GameObject HPgage, Player_data player_data)
     {
-        //ステージごとにリスポンする位置を調整する必要性あり
-        switch (i)
-        {
-            case 0:
-                GameObject P1 = Instantiate(player, new Vector3(2.5f, 50.0f, 0.0f), Quaternion.identity);
+        //プレイヤーを生成
+        GameObject player = Instantiate((GameObject)Resources.Load("prefab/Player"), player_data.InitialPos_Data, Quaternion.identity);
+        //プレイヤーの設定
+        this.SetPlayerStatus(player, XboxController.First, "P1", PlayData.Instance.PlayersFace[0]);
+        //HPゲージの生成
+        //this.CreateHPgage(HPgage, player.name, i);
 
-                this.SetPlayerStatus(P1, XboxController.First, "P1", PlayData.Instance.PlayersFace[0]);
-                this.CreateHPgage(HPgage,P1.name, i);
-                break;
+        return player;
 
-            case 1:
-                GameObject P2 = Instantiate(player, new Vector3(15.5f, 50.0f, 0.0f), Quaternion.identity);
-
-                this.SetPlayerStatus(P2, XboxController.Second, "P2", PlayData.Instance.PlayersFace[1]);
-                this.CreateHPgage(HPgage, P2.name, i);
-                break;
-
-            case 2:
-                GameObject P3 = Instantiate(player, new Vector3(15.5f, 50.0f, 0.0f), Quaternion.identity);
-
-                this.SetPlayerStatus(P3, XboxController.Third, "P3", PlayData.Instance.PlayersFace[2]);
-                this.CreateHPgage(HPgage, P3.name, i);
-                break;
-
-            case 3:
-                GameObject P4 = Instantiate(player, new Vector3(2.5f, 50.0f, 0.0f), Quaternion.identity);
-
-                this.SetPlayerStatus(P4, XboxController.Fourth, "P4", PlayData.Instance.PlayersFace[3]);
-                this.CreateHPgage(HPgage, P4.name, i);
-                break;
-        }
+       
     } 
     /// <summary>
     /// プレイヤーのステータスを設定する
@@ -189,67 +266,67 @@ public class PlaySceneManager : MonoBehaviour
     {
         RectTransform size = HPgage.GetComponent<RectTransform>();
 
-        switch (i)
-        {
-            case 0://元のトランス(281.5, 124)
-                GameObject P1_HPgage = Instantiate(HPgage, new Vector3(size.sizeDelta.x / 2, Screen.height - 10, 0f), Quaternion.identity, UICanvases.transform);
+        //switch (i)
+        //{
+        //    case 0://元のトランス(281.5, 124)
+        //        GameObject P1_HPgage = Instantiate(HPgage, new Vector3(size.sizeDelta.x / 2, Screen.height - 10, 0f), Quaternion.identity, UICanvases.transform);
 
-                P1_HPgage.name = "P1_HPgage";
+        //        P1_HPgage.name = "P1_HPgage";
 
-                //名前の設定
-                TextMeshProUGUI P1name = P1_HPgage.transform.Find("Text").GetComponent<TextMeshProUGUI>();
-                P1name.text = name;
-                P1name.color = P1_nameColor;
+        //        //名前の設定
+        //        TextMeshProUGUI P1name = P1_HPgage.transform.Find("Text").GetComponent<TextMeshProUGUI>();
+        //        P1name.text = name;
+        //        P1name.color = P1_nameColor;
 
-                break;
+        //        break;
 
-            case 1:
-                GameObject P2_HPgage = Instantiate(HPgage, new Vector3(Screen.width - size.sizeDelta.x / 2, Screen.height - 10, 0), Quaternion.identity, UICanvases.transform);
+        //    case 1:
+        //        GameObject P2_HPgage = Instantiate(HPgage, new Vector3(Screen.width - size.sizeDelta.x / 2, Screen.height - 10, 0), Quaternion.identity, UICanvases.transform);
 
-                P2_HPgage.name = "P2_HPgage";
+        //        P2_HPgage.name = "P2_HPgage";
 
-                //名前の設定
-                TextMeshProUGUI P2name = P2_HPgage.transform.Find("Text").GetComponent<TextMeshProUGUI>();
-                P2name.text = name;
-                P2name.color = P2_nameColor;
-                break;
+        //        //名前の設定
+        //        TextMeshProUGUI P2name = P2_HPgage.transform.Find("Text").GetComponent<TextMeshProUGUI>();
+        //        P2name.text = name;
+        //        P2name.color = P2_nameColor;
+        //        break;
 
-            case 2:
-                GameObject P3_HPgage = Instantiate(HPgage, new Vector3(size.sizeDelta.x / 2, 10, 0), Quaternion.identity, UICanvases.transform);
+        //    case 2:
+        //        GameObject P3_HPgage = Instantiate(HPgage, new Vector3(size.sizeDelta.x / 2, 10, 0), Quaternion.identity, UICanvases.transform);
 
-                P3_HPgage.name = "P3_HPgage";
+        //        P3_HPgage.name = "P3_HPgage";
 
-                //名前の設定
-                TextMeshProUGUI P3name = P3_HPgage.transform.Find("Text").GetComponent<TextMeshProUGUI>();
-                P3name.text = name;
-                P3name.color = P3_nameColor;
-                break;
+        //        //名前の設定
+        //        TextMeshProUGUI P3name = P3_HPgage.transform.Find("Text").GetComponent<TextMeshProUGUI>();
+        //        P3name.text = name;
+        //        P3name.color = P3_nameColor;
+        //        break;
 
-            case 3:
-                GameObject P4_HPgage = Instantiate(HPgage, new Vector3(Screen.width - size.sizeDelta.x / 2, 10, 0), Quaternion.identity, UICanvases.transform);
+        //    case 3:
+        //        GameObject P4_HPgage = Instantiate(HPgage, new Vector3(Screen.width - size.sizeDelta.x / 2, 10, 0), Quaternion.identity, UICanvases.transform);
 
-                P4_HPgage.name = "P4_HPgage";
+        //        P4_HPgage.name = "P4_HPgage";
 
-                //名前の設定
-                TextMeshProUGUI P4name = P4_HPgage.transform.Find("Text").GetComponent<TextMeshProUGUI>();
-                P4name.text = name;
-                P4name.color = P4_nameColor;
-                break;
-        }
+        //        //名前の設定
+        //        TextMeshProUGUI P4name = P4_HPgage.transform.Find("Text").GetComponent<TextMeshProUGUI>();
+        //        P4name.text = name;
+        //        P4name.color = P4_nameColor;
+        //        break;
+        //}
     }
-    
+
 
     /// <summary>
     /// 各プレイヤーの画像
     /// </summary>
-    public GameObject[] Player_textuer
-    {
-        set
-        {
-            player_textuer = new GameObject[value.Length];
-            player_textuer = value;
-        }
-    }
+    //public GameObject[] Player_textuer
+    //{
+    //    set
+    //    {
+    //        player_textuer = new GameObject[value.Length];
+    //        player_textuer = value;
+    //    }
+    //}
 
     public int destroy_p
     {
