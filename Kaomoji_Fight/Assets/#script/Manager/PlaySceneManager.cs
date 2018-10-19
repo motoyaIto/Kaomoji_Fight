@@ -24,7 +24,7 @@ public class PlaySceneManager : MonoBehaviour
     private Color P4_nameColor = new Color(0.000f, 0.000f, 0.000f);
 
     [SerializeField, Header("プレイヤーの復帰時の場所指定")]
-    private Vector3 RevivalPos = new Vector3(0f, 30f, 0f);
+    private Vector3 RevivalPos = new Vector3(2.5f, 50f, 0f);
 
 
     private GameObject[] player_textuer;    //各プレイヤーの画像
@@ -82,7 +82,7 @@ public class PlaySceneManager : MonoBehaviour
         {
             // 死んだプレイヤーの生成
             players[death_player] = (GameObject)Resources.Load("prefab/Player");
-            GameObject P = Instantiate(players[death_player], new Vector3(2.5f, 50.0f, 0.0f), Quaternion.identity);
+            GameObject P = Instantiate(players[death_player], RevivalPos, Quaternion.identity);
 
             switch (death_player)
             {
@@ -101,7 +101,7 @@ public class PlaySceneManager : MonoBehaviour
                 default:
                     break;
             }
-            //hpgage_slider[death_player].value = players[death_player].transform.gameObject.GetComponent<Player>().Damage(players[death_player].transform.gameObject.GetComponent<Player>().HP / 10f);
+            hpgage_slider[death_player].value = players[death_player].transform.gameObject.GetComponent<Player>().Damage(players[death_player].transform.gameObject.GetComponent<Player>().HP / 10f);
             death_player = -1;
         }
     }

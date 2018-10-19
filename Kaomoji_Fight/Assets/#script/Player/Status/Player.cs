@@ -286,22 +286,20 @@ public class Player : RaycastController {
     // Controllerの番号をint型で取得
     private int CNConvert(XboxController controlerNum)
     {
-        if (controlerNum != 0)
+        switch (controlerNum)
         {
-            switch (controlerNum)
-            {
-                case XboxController.First:
-                    return 0;
-                case XboxController.Second:
-                    return 1;
-                case XboxController.Third:
-                    return 2;
-                case XboxController.Fourth:
-                    return 3;
-                default:
-                    break;
-            }
+            case XboxController.First:
+                return 0;
+            case XboxController.Second:
+                return 1;
+            case XboxController.Third:
+                return 2;
+            case XboxController.Fourth:
+                return 3;
+            default:
+                break;
         }
+
         return -1;
     }
 
