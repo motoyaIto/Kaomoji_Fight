@@ -254,15 +254,6 @@
     <Reference Include="UnityEditor.Graphs">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.Android.Extensions">
-      <HintPath>Library\UnityAssemblies\UnityEditor.Android.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.WSA.Extensions">
-      <HintPath>Library\UnityAssemblies\UnityEditor.WSA.Extensions.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
@@ -294,26 +285,7 @@
       <HintPath>C:/Users/s162079/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.purchasing@0.0.19/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
-<<<<<<< HEAD
       <HintPath>C:/Users/s162079/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
-=======
-      <HintPath>Library\UnityAssemblies\UnityEngine.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="XInputDotNetPure">
-      <HintPath>Assets\Plugins\XInputDotNetPure.dll</HintPath>
-    </Reference>
-    <Reference Include="TextMeshPro-2017.3-Editor">
-      <HintPath>Assets\Plugins\TextMesh Pro\Plugins\Editor DLL\TextMeshPro-2017.3-Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="TextMeshPro-2017.3-Runtime">
-      <HintPath>Assets\Plugins\TextMesh Pro\Plugins\Editor DLL\TextMeshPro-2017.3-Runtime.dll</HintPath>
->>>>>>> master
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -405,12 +377,6 @@
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\Plugins\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
-<<<<<<< HEAD
-=======
-    <None Include="Assets\Resources\Sound\BGM\Play\ButtleBGMクレジット.txt" />
-    <None Include="Assets\Resources\Texts\stage1.txt" />
-    <None Include="Assets\Resources\Texts\test.txt" />
->>>>>>> master
     <None Include="Assets\Shader\Select\Cursor.shader" />
     <None Include="Assets\Shader\StageBloc.shader" />
     <None Include="Assets\Shader\Test\NotTathc.shader" />
