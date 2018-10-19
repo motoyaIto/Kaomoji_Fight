@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: e9fbd6df3db650a40a067cea69b3b7da
+timeCreated: 1470211848
+licenseType: Store
+PluginImporter:
+  serializedVersion: 1
+  iconMap: {}
+  executionOrder:
+    ch.sycoforge.Vivaldi.Runtime.ZonePlayer: -100
+  isPreloaded: 0
+  platformData:
+    Any:
+      enabled: 1
+      settings: {}
+    Editor:
+      enabled: 0
+      settings:
+        DefaultValueInitialized: true
+    WindowsStoreApps:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
