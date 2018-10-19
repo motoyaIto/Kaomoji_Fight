@@ -253,15 +253,6 @@
     <Reference Include="UnityEditor.Graphs">
       <HintPath>Library\UnityAssemblies\UnityEditor.Graphs.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.Android.Extensions">
-      <HintPath>Library\UnityAssemblies\UnityEditor.Android.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.WSA.Extensions">
-      <HintPath>Library\UnityAssemblies\UnityEditor.WSA.Extensions.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>Library\UnityAssemblies\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
@@ -284,6 +275,9 @@
       <HintPath>Library\UnityAssemblies\UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
+<<<<<<< HEAD
+      <HintPath>C:/Users/s162079/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
+=======
       <HintPath>Library\UnityAssemblies\UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
@@ -300,6 +294,7 @@
     </Reference>
     <Reference Include="TextMeshPro-2017.3-Runtime">
       <HintPath>Assets\Plugins\TextMesh Pro\Plugins\Editor DLL\TextMeshPro-2017.3-Runtime.dll</HintPath>
+>>>>>>> master
     </Reference>
     <Reference Include="ch.sycoforge.Unity.Editor">
       <HintPath>Assets\Plugins\vivaldi\nu Assets\Shared\Scripts\Editor\ch.sycoforge.Unity.Editor.dll</HintPath>
@@ -409,11 +404,17 @@
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\Plugins\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+<<<<<<< HEAD
     <None Include="Assets\Plugins\vivaldi\nu Assets\Vivaldi\Scripts\ch.sycoforge.Vivaldi.XML" />
     <None Include="Assets\Plugins\vivaldi\nu Assets\Vivaldi\Shaders\WaveformUI.shader" />
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> master
     <None Include="Assets\Resources\Sound\BGM\Play\ButtleBGMクレジット.txt" />
     <None Include="Assets\Resources\Texts\stage1.txt" />
     <None Include="Assets\Resources\Texts\test.txt" />
+>>>>>>> master
     <None Include="Assets\Shader\Select\Cursor.shader" />
     <None Include="Assets\Shader\StageBloc.shader" />
     <None Include="Assets\Shader\Test\NotTathc.shader" />

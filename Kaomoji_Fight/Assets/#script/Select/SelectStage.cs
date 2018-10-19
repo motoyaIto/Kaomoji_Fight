@@ -47,9 +47,11 @@ public class SelectStage : MonoBehaviour {
     }
 
     IEnumerator Select()
-    {        
+    {
+        
         Transform myTransform = this.transform;
         Vector3 pos = myTransform.position;
+        Debug.Log(pos.x);
 
         // Controllerの左スティックのAxisを取得            
         Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, ControlerNamber), XCI.GetAxis(XboxAxis.LeftStickY, ControlerNamber));
@@ -73,6 +75,7 @@ public class SelectStage : MonoBehaviour {
                     if (pos.y <= -3.3f)
                     {
                         pos.y = 2.2f;
+                        StageNum -= 4;
                     }
                     else
                     {
@@ -89,21 +92,14 @@ public class SelectStage : MonoBehaviour {
                     if (pos.y <= -3.3f)
                     {
                         pos.y = 2.2f;
+                        StageNum -= 4;
                     }
                     else
                     {
                         pos.y -= 1.9f;
                     }
                 }
-                StageNum++;
-                if (StageNum > 4 && pos.x >= -5.7 && pos.x <= 5.3)
-                {
-                    StageNum = 1;
-                }
-                if(StageNum>STAGEMAX && pos.x>=2.2 && pos.x<=2.6)
-                {
-                    StageNum = 5;
-                }
+                StageNum++;                              
             }
             if (Input.GetKeyDown(KeyCode.UpArrow) || XCI.GetDPadDown(XboxDPad.Up, ControlerNamber) || input.y > 0.9f)
             {
@@ -116,6 +112,7 @@ public class SelectStage : MonoBehaviour {
                     if (pos.y >= 2.0f)
                     {
                         pos.y = -3.5f;
+                        StageNum += 4;
                     }
                     else
                     {
@@ -132,21 +129,14 @@ public class SelectStage : MonoBehaviour {
                     if (pos.y >= 2.0f)
                     {
                         pos.y = -3.5f;
+                        StageNum += 4;
                     }
                     else
                     {
                         pos.y += 1.9f;
                     }
                 }
-                StageNum--;
-                if (StageNum < 1 && pos.x >= -5.7 && pos.x<=5.3)
-                {
-                    StageNum = 4;
-                }
-                if (StageNum > 5 && pos.x >= 2.2 && pos.x <= 2.6)
-                {
-                    StageNum = 8;
-                }
+                StageNum--;                
 
             }
             if (Input.GetKeyDown(KeyCode.RightArrow) || XCI.GetDPadDown(XboxDPad.Right, ControlerNamber) || input.x > 0.9f)
@@ -157,13 +147,14 @@ public class SelectStage : MonoBehaviour {
                     {
                         sound01.PlayOneShot(sound01.clip);
                     }
-                    if (pos.x >= 2.4f)
+                    if (pos.x >= 20)
                     {
-                        pos.x = -5.5f;
+                        pos.x = 12;
+                        StageNum -= 8;
                     }
                     else
                     {
-                        pos.x = 2.4f;
+                        pos.x = 20;
                     }
                 }
                 if (move == false)
@@ -173,21 +164,17 @@ public class SelectStage : MonoBehaviour {
                     {
                         sound01.PlayOneShot(sound01.clip);
                     }
-                    if (pos.x >= 2.4f)
+                    if (pos.x >= 20)
                     {
-                        pos.x = -5.5f;
+                        pos.x = 12;
+                        StageNum -= 8;
                     }
                     else
                     {
-                        pos.x = 2.4f;
+                        pos.x = 20;
                     }
                 }
-                StageNum += 4;
-
-                if (StageNum > STAGEMAX)
-                {
-                     StageNum -= 8;
-                }
+                StageNum += 4;                
             }            
             if (Input.GetKeyDown(KeyCode.LeftArrow) || XCI.GetDPadDown(XboxDPad.Left, ControlerNamber) || input.x < -0.9f)
             {
@@ -197,13 +184,14 @@ public class SelectStage : MonoBehaviour {
                     {
                         sound01.PlayOneShot(sound01.clip);
                     }
-                    if (pos.x <= -5.5f)
+                    if (pos.x <= 12)
                     {
-                        pos.x = 2.4f;
+                        pos.x = 20;
+                        StageNum += 8;
                     }
                     else
                     {
-                        pos.x = -5.5f;
+                        pos.x =12;
                     }
                 }
                 if (move == false)
@@ -213,21 +201,17 @@ public class SelectStage : MonoBehaviour {
                     {
                         sound01.PlayOneShot(sound01.clip);
                     }
-                    if (pos.x <= -5.5f)
+                    if (pos.x <= 12)
                     {
-                        pos.x = 2.4f;
+                        pos.x = 20;
+                        StageNum += 8;
                     }
                     else
                     {
-                        pos.x = -5.5f;
+                        pos.x = 12;
                     }
                 }
                 StageNum -= 4;
-
-                if (StageNum < 1)
-                {
-                    StageNum += 8;
-                }
             }
             if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, ControlerNamber))
             {
