@@ -38,8 +38,7 @@ public class SelectStage : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine("Select");      
-        StartCoroutine("coRoutine");     
+        StartCoroutine("Select");              
     }
     IEnumerator coRoutine()
     {
@@ -66,6 +65,10 @@ public class SelectStage : MonoBehaviour {
             {
                 if (move == true)
                 {
+                    if (sound01.isPlaying == false)
+                    {
+                        sound01.PlayOneShot(sound01.clip);
+                    }
                     sound01.PlayOneShot(sound01.clip);
                     if (pos.y <= -3.3f)
                     {
@@ -79,7 +82,10 @@ public class SelectStage : MonoBehaviour {
                 if (move == false)
                 {
                     yield return new WaitForSeconds(0.1f); // num秒待機
-                    sound01.PlayOneShot(sound01.clip);
+                    if (sound01.isPlaying == false)
+                    {
+                        sound01.PlayOneShot(sound01.clip);
+                    }
                     if (pos.y <= -3.3f)
                     {
                         pos.y = 2.2f;
@@ -90,17 +96,23 @@ public class SelectStage : MonoBehaviour {
                     }
                 }
                 StageNum++;
-
-                if (StageNum > STAGEMAX)
+                if (StageNum > 4 && pos.x >= -5.7 && pos.x <= 5.3)
                 {
                     StageNum = 1;
+                }
+                if(StageNum>STAGEMAX && pos.x>=2.2 && pos.x<=2.6)
+                {
+                    StageNum = 5;
                 }
             }
             if (Input.GetKeyDown(KeyCode.UpArrow) || XCI.GetDPadDown(XboxDPad.Up, ControlerNamber) || input.y > 0.9f)
             {
                 if (move == true)
                 {
-                    sound01.PlayOneShot(sound01.clip);
+                    if (sound01.isPlaying == false)
+                    {
+                        sound01.PlayOneShot(sound01.clip);
+                    }
                     if (pos.y >= 2.0f)
                     {
                         pos.y = -3.5f;
@@ -113,7 +125,10 @@ public class SelectStage : MonoBehaviour {
                 if (move == false)
                 {
                     yield return new WaitForSeconds(0.1f); // num秒待機
-                    sound01.PlayOneShot(sound01.clip);
+                    if (sound01.isPlaying == false)
+                    {
+                        sound01.PlayOneShot(sound01.clip);
+                    }
                     if (pos.y >= 2.0f)
                     {
                         pos.y = -3.5f;
@@ -124,10 +139,13 @@ public class SelectStage : MonoBehaviour {
                     }
                 }
                 StageNum--;
-
-                if (StageNum < 1)
+                if (StageNum < 1 && pos.x >= -5.7 && pos.x<=5.3)
                 {
                     StageNum = 4;
+                }
+                if (StageNum > 5 && pos.x >= 2.2 && pos.x <= 2.6)
+                {
+                    StageNum = 8;
                 }
 
             }
@@ -135,7 +153,10 @@ public class SelectStage : MonoBehaviour {
             {
                 if (move == true)
                 {
-                    sound01.PlayOneShot(sound01.clip);
+                    if (sound01.isPlaying == false)
+                    {
+                        sound01.PlayOneShot(sound01.clip);
+                    }
                     if (pos.x >= 2.4f)
                     {
                         pos.x = -5.5f;
@@ -148,7 +169,10 @@ public class SelectStage : MonoBehaviour {
                 if (move == false)
                 {
                     yield return new WaitForSeconds(0.1f); // num秒待機
-                    sound01.PlayOneShot(sound01.clip);
+                    if (sound01.isPlaying == false)
+                    {
+                        sound01.PlayOneShot(sound01.clip);
+                    }
                     if (pos.x >= 2.4f)
                     {
                         pos.x = -5.5f;
@@ -169,7 +193,10 @@ public class SelectStage : MonoBehaviour {
             {
                 if (move == true)
                 {
-                    sound01.PlayOneShot(sound01.clip);
+                    if (sound01.isPlaying == false)
+                    {
+                        sound01.PlayOneShot(sound01.clip);
+                    }
                     if (pos.x <= -5.5f)
                     {
                         pos.x = 2.4f;
@@ -182,7 +209,10 @@ public class SelectStage : MonoBehaviour {
                 if (move == false)
                 {
                     yield return new WaitForSeconds(0.1f); // num秒待機
-                    sound01.PlayOneShot(sound01.clip);
+                    if (sound01.isPlaying == false)
+                    {
+                        sound01.PlayOneShot(sound01.clip);
+                    }
                     if (pos.x <= -5.5f)
                     {
                         pos.x = 2.4f;
@@ -216,6 +246,7 @@ public class SelectStage : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, ControlerNamber))
             {
                 loadData = new PlayData(selectPN.PlayerNum, null, stage);
+                StartCoroutine("coRoutine");
             }
         }
 
