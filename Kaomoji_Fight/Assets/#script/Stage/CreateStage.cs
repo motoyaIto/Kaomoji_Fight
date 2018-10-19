@@ -7,6 +7,7 @@ using System;
 
 public class CreateStage : MonoBehaviour
 {
+    //武器になる文字群
     private string[] WEAPO_MOZI =
     {
         "あ", "い", "う", "え", "お",
@@ -19,14 +20,27 @@ public class CreateStage : MonoBehaviour
         "や",       "ゆ",       "よ",
         "ら", "り", "る", "れ", "ろ",
         "わ", "を",             "ん",
+
+        "が", "ぎ", "ぐ", "げ", "ご",
+        "ざ", "じ", "ず", "ぜ", "ぞ",
+        "だ", "ぢ", "づ", "で", "ど",
+        "ば", "び", "ぶ", "べ", "ぼ",
+
+        "ぱ", "ぴ", "ぷ", "ぺ", "ぽ",
+
+        "ぁ", "ぃ", "ぅ", "ぇ", "ぉ",
+        "ゃ",  　　"ゅ",  　　　"ょ",
+        "っ"
+
     };
 
-    GameObject StageBlock_weapon;
-    GameObject StageBlock_not;
+    private GameObject StageBlock;//ステージ
+
+
     void Start()
     {
         //ブロックの配列
-        GameObject[] StageBloc = null;
+        GameObject[] StageBlocks = null;
         //テキストの文字数
         int textnam = 0;
 
@@ -42,10 +56,10 @@ public class CreateStage : MonoBehaviour
         textnam = text.Length;
 
         //文字数分の配列
-        StageBloc = new GameObject[textnam];
+        StageBlocks = new GameObject[textnam];
         //文字を表示するボックスをResourcesから読み込む
-        StageBlock_weapon = (GameObject)Resources.Load("prefab/Stage/StageBlock_Weapon");
-        StageBlock_not = (GameObject)Resources.Load("prefab/Stage/StageBlock_not");
+        StageBlock = (GameObject)Resources.Load("prefab/Stage/StageBlock");
+        
 
 
 
@@ -53,21 +67,14 @@ public class CreateStage : MonoBehaviour
         for (int i = 0; i < textnam; i++)
         {
             string mozi = text.Substring(i, 1);
-            //weaponだったらフラグを立てる
-            if (Array.IndexOf(WEAPO_MOZI, mozi) >= 0)
-            {
-                StageBloc[i] = StageBlock_weapon;
-            }
-            else
-            {
-                StageBloc[i] = StageBlock_not;
-            }
+            StageBlocks[i] = StageBlock;
+           
 
-            CreateStageBloc(mozi, StageBloc[i], ref xCount, ref yCount);
+            CreateStageBlock(mozi, StageBlocks[i], ref xCount, ref yCount);
         }
     }
 
-    private void CreateStageBloc(string mozi, GameObject StageBloc, ref int x , ref int y)
+    private void CreateStageBlock(string mozi, GameObject StageBlock, ref int x , ref int y)
     {
         //改行が入っていないとき
         if (mozi != "\r" && mozi != "\n")
@@ -77,23 +84,29 @@ public class CreateStage : MonoBehaviour
             {
                 //新しく作るオブジェクトの座標
                 Vector3 pos = new Vector3(
-                       this.transform.position.x + StageBloc.transform.localScale.x / 2 + StageBloc.transform.localScale.x * x,
-                       this.transform.position.y + StageBloc.transform.localScale.y / 2 + StageBloc.transform.localScale.y * y,
+                       this.transform.position.x + StageBlock.transform.localScale.x / 2 + StageBlock.transform.localScale.x * x,
+                       this.transform.position.y + StageBlock.transform.localScale.y / 2 + StageBlock.transform.localScale.y * y,
                         0.0f);
 
-                    //オブジェクトを生成する
-                    StageBloc = Instantiate(StageBloc, pos, Quaternion.identity, this.transform);
-                    //ボックスの下のテキストを取得する
-                    GameObject textdata = StageBloc.transform.Find("Text").gameObject;
-                    //テキストに文字を書き込む
-                    textdata.GetComponent<TextMesh>().text = mozi;
-                    StageBloc.name = "StageBloc" + "(" + mozi + ")";
-                    // RectTransformを追加
-                    StageBloc.AddComponent<RectTransform>();
-                 //weaponだったらフラグを立てる
+                //オブジェクトを生成する
+                StageBlock = Instantiate(StageBlock, pos, Quaternion.identity, this.transform);
+                //ボックスの下のテキストを取得する
+                GameObject textdata = StageBlock.transform.Find("Text").gameObject;
+                //テキストに文字を書き込む
+                textdata.GetComponent<TextMesh>().text = mozi;
+                StageBlock.name = "StageBlock" + "(" + mozi + ")";
+                // RectTransformを追加
+                StageBlock.AddComponent<RectTransform>();
+                 //weaponだったら
                 if (Array.IndexOf(WEAPO_MOZI, mozi) >= 0)
                 {
-                    BlockController Block_cs = StageBloc.transform.GetComponent<BlockController>();
+                    //武器の文字用マテリアルに変更
+                    Material StageBlock_WeaponMateral = (Material)Resources.Load("Material/StageBlock_Weapon");
+                   StageBlock.GetComponent<Renderer>().material = StageBlock_WeaponMateral;
+                    
+
+                    //武器フラグを立てる
+                    BlockController Block_cs = StageBlock.transform.GetComponent<BlockController>();
                     Block_cs.Weapon = true;
                 }
                 

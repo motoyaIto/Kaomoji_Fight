@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 61993061788404006}
   - component: {fileID: 114039381274472756}
   m_Layer: 8
-  m_Name: StageBlock_Weapon
+  m_Name: StageBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
