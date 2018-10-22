@@ -229,7 +229,7 @@ public class SelectStage : MonoBehaviour {
             }
             if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, ControlerNamber))
             {
-                loadData = new PlayData(selectPN.PlayerNum, null, stage);
+                //loadData = new PlayData(selectPN.PlayerNum, null, stage);
                 StartCoroutine("coRoutine");
             }
         }

@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.4.3f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -257,7 +255,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Include="Assets\%23scene\Test\MoveScript1.cs" />
     <Compile Include="Assets\%23scene\Test\SliderTest.cs" />
     <Compile Include="Assets\%23script\Camera\MultipleTargetCamera.cs" />
@@ -276,36 +273,12 @@
     <Compile Include="Assets\%23script\Select\CursorHue.cs" />
     <Compile Include="Assets\%23script\Select\SelectPNControll.cs" />
     <Compile Include="Assets\%23script\Select\SelectStage.cs" />
+    <Compile Include="Assets\%23script\SingletonMonoBehaviour.cs" />
+    <Compile Include="Assets\%23script\Sound\PlayBGM.cs" />
     <Compile Include="Assets\%23script\Stage\BlockController.cs" />
     <Compile Include="Assets\%23script\Stage\CreateStage.cs" />
     <Compile Include="Assets\%23script\Test\TestShader.cs" />
     <Compile Include="Assets\%23script\Title\Title.cs" />
-=======
-    <Compile Include="Assets\#scene\Test\MoveScript1.cs" />
-    <Compile Include="Assets\#scene\Test\SliderTest.cs" />
-    <Compile Include="Assets\#script\Camera\MultipleTargetCamera.cs" />
-    <Compile Include="Assets\#script\DummySceneStart.cs" />
-    <Compile Include="Assets\#script\LayerName.cs" />
-    <Compile Include="Assets\#script\Manager\PlaySceneManager.cs" />
-    <Compile Include="Assets\#script\PlayData.cs" />
-    <Compile Include="Assets\#script\Player\Jump\Controller2D.cs" />
-    <Compile Include="Assets\#script\Player\Jump\PlatformController.cs" />
-    <Compile Include="Assets\#script\Player\Jump\RaycastController.cs" />
-    <Compile Include="Assets\#script\Player\Status\Contoroller2d.cs" />
-    <Compile Include="Assets\#script\Player\Status\Player.cs" />
-    <Compile Include="Assets\#script\Player\Weapon\WeaponBlocController.cs" />
-    <Compile Include="Assets\#script\SceneManagerController.cs" />
-    <Compile Include="Assets\#script\SceneTimer.cs" />
-    <Compile Include="Assets\#script\Select\CursorHue.cs" />
-    <Compile Include="Assets\#script\Select\SelectPNControll.cs" />
-    <Compile Include="Assets\#script\Select\SelectStage.cs" />
-    <Compile Include="Assets\#script\SingletonMonoBehaviour.cs" />
-    <Compile Include="Assets\#script\Sound\PlayBGM.cs" />
-    <Compile Include="Assets\#script\Stage\BlockController.cs" />
-    <Compile Include="Assets\#script\Stage\CreateStage.cs" />
-    <Compile Include="Assets\#script\Test\TestShader.cs" />
-    <Compile Include="Assets\#script\Title\Title.cs" />
->>>>>>> master
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBlendListCamera.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBrain.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineClearShot.cs" />
@@ -388,21 +361,11 @@
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\Plugins\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
-<<<<<<< HEAD
-    <None Include="Assets\Resources\Sound\BGM\Play\ButtleBGM%E3%82%AF%E3%83%AC%E3%82%B8%E3%83%83%E3%83%88.txt" />
-=======
-<<<<<<< HEAD
     <None Include="Assets\Plugins\vivaldi\nu Assets\Vivaldi\Scripts\ch.sycoforge.Vivaldi.XML" />
     <None Include="Assets\Plugins\vivaldi\nu Assets\Vivaldi\Shaders\WaveformUI.shader" />
-=======
-<<<<<<< HEAD
-=======
->>>>>>> master
-    <None Include="Assets\Resources\Sound\BGM\Play\ButtleBGMクレジット.txt" />
->>>>>>> master
+    <None Include="Assets\Resources\Sound\BGM\Play\ButtleBGM%E3%82%AF%E3%83%AC%E3%82%B8%E3%83%83%E3%83%88.txt" />
     <None Include="Assets\Resources\Texts\stage1.txt" />
     <None Include="Assets\Resources\Texts\test.txt" />
->>>>>>> master
     <None Include="Assets\Shader\Select\Cursor.shader" />
     <None Include="Assets\Shader\StageBloc.shader" />
     <None Include="Assets\Shader\Test\NotTathc.shader" />
@@ -412,8 +375,8 @@
     <None Include="Assets\Shader\Test\VertexShader.shader" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
-    <None Include="Assets\ーCredit\Assets.txt" />
-    <None Include="Assets\ーCredit\参考サイト.txt" />
+    <None Include="Assets\%E3%83%BCCredit\Assets.txt" />
+    <None Include="Assets\%E3%83%BCCredit\%E5%8F%82%E8%80%83%E3%82%B5%E3%82%A4%E3%83%88.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

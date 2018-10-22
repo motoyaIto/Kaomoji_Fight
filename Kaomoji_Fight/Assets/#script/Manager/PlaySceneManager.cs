@@ -14,6 +14,9 @@ public class PlaySceneManager : MonoBehaviour
     [System.Serializable]
     private class Player_data
     {
+        private GameObject Payer;
+        private GameObject HPgage;
+
         [SerializeField]
         private string m_name;          //プレイヤー名
         [SerializeField]
@@ -27,15 +30,18 @@ public class PlaySceneManager : MonoBehaviour
 
 
         private Slider m_hpgage_slider; //HPスライダー
+        private XboxController m_controller;
 
         //コンストラクタ
-        public Player_data(string name, Color col, Sprite player_face, Vector3 initialPos)
+        public Player_data(string name, Color col, Sprite player_face, Vector3 initialPos, XboxController controller)
         {
+            
             m_name = name;
             m_nameColor = col;
             m_playerFace = player_face;
             m_initialPos = initialPos;
             m_hpgage_slider = null;
+            m_controller = controller;
         }
         
         //getter:seter
@@ -55,7 +61,7 @@ public class PlaySceneManager : MonoBehaviour
             }
         }
 
-        public Sprite PlayerFace
+        public Sprite PlayerFace_Data
         {
             get
             {
@@ -71,7 +77,7 @@ public class PlaySceneManager : MonoBehaviour
             }
         }
 
-        public Slider Hpgage_slider
+        public Slider Hpgage_slider_Data
         {
             set
             {
@@ -79,6 +85,14 @@ public class PlaySceneManager : MonoBehaviour
                 {
                     m_hpgage_slider = value;
                 }
+            }
+        }
+
+        public XboxController Controller_Data
+        {
+            get
+            {
+                return m_controller;
             }
         }
 
@@ -113,9 +127,6 @@ public class PlaySceneManager : MonoBehaviour
     [SerializeField, Header("プレイヤーの復帰時の場所指定")]
     private Vector3 RevivalPos = new Vector3(2.5f, 50f, 0f);
 
-    private GameObject[] players;       //プレイヤー
-    private GameObject[] HPgage;        //HPゲージ
-
     private Player playerCS;
 
     private int death_player;
@@ -126,48 +137,44 @@ public class PlaySceneManager : MonoBehaviour
         playerCS = GetComponent<Player>();
         death_player = -1;
 
-
-        //プレイヤー分の配列を確保
-        players = new GameObject[PlayData.Instance.playerNum];
-        HPgage = new GameObject[PlayData.Instance.playerNum];
-
-        //P1 = new Player_data(PlayData.Instance.PlayersName, new Color(0.000f, 0.000f, 0.000f), PlayData.Instance.PlayersFace, );
+        P1 = new Player_data(PlayData.Instance.PlayersName[0], new Color(0.000f, 0.000f, 0.000f), PlayData.Instance.PlayersFace[0], new Vector3(10.0f, 50.0f, 0.0f), XboxController.First);
+        P2 = new Player_data(PlayData.Instance.PlayersName[1], new Color(0.000f, 0.000f, 0.000f), PlayData.Instance.PlayersFace[1], new Vector3(20.0f, 50.0f, 0.0f), XboxController.Second);
+        P3 = new Player_data(PlayData.Instance.PlayersName[2], new Color(0.000f, 0.000f, 0.000f), PlayData.Instance.PlayersFace[2], new Vector3(30.0f, 50.0f, 0.0f), XboxController.Third);
+        P4 = new Player_data(PlayData.Instance.PlayersName[3], new Color(0.000f, 0.000f, 0.000f), PlayData.Instance.PlayersFace[3], new Vector3(40.0f, 50.0f, 0.0f), XboxController.Fourth);
 
         //プレイヤーとHPを生成
         for (int i = 0; i < PlayData.Instance.playerNum; i++)
         {
+            GameObject HPgage = (GameObject)Resources.Load("prefab/UI/HPgage");
+            RectTransform HPgage_size = HPgage.GetComponent<RectTransform>();
+
             //プレイヤーとHPバーを生成
             switch (i)
             {
                 case 0:
-                    players[i] = this.CreatePlayer( HPgage[i], P1);
+                    this.CreatePlayer(P1);
+                    HPgage = this.CreateHPgage(HPgage, P1, new Vector3(HPgage_size.sizeDelta.x / 2, Screen.height - 10, 0f));
                     break;
+
                 case 1:
+                    this.CreatePlayer(P2);
+                    HPgage = this.CreateHPgage(HPgage, P2, new Vector3(Screen.width - HPgage_size.sizeDelta.x / 2, Screen.height - 10, 0));
                     break;
+
                 case 2:
+                    this.CreatePlayer(P3);
+                    HPgage = this.CreateHPgage(HPgage, P3, new Vector3(HPgage_size.sizeDelta.x / 2, 10, 0));
                     break;
 
                 case 3:
+                    this.CreatePlayer(P4);
+                    HPgage = this.CreateHPgage(HPgage, P4, new Vector3(Screen.width - HPgage_size.sizeDelta.x / 2, 10, 0));
                     break;
             }
-            ////画像が送られてきていなかったら
-            //if (player_textuer == null)
-            //{
-            //    players[i] = (GameObject)Resources.Load("prefab/Player");
-            //    HPgage[i] = (GameObject)Resources.Load("prefab/UI/HPgage");
-            //}
-            //else
-            //{
-            //    players[i] = player_textuer[i];
-            //    HPgage[i] = player_textuer[i];
-            //}
-
-
-
-
-            //// HPを管理する
-            //HPgage[i].GetComponent<Slider>().maxValue = players[i].transform.gameObject.GetComponent<Player>().HP;
-            //HPgage[i].GetComponent<Slider>().value = HPgage[i].GetComponent<Slider>().maxValue;
+        
+            // HPを管理する
+           // HPgage.GetComponent<Slider>().maxValue = player.transform.gameObject.GetComponent<Player>().HP;
+            //SHPgage.GetComponent<Slider>().value = HPgage[i].GetComponent<Slider>().maxValue;
         }
 
     }
@@ -179,26 +186,26 @@ public class PlaySceneManager : MonoBehaviour
         if (death_player >= 0)
         {
             // 死んだプレイヤーの生成
-            players[death_player] = (GameObject)Resources.Load("prefab/Player");
-            GameObject P = Instantiate(players[death_player], RevivalPos, Quaternion.identity);
+            //players[death_player] = (GameObject)Resources.Load("prefab/Player");
+            //GameObject P = Instantiate(players[death_player], RevivalPos, Quaternion.identity);
 
-            switch (death_player)
-            {
-                case 0:
-                    this.SetPlayerStatus(P, XboxController.First, P1.Name_Data, PlayData.Instance.PlayersFace[death_player]);
-                    break;
-                case 1:
-                    this.SetPlayerStatus(P, XboxController.Second, P2.Name_Data, PlayData.Instance.PlayersFace[death_player]);
-                    break;
-                case 2:
-                    this.SetPlayerStatus(P, XboxController.Third, P3.Name_Data, PlayData.Instance.PlayersFace[death_player]);
-                    break;
-                case 3:
-                    this.SetPlayerStatus(P, XboxController.Fourth, P4.Name_Data, PlayData.Instance.PlayersFace[death_player]);
-                    break;
-                default:
-                    break;
-            }
+            //switch (death_player)
+            //{
+            //    case 0:
+            //        this.SetPlayerStatus(P, XboxController.First, P1.Name_Data, PlayData.Instance.PlayersFace[death_player]);
+            //        break;
+            //    case 1:
+            //        this.SetPlayerStatus(P, XboxController.Second, P2.Name_Data, PlayData.Instance.PlayersFace[death_player]);
+            //        break;
+            //    case 2:
+            //        this.SetPlayerStatus(P, XboxController.Third, P3.Name_Data, PlayData.Instance.PlayersFace[death_player]);
+            //        break;
+            //    case 3:
+            //        this.SetPlayerStatus(P, XboxController.Fourth, P4.Name_Data, PlayData.Instance.PlayersFace[death_player]);
+            //        break;
+            //    default:
+            //        break;
+            //}
             //hpgage_slider[death_player].value = players[death_player].transform.gameObject.GetComponent<Player>().Damage(players[death_player].transform.gameObject.GetComponent<Player>().HP / 10f);
             death_player = -1;
         }
@@ -209,14 +216,12 @@ public class PlaySceneManager : MonoBehaviour
     /// </summary>
     /// <param name="player">プレイヤーオブジェクトデータ</param>
     /// <param name="i">何番目のプレイヤーか</param>
-    private GameObject CreatePlayer(GameObject HPgage, Player_data player_data)
+    private GameObject CreatePlayer(Player_data player_data)
     {
         //プレイヤーを生成
         GameObject player = Instantiate((GameObject)Resources.Load("prefab/Player"), player_data.InitialPos_Data, Quaternion.identity);
         //プレイヤーの設定
-        this.SetPlayerStatus(player, XboxController.First, "P1", PlayData.Instance.PlayersFace[0]);
-        //HPゲージの生成
-        //this.CreateHPgage(HPgage, player.name, i);
+        this.SetPlayerStatus(player, player_data.Controller_Data, player_data.Name_Data, player_data.PlayerFace_Data);
 
         return player;
 
@@ -262,26 +267,29 @@ public class PlaySceneManager : MonoBehaviour
     /// </summary>
     /// <param name="HPgage">HPゲージ</param>
     /// <param name="i">何番目か</param>
-    private void CreateHPgage(GameObject HPgage, string name, int i)
+    private GameObject CreateHPgage(GameObject HPgage, Player_data player_data, Vector3 pos)
     {
-        RectTransform size = HPgage.GetComponent<RectTransform>();
+        GameObject HPgageObj = Instantiate(HPgage, pos, Quaternion.identity, UICanvases.transform);
 
+        HPgageObj.name = name + "_HPgage";
+
+        //名前の設定
+        TextMeshProUGUI P1name = HPgage.transform.Find("Text").GetComponent<TextMeshProUGUI>();
+        P1name.text = name;
+        P1name.color = player_data.Color_Data;
+
+        return HPgageObj;
         //switch (i)
         //{
         //    case 0://元のトランス(281.5, 124)
-        //        GameObject P1_HPgage = Instantiate(HPgage, new Vector3(size.sizeDelta.x / 2, Screen.height - 10, 0f), Quaternion.identity, UICanvases.transform);
+              
 
-        //        P1_HPgage.name = "P1_HPgage";
-
-        //        //名前の設定
-        //        TextMeshProUGUI P1name = P1_HPgage.transform.Find("Text").GetComponent<TextMeshProUGUI>();
-        //        P1name.text = name;
-        //        P1name.color = P1_nameColor;
+       
 
         //        break;
 
         //    case 1:
-        //        GameObject P2_HPgage = Instantiate(HPgage, new Vector3(Screen.width - size.sizeDelta.x / 2, Screen.height - 10, 0), Quaternion.identity, UICanvases.transform);
+        //        GameObject P2_HPgage = Instantiate(HPgage, , Quaternion.identity, UICanvases.transform);
 
         //        P2_HPgage.name = "P2_HPgage";
 
@@ -292,7 +300,7 @@ public class PlaySceneManager : MonoBehaviour
         //        break;
 
         //    case 2:
-        //        GameObject P3_HPgage = Instantiate(HPgage, new Vector3(size.sizeDelta.x / 2, 10, 0), Quaternion.identity, UICanvases.transform);
+        //        GameObject P3_HPgage = Instantiate(HPgage, , Quaternion.identity, UICanvases.transform);
 
         //        P3_HPgage.name = "P3_HPgage";
 
@@ -303,7 +311,7 @@ public class PlaySceneManager : MonoBehaviour
         //        break;
 
         //    case 3:
-        //        GameObject P4_HPgage = Instantiate(HPgage, new Vector3(Screen.width - size.sizeDelta.x / 2, 10, 0), Quaternion.identity, UICanvases.transform);
+        //        GameObject P4_HPgage = Instantiate(HPgage, , Quaternion.identity, UICanvases.transform);
 
         //        P4_HPgage.name = "P4_HPgage";
 
