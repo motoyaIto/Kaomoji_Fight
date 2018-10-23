@@ -43,20 +43,22 @@ public class Player : RaycastController {
 
     private GameObject weapon;
     private bool HaveWeapon = false;//武器を持っている(true)いない(false)
+    private bool Avoidance = false; // 回避フラグ
 
     Contoroller2d controller;   // コントローラー
     Rigidbody2D rig = null;
     [HideInInspector]
     public CollisionInfo collisions;
-    private PlaySceneManager PCM;
+    private PlaySceneManager PSM;
 
     #endregion
 
     new void Start()
     {
         controller = GetComponent<Contoroller2d>();
-        PCM = GameObject.Find("PlaySceneManager").transform.GetComponent<PlaySceneManager>();
-  
+        PSM = GameObject.Find("PlaySceneManager").transform.GetComponent<PlaySceneManager>();
+        rig = GetComponent<Rigidbody2D>();
+
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
@@ -97,11 +99,13 @@ public class Player : RaycastController {
         // Controllerの左スティックのAxisを取得            
         Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, ControlerNamber), XCI.GetAxis(XboxAxis.LeftStickY, ControlerNamber));
 
-        float targetVelocityX = input.x * moveSpeed;
-        velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, 
-                                    (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime, input);
+        {
+            float targetVelocityX = input.x * moveSpeed;
+            velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing,
+                                        (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
+            velocity.y += gravity * Time.deltaTime;
+            controller.Move(velocity * Time.deltaTime, input);
+        }
 
 
         // 回避をしたい
@@ -112,6 +116,18 @@ public class Player : RaycastController {
             // 回避時間
             float Avoidance_time = .0f;
             // アニメーションに差し替え予定
+            if (!Avoidance)
+            {
+                if (velocity.x < 0.0f)
+                {
+                    this.transform.position += new Vector3(-5f, 0f);
+                }
+                else if (velocity.x > 0.0f)
+                {
+                    this.transform.position += new Vector3(5f, 0f);
+                }
+                Avoidance = true;
+            }
 
             // 回避中であれば
             if (Avoidance_time <= Invincible_time)
@@ -123,6 +139,10 @@ public class Player : RaycastController {
                 Avoidance_time += .1f;
             }
 
+        }
+        else if (XCI.GetAxis(XboxAxis.RightTrigger) == .0f)
+        {
+            Avoidance = false;
         }
         
         //武器を持っている
@@ -280,7 +300,7 @@ public class Player : RaycastController {
 
     private void OnDisable()
     {
-        PCM.destroy_p = CNConvert(ControlerNamber);
+        PSM.destroy_p = CNConvert(ControlerNamber);
     }
 
     // Controllerの番号をint型で取得
