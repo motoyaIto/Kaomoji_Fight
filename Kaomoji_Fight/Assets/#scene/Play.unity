@@ -122,15 +122,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4692840890983030, guid: cfc1354b8c804a340bf20c566c050726, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.1613822
       objectReference: {fileID: 0}
     - target: {fileID: 4692840890983030, guid: cfc1354b8c804a340bf20c566c050726, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.18826747
       objectReference: {fileID: 0}
     - target: {fileID: 4692840890983030, guid: cfc1354b8c804a340bf20c566c050726, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2.1707685
       objectReference: {fileID: 0}
     - target: {fileID: 4692840890983030, guid: cfc1354b8c804a340bf20c566c050726, type: 2}
       propertyPath: m_LocalRotation.x
@@ -381,6 +381,11 @@ Prefab:
         type: 2}
       propertyPath: P4.m_nameColor.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114237331437602908, guid: cfc1354b8c804a340bf20c566c050726,
+        type: 2}
+      propertyPath: P1.m_name
+      value: kadsaf
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cfc1354b8c804a340bf20c566c050726, type: 2}
@@ -1018,18 +1023,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PositionMode: 0
   m_RotationMode: 0
-  m_UpdateMethod: 2
+  m_UpdateMethod: 1
   m_Targets:
-  - target: {fileID: 2123337405}
+  - target: {fileID: 0}
     weight: 1
     radius: 1
-  - target: {fileID: 386700326}
+  - target: {fileID: 0}
     weight: 1
     radius: 1
-  - target: {fileID: 387834777}
+  - target: {fileID: 0}
     weight: 1
     radius: 1
-  - target: {fileID: 1289660445}
+  - target: {fileID: 0}
     weight: 1
     radius: 1
 --- !u!1 &1276078852
@@ -1055,7 +1060,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1276078852}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5.565653}
+  m_LocalPosition: {x: 0.1613822, y: 0.18826747, z: 6.8292313}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1062301048}
@@ -1196,9 +1201,9 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 39.999996
+  field of view: 3
   orthographic: 0
-  orthographic size: 1.25
+  orthographic size: 1
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
@@ -1221,7 +1226,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1316484695}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -4.434347}
+  m_LocalPosition: {x: 0.1613822, y: 0.18826747, z: -3.1707687}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

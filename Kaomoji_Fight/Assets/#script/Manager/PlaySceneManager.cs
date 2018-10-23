@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Windows;
 using XboxCtrlrInput;
 using TMPro;
+using Cinemachine;
 
 
 
@@ -161,32 +162,37 @@ public class PlaySceneManager : MonoBehaviour
 
     private int death_player;
 
+    private CinemachineTargetGroup TargetGroup;
     // Use this for initialization
     void Start()
     {
         playerCS = GetComponent<Player>();
         death_player = -1;
 
+        //カメラにターゲットするプレイヤーの数を設定
+        TargetGroup = this.GetComponent<CinemachineTargetGroup>();
+        TargetGroup.m_Targets = new CinemachineTargetGroup.Target[PlayData.Instance.playerNum];
+
         //プレイヤーデータの生成
-        switch(PlayData.Instance.playerNum)
+        switch (PlayData.Instance.playerNum)
         {
             case 1:
-                P1 = new Player_data(PlayData.Instance.PlayersName[0], P1.Color_Data, PlayData.Instance.PlayersFace[0], new Vector3(10.0f, 50.0f, 0.0f), XboxController.First);
+                P1 = new Player_data(PlayData.Instance.PlayersName[0], P1.Color_Data, PlayData.Instance.PlayersFace[0], P1.InitialPos_Data, XboxController.First);
                 break;
             case 2:
-                P1 = new Player_data(PlayData.Instance.PlayersName[0], P1.Color_Data, PlayData.Instance.PlayersFace[0], new Vector3(10.0f, 50.0f, 0.0f), XboxController.First);
-                P2 = new Player_data(PlayData.Instance.PlayersName[1], P2.Color_Data, PlayData.Instance.PlayersFace[1], new Vector3(20.0f, 50.0f, 0.0f), XboxController.Second);
+                P1 = new Player_data(PlayData.Instance.PlayersName[0], P1.Color_Data, PlayData.Instance.PlayersFace[0], P1.InitialPos_Data, XboxController.First);
+                P2 = new Player_data(PlayData.Instance.PlayersName[1], P2.Color_Data, PlayData.Instance.PlayersFace[1], P2.InitialPos_Data, XboxController.Second);
                 break;
             case 3:
-                P1 = new Player_data(PlayData.Instance.PlayersName[0], P1.Color_Data, PlayData.Instance.PlayersFace[0], new Vector3(10.0f, 50.0f, 0.0f), XboxController.First);
-                P2 = new Player_data(PlayData.Instance.PlayersName[1], P2.Color_Data, PlayData.Instance.PlayersFace[1], new Vector3(20.0f, 50.0f, 0.0f), XboxController.Second);
-                P3 = new Player_data(PlayData.Instance.PlayersName[2], P3.Color_Data, PlayData.Instance.PlayersFace[2], new Vector3(30.0f, 50.0f, 0.0f), XboxController.Third);
+                P1 = new Player_data(PlayData.Instance.PlayersName[0], P1.Color_Data, PlayData.Instance.PlayersFace[0], P1.InitialPos_Data, XboxController.First);
+                P2 = new Player_data(PlayData.Instance.PlayersName[1], P2.Color_Data, PlayData.Instance.PlayersFace[1], P2.InitialPos_Data, XboxController.Second);
+                P3 = new Player_data(PlayData.Instance.PlayersName[2], P3.Color_Data, PlayData.Instance.PlayersFace[2], P3.InitialPos_Data, XboxController.Third);
                 break;
             case 4:
-                P1 = new Player_data(PlayData.Instance.PlayersName[0], P1.Color_Data, PlayData.Instance.PlayersFace[0], new Vector3(10.0f, 50.0f, 0.0f), XboxController.First);
-                P2 = new Player_data(PlayData.Instance.PlayersName[1], P2.Color_Data, PlayData.Instance.PlayersFace[1], new Vector3(20.0f, 50.0f, 0.0f), XboxController.Second);
-                P3 = new Player_data(PlayData.Instance.PlayersName[2], P3.Color_Data, PlayData.Instance.PlayersFace[2], new Vector3(30.0f, 50.0f, 0.0f), XboxController.Third);
-                P4 = new Player_data(PlayData.Instance.PlayersName[3], P4.Color_Data, PlayData.Instance.PlayersFace[3], new Vector3(40.0f, 50.0f, 0.0f), XboxController.Fourth);
+                P1 = new Player_data(PlayData.Instance.PlayersName[0], P1.Color_Data, PlayData.Instance.PlayersFace[0], P1.InitialPos_Data, XboxController.First);
+                P2 = new Player_data(PlayData.Instance.PlayersName[1], P2.Color_Data, PlayData.Instance.PlayersFace[1], P2.InitialPos_Data, XboxController.Second);
+                P3 = new Player_data(PlayData.Instance.PlayersName[2], P3.Color_Data, PlayData.Instance.PlayersFace[2], P3.InitialPos_Data, XboxController.Third);
+                P4 = new Player_data(PlayData.Instance.PlayersName[3], P4.Color_Data, PlayData.Instance.PlayersFace[3], P4.InitialPos_Data, XboxController.Fourth);
                 break;
         }
 
@@ -200,22 +206,22 @@ public class PlaySceneManager : MonoBehaviour
             switch (i)
             {
                 case 0:
-                    P1.Player_obj = this.CreatePlayer(P1);
+                    P1.Player_obj = this.CreatePlayer(P1, TargetGroup.m_Targets[0]);
                     P1.HPgage_obj = this.CreateHPgage(P1, new Vector3(HPgage_size.sizeDelta.x / 2, Screen.height - 10, 0f));
                     break;
 
                 case 1:
-                    P2.Player_obj = this.CreatePlayer(P2);
+                    P2.Player_obj = this.CreatePlayer(P2, TargetGroup.m_Targets[1]);
                     P2.HPgage_obj = this.CreateHPgage(P2, new Vector3(Screen.width - HPgage_size.sizeDelta.x / 2, Screen.height - 10, 0));
                     break;
 
                 case 2:
-                    P3.Player_obj = this.CreatePlayer(P3);
+                    P3.Player_obj = this.CreatePlayer(P3, TargetGroup.m_Targets[2]);
                     P3.HPgage_obj = this.CreateHPgage(P3, new Vector3(HPgage_size.sizeDelta.x / 2, 10, 0));
                     break;
 
                 case 3:
-                    P4.Player_obj = this.CreatePlayer(P4);
+                    P4.Player_obj = this.CreatePlayer(P4, TargetGroup.m_Targets[3]);
                     P4.HPgage_obj = this.CreateHPgage(P4, new Vector3(Screen.width - HPgage_size.sizeDelta.x / 2, 10, 0));
                     break;
             }
@@ -240,17 +246,21 @@ public class PlaySceneManager : MonoBehaviour
             //switch (death_player)
             //{
             //    case 0:
-            //        this.SetPlayerStatus(P, XboxController.First, P1.Name_Data, PlayData.Instance.PlayersFace[death_player]);
+            //        P1.Player_obj = this.CreatePlayer(P1);
             //        break;
+
             //    case 1:
-            //        this.SetPlayerStatus(P, XboxController.Second, P2.Name_Data, PlayData.Instance.PlayersFace[death_player]);
+            //        P2.Player_obj = this.CreatePlayer(P2);
             //        break;
+
             //    case 2:
-            //        this.SetPlayerStatus(P, XboxController.Third, P3.Name_Data, PlayData.Instance.PlayersFace[death_player]);
+            //        P3.Player_obj = this.CreatePlayer(P3);
             //        break;
+
             //    case 3:
-            //        this.SetPlayerStatus(P, XboxController.Fourth, P4.Name_Data, PlayData.Instance.PlayersFace[death_player]);
+            //        P4.Player_obj = this.CreatePlayer(P4);
             //        break;
+
             //    default:
             //        break;
             //}
@@ -264,29 +274,31 @@ public class PlaySceneManager : MonoBehaviour
     /// </summary>
     /// <param name="player">プレイヤーオブジェクトデータ</param>
     /// <param name="i">何番目のプレイヤーか</param>
-    private GameObject CreatePlayer(Player_data player_data)
+    private GameObject CreatePlayer(Player_data player_data, CinemachineTargetGroup.Target CinemachineTaget)
     {
         //プレイヤーを生成
         GameObject player = Instantiate(player_data.Player_obj, player_data.InitialPos_Data, Quaternion.identity);
         //プレイヤーの設定
-        this.SetPlayerStatus(player, player_data.Controller_Data, player_data.Name_Data, player_data.PlayerFace_Data);
+        this.SetPlayerStatus(player, player_data.Controller_Data, player_data.Name_Data, player_data.PlayerFace_Data, CinemachineTaget);
 
         return player;
 
        
     } 
     /// <summary>
-    /// プレイヤーのステータスを設定する
+    /// プレイヤーの設定
     /// </summary>
-    /// <param name="player">プレイヤー</param>
+    /// <param name="player">プレイヤーオブジェクト</param>
     /// <param name="controllerNamber">コントローラー番号</param>
-    private void SetPlayerStatus(GameObject player, XboxController controllerNamber, string name, Sprite FaceTextures)
+    /// <param name="name"></param>
+    /// <param name="FaceTextures"></param>
+    private void SetPlayerStatus(GameObject player, XboxController controllerNamber, string name, Sprite FaceTextures, CinemachineTargetGroup.Target CinemachineTarge)
     {
         //キャラの顔をセット
         SpriteRenderer playerFace = player.GetComponent<SpriteRenderer>();
         playerFace.sprite = FaceTextures;
 
-        //名前
+        //ヒエラルキー名をセット
         player.name = name;
 
         //コントローラーをセット
@@ -294,27 +306,34 @@ public class PlaySceneManager : MonoBehaviour
         playerScript.GetControllerNamber = controllerNamber;
 
         //カメラのターゲット用ダミーを取得する
-        name += "_dummy";
+        name += "_Camera";
 
         foreach(Transform child in this.transform)
         {
             if(child.name == name)
             {
-                child.transform.parent = null;
+                Transform clone_Child = Instantiate(child);
 
-                child.transform.parent = player.gameObject.transform;
+                clone_Child.name = name;
 
-                child.transform.position = player.transform.position;
+                CinemachineTarge.target = clone_Child;
+                CinemachineTarge.weight = 1;
+                CinemachineTarge.radius = 1;
+
+                clone_Child.transform.parent = player.gameObject.transform;
+
+                clone_Child.transform.position = player.transform.position;
                 break;
             }
         }
     }
 
     /// <summary>
-    /// HPゲージの生成
+    /// HPゲージを生成
     /// </summary>
-    /// <param name="HPgage">HPゲージ</param>
-    /// <param name="i">何番目か</param>
+    /// <param name="player_data">プレイヤーデータ</param>
+    /// <param name="pos">HPゲージの描画座標</param>
+    /// <returns>HPゲージ</returns>
     private GameObject CreateHPgage(Player_data player_data, Vector3 pos)
     {
         //プレイヤーを生成
