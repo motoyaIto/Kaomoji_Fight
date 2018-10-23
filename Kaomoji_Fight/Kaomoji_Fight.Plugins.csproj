@@ -346,7 +346,6 @@
     <None Include="Assets\Plugins\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\Plugins\vivaldi\nu Assets\Vivaldi\Scripts\ch.sycoforge.Vivaldi.XML" />
     <None Include="Assets\Plugins\vivaldi\nu Assets\Vivaldi\Shaders\WaveformUI.shader" />
-    <None Include="Assets\Resources\Sound\BGM\Play\ButtleBGM%E3%82%AF%E3%83%AC%E3%82%B8%E3%83%83%E3%83%88.txt" />
     <None Include="Assets\Resources\Texts\stage1.txt" />
     <None Include="Assets\Resources\Texts\test.txt" />
     <None Include="Assets\Shader\Select\Cursor.shader" />
@@ -359,6 +358,7 @@
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\%E3%83%BCCredit\Assets.txt" />
+    <None Include="Assets\%E3%83%BCCredit\ButtleBGM%E3%82%AF%E3%83%AC%E3%82%B8%E3%83%83%E3%83%88.txt" />
     <None Include="Assets\%E3%83%BCCredit\%E5%8F%82%E8%80%83%E3%82%B5%E3%82%A4%E3%83%88.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
