@@ -51,8 +51,7 @@ public class SelectStage : MonoBehaviour {
         
         Transform myTransform = this.transform;
         Vector3 pos = myTransform.position;
-        Debug.Log(pos.x);
-
+        
         // Controllerの左スティックのAxisを取得            
         Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, ControlerNamber), XCI.GetAxis(XboxAxis.LeftStickY, ControlerNamber));
 
