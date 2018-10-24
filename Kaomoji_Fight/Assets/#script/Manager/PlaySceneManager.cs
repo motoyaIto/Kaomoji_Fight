@@ -33,6 +33,7 @@ public class PlaySceneManager : MonoBehaviour
         private Slider m_hpgage_slider; //HPスライダー
         private XboxController m_controller;
 
+        private Transform m_myCamera = null;
         //コンストラクタ
         public Player_data(string name, Color col, Sprite player_face, Vector3 initialPos, XboxController controller)
         {
@@ -127,6 +128,20 @@ public class PlaySceneManager : MonoBehaviour
             }
         }
 
+        public Transform My_Camera_data
+        {
+            set
+            {
+                if(m_myCamera == null)
+                {
+                    m_myCamera = value;
+                }
+            }
+            get
+            {
+                return m_myCamera;
+            }
+        }
     }
 
 
@@ -206,28 +221,50 @@ public class PlaySceneManager : MonoBehaviour
             switch (i)
             {
                 case 0:
-                    P1.Player_obj = this.CreatePlayer(P1, TargetGroup.m_Targets[0]);
+                    P1.Player_obj = this.CreatePlayer(P1);
                     P1.HPgage_obj = this.CreateHPgage(P1, new Vector3(HPgage_size.sizeDelta.x / 2, Screen.height - 10, 0f));
+
+                    //カメラのターゲットに設定
+                    TargetGroup.m_Targets[i].target = P1.My_Camera_data;
+                    TargetGroup.m_Targets[i].weight = 1;
+                    TargetGroup.m_Targets[i].radius = 1;
+
                     break;
 
                 case 1:
-                    P2.Player_obj = this.CreatePlayer(P2, TargetGroup.m_Targets[1]);
+                    P2.Player_obj = this.CreatePlayer(P2);
                     P2.HPgage_obj = this.CreateHPgage(P2, new Vector3(Screen.width - HPgage_size.sizeDelta.x / 2, Screen.height - 10, 0));
+
+                    //カメラのターゲットに設定
+                    TargetGroup.m_Targets[i].target = P2.My_Camera_data;
+                    TargetGroup.m_Targets[i].weight = 1;
+                    TargetGroup.m_Targets[i].radius = 1;
                     break;
 
                 case 2:
-                    P3.Player_obj = this.CreatePlayer(P3, TargetGroup.m_Targets[2]);
+                    P3.Player_obj = this.CreatePlayer(P3);
                     P3.HPgage_obj = this.CreateHPgage(P3, new Vector3(HPgage_size.sizeDelta.x / 2, 10, 0));
+
+                    //カメラのターゲットに設定
+                    TargetGroup.m_Targets[i].target = P3.My_Camera_data;
+                    TargetGroup.m_Targets[i].weight = 1;
+                    TargetGroup.m_Targets[i].radius = 1;
                     break;
 
                 case 3:
-                    P4.Player_obj = this.CreatePlayer(P4, TargetGroup.m_Targets[3]);
+                    P4.Player_obj = this.CreatePlayer(P4);
                     P4.HPgage_obj = this.CreateHPgage(P4, new Vector3(Screen.width - HPgage_size.sizeDelta.x / 2, 10, 0));
+
+                    //カメラのターゲットに設定
+                    TargetGroup.m_Targets[i].target = P4.My_Camera_data;
+                    TargetGroup.m_Targets[i].weight = 1;
+                    TargetGroup.m_Targets[i].radius = 1;
                     break;
             }
-        
+
+           
             // HPを管理する
-           // HPgage.GetComponent<Slider>().maxValue = player.transform.gameObject.GetComponent<Player>().HP;
+            // HPgage.GetComponent<Slider>().maxValue = player.transform.gameObject.GetComponent<Player>().HP;
             //SHPgage.GetComponent<Slider>().value = HPgage[i].GetComponent<Slider>().maxValue;
         }
 
@@ -274,12 +311,12 @@ public class PlaySceneManager : MonoBehaviour
     /// </summary>
     /// <param name="player">プレイヤーオブジェクトデータ</param>
     /// <param name="i">何番目のプレイヤーか</param>
-    private GameObject CreatePlayer(Player_data player_data, CinemachineTargetGroup.Target CinemachineTaget)
+    private GameObject CreatePlayer(Player_data player_data)
     {
         //プレイヤーを生成
         GameObject player = Instantiate(player_data.Player_obj, player_data.InitialPos_Data, Quaternion.identity);
         //プレイヤーの設定
-        this.SetPlayerStatus(player, player_data.Controller_Data, player_data.Name_Data, player_data.PlayerFace_Data, CinemachineTaget);
+        this.SetPlayerStatus(player, player_data);
 
         return player;
 
@@ -292,39 +329,37 @@ public class PlaySceneManager : MonoBehaviour
     /// <param name="controllerNamber">コントローラー番号</param>
     /// <param name="name"></param>
     /// <param name="FaceTextures"></param>
-    private void SetPlayerStatus(GameObject player, XboxController controllerNamber, string name, Sprite FaceTextures, CinemachineTargetGroup.Target CinemachineTarge)
+    private void SetPlayerStatus(GameObject player, Player_data player_data)
     {
         //キャラの顔をセット
         SpriteRenderer playerFace = player.GetComponent<SpriteRenderer>();
-        playerFace.sprite = FaceTextures;
+        playerFace.sprite = player_data.PlayerFace_Data;
 
         //ヒエラルキー名をセット
-        player.name = name;
+        player.name = player_data.Name_Data;
 
         //コントローラーをセット
         Player playerScript = player.GetComponent<Player>();
-        playerScript.GetControllerNamber = controllerNamber;
+        playerScript.GetControllerNamber = player_data.Controller_Data;
 
         //カメラのターゲット用ダミーを取得する
-        name += "_Camera";
+        string dummy_name = player_data.Name_Data + "_dummy";
 
+       
         foreach(Transform child in this.transform)
         {
-            if(child.name == name)
-            {
-                Transform clone_Child = Instantiate(child);
+            //dummyのコピーを作成
+            Transform clone_Child = Instantiate(child);
+            clone_Child.name = child.name;
 
-                clone_Child.name = name;
+            //プレイヤーのデータに保存
+            player_data.My_Camera_data = clone_Child;
 
-                CinemachineTarge.target = clone_Child;
-                CinemachineTarge.weight = 1;
-                CinemachineTarge.radius = 1;
+            //プレイヤーと親子関係を作成
+            clone_Child.transform.parent = player.gameObject.transform;
+            clone_Child.transform.position = player.transform.position;
 
-                clone_Child.transform.parent = player.gameObject.transform;
-
-                clone_Child.transform.position = player.transform.position;
-                break;
-            }
+            break;
         }
     }
 
@@ -350,17 +385,11 @@ public class PlaySceneManager : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// 各プレイヤーの画像
-    /// </summary>
-    //public GameObject[] Player_textuer
-    //{
-    //    set
-    //    {
-    //        player_textuer = new GameObject[value.Length];
-    //        player_textuer = value;
-    //    }
-    //}
+    public void Player_ReceiveDamage()
+    {
+
+        Debug.Log("hit");
+    }
 
     public int destroy_p
     {

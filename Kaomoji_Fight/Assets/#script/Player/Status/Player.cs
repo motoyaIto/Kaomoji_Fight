@@ -290,12 +290,17 @@ public class Player : RaycastController {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        velocity = rig.velocity;
-        if (velocity.y <= 0)
+        //ダメージ判定
+        if(collider.tag == "Weapon")
         {
-            velocity.y = 6;
-            rig.velocity = velocity;
+            PSM.Player_ReceiveDamage();
         }
+        //velocity = rig.velocity;
+        //if (velocity.y <= 0)
+        //{
+        //    velocity.y = 6;
+        //    rig.velocity = velocity;
+        //}
     }
 
     private void OnDisable()
@@ -350,5 +355,6 @@ public class Player : RaycastController {
             ControlerNamber = value;
         }
     }
+
 
 }
