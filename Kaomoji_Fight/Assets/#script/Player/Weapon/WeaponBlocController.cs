@@ -56,9 +56,11 @@ public class WeaponBlocController : MonoBehaviour {
     {
         this.transform.gameObject.AddComponent<Rigidbody2D>();
         this.transform.gameObject.AddComponent<BoxCollider2D>();
+        this.transform.parent = null;
         Shot = shot;
         Thrust = thrust;
         AttackFlag = true;
+        this.tag = "Weapon";
         
     }
 
