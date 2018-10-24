@@ -29,6 +29,14 @@ public class Player : RaycastController {
     [SerializeField, Header("無敵時間")]
     private float Invincible_time = .5f;
 
+    [Header("飛ぶ量")]
+    public float maxflap = 1000f;
+    public float minflap = 500f;
+
+    [Header("幅")]
+    public float scroll = 5f;
+
+
     // 非公開
     [SerializeField, Header("コントローラー番号")]
     private XboxController ControlerNamber = XboxController.First;//何番目のコントローラーを適用するか
@@ -38,12 +46,14 @@ public class Player : RaycastController {
     private float minJumpVelocity;  // 最小ジャンプ時の勢い
     private Vector3 velocity;
     private float velocityXSmoothing;
+    private float direction;    // 方向
 
     private float nowHp = 100;    // プレイヤーのHP
 
     private GameObject weapon;
     private bool HaveWeapon = false;//武器を持っている(true)いない(false)
     private bool Avoidance = false; // 回避フラグ
+    private bool jump = false;  // ジャンプ中か？
 
     Contoroller2d controller;   // コントローラー
     Rigidbody2D rig = null;
@@ -58,11 +68,6 @@ public class Player : RaycastController {
         controller = GetComponent<Contoroller2d>();
         PSM = GameObject.Find("PlaySceneManager").transform.GetComponent<PlaySceneManager>();
         rig = GetComponent<Rigidbody2D>();
-
-        gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
-        maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
-        minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravity) * minJumpHeight);
-
     }
 
     private void Reset()
@@ -72,57 +77,61 @@ public class Player : RaycastController {
 
     void Update()
     {
-        if (controller.collisions.above || controller.collisions.below)
+
+        // Controllerの左スティックのAxisを取得            
+        Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, ControlerNamber), XCI.GetAxis(XboxAxis.LeftStickY, ControlerNamber));
+        if (input.x > .0f)
         {
-            velocity.y = 0;
+            direction = 1f;
         }
+        else if (input.x < .0f)
+        {
+            direction = -1f;
+        }
+        else
+        {
+            direction = 0f;
+        }
+
+
+        //キャラのy軸のdirection方向にscrollの力をかける
+        rig.velocity = new Vector2(scroll * direction, rig.velocity.y);
 
 
         // 大ジャンプ
         if (XCI.GetButtonDown(XboxButton.Y, ControlerNamber))
         {
-            if (controller.collisions.below)
-            {
-                velocity.y = maxJumpVelocity;
+            //if (controller.collisions.below)
+            //{
+                rig.AddForce(Vector2.up * maxflap);
                 this.gameObject.layer = LayerName.Through;
-            }
+            //}
         }
         // 小ジャンプ
-        if (XCI.GetButtonUp(XboxButton.Y, ControlerNamber))
-        {
-            if (velocity.y > minJumpVelocity)
-            {
-                velocity.y = minJumpVelocity;
-            }
-        }
-        
-        // Controllerの左スティックのAxisを取得            
-        Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, ControlerNamber), XCI.GetAxis(XboxAxis.LeftStickY, ControlerNamber));
+        //if (XCI.GetButtonUp(XboxButton.Y, ControlerNamber))
+        //{
+        //    if (velocity.y > minJumpVelocity)
+        //    {
+        //        rig.AddForce(Vector2.up * minflap);
+        //        Debug.Log("小ジャンプ！");
+        //    }
+        //}        
 
-        {
-            float targetVelocityX = input.x * moveSpeed;
-            velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing,
-                                        (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
-            velocity.y += gravity * Time.deltaTime;
-            controller.Move(velocity * Time.deltaTime, input);
-        }
 
 
         // 回避をしたい
         if (XCI.GetAxis(XboxAxis.RightTrigger) < 0.0f)
         {
-            //Instantiate()
-            float rand = Random.Range(-1.0f, 1.0f);
             // 回避時間
             float Avoidance_time = .0f;
             // アニメーションに差し替え予定
             if (!Avoidance)
             {
-                if (velocity.x < 0.0f)
+                if (rig.velocity.x < 0.0f)
                 {
                     this.transform.position += new Vector3(-5f, 0f);
                 }
-                else if (velocity.x > 0.0f)
+                else if (rig.velocity.x > 0.0f)
                 {
                     this.transform.position += new Vector3(5f, 0f);
                 }
@@ -291,7 +300,7 @@ public class Player : RaycastController {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //ダメージ判定
-        if(collider.tag == "Weapon")
+        if(collision.transform.tag == "Weapon")
         {
             PSM.Player_ReceiveDamage();
         }
