@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4509809379755814}
   - component: {fileID: 23039721711461336}
   - component: {fileID: 102448162479240744}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,9 +40,9 @@ GameObject:
   - component: {fileID: 23070714555019838}
   - component: {fileID: 61993061788404006}
   - component: {fileID: 114039381274472756}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: StageBlock
-  m_TagString: Untagged
+  m_TagString: Stage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

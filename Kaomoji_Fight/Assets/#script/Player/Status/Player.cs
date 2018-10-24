@@ -46,7 +46,7 @@ public class Player : RaycastController {
     private float minJumpVelocity;  // 最小ジャンプ時の勢い
     private Vector3 velocity;
     private float velocityXSmoothing;
-    private float direction;    // 方向
+    private float direction = 0;    // 方向
 
     private float nowHp = 100;    // プレイヤーのHP
 
@@ -224,34 +224,24 @@ public class Player : RaycastController {
     /// </summary>
     private void RayController()
     {
-        float directionX = Mathf.Sign(velocity.x);          //float型の値が正か負かを返す
-        float rayLength = Mathf.Abs(velocity.x) + skinWidth;//rayの長さを計算する
-
-        //rayの数分回す
-        for (int i = 0; i < horizontalRayCount; i++)
+        // 武器をゲットするかも
+        if (XCI.GetButtonDown(XboxButton.B, ControlerNamber))
         {
-            //右を向いているか左を向いているか
-            Vector2 rayOrigin = (directionX == -1) ? raycastOrigins.bottomLeft : raycastOrigins.bottomRight;
-            
-            //rayを描画し始める場所
-            rayOrigin += Vector2.up * (horizontalRaySpacing * i);
-            //rayを飛ばした先で獲得できたものを入れる
-            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, collisionMask);
+            //rayの開始地点
+            Vector3 ray_initial = new Vector3(this.transform.position.x, this.transform.position.y - this.transform.localScale.y, this.transform.position.x);
 
-            // 武器をゲットするかも
-            if (XCI.GetButtonDown(XboxButton.B, ControlerNamber))
+            //rayを生成
+            Ray2D ray = new Ray2D(ray_initial, Vector2.down);
+            //rayを可視化する
+            Debug.DrawRay(ray.origin, ray.direction * 0.5f, Color.green);
+
+            //rayに当たったものを取得する
+            RaycastHit2D hitFoot = Physics2D.Raycast(ray.origin, Vector2.down, ray.direction.y * 0.5f);
+           
+            //ステージから武器に変換
+            if(hitFoot.transform.tag == "Stage")
             {
-                //Rayを伸ばす
-                float rayLine = 2.0f;
-                //当たっている物があれば
-                RaycastHit2D hitFoot = Physics2D.Raycast(this.transform.position, -Vector2.up, rayLine);
-                //当たっている物があれば
-                if (hitFoot)
-                {
-                    this.GetWeapon(hitFoot, directionX);
-
-                    break;
-                }
+                this.GetWeapon(hitFoot);
             }
         }
     }
@@ -261,7 +251,7 @@ public class Player : RaycastController {
     /// </summary>
     /// <param name="hitFoot">足元にあった武器</param>
     /// <param name="directionX">右か左か</param>
-    private void GetWeapon(RaycastHit2D hitFoot, float directionX)
+    private void GetWeapon(RaycastHit2D hitFoot)
     {
         GameObject block = hitFoot.collider.gameObject;
         BlockController block_cs = block.GetComponent<BlockController>();
@@ -277,7 +267,7 @@ public class Player : RaycastController {
             //武器のスクリプトに張り替える
             Destroy(weapon.GetComponent<BlockController>());
             weapon.AddComponent<WeaponBlocController>();
-           
+
             //床から切り抜く
             block.GetComponent<BlockController>().ChangeWeapon();
 
@@ -285,15 +275,33 @@ public class Player : RaycastController {
 
             HaveWeapon = true;
 
+            Debug.Log(this.transform.GetComponent<SpriteRenderer>().sprite.texture.texelSize.y);//0.004739337
+            Debug.Log(this.transform.GetComponent<SpriteRenderer>().sprite.texture.height);//211
+            Debug.Log(this.transform.GetComponent<SpriteRenderer>().sprite.texture.width);//584
+            Debug.Log(this.transform.GetComponent<SpriteRenderer>().sprite.vertices[0].y);//0.535
+            Debug.Log(this.transform.GetComponent<SpriteRenderer>().sprite.vertices[1].y);//-0.653
+            Debug.Log(this.transform.GetComponent<SpriteRenderer>().sprite.vertices[2].y);//0.535
+            Debug.Log(this.transform.GetComponent<SpriteRenderer>().sprite.vertices[3].y);//0.535
+            Debug.Log(this.transform.GetComponent<SpriteRenderer>().sprite.vertices[4].y);//0.535
+            weapon.transform.position = new Vector3(this.transform.position.x, this.transform.position.y +this.transform.GetComponent<SpriteRenderer>().sprite.rect.height * this.transform.GetComponent<SpriteRenderer>().transform.localScale.y * this.transform.localScale.y / 2, this.transform.position.z);
             //プレイヤーの移動する向きに合わせて位置を調整
-            if (directionX == -1)
-            {
-                weapon.transform.position = new Vector3(0.5f, this.transform.position.y + this.transform.localScale.y * 2, 0.0f);
-            }
-            else
-            {
-                weapon.transform.position = new Vector3(this.transform.position.x + this.transform.localScale.x + 0.5f, this.transform.position.y + this.transform.localScale.y * 2, 0.0f);
-            }
+            //if (direction >=1)//右
+            //{
+
+            //    weapon.transform.position = new Vector3(0.5f, this.transform.position.y + this.transform.localScale.y * 2, 0.0f);
+            //    Debug.Log("右");
+            //}
+
+            //else if(direction <= 1)//左
+            //{
+            //    weapon.transform.position = new Vector3(this.transform.position.x + this.transform.localScale.x + 0.5f, this.transform.position.y + this.transform.localScale.y * 2, 0.0f);
+            //    Debug.Log("左");
+            //}
+            //else//移動していない
+            //{
+            //    weapon.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + this.transform.localScale.y, 0.0f);
+            //    Debug.Log("中心");
+            //}
         }
     }
 

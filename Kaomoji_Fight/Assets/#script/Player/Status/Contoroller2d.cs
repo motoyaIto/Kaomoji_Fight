@@ -66,12 +66,6 @@ public class Contoroller2d : RaycastController
             rayOrigin += Vector2.up * (horizontalRaySpacing * i);
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, collisionMask);
 
-            if (i == 0)
-            {
-                Vector2 rayline = new Vector2(0, -1f);
-                hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX + rayline, rayLength, collisionMask);
-                Debug.DrawRay(rayOrigin, Vector2.right * directionX * rayLength + rayline, Color.red, CheckFootRay_time);
-            }
             Debug.DrawRay(rayOrigin, Vector2.right * directionX * rayLength, Color.red);
 
             if (hit)
