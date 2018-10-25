@@ -391,6 +391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 654451984}
   - component: {fileID: 654451985}
+  - component: {fileID: 654451986}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -437,6 +438,21 @@ MonoBehaviour:
     FarClipPlane: 5000
     Dutch: 0
   m_ComponentOwner: {fileID: 1177039963}
+--- !u!114 &654451986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 654451983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4700f9f03ad19f94baf0367cb7a9c988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Width: 2
+  m_Damping: 2
+  m_MinFOV: 50
+  m_MaxFOV: 120
 --- !u!1 &728197635 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1245198144625988, guid: 78d1e039b7f3eda4aa36763dc47e6a87,
@@ -521,7 +537,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 40.000004
+  field of view: 50
   orthographic: 0
   orthographic size: 1.4285715
   m_Depth: 0
