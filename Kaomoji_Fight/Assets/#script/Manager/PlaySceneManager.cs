@@ -226,8 +226,7 @@ public class PlaySceneManager : MonoBehaviour
 
                     //カメラのターゲットに設定
                     TargetGroup.m_Targets[i].target = P1.My_Camera_data;
-                    TargetGroup.m_Targets[i].weight = 1;
-                    TargetGroup.m_Targets[i].radius = 1;
+                    CameraSet(i);
 
                     break;
 
@@ -237,8 +236,7 @@ public class PlaySceneManager : MonoBehaviour
 
                     //カメラのターゲットに設定
                     TargetGroup.m_Targets[i].target = P2.My_Camera_data;
-                    TargetGroup.m_Targets[i].weight = 1;
-                    TargetGroup.m_Targets[i].radius = 1;
+                    CameraSet(i);
                     break;
 
                 case 2:
@@ -247,8 +245,7 @@ public class PlaySceneManager : MonoBehaviour
 
                     //カメラのターゲットに設定
                     TargetGroup.m_Targets[i].target = P3.My_Camera_data;
-                    TargetGroup.m_Targets[i].weight = 1;
-                    TargetGroup.m_Targets[i].radius = 1;
+                    CameraSet(i);
                     break;
 
                 case 3:
@@ -257,8 +254,7 @@ public class PlaySceneManager : MonoBehaviour
 
                     //カメラのターゲットに設定
                     TargetGroup.m_Targets[i].target = P4.My_Camera_data;
-                    TargetGroup.m_Targets[i].weight = 1;
-                    TargetGroup.m_Targets[i].radius = 1;
+                    CameraSet(i);
                     break;
             }
 
@@ -277,30 +273,44 @@ public class PlaySceneManager : MonoBehaviour
         if (death_player >= 0)
         {
             // 死んだプレイヤーの生成
-            //players[death_player] = (GameObject)Resources.Load("prefab/Player");
-            //GameObject P = Instantiate(players[death_player], RevivalPos, Quaternion.identity);
+            switch (death_player)
+            {
+                case 0:
+                    P1 = new Player_data(PlayData.Instance.PlayersName[death_player], P1.Color_Data, PlayData.Instance.PlayersFace[death_player], P1.InitialPos_Data, XboxController.First);
+                    P1.Player_obj = this.CreatePlayer(P1);
+                    //カメラのターゲットに設定
+                    TargetGroup.m_Targets[death_player].target = P1.My_Camera_data;
+                    CameraSet(death_player);
+                    break;
 
-            //switch (death_player)
-            //{
-            //    case 0:
-            //        P1.Player_obj = this.CreatePlayer(P1);
-            //        break;
+                case 1:
+                    P2 = new Player_data(PlayData.Instance.PlayersName[death_player], P2.Color_Data, PlayData.Instance.PlayersFace[death_player], P2.InitialPos_Data, XboxController.Second);
+                    P2.Player_obj = this.CreatePlayer(P2);
+                    //カメラのターゲットに設定
+                    TargetGroup.m_Targets[death_player].target = P2.My_Camera_data;
+                    CameraSet(death_player);
 
-            //    case 1:
-            //        P2.Player_obj = this.CreatePlayer(P2);
-            //        break;
+                    break;
 
-            //    case 2:
-            //        P3.Player_obj = this.CreatePlayer(P3);
-            //        break;
+                case 2:
+                    P3 = new Player_data(PlayData.Instance.PlayersName[death_player], P3.Color_Data, PlayData.Instance.PlayersFace[death_player], P3.InitialPos_Data, XboxController.Third);
+                    P3.Player_obj = this.CreatePlayer(P3);
+                    //カメラのターゲットに設定
+                    TargetGroup.m_Targets[death_player].target = P3.My_Camera_data;
+                    CameraSet(death_player);
+                    break;
 
-            //    case 3:
-            //        P4.Player_obj = this.CreatePlayer(P4);
-            //        break;
+                case 3:
+                    P4 = new Player_data(PlayData.Instance.PlayersName[death_player], P4.Color_Data, PlayData.Instance.PlayersFace[death_player], P4.InitialPos_Data, XboxController.Fourth);
+                    P4.Player_obj = this.CreatePlayer(P4);
+                    //カメラのターゲットに設定
+                    TargetGroup.m_Targets[death_player].target = P4.My_Camera_data;
+                    CameraSet(death_player);
+                    break;
 
-            //    default:
-            //        break;
-            //}
+                default:
+                    break;
+            }
             //hpgage_slider[death_player].value = players[death_player].transform.gameObject.GetComponent<Player>().Damage(players[death_player].transform.gameObject.GetComponent<Player>().HP / 10f);
             death_player = -1;
         }
@@ -397,6 +407,15 @@ public class PlaySceneManager : MonoBehaviour
         {
             death_player = value;
         }
+    }
+
+    private void CameraSet(int num)
+    {
+        //カメラのターゲットに設定
+        //TargetGroup.m_Targets[death_player].target = P1.My_Camera_data;
+        TargetGroup.m_Targets[num].weight = 1;
+        TargetGroup.m_Targets[num].radius = 1;
+
     }
 
 }
