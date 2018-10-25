@@ -99,28 +99,23 @@ public class Player : RaycastController {
 
 
         // 大ジャンプ
-        if (XCI.GetButtonDown(XboxButton.Y, ControlerNamber))
+        if (XCI.GetButtonDown(XboxButton.Y, ControlerNamber) && !jump)
         {
-            //if (controller.collisions.below)
-            //{
-                rig.AddForce(Vector2.up * maxflap);
-                this.gameObject.layer = LayerName.Through;
-            //}
+            rig.AddForce(Vector2.up * maxflap);
+            jump = true;
+            this.gameObject.layer = LayerName.Through;
         }
         // 小ジャンプ
-        //if (XCI.GetButtonUp(XboxButton.Y, ControlerNamber))
-        //{
-        //    if (velocity.y > minJumpVelocity)
-        //    {
-        //        rig.AddForce(Vector2.up * minflap);
-        //        Debug.Log("小ジャンプ！");
-        //    }
-        //}        
+        if (XCI.GetButtonUp(XboxButton.Y, ControlerNamber) && !jump)
+        {
+            rig.AddForce(Vector2.down);
+            jump = true;
+        }
 
 
 
         // 回避をしたい
-        if (XCI.GetAxis(XboxAxis.RightTrigger) < 0.0f)
+        if (XCI.GetAxis(XboxAxis.RightTrigger, ControlerNamber) < 0.0f)
         {
             // 回避時間
             float Avoidance_time = .0f;
@@ -233,7 +228,7 @@ public class Player : RaycastController {
             //rayを生成
             Ray2D ray = new Ray2D(ray_initial, Vector2.down);
             //rayを可視化する
-            Debug.DrawRay(ray.origin, ray.direction * 0.5f, Color.green);
+            Debug.DrawRay(ray.origin, ray.direction * 0.5f, Color.green, 1.0f);
 
             //rayに当たったものを取得する
             RaycastHit2D hitFoot = Physics2D.Raycast(ray.origin, Vector2.down, ray.direction.y * 0.5f);
@@ -312,12 +307,12 @@ public class Player : RaycastController {
         {
             PSM.Player_ReceiveDamage();
         }
-        //velocity = rig.velocity;
-        //if (velocity.y <= 0)
-        //{
-        //    velocity.y = 6;
-        //    rig.velocity = velocity;
-        //}
+
+        // ジャンプ制限
+        if (collision.gameObject.CompareTag("Stage"))
+        {
+            jump = false;
+        }
     }
 
     private void OnDisable()
