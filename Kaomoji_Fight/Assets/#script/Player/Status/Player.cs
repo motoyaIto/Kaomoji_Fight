@@ -9,17 +9,6 @@ public class Player : RaycastController {
 
     #region 変数群
     // 公開
-    [Header("ジャンプの高さ")]
-    public float maxJumpHeight = 5f;
-    public float minJumpHeight = .5f;
-
-    [Header("ジャンプの頂点までの時間")]
-    public float timeToJumpApex = .4f;
-
-    [Header("加速時間")]
-    public float accelerationTimeAirborne = .2f;
-    public float accelerationTimeGrounded = .1f;
-
     [Header("移動速度")]
     public float moveSpeed = 10;
 
@@ -41,11 +30,7 @@ public class Player : RaycastController {
     [SerializeField, Header("コントローラー番号")]
     private XboxController ControlerNamber = XboxController.First;//何番目のコントローラーを適用するか
 
-    private float gravity;  // 重力
-    private float maxJumpVelocity;  // 最大ジャンプ時の勢い
-    private float minJumpVelocity;  // 最小ジャンプ時の勢い
     private Vector3 velocity;
-    private float velocityXSmoothing;
     private float direction = 0;    // 方向
 
     private float nowHp = 100;    // プレイヤーのHP
@@ -124,7 +109,7 @@ public class Player : RaycastController {
         {
             // 回避時間
             float Avoidance_time = .0f;
-            // アニメーションに差し替え予定
+            // アニメーションに差し替え予定？
             if (!Avoidance)
             {
                 if (rig.velocity.x < 0.0f)
@@ -191,7 +176,6 @@ public class Player : RaycastController {
 
             }
         }
-
 
             // Ｒａｙ
             this.RayController();
@@ -316,7 +300,6 @@ public class Player : RaycastController {
             default:
                 break;
         }
-
         return -1;
     }
 
@@ -326,7 +309,6 @@ public class Player : RaycastController {
     {
         return nowHp - damage;
     }
-
 
     // Hpのゲッターセッター
     public float HP
