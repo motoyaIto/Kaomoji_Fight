@@ -400,7 +400,7 @@ Prefab:
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
       propertyPath: playersface.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4940859300506722, guid: c9529d12034635d4e9fedc91c9d6163e, type: 2}
       propertyPath: m_LocalPosition.x
@@ -447,13 +447,13 @@ Prefab:
         type: 2}
       propertyPath: playersface.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: ce86c9c1aebad9f4086e88f621888727,
+      objectReference: {fileID: 21300000, guid: f258c7b022e81f34396fa2c6a3dbbdfb,
         type: 3}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
       propertyPath: playersface.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: 76b8cf697ab715d40b47afc09e0836d4,
+      objectReference: {fileID: 21300000, guid: ce86c9c1aebad9f4086e88f621888727,
         type: 3}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}

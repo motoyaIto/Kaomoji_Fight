@@ -93,6 +93,11 @@ public class Player : RaycastController {
             direction = 0f;
         }
 
+        if (HaveWeapon)
+        {
+            //武器の位置を持ち変える
+            WeaponPositionControll();
+        }
 
         //キャラのy軸のdirection方向にscrollの力をかける
         rig.velocity = new Vector2(scroll * direction, rig.velocity.y);
@@ -270,33 +275,8 @@ public class Player : RaycastController {
 
             HaveWeapon = true;
 
-            Debug.Log(this.transform.GetComponent<SpriteRenderer>().sprite.texture.texelSize.y);//0.004739337
-            Debug.Log(this.transform.GetComponent<SpriteRenderer>().sprite.texture.height);//211
-            Debug.Log(this.transform.GetComponent<SpriteRenderer>().sprite.texture.width);//584
-            Debug.Log(this.transform.GetComponent<SpriteRenderer>().sprite.vertices[0].y);//0.535
-            Debug.Log(this.transform.GetComponent<SpriteRenderer>().sprite.vertices[1].y);//-0.653
-            Debug.Log(this.transform.GetComponent<SpriteRenderer>().sprite.vertices[2].y);//0.535
-            Debug.Log(this.transform.GetComponent<SpriteRenderer>().sprite.vertices[3].y);//0.535
-            Debug.Log(this.transform.GetComponent<SpriteRenderer>().sprite.vertices[4].y);//0.535
-            weapon.transform.position = new Vector3(this.transform.position.x, this.transform.position.y +this.transform.GetComponent<SpriteRenderer>().sprite.rect.height * this.transform.GetComponent<SpriteRenderer>().transform.localScale.y * this.transform.localScale.y / 2, this.transform.position.z);
             //プレイヤーの移動する向きに合わせて位置を調整
-            //if (direction >=1)//右
-            //{
-
-            //    weapon.transform.position = new Vector3(0.5f, this.transform.position.y + this.transform.localScale.y * 2, 0.0f);
-            //    Debug.Log("右");
-            //}
-
-            //else if(direction <= 1)//左
-            //{
-            //    weapon.transform.position = new Vector3(this.transform.position.x + this.transform.localScale.x + 0.5f, this.transform.position.y + this.transform.localScale.y * 2, 0.0f);
-            //    Debug.Log("左");
-            //}
-            //else//移動していない
-            //{
-            //    weapon.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + this.transform.localScale.y, 0.0f);
-            //    Debug.Log("中心");
-            //}
+            this.WeaponPositionControll();
         }
     }
 
@@ -368,5 +348,25 @@ public class Player : RaycastController {
         }
     }
 
+    public void WeaponPositionControll()
+    {
+        foreach (Transform child in this.transform)
+        {
+            if (direction >= 1 && child.name == "TopRight")//右
+            {
+
+                weapon.transform.position = child.transform.position;
+            }
+
+            else if (direction <= -1 && child.name == "TopLeft")//左
+            {
+                weapon.transform.position = child.transform.position;
+            }
+            else if (child.name == "Top")//移動していない
+            {
+                weapon.transform.position = child.transform.position;
+            }
+        }
+    }
 
 }
