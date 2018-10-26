@@ -33,7 +33,7 @@ public class Player : RaycastController {
     private Vector3 velocity;
     private float direction = 0;    // 方向
 
-    private float nowHp = 100;    // プレイヤーのHP
+    private float nowHp = 100f;    // プレイヤーのHP
 
     private GameObject weapon;
     private bool HaveWeapon = false;//武器を持っている(true)いない(false)
@@ -321,7 +321,7 @@ public class Player : RaycastController {
         return nowHp - damage;
     }
 
-    // Hpのゲッターセッター
+    // Hpのゲッター
     public float HP
     {
         get
