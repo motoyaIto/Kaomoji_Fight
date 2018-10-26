@@ -12,7 +12,8 @@ public class SliderTest : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         slider = GameObject.Find("Slider").GetComponent<Slider>();
-        hp = 1f;
+        slider.maxValue = 10f;
+        hp = slider.maxValue;
 	}
 	
 	// Update is called once per frame
