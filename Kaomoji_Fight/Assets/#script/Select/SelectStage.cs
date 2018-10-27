@@ -11,6 +11,9 @@ public class SelectStage : MonoBehaviour {
     [SerializeField, Header("コントローラー番号")]
     private XboxController ControlerNamber = XboxController.First;//何番目のコントローラーを適用するか
 
+    [SerializeField]
+    private GameObject SSManager;
+
     SelectPNControll selectPN;
     bool cursor = false;
     bool move = true;
@@ -23,11 +26,15 @@ public class SelectStage : MonoBehaviour {
     private int StageNum = 1;
     private bool SelectStop = false;
 
+    [SerializeField]
+    private int Random_min = 1;//ランダムの最小値
+    [SerializeField]
+    private int Random_max = 2;//ランダムの最大値
 
     // Use this for initialization
     void Start()
     {
-        selectPN = GameObject.Find("Cursor").GetComponent<SelectPNControll>();        
+        selectPN = GameObject.Find("Cursor").GetComponent<SelectPNControll>();
         AudioSource[] audioSources = GetComponents<AudioSource>();
         sound01 = audioSources[0];
         sound02 = audioSources[1];
@@ -273,10 +280,11 @@ public class SelectStage : MonoBehaviour {
 
         if (StageNum == 8)
         {
-            StageNum = Random.Range(1, 8);
+            StageNum = Random.Range(Random_min, Random_max);
         }
 
-        Debug.Log(stage);
+        SelectSceneManager SSManager_script = SSManager.GetComponent<SelectSceneManager>();
+        SSManager_script.Stage_name_Data = stage;
         sound01.PlayOneShot(sound02.clip);
     }
 }

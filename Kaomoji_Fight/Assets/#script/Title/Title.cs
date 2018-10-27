@@ -24,6 +24,7 @@ public class Title : MonoBehaviour
 
     void Start()
     {
+        SceneManagerController.LoadScene();
         //アタッチしてるオブジェクトを判別
         if (this.gameObject.GetComponent<Image>())
         {

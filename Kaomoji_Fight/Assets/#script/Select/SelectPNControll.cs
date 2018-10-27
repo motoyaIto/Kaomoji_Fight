@@ -5,16 +5,23 @@ using XboxCtrlrInput;
 
 public class SelectPNControll : MonoBehaviour {
 
+    [SerializeField]
+    private GameObject SSManager;//セレクトシーンマネージャー
+
+    [SerializeField]
+    private Camera camera;      //カメラ
+
     [SerializeField, Header("コントローラー番号")]
     private XboxController ControlerNamber = XboxController.First;//何番目のコントローラーを適用するか
 
-    public GameObject camera;
     bool cursor = true;
     bool move = true;
     private static readonly int PLAYERMAX = 4;
     public int PlayerNum = 1;
     private AudioSource sound01;
     private AudioSource sound02;
+
+   
     // Use this for initialization
     void Start ()
     {
@@ -132,6 +139,9 @@ public class SelectPNControll : MonoBehaviour {
             //プレイ人数を決定
             if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, ControlerNamber))
             {
+                SelectSceneManager SSManager_script = SSManager.GetComponent<SelectSceneManager>();
+
+                SSManager_script.PlayerNam_Data = PlayerNum;
                 sound01.PlayOneShot(sound02.clip);
                 cursor = false;
                 camera.transform.position += new Vector3(17.8f, 0, 0);
