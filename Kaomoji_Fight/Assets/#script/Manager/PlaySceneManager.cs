@@ -6,7 +6,7 @@ using UnityEngine.Windows;
 using XboxCtrlrInput;
 using TMPro;
 using Cinemachine;
-
+using System.Linq;
 
 
 public class PlaySceneManager : MonoBehaviour
@@ -34,6 +34,9 @@ public class PlaySceneManager : MonoBehaviour
         private XboxController m_controller;
 
         private Transform m_myCamera = null;
+
+        private float m_hp;
+
         //コンストラクタ
         public Player_data(string name, Color col, Sprite player_face, Vector3 initialPos, XboxController controller)
         {
@@ -142,6 +145,18 @@ public class PlaySceneManager : MonoBehaviour
                 return m_myCamera;
             }
         }
+
+        public float HP_Date
+        {
+            set
+            {
+                m_hp = value;
+            }
+            get
+            {
+                return m_hp;
+            }
+        }
     }
 
 
@@ -172,18 +187,23 @@ public class PlaySceneManager : MonoBehaviour
 
     [SerializeField, Header("プレイヤーの復帰時の場所指定")]
     private Vector3 RevivalPos = new Vector3(2.5f, 50f, 0f);
+   
+    [HideInInspector]
+    public List<bool> death_player = new List<bool>();   // 死んだプレイヤーを判別するためのリスト
+    private int death_P_num = 4;
 
-    private Player playerCS;
+    private Player P1_CS;
+    private Player P2_CS;
+    private Player P3_CS;
+    private Player P4_CS;
 
-    private int death_player;
+    private Slider[] slider;
+    private float[] player_hp;
 
     private CinemachineTargetGroup TargetGroup;
     // Use this for initialization
     void Start()
     {
-        playerCS = GetComponent<Player>();
-        death_player = -1;
-
         //カメラにターゲットするプレイヤーの数を設定
         TargetGroup = this.GetComponent<CinemachineTargetGroup>();
         TargetGroup.m_Targets = new CinemachineTargetGroup.Target[PlayData.Instance.playerNum];
@@ -193,15 +213,18 @@ public class PlaySceneManager : MonoBehaviour
         {
             case 1:
                 P1 = new Player_data(PlayData.Instance.PlayersName[0], P1.Color_Data, PlayData.Instance.PlayersFace[0], P1.InitialPos_Data, XboxController.First);
+                               
                 break;
             case 2:
                 P1 = new Player_data(PlayData.Instance.PlayersName[0], P1.Color_Data, PlayData.Instance.PlayersFace[0], P1.InitialPos_Data, XboxController.First);
                 P2 = new Player_data(PlayData.Instance.PlayersName[1], P2.Color_Data, PlayData.Instance.PlayersFace[1], P2.InitialPos_Data, XboxController.Second);
+                
                 break;
             case 3:
                 P1 = new Player_data(PlayData.Instance.PlayersName[0], P1.Color_Data, PlayData.Instance.PlayersFace[0], P1.InitialPos_Data, XboxController.First);
                 P2 = new Player_data(PlayData.Instance.PlayersName[1], P2.Color_Data, PlayData.Instance.PlayersFace[1], P2.InitialPos_Data, XboxController.Second);
                 P3 = new Player_data(PlayData.Instance.PlayersName[2], P3.Color_Data, PlayData.Instance.PlayersFace[2], P3.InitialPos_Data, XboxController.Third);
+                
                 break;
             case 4:
                 P1 = new Player_data(PlayData.Instance.PlayersName[0], P1.Color_Data, PlayData.Instance.PlayersFace[0], P1.InitialPos_Data, XboxController.First);
@@ -210,7 +233,6 @@ public class PlaySceneManager : MonoBehaviour
                 P4 = new Player_data(PlayData.Instance.PlayersName[3], P4.Color_Data, PlayData.Instance.PlayersFace[3], P4.InitialPos_Data, XboxController.Fourth);
                 break;
         }
-
 
         RectTransform HPgage_size = P1.HPgage_obj.GetComponent<RectTransform>();
 
@@ -225,8 +247,7 @@ public class PlaySceneManager : MonoBehaviour
                     P1.HPgage_obj = this.CreateHPgage(P1, new Vector3(HPgage_size.sizeDelta.x / 2, Screen.height - 10, 0f));
 
                     //カメラのターゲットに設定
-                    TargetGroup.m_Targets[i].target = P1.My_Camera_data;
-                    CameraSet(i);
+                    CameraSet(P1, i);
 
                     break;
 
@@ -235,8 +256,7 @@ public class PlaySceneManager : MonoBehaviour
                     P2.HPgage_obj = this.CreateHPgage(P2, new Vector3(Screen.width - HPgage_size.sizeDelta.x / 2, Screen.height - 10, 0));
 
                     //カメラのターゲットに設定
-                    TargetGroup.m_Targets[i].target = P2.My_Camera_data;
-                    CameraSet(i);
+                    CameraSet(P2, i);
                     break;
 
                 case 2:
@@ -244,8 +264,7 @@ public class PlaySceneManager : MonoBehaviour
                     P3.HPgage_obj = this.CreateHPgage(P3, new Vector3(HPgage_size.sizeDelta.x / 2, 10, 0));
 
                     //カメラのターゲットに設定
-                    TargetGroup.m_Targets[i].target = P3.My_Camera_data;
-                    CameraSet(i);
+                    CameraSet(P3, i);
                     break;
 
                 case 3:
@@ -253,8 +272,7 @@ public class PlaySceneManager : MonoBehaviour
                     P4.HPgage_obj = this.CreateHPgage(P4, new Vector3(Screen.width - HPgage_size.sizeDelta.x / 2, 10, 0));
 
                     //カメラのターゲットに設定
-                    TargetGroup.m_Targets[i].target = P4.My_Camera_data;
-                    CameraSet(i);
+                    CameraSet(P4, i);
                     break;
             }
 
@@ -264,56 +282,39 @@ public class PlaySceneManager : MonoBehaviour
             //SHPgage.GetComponent<Slider>().value = HPgage[i].GetComponent<Slider>().maxValue;
         }
 
+        // リストの初期化
+        for (int i = 1; i <= PlayData.Instance.playerNum; i++)
+        {
+            // 死亡リスト
+            death_player.Add(true);
+        }
+        // プレイヤースクリプトの呼び出し
+        CSset(PlayData.Instance.playerNum);
+        // Hpバーに値をセット
+        player_hp[0] = slider[0].maxValue = P1.HP_Date;
+        player_hp[1] = slider[1].maxValue = P2.HP_Date;
+        player_hp[2] = slider[2].maxValue = P3.HP_Date;
+        player_hp[3] = slider[3].maxValue = P4.HP_Date;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // プレイヤーが死んだ
-        if (death_player >= 0)
+        // 死んだプレイヤーの蘇生
+        for(int i = 0; i < death_P_num; i++)
         {
-            // 死んだプレイヤーの生成
-            switch (death_player)
+            if(death_player[i] == false)
             {
-                case 0:
-                    P1 = new Player_data(PlayData.Instance.PlayersName[death_player], P1.Color_Data, PlayData.Instance.PlayersFace[death_player], P1.InitialPos_Data, XboxController.First);
-                    P1.Player_obj = this.CreatePlayer(P1);
-                    //カメラのターゲットに設定
-                    TargetGroup.m_Targets[death_player].target = P1.My_Camera_data;
-                    CameraSet(death_player);
-                    break;
-
-                case 1:
-                    P2 = new Player_data(PlayData.Instance.PlayersName[death_player], P2.Color_Data, PlayData.Instance.PlayersFace[death_player], P2.InitialPos_Data, XboxController.Second);
-                    P2.Player_obj = this.CreatePlayer(P2);
-                    //カメラのターゲットに設定
-                    TargetGroup.m_Targets[death_player].target = P2.My_Camera_data;
-                    CameraSet(death_player);
-
-                    break;
-
-                case 2:
-                    P3 = new Player_data(PlayData.Instance.PlayersName[death_player], P3.Color_Data, PlayData.Instance.PlayersFace[death_player], P3.InitialPos_Data, XboxController.Third);
-                    P3.Player_obj = this.CreatePlayer(P3);
-                    //カメラのターゲットに設定
-                    TargetGroup.m_Targets[death_player].target = P3.My_Camera_data;
-                    CameraSet(death_player);
-                    break;
-
-                case 3:
-                    P4 = new Player_data(PlayData.Instance.PlayersName[death_player], P4.Color_Data, PlayData.Instance.PlayersFace[death_player], P4.InitialPos_Data, XboxController.Fourth);
-                    P4.Player_obj = this.CreatePlayer(P4);
-                    //カメラのターゲットに設定
-                    TargetGroup.m_Targets[death_player].target = P4.My_Camera_data;
-                    CameraSet(death_player);
-                    break;
-
-                default:
-                    break;
+                RegenerationPlayer(i);
             }
-            //hpgage_slider[death_player].value = players[death_player].transform.gameObject.GetComponent<Player>().Damage(players[death_player].transform.gameObject.GetComponent<Player>().HP / 10f);
-            death_player = -1;
         }
+
+        // HPを反映
+        slider[0].value = player_hp[0];
+        slider[1].value = player_hp[1];
+        slider[2].value = player_hp[2];
+        slider[3].value = player_hp[3];
+        Debug.Log(slider[0].value);
     }
 
     /// <summary>
@@ -401,21 +402,95 @@ public class PlaySceneManager : MonoBehaviour
         Debug.Log("hit");
     }
 
-    public int destroy_p
+
+    // 死んだプレイヤーの再生成
+    private void RegenerationPlayer(int num)
     {
-        set
+        death_player[num] = true;
+        switch (num)
         {
-            death_player = value;
+            case 0:
+                P1.Player_obj = this.CreatePlayer(P1);
+                CameraSet(P1, num);
+                break;
+
+            case 1:
+                P2.Player_obj = this.CreatePlayer(P2);
+                CameraSet(P2, num);
+
+                break;
+
+            case 2:
+                P3.Player_obj = this.CreatePlayer(P3);
+                CameraSet(P3, num);
+                break;
+
+            case 3:
+                P4.Player_obj = this.CreatePlayer(P4);
+                CameraSet(P4, num);
+                break;
+
+            default:
+                break;
         }
+        
     }
 
-    private void CameraSet(int num)
+    private void CameraSet(Player_data player, int num)
     {
         //カメラのターゲットに設定
-        //TargetGroup.m_Targets[death_player].target = P1.My_Camera_data;
+        TargetGroup.m_Targets[num].target = player.My_Camera_data;
         TargetGroup.m_Targets[num].weight = 1;
         TargetGroup.m_Targets[num].radius = 1;
 
     }
 
+    // PlayerScriptに干渉する
+    private void CSset(int num)
+    {
+        switch (num)
+        {
+            case 1:
+                P1_CS = GameObject.Find("P1").transform.GetComponent<Player>();
+                P1.HP_Date = P1_CS.HP;
+                slider[0] = GameObject.Find(P1.Name_Data + "_HPgage").GetComponent<Slider>();
+                break;
+            case 2:
+                P1_CS = GameObject.Find("P1").transform.GetComponent<Player>();
+                P2_CS = GameObject.Find("P2").transform.GetComponent<Player>();
+                P1.HP_Date = P1_CS.HP;
+                P2.HP_Date = P2_CS.HP;
+                slider[0] = GameObject.Find(P1.Name_Data + "_HPgage").GetComponent<Slider>();
+                slider[1] = GameObject.Find(P2.Name_Data + "_HPgage").GetComponent<Slider>();
+                break;
+            case 3:
+                P1_CS = GameObject.Find("P1").transform.GetComponent<Player>();
+                P2_CS = GameObject.Find("P2").transform.GetComponent<Player>();
+                P3_CS = GameObject.Find("P3").transform.GetComponent<Player>();
+                P1.HP_Date = P1_CS.HP;
+                P2.HP_Date = P2_CS.HP;
+                P3.HP_Date = P3_CS.HP;
+                slider[0] = GameObject.Find(P1.Name_Data + "_HPgage").GetComponent<Slider>();
+                slider[1] = GameObject.Find(P2.Name_Data + "_HPgage").GetComponent<Slider>();
+                slider[2] = GameObject.Find(P3.Name_Data + "_HPgage").GetComponent<Slider>();
+                break;
+            case 4:
+                P1_CS = GameObject.Find("P1").transform.GetComponent<Player>();
+                P2_CS = GameObject.Find("P2").transform.GetComponent<Player>();
+                P3_CS = GameObject.Find("P3").transform.GetComponent<Player>();
+                P4_CS = GameObject.Find("P4").transform.GetComponent<Player>();
+                slider[0] = GameObject.Find(P1.Name_Data + "_HPgage").GetComponent<Slider>();
+                slider[1] = GameObject.Find(P2.Name_Data + "_HPgage").GetComponent<Slider>();
+                slider[2] = GameObject.Find(P3.Name_Data + "_HPgage").GetComponent<Slider>();
+                slider[3] = GameObject.Find(P4.Name_Data + "_HPgage").GetComponent<Slider>();
+                P1.HP_Date = P1_CS.HP;
+                P2.HP_Date = P2_CS.HP;
+                P3.HP_Date = P3_CS.HP;
+                P4.HP_Date = P4_CS.HP;
+
+                break;
+            default:
+                break;
+        }
+    }
 }

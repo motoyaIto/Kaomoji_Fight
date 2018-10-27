@@ -33,7 +33,7 @@ public class Player : RaycastController {
     private Vector3 velocity;
     private float direction = 0;    // 方向
 
-    private float nowHp = 100;    // プレイヤーのHP
+    private float nowHp = 100f;    // プレイヤーのHP
 
     private GameObject weapon;
     private bool HaveWeapon = false;//武器を持っている(true)いない(false)
@@ -53,6 +53,10 @@ public class Player : RaycastController {
         controller = GetComponent<Contoroller2d>();
         PSM = GameObject.Find("PlaySceneManager").transform.GetComponent<PlaySceneManager>();
         rig = GetComponent<Rigidbody2D>();
+
+        // プレイヤー同士の当たり判定をしない
+        int P_layer = LayerMask.NameToLayer("Player");
+        Physics2D.IgnoreLayerCollision(P_layer, P_layer);
     }
 
     private void Reset()
@@ -87,7 +91,6 @@ public class Player : RaycastController {
         //キャラのy軸のdirection方向にscrollの力をかける
         rig.velocity = new Vector2(scroll * direction, rig.velocity.y);
 
-
         // 大ジャンプ
         if (XCI.GetButtonDown(XboxButton.Y, ControlerNamber) && !jump)
         {
@@ -112,14 +115,22 @@ public class Player : RaycastController {
             // アニメーションに差し替え予定？
             if (!Avoidance)
             {
-                if (rig.velocity.x < 0.0f)
+                if (input.x < .0f)
                 {
                     this.transform.position += new Vector3(-5f, 0f);
                 }
-                else if (rig.velocity.x > 0.0f)
+                else if (input.x > .0f)
                 {
                     this.transform.position += new Vector3(5f, 0f);
                 }
+                //if (input.y> .0f)
+                //{
+                //    this.transform.position += new Vector3(0f, 5f);
+                //}
+                //else if (input.y < .0f)
+                //{
+                //    this.transform.position += new Vector3(0f, -5f);
+                //}
                 Avoidance = true;
             }
 
@@ -281,7 +292,7 @@ public class Player : RaycastController {
 
     private void OnDisable()
     {
-        PSM.destroy_p = CNConvert(ControlerNamber);
+        PSM.death_player[CNConvert(ControlerNamber)] = false;
     }
 
     // Controllerの番号をint型で取得
@@ -300,7 +311,7 @@ public class Player : RaycastController {
             default:
                 break;
         }
-        return -1;
+        return 4;
     }
 
 
@@ -310,7 +321,7 @@ public class Player : RaycastController {
         return nowHp - damage;
     }
 
-    // Hpのゲッターセッター
+    // Hpのゲッター
     public float HP
     {
         get
