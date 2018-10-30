@@ -38,7 +38,7 @@ public class PlaySceneManager : MonoBehaviour
         private float m_hp;
 
         //コンストラクタ
-        public Player_data(string name, Color col, Sprite player_face, Vector3 initialPos, XboxController controller)
+        public Player_data(string name, Color col, Sprite player_face, Vector3 initialPos, XboxController controller, float hp)
         {
             m_Player = (GameObject)Resources.Load("prefab/Player");
             m_HPgage = (GameObject)Resources.Load("prefab/UI/HPgage");
@@ -48,6 +48,7 @@ public class PlaySceneManager : MonoBehaviour
             m_initialPos = initialPos;
             m_hpgage_slider = null;
             m_controller = controller;
+            m_hp = hp;
         }
         
         //getter:seter
@@ -212,25 +213,25 @@ public class PlaySceneManager : MonoBehaviour
         switch (PlayData.Instance.playerNum)
         {
             case 1:
-                P1 = new Player_data(PlayData.Instance.PlayersName[0], P1.Color_Data, PlayData.Instance.PlayersFace[0], P1.InitialPos_Data, XboxController.First);
+                P1 = new Player_data(PlayData.Instance.PlayersName[0], P1.Color_Data, PlayData.Instance.PlayersFace[0], P1.InitialPos_Data, XboxController.First, P1_CS.HP);
                                
                 break;
             case 2:
-                P1 = new Player_data(PlayData.Instance.PlayersName[0], P1.Color_Data, PlayData.Instance.PlayersFace[0], P1.InitialPos_Data, XboxController.First);
-                P2 = new Player_data(PlayData.Instance.PlayersName[1], P2.Color_Data, PlayData.Instance.PlayersFace[1], P2.InitialPos_Data, XboxController.Second);
+                P1 = new Player_data(PlayData.Instance.PlayersName[0], P1.Color_Data, PlayData.Instance.PlayersFace[0], P1.InitialPos_Data, XboxController.First, P1_CS.HP);
+                P2 = new Player_data(PlayData.Instance.PlayersName[1], P2.Color_Data, PlayData.Instance.PlayersFace[1], P2.InitialPos_Data, XboxController.Second, P2_CS.HP);
                 
                 break;
             case 3:
-                P1 = new Player_data(PlayData.Instance.PlayersName[0], P1.Color_Data, PlayData.Instance.PlayersFace[0], P1.InitialPos_Data, XboxController.First);
-                P2 = new Player_data(PlayData.Instance.PlayersName[1], P2.Color_Data, PlayData.Instance.PlayersFace[1], P2.InitialPos_Data, XboxController.Second);
-                P3 = new Player_data(PlayData.Instance.PlayersName[2], P3.Color_Data, PlayData.Instance.PlayersFace[2], P3.InitialPos_Data, XboxController.Third);
+                P1 = new Player_data(PlayData.Instance.PlayersName[0], P1.Color_Data, PlayData.Instance.PlayersFace[0], P1.InitialPos_Data, XboxController.First, P1_CS.HP);
+                P2 = new Player_data(PlayData.Instance.PlayersName[1], P2.Color_Data, PlayData.Instance.PlayersFace[1], P2.InitialPos_Data, XboxController.Second, P2_CS.HP);
+                P3 = new Player_data(PlayData.Instance.PlayersName[2], P3.Color_Data, PlayData.Instance.PlayersFace[2], P3.InitialPos_Data, XboxController.Third, P3_CS.HP);
                 
                 break;
             case 4:
-                P1 = new Player_data(PlayData.Instance.PlayersName[0], P1.Color_Data, PlayData.Instance.PlayersFace[0], P1.InitialPos_Data, XboxController.First);
-                P2 = new Player_data(PlayData.Instance.PlayersName[1], P2.Color_Data, PlayData.Instance.PlayersFace[1], P2.InitialPos_Data, XboxController.Second);
-                P3 = new Player_data(PlayData.Instance.PlayersName[2], P3.Color_Data, PlayData.Instance.PlayersFace[2], P3.InitialPos_Data, XboxController.Third);
-                P4 = new Player_data(PlayData.Instance.PlayersName[3], P4.Color_Data, PlayData.Instance.PlayersFace[3], P4.InitialPos_Data, XboxController.Fourth);
+                P1 = new Player_data(PlayData.Instance.PlayersName[0], P1.Color_Data, PlayData.Instance.PlayersFace[0], P1.InitialPos_Data, XboxController.First, P1_CS.HP);
+                P2 = new Player_data(PlayData.Instance.PlayersName[1], P2.Color_Data, PlayData.Instance.PlayersFace[1], P2.InitialPos_Data, XboxController.Second, P2_CS.HP);
+                P3 = new Player_data(PlayData.Instance.PlayersName[2], P3.Color_Data, PlayData.Instance.PlayersFace[2], P3.InitialPos_Data, XboxController.Third, P3_CS.HP);
+                P4 = new Player_data(PlayData.Instance.PlayersName[3], P4.Color_Data, PlayData.Instance.PlayersFace[3], P4.InitialPos_Data, XboxController.Fourth, P4_CS.HP);
                 break;
         }
 
@@ -452,14 +453,11 @@ public class PlaySceneManager : MonoBehaviour
         {
             case 1:
                 P1_CS = GameObject.Find("P1").transform.GetComponent<Player>();
-                P1.HP_Date = P1_CS.HP;
                 slider[0] = GameObject.Find(P1.Name_Data + "_HPgage").GetComponent<Slider>();
                 break;
             case 2:
                 P1_CS = GameObject.Find("P1").transform.GetComponent<Player>();
                 P2_CS = GameObject.Find("P2").transform.GetComponent<Player>();
-                P1.HP_Date = P1_CS.HP;
-                P2.HP_Date = P2_CS.HP;
                 slider[0] = GameObject.Find(P1.Name_Data + "_HPgage").GetComponent<Slider>();
                 slider[1] = GameObject.Find(P2.Name_Data + "_HPgage").GetComponent<Slider>();
                 break;
@@ -467,9 +465,6 @@ public class PlaySceneManager : MonoBehaviour
                 P1_CS = GameObject.Find("P1").transform.GetComponent<Player>();
                 P2_CS = GameObject.Find("P2").transform.GetComponent<Player>();
                 P3_CS = GameObject.Find("P3").transform.GetComponent<Player>();
-                P1.HP_Date = P1_CS.HP;
-                P2.HP_Date = P2_CS.HP;
-                P3.HP_Date = P3_CS.HP;
                 slider[0] = GameObject.Find(P1.Name_Data + "_HPgage").GetComponent<Slider>();
                 slider[1] = GameObject.Find(P2.Name_Data + "_HPgage").GetComponent<Slider>();
                 slider[2] = GameObject.Find(P3.Name_Data + "_HPgage").GetComponent<Slider>();
@@ -483,10 +478,6 @@ public class PlaySceneManager : MonoBehaviour
                 slider[1] = GameObject.Find(P2.Name_Data + "_HPgage").GetComponent<Slider>();
                 slider[2] = GameObject.Find(P3.Name_Data + "_HPgage").GetComponent<Slider>();
                 slider[3] = GameObject.Find(P4.Name_Data + "_HPgage").GetComponent<Slider>();
-                P1.HP_Date = P1_CS.HP;
-                P2.HP_Date = P2_CS.HP;
-                P3.HP_Date = P3_CS.HP;
-                P4.HP_Date = P4_CS.HP;
 
                 break;
             default:
