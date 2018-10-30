@@ -183,7 +183,7 @@ public class SelectCharControll : MonoBehaviour {
         }       
 
         SelectSceneManager SSManager_script = SSManager.GetComponent<SelectSceneManager>();
-        SSManager_script.Playersface_Data = face;
+       // SSManager_script.Playersface_Data = face;
         sound01.PlayOneShot(sound02.clip);
     }
 
