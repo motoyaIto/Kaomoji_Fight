@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class WeaponBlocController : MonoBehaviour {
 
+
+    [SerializeField]
+    private float DamageValue = 1.0f;
     [SerializeField, Header("破棄されるエリア（左上）")]
     private Vector3 Death_LUpos = new Vector3(-40f, 15f, 0f);    // 飛んでったオブジェクトが破棄されるエリアの左上
     [SerializeField, Header("破棄されるエリア（右下）")]
     private Vector3 Death_RDpos = new Vector3(100f, -20f, 0f);   // 飛んでったオブジェクトが破棄されるエリアの右下
 
-    private Player player;
     private Vector3 Shot = Vector3.zero;    //打つ方向
     private float Thrust = 0.0f;            //推進力
-    private bool AttackFlag = false;            //攻撃する(true)しない(false)
+    private bool AttackFlag = false;        //攻撃する(true)しない(false)
 
     // Use this for initialization
     void Start () {
@@ -67,5 +69,13 @@ public class WeaponBlocController : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(this.gameObject);
+    }
+
+    public float DamageValue_Data
+    {
+        get
+        {
+            return DamageValue;
+        }
     }
 }

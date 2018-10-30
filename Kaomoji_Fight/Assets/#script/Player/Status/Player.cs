@@ -272,7 +272,8 @@ public class Player : RaycastController {
         //ダメージ判定
         if(collision.transform.tag == "Weapon" && Avoidance == false)
         {
-            PSM.Player_ReceiveDamage();
+            WeaponBlocController WBController = collision.gameObject.GetComponent<WeaponBlocController>();
+            PSM.Player_ReceiveDamage(this.gameObject, WBController.DamageValue_Data);
         }
 
         // ジャンプ制限

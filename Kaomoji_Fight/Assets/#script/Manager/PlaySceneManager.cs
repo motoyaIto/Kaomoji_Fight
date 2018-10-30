@@ -29,8 +29,6 @@ public class PlaySceneManager : MonoBehaviour
         [SerializeField]
         private Vector3 m_initialPos;   //初期ポップ位置
 
-
-        private Slider m_hpgage_slider; //HPスライダー
         private XboxController m_controller;
 
         private Transform m_myCamera = null;
@@ -46,7 +44,6 @@ public class PlaySceneManager : MonoBehaviour
             m_nameColor = col;
             m_playerFace = player_face;
             m_initialPos = initialPos;
-            m_hpgage_slider = null;
             m_controller = controller;
             m_hp = hp;
         }
@@ -75,10 +72,7 @@ public class PlaySceneManager : MonoBehaviour
             }
             set
             {
-                if(m_HPgage == null)
-                {
-                    m_HPgage = value;
-                }
+                m_HPgage = value;
             }
         }
         public string Name_Data
@@ -110,17 +104,6 @@ public class PlaySceneManager : MonoBehaviour
             get
             {
                 return m_initialPos;
-            }
-        }
-
-        public Slider Hpgage_slider_Data
-        {
-            set
-            {
-                if(m_hpgage_slider == null)
-                {
-                    m_hpgage_slider = value;
-                }
             }
         }
 
@@ -180,7 +163,6 @@ public class PlaySceneManager : MonoBehaviour
     [HideInInspector]
     public List<bool> death_player = new List<bool>();   // 死んだプレイヤーを判別するためのリスト
 
-    private List<Slider> slider = new List<Slider>();
     private float[] player_hp;
 
     private CinemachineTargetGroup TargetGroup;
@@ -269,13 +251,7 @@ public class PlaySceneManager : MonoBehaviour
         {
             // 死亡リスト
             death_player.Add(true);
-
-            // HPの取得
-            GetSlider(i, "P" + (i + 1).ToString());
         }
-
-        // Hpバーに値をセット
-        HPSet(PlayData.Instance.playerNum);
     }
 
     // Update is called once per frame
@@ -290,12 +266,6 @@ public class PlaySceneManager : MonoBehaviour
             }
         }
 
-        // HPを反映
-        for(int i = 0; i < PlayData.Instance.playerNum; i++)
-        {
-            slider[i].value = player_hp[i];
-            //Debug.Log("Player" + i + "のHP : " + slider[i].value);
-        }       
     }
 
     /// <summary>
@@ -363,7 +333,7 @@ public class PlaySceneManager : MonoBehaviour
     /// <returns>HPゲージ</returns>
     private GameObject CreateHPgage(Player_data player_data, Vector3 pos)
     {
-        //プレイヤーを生成
+        //HPゲージを生成
         GameObject HPgage = Instantiate(player_data.HPgage_obj, pos, Quaternion.identity, UICanvases.transform);
 
         HPgage.name = player_data.Name_Data + "_HPgage";
@@ -373,20 +343,66 @@ public class PlaySceneManager : MonoBehaviour
         name.text = player_data.Name_Data;
         name.color = player_data.Color_Data;
 
+        //HPゲージの最大値を与える
+        Slider hp_slider = HPgage.GetComponent<Slider>();
+        hp_slider.maxValue = player_data.HP_Date;
+        hp_slider.value = player_data.HP_Date;
         return HPgage;
     }
 
-    private void GetSlider(int num, string p_Name)
+    /// <summary>
+    /// プレイヤーがダメージを受ける
+    /// </summary>
+    public void Player_ReceiveDamage(GameObject damagePlayer, float DamageValue)
     {
-        slider[num] = GameObject.Find(p_Name + "_HPgage").GetComponent<Slider>();
+        // ダメージを受けたプレイヤーデータを取得する
+        Player_data player_data = CheckDamagePlayer(damagePlayer.name);
+        
+        //ダメージを受けたプレイヤーがいなかったとき
+        if(player_data == null)
+        {
+            return;
+        }
+
+        //ダメージを与える
+        Slider hpSlider = player_data.HPgage_obj.GetComponent<Slider>();
+        hpSlider.value -= DamageValue;
+
+        //HPが0以下になったらplayerを殺す
+        if(hpSlider.value <= 0)
+        {
+            Destroy(damagePlayer);
+        }
     }
 
-    public void Player_ReceiveDamage()
+    /// <summary>
+    /// ダメージを受けたプレイヤーデータを探す
+    /// </summary>
+    /// <param name="Damage_Pname">ダメージを受けたプレイヤーの名前</param>
+    /// <returns>プレイヤーデータ</returns>
+    private Player_data CheckDamagePlayer(string Damage_Pname)
     {
+        if (Damage_Pname == P1.Name_Data)
+        {
+            return P1;
+        }
 
-        Debug.Log("hit");
+        if (Damage_Pname == P2.Name_Data)
+        {
+            return P2;
+        }
+
+        if (Damage_Pname == P3.Name_Data)
+        {
+            return P3;
+        }
+
+        if (Damage_Pname == P4.Name_Data)
+        {
+            return P4;
+        }
+        return null;
     }
-
 
     // 死んだプレイヤーの再生成
     private void RegenerationPlayer(int num)
@@ -428,38 +444,5 @@ public class PlaySceneManager : MonoBehaviour
         TargetGroup.m_Targets[num].weight = 1;
         TargetGroup.m_Targets[num].radius = 1;
 
-    }
-
-    // プレイヤーのＨＰをSliderにセットする
-    private void HPSet(int num)
-    {
-        switch (num)
-        {
-            case 1:
-                player_hp[0] = slider[0].maxValue = P1.HP_Date;
-                break;
-
-            case 2:
-                player_hp[0] = slider[0].maxValue = P1.HP_Date;
-                player_hp[1] = slider[1].maxValue = P2.HP_Date;
-                break;
-
-            case 3:
-                player_hp[0] = slider[0].maxValue = P1.HP_Date;
-                player_hp[1] = slider[1].maxValue = P2.HP_Date;
-                player_hp[2] = slider[2].maxValue = P3.HP_Date;
-                break;
-
-            case 4:
-                player_hp[0] = slider[0].maxValue = P1.HP_Date;
-                player_hp[1] = slider[1].maxValue = P2.HP_Date;
-                player_hp[2] = slider[2].maxValue = P3.HP_Date;
-                player_hp[3] = slider[3].maxValue = P4.HP_Date;
-                break;
-
-            default:
-                Debug.LogError(num + "人ではプレイできません");
-                break;
-        }
     }
 }
