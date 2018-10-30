@@ -273,6 +273,7 @@
     <Compile Include="Assets\#script\SceneManagerController.cs" />
     <Compile Include="Assets\#script\SceneTimer.cs" />
     <Compile Include="Assets\#script\Select\CursorHue.cs" />
+    <Compile Include="Assets\#script\Select\SelectCharControll.cs" />
     <Compile Include="Assets\#script\Select\SelectPNControll.cs" />
     <Compile Include="Assets\#script\Select\SelectStage.cs" />
     <Compile Include="Assets\#script\SingletonMonoBehaviour.cs" />
