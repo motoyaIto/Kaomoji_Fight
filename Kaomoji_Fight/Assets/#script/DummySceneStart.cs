@@ -17,8 +17,6 @@ public class DummySceneStart : MonoBehaviour {
    
     private void Awake()
     {
-        string DammySelectStage = Stage_name;
-
         playedata = new PlayData(Stage_name, players_name, playersface);
     }
 
