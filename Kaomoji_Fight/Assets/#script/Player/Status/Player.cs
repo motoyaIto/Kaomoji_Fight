@@ -160,12 +160,11 @@ public class Player : RaycastController {
             }
 
             //武器を使う
-            if (XCI.GetButtonDown(XboxButton.B, ControlerNamber) && controller.collisions.below)
+            if (XCI.GetButtonDown(XboxButton.B, ControlerNamber))
             {
                 WeaponBlocController WB = weapon.GetComponent<WeaponBlocController>();
 
                 WB.Attack(direction, thrust);
-
                 HaveWeapon = false;
 
             }
