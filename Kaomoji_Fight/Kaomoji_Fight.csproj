@@ -255,6 +255,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Assets\%23scene\Test\MoveScript1.cs" />
     <Compile Include="Assets\%23scene\Test\SliderTest.cs" />
     <Compile Include="Assets\%23script\Camera\MultipleTargetCamera.cs" />
@@ -280,6 +281,34 @@
     <Compile Include="Assets\%23script\Stage\CreateStage.cs" />
     <Compile Include="Assets\%23script\Test\TestShader.cs" />
     <Compile Include="Assets\%23script\Title\Title.cs" />
+=======
+    <Compile Include="Assets\#scene\Test\MoveScript1.cs" />
+    <Compile Include="Assets\#scene\Test\SliderTest.cs" />
+    <Compile Include="Assets\#script\Camera\MultipleTargetCamera.cs" />
+    <Compile Include="Assets\#script\DummySceneStart.cs" />
+    <Compile Include="Assets\#script\LayerName.cs" />
+    <Compile Include="Assets\#script\Manager\PlaySceneManager.cs" />
+    <Compile Include="Assets\#script\Manager\SelectSceneManager.cs" />
+    <Compile Include="Assets\#script\PlayData.cs" />
+    <Compile Include="Assets\#script\Player\Jump\Controller2D.cs" />
+    <Compile Include="Assets\#script\Player\Jump\PlatformController.cs" />
+    <Compile Include="Assets\#script\Player\Jump\RaycastController.cs" />
+    <Compile Include="Assets\#script\Player\Status\Contoroller2d.cs" />
+    <Compile Include="Assets\#script\Player\Status\Player.cs" />
+    <Compile Include="Assets\#script\Player\Weapon\WeaponBlocController.cs" />
+    <Compile Include="Assets\#script\SceneManagerController.cs" />
+    <Compile Include="Assets\#script\SceneTimer.cs" />
+    <Compile Include="Assets\#script\Select\CursorHue.cs" />
+    <Compile Include="Assets\#script\Select\SelectCharControll.cs" />
+    <Compile Include="Assets\#script\Select\SelectPNControll.cs" />
+    <Compile Include="Assets\#script\Select\SelectStage.cs" />
+    <Compile Include="Assets\#script\SingletonMonoBehaviour.cs" />
+    <Compile Include="Assets\#script\Sound\PlayBGM.cs" />
+    <Compile Include="Assets\#script\Stage\BlockController.cs" />
+    <Compile Include="Assets\#script\Stage\CreateStage.cs" />
+    <Compile Include="Assets\#script\Test\TestShader.cs" />
+    <Compile Include="Assets\#script\Title\Title.cs" />
+>>>>>>> 51a818b1f6f5cb792ec3aa1e7fdf61ddaeaec486
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBlendListCamera.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBrain.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineClearShot.cs" />
