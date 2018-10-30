@@ -147,6 +147,11 @@ public class PlaySceneManager : MonoBehaviour
     [SerializeField]
     private GameObject UICanvases;      //UI用キャンバス
 
+    private AudioSource audio;          //オーディオ
+
+    private AudioClip audioClip_gong;   //スタートで鳴らす音
+    private AudioClip audioClip_ded;    //プレイヤーが死んだときに鳴らす音
+   
 
     [SerializeField]
     Player_data P1;
@@ -163,12 +168,15 @@ public class PlaySceneManager : MonoBehaviour
     [HideInInspector]
     public List<bool> death_player = new List<bool>();   // 死んだプレイヤーを判別するためのリスト
 
-    private float[] player_hp;
-
     private CinemachineTargetGroup TargetGroup;
 
     private void Awake()
     {
+        audio = this.GetComponent<AudioSource>();
+        audioClip_gong = (AudioClip)Resources.Load("Sound/SE/Start/gong");
+        audioClip_ded = (AudioClip)Resources.Load("Sound/SE/Deth/ded");
+
+        
         //カメラにターゲットするプレイヤーの数を設定
         TargetGroup = this.GetComponent<CinemachineTargetGroup>();
         TargetGroup.m_Targets = new CinemachineTargetGroup.Target[PlayData.Instance.playerNum];
@@ -243,9 +251,10 @@ public class PlaySceneManager : MonoBehaviour
 
     }
 
-    // Use this for initialization
     void Start()
     {
+        //ゴング
+        audio.PlayOneShot(audioClip_gong);
         // リストの初期化
         for (int i = 0; i < PlayData.Instance.playerNum; i++)
         {
@@ -254,7 +263,6 @@ public class PlaySceneManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         // 死んだプレイヤーの蘇生
@@ -268,11 +276,12 @@ public class PlaySceneManager : MonoBehaviour
 
     }
 
+
     /// <summary>
     /// プレイヤーを生成
     /// </summary>
-    /// <param name="player">プレイヤーオブジェクトデータ</param>
-    /// <param name="i">何番目のプレイヤーか</param>
+    /// <param name="player_data">プレイヤーデータ</param>
+    /// <returns>プレイヤー</returns>
     private GameObject CreatePlayer(Player_data player_data)
     {
         //プレイヤーを生成
@@ -283,14 +292,14 @@ public class PlaySceneManager : MonoBehaviour
         return player;
 
        
-    } 
+    }
+
+   
     /// <summary>
     /// プレイヤーの設定
     /// </summary>
     /// <param name="player">プレイヤーオブジェクト</param>
-    /// <param name="controllerNamber">コントローラー番号</param>
-    /// <param name="name"></param>
-    /// <param name="FaceTextures"></param>
+    /// <param name="player_data">プレイヤーデータ</param>
     private void SetPlayerStatus(GameObject player, Player_data player_data)
     {
         //キャラの顔をセット
@@ -404,7 +413,10 @@ public class PlaySceneManager : MonoBehaviour
         return null;
     }
 
-    // 死んだプレイヤーの再生成
+    /// <summary>
+    /// 死んだプレイヤーの再生成
+    /// </summary>
+    /// <param name="num">プレイヤー番号</param>
     private void RegenerationPlayer(int num)
     {
         death_player[num] = true;
@@ -434,7 +446,9 @@ public class PlaySceneManager : MonoBehaviour
             default:
                 break;
         }
-        
+
+        audio.volume = 0.3f;
+        audio.PlayOneShot(audioClip_ded);
     }
 
     private void CameraSet(Player_data player, int num)
