@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SliderTest : MonoBehaviour {
 
-    public Slider slider;
+    private Slider slider;
 
     private float hp;
 
