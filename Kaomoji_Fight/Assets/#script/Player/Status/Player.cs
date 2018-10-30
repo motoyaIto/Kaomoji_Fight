@@ -33,8 +33,6 @@ public class Player : RaycastController {
     private Vector3 velocity;
     private float direction = 0;    // 方向
 
-    private float nowHp = 100f;    // プレイヤーのHP
-
     private GameObject weapon;
     private bool HaveWeapon = false;//武器を持っている(true)いない(false)
     private bool Avoidance = false; // 回避フラグ
@@ -123,25 +121,19 @@ public class Player : RaycastController {
                 {
                     this.transform.position += new Vector3(5f, 0f);
                 }
-                //if (input.y> .0f)
-                //{
-                //    this.transform.position += new Vector3(0f, 5f);
-                //}
-                //else if (input.y < .0f)
-                //{
-                //    this.transform.position += new Vector3(0f, -5f);
-                //}
                 Avoidance = true;
             }
 
             // 回避中であれば
             if (Avoidance_time <= Invincible_time)
             {
-                // 攻撃を受け付けない
-
-
-                
+                // 攻撃を受け付けない                
                 Avoidance_time += .1f;
+            }
+            else
+            {
+                // 攻撃を受け付けるようにする
+                Avoidance = false;
             }
 
         }
@@ -278,13 +270,13 @@ public class Player : RaycastController {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //ダメージ判定
-        if(collision.transform.tag == "Weapon")
+        if(collision.transform.tag == "Weapon" && Avoidance == false)
         {
             PSM.Player_ReceiveDamage();
         }
 
         // ジャンプ制限
-        if (collision.gameObject.CompareTag("Stage"))
+        if (collision.gameObject.CompareTag("Stage") || collision.gameObject.CompareTag("Player"))
         {
             jump = false;
         }
@@ -314,21 +306,6 @@ public class Player : RaycastController {
         return 4;
     }
 
-
-    // ダメージを受ける
-    public float Damage(float damage)
-    {
-        return nowHp - damage;
-    }
-
-    // Hpのゲッター
-    public float HP
-    {
-        get
-        {
-            return nowHp;
-        }
-    }
 
     /// <summary>
     /// XBXcontrollerの番号を取得
