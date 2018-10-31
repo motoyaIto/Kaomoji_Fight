@@ -4,10 +4,16 @@ using UnityEngine;
 using XboxCtrlrInput;
 
 public class SelectCharControll : MonoBehaviour {
+
     [SerializeField, Header("コントローラー番号")]
     private XboxController ControlerNamber = XboxController.First;//何番目のコントローラーを適用するか
+
     [SerializeField]
     private GameObject SSManager;
+
+    [SerializeField]
+    private Camera camera;      //カメラ
+
     Contoroller2d controller;   // コントローラー
     private PlaySceneManager PSM;
     bool cursor = false;
@@ -20,23 +26,34 @@ public class SelectCharControll : MonoBehaviour {
     // Use this for initialization
     void Start () {
         controller = GetComponent<Contoroller2d>();
-        PSM = GameObject.Find("PlaySceneManager").transform.GetComponent<PlaySceneManager>();
+        //PSM = GameObject.Find("PlaySceneManager").transform.GetComponent<PlaySceneManager>();
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        sound01 = audioSources[0];
+        sound02 = audioSources[1];
+        sound03 = audioSources[2];
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         Transform myTransform = this.transform;
         Vector3 pos = myTransform.position;
 
         // Controllerの左スティックのAxisを取得            
         Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, ControlerNamber), XCI.GetAxis(XboxAxis.LeftStickY, ControlerNamber));
 
+        Debug.Log(pos);
+
+        if (camera.transform.position.x >= -17.9&& camera.transform.position.x <= -17.7)
+        {
+            cursor = true;
+        }
+
         if (input.y == 0 && input.x == 0)
         {
             //スティックが倒れてなければtrue
             move = true;
         }
-
         if (cursor == true)
         {
             if (move == true)
@@ -50,15 +67,15 @@ public class SelectCharControll : MonoBehaviour {
                         FaceNum++;
                     }
                     //一番下で押したとき上に戻る 
-                    if (pos.y <= -3.3f)
+                    if (pos.y <= -3)
                     {
-                        pos.y = 2.2f;
+                        pos.y = 2.4f;
                         FaceNum -= 4;
                     }
                     //下に移動
                     else
                     {
-                        pos.y -= 1.9f;
+                        pos.y -= 1.86f;
                     }
                     move = false;
                 }
@@ -72,15 +89,15 @@ public class SelectCharControll : MonoBehaviour {
                         FaceNum--;
                     }
                     //一番上で押したとき下に移動
-                    if (pos.y >= 2.0f)
+                    if (pos.y >= 2.3)
                     {
-                        pos.y = -3.5f;
+                        pos.y = -3.2f;
                         FaceNum += 4;
                     }
                     //上に移動
                     else
                     {
-                        pos.y += 1.9f;
+                        pos.y += 1.86f;
                     }
                     move = false;
                 }
@@ -94,15 +111,15 @@ public class SelectCharControll : MonoBehaviour {
                         FaceNum += 4;
                     }
                     //右側で押したとき左へ移動
-                    if (pos.x >= 20)
+                    if (pos.x >= -15)
                     {
-                        pos.x = 12;
+                        pos.x = -23.7f;
                         FaceNum -= 8;
                     }
                     //右に移動
                     else
                     {
-                        pos.x = 20;
+                        pos.x += 4.2f;
                     }
                     move = false;
                 }
@@ -115,15 +132,15 @@ public class SelectCharControll : MonoBehaviour {
                         FaceNum -= 4;
                     }
                     //左で押したとき右に移動
-                    if (pos.x <= 12)
+                    if (pos.x <= -23.3)
                     {
-                        pos.x = 20;
-                        FaceNum += 8;
+                        pos.x = -11.1f;
+                        FaceNum += 12;
                     }
                     //左に移動
                     else
                     {
-                        pos.x = 12;
+                        pos.x -= 4.2f;
                     }
                     move = false;
                 }
@@ -132,7 +149,9 @@ public class SelectCharControll : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, ControlerNamber))
             {                
                 FaceCount();
-                StartCoroutine("coRoutine");
+                //StartCoroutine("coRoutine");
+                camera.transform.position = new Vector3(17.8f, 0, 0);  //ステージセレクトに移動
+                cursor = false;
             }
             myTransform.position = pos;  // 座標を設定
 
@@ -140,57 +159,75 @@ public class SelectCharControll : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Backspace) || XCI.GetButtonDown(XboxButton.A, ControlerNamber))
             {
                 sound01.PlayOneShot(sound03.clip);
+                camera.transform.position = new Vector3(0, 0, 0);  //人数セレクトに戻る
                 cursor = false;
             }
-        }
-        //ステージセレクトになった時カーソルを動かせるように
-        if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, ControlerNamber))
-        {
-            cursor = true;
-        }
+        }       
     }
 
     void FaceCount()
     {
-        if (FaceNum == 1)
+        switch (FaceNum)
         {
-            face = "Face1";
-        }
-        if (FaceNum == 2)
-        {
-            face = "Face2";
-        }
-        if (FaceNum == 3)
-        {
-            face = "Face3";
-        }
-        if (FaceNum == 4)
-        {
-            face = "Face4";
-        }
-        if (FaceNum == 5)
-        {
-            face = "Face5";
-        }
-        if (FaceNum == 6)
-        {
-            face = "Face6";
+            case 1:
+                face = "face1";
+                break;
+            case 2:
+                face = "face2";
+                break;
+            case 3:
+                face = "face3";
+                break;
+            case 4:
+                face = "face4";
+                break;
+            case 5:
+                face = "face5";
+                break;
+            case 6:
+                face = "face6";
+                break;
+            case 7:
+                face = "face7";
+                break;
+            case 8:
+                face = "face8";
+                break;
+            case 9:
+                face = "face9";
+                break;
+            case 10:
+                face = "face10";
+                break;
+            case 11:
+                face = "face11";
+                break;
+            case 12:
+                face = "face12";
+                break;
+            case 13:
+                face = "face13";
+                break;
+            case 14:
+                face = "face14";
+                break;
+            case 15:
+                face = "face15";
+                break;
+            case 16:
+                face = "face16";
+                break;
         }
 
-        if (FaceNum == 7)
-        {
-            face = "Face7";
-        }       
-
-        SelectSceneManager SSManager_script = SSManager.GetComponent<SelectSceneManager>();
+        //SelectSceneManager SSManager_script = SSManager.GetComponent<SelectSceneManager>();
        // SSManager_script.Playersface_Data = face;
-        sound01.PlayOneShot(sound02.clip);
+        //sound01.PlayOneShot(sound02.clip);
     }
 
-    private void OnDisable()
-    {
-        PSM.death_player[CNConvert(ControlerNamber)] = false;
-    }
+    //private void OnDisable()
+    //{
+    //    PSM.death_player[CNConvert(ControlerNamber)] = false;
+    //}
     // Controllerの番号をint型で取得
     private int CNConvert(XboxController controlerNum)
     {
