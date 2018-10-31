@@ -15,6 +15,7 @@ public class SceneManagerController : MonoBehaviour
         TITLE,
         SELECT,
         PLAY,
+        RESULT
     };
 
 	// Use this for initialization
@@ -23,13 +24,13 @@ public class SceneManagerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
        
         //次のシーンを読み込む
-        if (SceneManager.GetActiveScene().buildIndex < (int)SceneName.PLAY)
+        if (SceneManager.GetActiveScene().buildIndex < (int)SceneName.RESULT)
         {
             ope = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
         }
         else
         {
-            ope = SceneManager.LoadSceneAsync(0);
+            ope = SceneManager.LoadSceneAsync(2);
         }
 
         //自動再生を無効にする
