@@ -1,3 +1,7 @@
+-- Smart Timers Manager --
+https://assetstore.unity.com/packages/tools/integration/smart-timers-manager-55023
+
+
 -- vivaldi --
 https://assetstore.unity.com/packages/tools/audio/vivaldi-64029
 
