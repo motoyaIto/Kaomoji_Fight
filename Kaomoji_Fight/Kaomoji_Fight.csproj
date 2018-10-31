@@ -274,6 +274,7 @@
     <Compile Include="Assets\#script\Player\Jump\RaycastController.cs" />
     <Compile Include="Assets\#script\Player\Status\Contoroller2d.cs" />
     <Compile Include="Assets\#script\Player\Status\Player.cs" />
+    <Compile Include="Assets\#script\Player\Weapon\AttackWithWeapons.cs" />
     <Compile Include="Assets\#script\Player\Weapon\WeaponBlocController.cs" />
     <Compile Include="Assets\#script\PlayTimer.cs" />
     <Compile Include="Assets\#script\SceneManagerController.cs" />
