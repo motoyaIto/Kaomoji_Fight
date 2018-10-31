@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SceneTimer : MonoBehaviour {
 
-    float countTime = 0;
+    private float countTime = 0;
 
 	// Use this for initialization
 	void Start () {

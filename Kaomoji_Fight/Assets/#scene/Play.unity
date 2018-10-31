@@ -168,9 +168,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 316284509}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa2071af8ea10de40af0cd5a6fbace32, type: 3}
+  m_Script: {fileID: 11500000, guid: d7ee851807ea5cd4591af80207eddb46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimeLimit: 180
 --- !u!1001 &360412931
 Prefab:
   m_ObjectHideFlags: 0
