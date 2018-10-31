@@ -14,6 +14,9 @@ public class SelectStage : MonoBehaviour {
     [SerializeField]
     private GameObject SSManager;
 
+    [SerializeField]
+    private Camera camera;      //カメラ
+
     SelectPNControll selectPN;
     bool cursor = false;
     bool move = false;
@@ -38,7 +41,7 @@ public class SelectStage : MonoBehaviour {
         AudioSource[] audioSources = GetComponents<AudioSource>();
         sound01 = audioSources[0];
         sound02 = audioSources[1];
-        sound03 = audioSources[2];        
+        sound03 = audioSources[2];
     }
 
     // Update is called once per frame
@@ -46,9 +49,15 @@ public class SelectStage : MonoBehaviour {
     {
         Transform myTransform = this.transform;
         Vector3 pos = myTransform.position;
-
+        
         // Controllerの左スティックのAxisを取得            
         Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, ControlerNamber), XCI.GetAxis(XboxAxis.LeftStickY, ControlerNamber));
+
+        //ステージセレクトになった時カーソルを動かせるように
+        if (camera.transform.position.x <= 17.9 && camera.transform.position.x >= 17.7)
+        {
+            cursor = true;
+        } 
 
         if (input.y == 0 && input.x == 0)
         {
@@ -155,69 +164,58 @@ public class SelectStage : MonoBehaviour {
                     NumCount();
                 }
                 NumCount();
-                StartCoroutine("coRoutine");                
+                StartCoroutine("coRoutine");
+                Debug.Log("最終値" + StageNum);
             }
             myTransform.position = pos;  // 座標を設定
 
-            //人数セレクトに戻る処理
+            //キャラセレクトに戻る処理
             if (Input.GetKeyDown(KeyCode.Backspace) || XCI.GetButtonDown(XboxButton.A, ControlerNamber))
             {
                 sound01.PlayOneShot(sound03.clip);
+                camera.transform.position = new Vector3(-17.8f, 0, 0);  //キャラセレクトに戻る
                 cursor = false;
             }            
-        }
-        //ステージセレクトになった時カーソルを動かせるように
-        if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, ControlerNamber))
-        {
-            cursor = true;
-        }
+        }        
     }
     IEnumerator coRoutine()
     {
         yield return new WaitForSeconds(1); // num秒待機
-        SceneManagerController.LoadScene();
+        //SceneManagerController.LoadScene();
     }
 
     //StageNumに応じてステージ名を与える
     void NumCount()
     {
-        if (StageNum == 1)
+        switch(StageNum)
         {
-            stage = "stage1";
+            case 1:
+                stage = "stage1";
+                break;
+            case 2:
+                stage = "stage2";
+                break;
+            case 3:
+                stage = "stage3";
+                break;
+            case 4:
+                stage = "stage4";
+                break;
+            case 5:
+                stage = "stage5";
+                break;
+            case 6:
+                stage = "stage6";
+                break;
+            case 7:
+                stage = "stage7";
+                break;
+            case 8:     //8の時だけそれ以外からランダムで値を取る
+                StageNum = Random.Range(Random_min, Random_max);
+                break;
         }
-        if (StageNum == 2)
-        {
-            stage = "stage2";
-        }
-        if (StageNum == 3)
-        {
-            stage = "stage3";
-        }
-        if (StageNum == 4)
-        {
-            stage = "stage4";
-        }
-        if (StageNum == 5)
-        {
-            stage = "stage5";
-        }
-        if (StageNum == 6)
-        {
-            stage = "stage6";
-        }
-
-        if (StageNum == 7)
-        {
-            stage = "stage7";
-        }
-        //8の時だけそれ以外からランダムで値を取る
-        if (StageNum == 8)
-        {
-            StageNum = Random.Range(Random_min, Random_max);
-        }
-
-        SelectSceneManager SSManager_script = SSManager.GetComponent<SelectSceneManager>();
-        SSManager_script.Stage_name_Data = stage;
+        //SelectSceneManager SSManager_script = SSManager.GetComponent<SelectSceneManager>();
+        //SSManager_script.Stage_name_Data = stage;
         sound01.PlayOneShot(sound02.clip);
     }
 }

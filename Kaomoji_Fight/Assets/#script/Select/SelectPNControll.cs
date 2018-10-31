@@ -14,7 +14,7 @@ public class SelectPNControll : MonoBehaviour {
     [SerializeField, Header("コントローラー番号")]
     private XboxController ControlerNamber = XboxController.First;//何番目のコントローラーを適用するか
 
-    bool cursor = true;
+    bool cursor = false;
     bool move = false;
     private static readonly int PLAYERMAX = 4;
     public int PlayerNum = 1;
@@ -40,11 +40,17 @@ public class SelectPNControll : MonoBehaviour {
         // Controllerの左スティックのAxisを取得            
         Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, ControlerNamber), XCI.GetAxis(XboxAxis.LeftStickY, ControlerNamber));
         
+        if(camera.transform.position.x == 0)
+        {
+            cursor = true;
+        }
+
         if (input.y == 0)
         {
             //スティックを倒してなかったらtrueに
             move = true;
         }
+
         if (cursor == true)
         {
             if (move == true)
@@ -112,21 +118,11 @@ public class SelectPNControll : MonoBehaviour {
                 SelectSceneManager SSManager_script = SSManager.GetComponent<SelectSceneManager>();
 
                 SSManager_script.PlayerNam_Data = PlayerNum;                
-                sound01.PlayOneShot(sound02.clip);
-                cursor = false;
-                camera.transform.position += new Vector3(17.8f, 0, 0);  //ステージセレクトに移動
+                sound01.PlayOneShot(sound02.clip);                
+                camera.transform.position = new Vector3(-17.8f, 0, 0);  //人数セレクトに移動
                 Debug.Log("最終値" + PlayerNum);
+                cursor = false;
             }
-        }
-        //ステージセレクトから戻った時の処理
-        if (Input.GetKeyDown(KeyCode.Backspace) || XCI.GetButtonDown(XboxButton.A, ControlerNamber))
-        {
-            if (cursor == false)
-            {
-                cursor = true;
-                camera.transform.position -= new Vector3(17.8f, 0, 0);
-            }
-
         }
     }   
 }
