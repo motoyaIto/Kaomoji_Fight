@@ -34,9 +34,12 @@ public class Player : RaycastController {
     private float direction = 0;    // 方向
 
     private GameObject weapon;
+
     private bool HaveWeapon = false;//武器を持っている(true)いない(false)
     private bool Avoidance = false; // 回避フラグ
     private bool jump = false;  // ジャンプ中か？
+
+    private string p_name;  // プレイヤーネーム
 
     Contoroller2d controller;   // コントローラー
     Rigidbody2D rig = null;
@@ -263,6 +266,9 @@ public class Player : RaycastController {
 
             //プレイヤーの移動する向きに合わせて位置を調整
             this.WeaponPositionControll();
+
+            // 持ったプレイヤーの名前を取得
+            p_name = this.name;
         }
     }
 
@@ -272,7 +278,7 @@ public class Player : RaycastController {
         if(collision.transform.tag == "Weapon" && Avoidance == false)
         {
             WeaponBlocController WBController = collision.gameObject.GetComponent<WeaponBlocController>();
-            PSM.Player_ReceiveDamage(this.gameObject, WBController.DamageValue_Data);
+            PSM.Player_ReceiveDamage(this.gameObject, WBController.DamageValue_Data,p_name);
         }
 
         // ジャンプ制限
