@@ -147,6 +147,8 @@ public class PlaySceneManager : MonoBehaviour
     [SerializeField]
     private GameObject UICanvases;      //UI用キャンバス
 
+    private GameObject DownTimer_obj;   //ダウンタイマー
+
     private AudioSource audio;          //オーディオ
 
     private AudioClip audioClip_gong;   //スタートで鳴らす音
@@ -172,9 +174,17 @@ public class PlaySceneManager : MonoBehaviour
 
     private void Awake()
     {
+        //ダウンタイマーのobjとcsを取得
+        DownTimer_obj = UICanvases.transform.Find("DownTimer").gameObject;
+        DownTimer DownTimer_cs = DownTimer_obj.GetComponent<DownTimer>();
+
+        //ダウンタイマーを起動
+        DownTimer_cs.DownTimer_On_data = true;
+
+        //オーディオを取得
         audio = this.GetComponent<AudioSource>();
-        audioClip_gong = (AudioClip)Resources.Load("Sound/SE/Start/gong");
-        audioClip_ded = (AudioClip)Resources.Load("Sound/SE/Deth/ded");
+        audioClip_gong = (AudioClip)Resources.Load("Sound/SE/Start/gong");  //スタートゴング
+        audioClip_ded = (AudioClip)Resources.Load("Sound/SE/Deth/ded");     //死亡時の音
 
         
         //カメラにターゲットするプレイヤーの数を設定
