@@ -34,7 +34,7 @@ public class SelectSceneManager : MonoBehaviour{
 	
 	// Update is called once per frame
 	void Update () {
-		if(mode == SELECTMODE.CHARACTER)
+		if(mode == SELECTMODE.MAX)
         {
             playersface = new Sprite[playerNam];
 

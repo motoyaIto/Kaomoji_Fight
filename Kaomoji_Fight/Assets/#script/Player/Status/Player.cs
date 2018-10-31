@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
+using Timers;
 
 [RequireComponent(typeof(Contoroller2d))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -58,6 +59,9 @@ public class Player : RaycastController {
         // プレイヤー同士の当たり判定をしない
         int P_layer = LayerMask.NameToLayer("Player");
         Physics2D.IgnoreLayerCollision(P_layer, P_layer);
+
+        // タイマーのセット
+        TimersManager.SetTimer(this, 2f, ChangeHaveWeapon);
     }
 
     private void Reset()
@@ -168,6 +172,8 @@ public class Player : RaycastController {
                 WeaponBlocController WB = weapon.GetComponent<WeaponBlocController>();
 
                 WB.Attack(direction, thrust);
+
+
                 HaveWeapon = false;
 
             }
@@ -310,6 +316,11 @@ public class Player : RaycastController {
                 break;
         }
         return 4;
+    }
+
+    private void ChangeHaveWeapon()
+    {
+        HaveWeapon = false;
     }
 
 

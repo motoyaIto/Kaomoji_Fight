@@ -467,7 +467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 257500d7f36219840a14be1a76304d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hue: 280
+  hue: 135
 --- !u!114 &126386015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1335,7 +1335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 257500d7f36219840a14be1a76304d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hue: 305
+  hue: 160
 --- !u!114 &487768674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2745,6 +2745,7 @@ MonoBehaviour:
   playersface: []
   ControlerNamber: 1
   SSManager: {fileID: 1909202849}
+  camera: {fileID: 316306433}
   Random_min: 1
   Random_max: 2
 --- !u!82 &1296911628
