@@ -15,6 +15,8 @@ public class WeaponBlocController : MonoBehaviour {
     private Vector3 Shot = Vector3.zero;    //打つ方向
     private float Thrust = 0.0f;            //推進力
     private bool AttackFlag = false;        //攻撃する(true)しない(false)
+    private string weapon_name;             //持った武器の名前
+
 
     // Use this for initialization
     void Start () {
@@ -63,7 +65,7 @@ public class WeaponBlocController : MonoBehaviour {
         Thrust = thrust;
         AttackFlag = true;
         this.tag = "Weapon";
-        
+        weapon_name = this.name;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -76,6 +78,14 @@ public class WeaponBlocController : MonoBehaviour {
         get
         {
             return DamageValue;
+        }
+    }
+
+    public string HaveWeapon_Name
+    {
+        get
+        {
+            return weapon_name;
         }
     }
 }

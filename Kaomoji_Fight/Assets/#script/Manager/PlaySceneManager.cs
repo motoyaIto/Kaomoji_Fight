@@ -362,8 +362,10 @@ public class PlaySceneManager : MonoBehaviour
     /// <summary>
     /// プレイヤーがダメージを受ける
     /// </summary>
-    public void Player_ReceiveDamage(GameObject damagePlayer, float DamageValue)
+    public void Player_ReceiveDamage(GameObject damagePlayer, float DamageValue, string weapon_onwer)
     {
+        // 武器の所有者の名前とダメージを受けたプレイヤーの名前が同じならばダメージを受けない
+        if (damagePlayer.name == weapon_onwer) return;
         // ダメージを受けたプレイヤーデータを取得する
         Player_data player_data = CheckDamagePlayer(damagePlayer.name);
         
