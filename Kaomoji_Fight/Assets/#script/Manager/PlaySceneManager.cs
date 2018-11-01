@@ -264,7 +264,9 @@ public class PlaySceneManager : MonoBehaviour
     void Start()
     {
         //ゴング
+        audio.volume = .5f;
         audio.PlayOneShot(audioClip_gong);
+        audio.volume = 1.0f;
         // リストの初期化
         for (int i = 0; i < PlayData.Instance.playerNum; i++)
         {
@@ -372,28 +374,36 @@ public class PlaySceneManager : MonoBehaviour
     /// <summary>
     /// プレイヤーがダメージを受ける
     /// </summary>
-    public void Player_ReceiveDamage(GameObject damagePlayer, float DamageValue, string weapon_onwer)
+    public void Player_ReceiveDamage(GameObject damagePlayer, GameObject weapon)
     {
         // 武器の所有者の名前とダメージを受けたプレイヤーの名前が同じならばダメージを受けない
-        if (damagePlayer.name == weapon_onwer) return;
-        // ダメージを受けたプレイヤーデータを取得する
-        Player_data player_data = CheckDamagePlayer(damagePlayer.name);
-        
-        //ダメージを受けたプレイヤーがいなかったとき
-        if(player_data == null)
+        if (damagePlayer.name == weapon.GetComponent<WeaponBlocController>().Owner_Data)
         {
             return;
         }
-
-        //ダメージを与える
-        Slider hpSlider = player_data.HPgage_obj.GetComponent<Slider>();
-        hpSlider.value -= DamageValue;
-
-        //HPが0以下になったらplayerを殺す
-        if(hpSlider.value <= 0)
+        else
         {
-            Destroy(damagePlayer);
+            // ダメージを受けたプレイヤーデータを取得する
+            Player_data player_data = CheckDamagePlayer(damagePlayer.name);
+
+            //ダメージを受けたプレイヤーがいなかったとき
+            if (player_data == null)
+            {
+                return;
+            }
+
+            //ダメージを与える
+            Slider hpSlider = player_data.HPgage_obj.GetComponent<Slider>();
+            hpSlider.value -= weapon.GetComponent<WeaponBlocController>().DamageValue_Data;
+
+            //HPが0以下になったらplayerを殺す
+            if (hpSlider.value <= 0)
+            {
+                Destroy(damagePlayer);
+            }
+
         }
+
     }
 
     /// <summary>

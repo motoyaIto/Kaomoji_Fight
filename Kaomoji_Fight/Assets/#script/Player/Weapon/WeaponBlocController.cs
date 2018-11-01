@@ -2,45 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponBlocController : MonoBehaviour {
-
-
+public class WeaponBlocController : MonoBehaviour
+{
     [SerializeField]
-    private float DamageValue = 1.0f;
-    [SerializeField, Header("破棄されるエリア（左上）")]
-    private Vector3 Death_LUpos = new Vector3(-40f, 15f, 0f);    // 飛んでったオブジェクトが破棄されるエリアの左上
-    [SerializeField, Header("破棄されるエリア（右下）")]
-    private Vector3 Death_RDpos = new Vector3(100f, -20f, 0f);   // 飛んでったオブジェクトが破棄されるエリアの右下
+    private float DamageValue = 5.0f;
 
-    private Vector3 Shot = Vector3.zero;    //打つ方向
-    private float Thrust = 0.0f;            //推進力
+    private Vector3 Death_LUpos = new Vector3(-40f, 15f, 0f);    // オブジェクトが破棄されるエリアの左上
+    private Vector3 Death_RDpos = new Vector3(100f, -60f, 0f);   // オブジェクトが破棄されるエリアの右下
+
+    private GameObject Weapon;
+
+    private Player parent;
+    private Rigidbody2D rig2d;
+
     private bool AttackFlag = false;        //攻撃する(true)しない(false)
     private string weapon_name;             //持った武器の名前
-
+    private string onwer;                   //所有者の名前
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
+        Weapon = this.transform.gameObject;
+        Weapon.AddComponent<Rigidbody2D>();
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(AttackFlag)
-        {
-            Rigidbody2D rb2 = this.GetComponent<Rigidbody2D>();
+        // 持たれているプレイヤーを取得
+        parent = this.transform.parent.GetComponent<Player>();
 
-            if(Shot == Vector3.left)
-            {
-                rb2.AddForce(Vector2.left * Thrust, ForceMode2D.Impulse);
-            }
-            else
-            {
-                rb2.AddForce(Vector2.right * Thrust, ForceMode2D.Impulse);
-            }
-        }
+        rig2d = Weapon.GetComponent<Rigidbody2D>();
+        rig2d.gravityScale = .01f;
+    }
 
+    // Update is called once per frame
+    void Update()
+    {
         // 飛んでったブロックの削除
-        if (this.transform.position.x < Death_LUpos.x || this.transform.position.x > Death_RDpos.x)
+        if (this.transform.position.x < Death_LUpos.x || this.transform.position.x > Death_RDpos.x || this.transform.position.y > Death_LUpos.y || this.transform.position.y < Death_RDpos.y)
         {
             Destroy(this.transform.gameObject);
         }
@@ -49,24 +45,32 @@ public class WeaponBlocController : MonoBehaviour {
 
     //座標を入れる
     public Vector3 SetPosition
-    { 
+    {
         set
         {
-           this.transform.position = value;
+            this.transform.position = value;
         }
     }
 
     public void Attack(Vector3 shot, float thrust)
     {
-        this.transform.gameObject.AddComponent<Rigidbody2D>();
-        this.transform.gameObject.AddComponent<BoxCollider2D>();
+        // 親から離れる
         this.transform.parent = null;
-        Shot = shot;
-        Thrust = thrust;
+
         AttackFlag = true;
         this.tag = "Weapon";
         weapon_name = this.name;
+
+        // 動かずに投げたら
+        if(shot == Vector3.zero)
+        {
+            // 上に投げる
+            shot = Vector3.up;
+        }
+        // ⊂二二二（ ＾ω＾）二⊃ ﾌﾞｰﾝ
+        rig2d.AddForce(shot * thrust);
     }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -86,6 +90,19 @@ public class WeaponBlocController : MonoBehaviour {
         get
         {
             return weapon_name;
+        }
+    }
+
+    public string Owner_Data
+    {
+        set
+        {
+            onwer = value;
+        }
+
+        get
+        {
+            return onwer;
         }
     }
 }

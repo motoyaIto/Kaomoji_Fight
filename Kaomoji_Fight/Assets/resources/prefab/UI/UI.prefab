@@ -21,8 +21,9 @@ GameObject:
   - component: {fileID: 224359487328429212}
   - component: {fileID: 222800628308920870}
   - component: {fileID: 114091986867035466}
+  - component: {fileID: 114614894573631808}
   m_Layer: 0
-  m_Name: PlayTimer
+  m_Name: DownTimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,6 +197,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114614894573631808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1099014733707028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7ee851807ea5cd4591af80207eddb46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeLimit: 180
 --- !u!222 &222800628308920870
 CanvasRenderer:
   m_ObjectHideFlags: 1

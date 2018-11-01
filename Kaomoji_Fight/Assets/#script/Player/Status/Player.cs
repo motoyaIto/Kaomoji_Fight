@@ -11,10 +11,7 @@ public class Player : RaycastController {
     #region 変数群
     // 公開
     [Header("移動速度")]
-    public float moveSpeed = 10;
-
-    [SerializeField, Header("投げるものの推進力")]
-    private float thrust = 2f;
+    public float moveSpeed = 10;    
 
     [SerializeField, Header("無敵時間")]
     private float Invincible_time = .5f;
@@ -33,6 +30,7 @@ public class Player : RaycastController {
 
     private Vector3 velocity;
     private float direction = 0;    // 方向
+    private float thrust = 1000f;       // 投擲物の推進力
 
     private GameObject weapon;
 
@@ -154,7 +152,9 @@ public class Player : RaycastController {
         {
             //武器の位置を調整
             WeaponBlocController WBController = weapon.gameObject.GetComponent<WeaponBlocController>();
+            WBController.Owner_Data = p_name;
             Vector3 direction = Vector3.zero;
+
             if (velocity.x < 0.0f)
             {
                 direction = Vector3.left;
@@ -171,7 +171,7 @@ public class Player : RaycastController {
             {
                 WeaponBlocController WB = weapon.GetComponent<WeaponBlocController>();
 
-                WB.Attack(direction, thrust);
+                WB.Attack(input, thrust);
 
 
                 HaveWeapon = false;
@@ -284,7 +284,7 @@ public class Player : RaycastController {
         if(collision.transform.tag == "Weapon" && Avoidance == false)
         {
             WeaponBlocController WBController = collision.gameObject.GetComponent<WeaponBlocController>();
-            PSM.Player_ReceiveDamage(this.gameObject, WBController.DamageValue_Data,p_name);
+            PSM.Player_ReceiveDamage(this.gameObject,collision.gameObject);
         }
 
         // ジャンプ制限
