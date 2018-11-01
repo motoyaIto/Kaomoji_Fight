@@ -155,23 +155,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9d9bd1287314380458fe9066ac274195, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &316284509 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1099014733707028, guid: 78d1e039b7f3eda4aa36763dc47e6a87,
-    type: 2}
-  m_PrefabInternal: {fileID: 1139580461}
---- !u!114 &316284510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 316284509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7ee851807ea5cd4591af80207eddb46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TimeLimit: 180
 --- !u!1001 &360412931
 Prefab:
   m_ObjectHideFlags: 0
@@ -659,10 +642,6 @@ Prefab:
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1099014733707028, guid: 78d1e039b7f3eda4aa36763dc47e6a87, type: 2}
-      propertyPath: m_Name
-      value: DownTimer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 78d1e039b7f3eda4aa36763dc47e6a87, type: 2}
