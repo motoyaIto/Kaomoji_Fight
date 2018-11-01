@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
 
-public class SelectCharControll : MonoBehaviour {
+public class SelectChar : MonoBehaviour {
 
     [SerializeField, Header("コントローラー番号")]
     private XboxController ControlerNamber = XboxController.First;//何番目のコントローラーを適用するか
@@ -18,7 +18,7 @@ public class SelectCharControll : MonoBehaviour {
     private PlaySceneManager PSM;
     bool cursor = false;
     bool move = false;
-    private string face;
+    public string face;
     private AudioSource sound01;
     private AudioSource sound02;
     private AudioSource sound03;
@@ -148,20 +148,11 @@ public class SelectCharControll : MonoBehaviour {
             //決定処理
             if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, ControlerNamber))
             {                
-                FaceCount();
-                //StartCoroutine("coRoutine");
-                camera.transform.position = new Vector3(17.8f, 0, 0);  //ステージセレクトに移動
+                FaceCount();                
                 cursor = false;
             }
             myTransform.position = pos;  // 座標を設定
-
-            //人数セレクトに戻る処理
-            if (Input.GetKeyDown(KeyCode.Backspace) || XCI.GetButtonDown(XboxButton.A, ControlerNamber))
-            {
-                sound01.PlayOneShot(sound03.clip);
-                camera.transform.position = new Vector3(0, 0, 0);  //人数セレクトに戻る
-                cursor = false;
-            }
+                       
         }       
     }
 
@@ -218,10 +209,7 @@ public class SelectCharControll : MonoBehaviour {
                 face = "face16";
                 break;
         }
-
-        //SelectSceneManager SSManager_script = SSManager.GetComponent<SelectSceneManager>();
-       // SSManager_script.Playersface_Data = face;
-        //sound01.PlayOneShot(sound02.clip);
+        sound01.PlayOneShot(sound02.clip);
     }
 
     //private void OnDisable()
