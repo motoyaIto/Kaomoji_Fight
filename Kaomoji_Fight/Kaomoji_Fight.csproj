@@ -221,12 +221,6 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
-    </Reference>
     <Reference Include="XInputDotNetPure">
       <HintPath>Assets/Plugins/XInputDotNetPure.dll</HintPath>
     </Reference>
@@ -276,22 +270,13 @@
     <Compile Include="Assets\#script\Player\Jump\RaycastController.cs" />
     <Compile Include="Assets\#script\Player\Status\Contoroller2d.cs" />
     <Compile Include="Assets\#script\Player\Status\Player.cs" />
-<<<<<<< HEAD
-=======
-    <Compile Include="Assets\#script\Player\Weapon\AttackWithWeapons.cs" />
->>>>>>> master
     <Compile Include="Assets\#script\Player\Weapon\WeaponBlocController.cs" />
     <Compile Include="Assets\#script\PlayTimer.cs" />
     <Compile Include="Assets\#script\SceneManagerController.cs" />
     <Compile Include="Assets\#script\SceneTimer.cs" />
-<<<<<<< HEAD
-    <Compile Include="Assets\#script\Select\CursorHue.cs" />
-    <Compile Include="Assets\#script\Select\SelectCharControll.cs" />
-=======
     <Compile Include="Assets\#script\Select\CharSelectControll.cs" />
     <Compile Include="Assets\#script\Select\CursorHue.cs" />
     <Compile Include="Assets\#script\Select\SelectChar.cs" />
->>>>>>> master
     <Compile Include="Assets\#script\Select\SelectPNControll.cs" />
     <Compile Include="Assets\#script\Select\SelectStage.cs" />
     <Compile Include="Assets\#script\SingletonMonoBehaviour.cs" />
@@ -393,11 +378,12 @@
     <None Include="Assets\Shader\Test\VertexShader.shader" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
-<<<<<<< HEAD
-=======
     <None Include="Assets\resources\Texts\stage1.txt" />
+    <None Include="Assets\resources\Texts\stage2.txt" />
+    <None Include="Assets\resources\Texts\stage3.txt" />
+    <None Include="Assets\resources\Texts\stage4.txt" />
+    <None Include="Assets\resources\Texts\stage5.txt" />
     <None Include="Assets\resources\Texts\test.txt" />
->>>>>>> master
     <None Include="Assets\ーCredit\Assets.txt" />
     <None Include="Assets\ーCredit\ButtleBGMクレジット.txt" />
     <None Include="Assets\ーCredit\参考サイト.txt" />
