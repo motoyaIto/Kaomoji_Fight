@@ -366,6 +366,7 @@
     <None Include="Assets\resources\Texts\stage3.txt" />
     <None Include="Assets\resources\Texts\stage4.txt" />
     <None Include="Assets\resources\Texts\stage5.txt" />
+    <None Include="Assets\resources\Texts\stage6.txt" />
     <None Include="Assets\resources\Texts\test.txt" />
     <None Include="Assets\ーCredit\Assets.txt" />
     <None Include="Assets\ーCredit\ButtleBGMクレジット.txt" />
