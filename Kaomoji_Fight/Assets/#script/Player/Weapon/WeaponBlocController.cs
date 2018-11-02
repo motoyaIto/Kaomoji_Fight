@@ -7,17 +7,18 @@ public class WeaponBlocController : MonoBehaviour
     [SerializeField]
     private float DamageValue = 5.0f;
 
-    private Vector3 Death_LUpos = new Vector3(-40f, 15f, 0f);    // オブジェクトが破棄されるエリアの左上
-    private Vector3 Death_RDpos = new Vector3(100f, -60f, 0f);   // オブジェクトが破棄されるエリアの右下
+    private Vector3 Death_LUpos = new Vector3(-150f, 50f, 0f);    // オブジェクトが破棄されるエリアの左上
+    private Vector3 Death_RDpos = new Vector3(200f, -60f, 0f);   // オブジェクトが破棄されるエリアの右下
 
     private GameObject Weapon;
 
-    private Player parent;
+    private Player parent;                  //親となるプレイヤー
     private Rigidbody2D rig2d;
 
     private bool AttackFlag = false;        //攻撃する(true)しない(false)
     private string weapon_name;             //持った武器の名前
     private string onwer;                   //所有者の名前
+    private bool weapon_throw = false;      //武器を投げた(true)投げてない(false)
 
     // Use this for initialization
     void Start()
@@ -27,6 +28,9 @@ public class WeaponBlocController : MonoBehaviour
 
         // 持たれているプレイヤーを取得
         parent = this.transform.parent.GetComponent<Player>();
+
+        // レイヤーの変更
+        Weapon.layer = LayerName.Weapon;
 
         rig2d = Weapon.GetComponent<Rigidbody2D>();
         rig2d.gravityScale = .01f;
@@ -57,7 +61,10 @@ public class WeaponBlocController : MonoBehaviour
         // 親から離れる
         this.transform.parent = null;
 
+        Weapon.AddComponent<BoxCollider2D>();
+
         AttackFlag = true;
+        weapon_throw = true;
         this.tag = "Weapon";
         weapon_name = this.name;
 
@@ -74,7 +81,11 @@ public class WeaponBlocController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(this.gameObject);
+        if(parent.name != collision.gameObject.name && weapon_throw && collision.transform.tag != "Stage")
+        {
+            Destroy(this.gameObject);
+            weapon_throw = false;
+        }
     }
 
     public float DamageValue_Data

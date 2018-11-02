@@ -16,10 +16,6 @@ public class Player : RaycastController {
     [SerializeField, Header("無敵時間")]
     private float Invincible_time = .5f;
 
-    [Header("飛ぶ量")]
-    public float maxflap = 1000f;
-    public float minflap = 500f;
-
     [Header("幅")]
     public float scroll = 5f;
 
@@ -29,14 +25,20 @@ public class Player : RaycastController {
     private XboxController ControlerNamber = XboxController.First;//何番目のコントローラーを適用するか
 
     private Vector3 velocity;
+
+    private float maxflap = 800f;  // ジャンプの高さ（最大）
+    private float minflap = 400f;   // ジャンプの高さ（最小）
+
     private float direction = 0;    // 方向
     private float thrust = 1000f;       // 投擲物の推進力
 
     private GameObject weapon;
 
+    private bool Start_Wait = false;
     private bool HaveWeapon = false;//武器を持っている(true)いない(false)
     private bool Avoidance = false; // 回避フラグ
     private bool jump = false;  // ジャンプ中か？
+    private float FlameCount = .0f;
 
     private string p_name;  // プレイヤーネーム
 
@@ -59,7 +61,7 @@ public class Player : RaycastController {
         Physics2D.IgnoreLayerCollision(P_layer, P_layer);
 
         // タイマーのセット
-        TimersManager.SetTimer(this, 2f, ChangeHaveWeapon);
+        TimersManager.SetTimer(this, 2f, delegate { ChangeState(); });
     }
 
     private void Reset()
@@ -69,7 +71,6 @@ public class Player : RaycastController {
 
     void Update()
     {
-
         // Controllerの左スティックのAxisを取得            
         Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, ControlerNamber), XCI.GetAxis(XboxAxis.LeftStickY, ControlerNamber));
         if (input.x > .0f)
@@ -94,21 +95,22 @@ public class Player : RaycastController {
         //キャラのy軸のdirection方向にscrollの力をかける
         rig.velocity = new Vector2(scroll * direction, rig.velocity.y);
 
-        // 大ジャンプ
+        
         if (XCI.GetButtonDown(XboxButton.Y, ControlerNamber) && !jump)
         {
+            // 大ジャンプ
             rig.AddForce(Vector2.up * maxflap);
             jump = true;
-            this.gameObject.layer = LayerName.Through;
-        }
-        // 小ジャンプ
-        if (XCI.GetButtonUp(XboxButton.Y, ControlerNamber) && !jump)
-        {
-            rig.AddForce(Vector2.down);
-            jump = true;
-        }
+            //this.gameObject.layer = LayerName.Through;
 
-
+            //if (XCI.GetButtonUp(XboxButton.Y, ControlerNamber) && !jump)
+            //{
+            //    // 小ジャンプ・・・したかった・・・(´・ω・｀)
+            //    rig.AddForce(Vector2.up * minflap);
+            //    jump = true;
+            //    //this.gameObject.layer = LayerName.Through;
+            //}
+        }
 
         // 回避をしたい
         if (XCI.GetAxis(XboxAxis.RightTrigger, ControlerNamber) < 0.0f)
@@ -169,27 +171,22 @@ public class Player : RaycastController {
             //武器を使う
             if (XCI.GetButtonDown(XboxButton.B, ControlerNamber))
             {
+                ChangeWeaponState();
                 WeaponBlocController WB = weapon.GetComponent<WeaponBlocController>();
 
-                WB.Attack(input, thrust);
-
-
-                HaveWeapon = false;
-
+                WB.Attack(input, thrust);             
             }
 
             // 武器を捨てる
             if (XCI.GetButton(XboxButton.X, ControlerNamber))
             {
+                ChangeWeaponState();
                 Destroy(weapon);
-
-                HaveWeapon = false;
-
             }
         }
 
-            // Ｒａｙ
-            this.RayController();
+        // Ｒａｙ
+        this.RayController();
 
 
         // 落ちた時の対処
@@ -284,7 +281,7 @@ public class Player : RaycastController {
         if(collision.transform.tag == "Weapon" && Avoidance == false)
         {
             WeaponBlocController WBController = collision.gameObject.GetComponent<WeaponBlocController>();
-            PSM.Player_ReceiveDamage(this.gameObject,collision.gameObject);
+            PSM.Player_ReceiveDamage(this.gameObject, collision.gameObject, CNConvert(ControlerNamber));
         }
 
         // ジャンプ制限
@@ -318,7 +315,12 @@ public class Player : RaycastController {
         return 4;
     }
 
-    private void ChangeHaveWeapon()
+    private void ChangeState()
+    {
+        Start_Wait = true;
+    }
+
+    private void ChangeWeaponState()
     {
         HaveWeapon = false;
     }
@@ -337,23 +339,32 @@ public class Player : RaycastController {
 
     public void WeaponPositionControll()
     {
-        foreach (Transform child in this.transform)
-        {
-            if (direction >= 1 && child.name == "TopRight")//右
+        if (Start_Wait == true)
+        { 
+            foreach (Transform child in this.transform)
             {
+                if (direction >= 1 && child.name == "TopRight")//右
+                {
+                    weapon.transform.position = child.transform.position;
+                }
 
-                weapon.transform.position = child.transform.position;
-            }
-
-            else if (direction <= -1 && child.name == "TopLeft")//左
-            {
-                weapon.transform.position = child.transform.position;
-            }
-            else if (child.name == "Top")//移動していない
-            {
-                weapon.transform.position = child.transform.position;
+                else if (direction <= -1 && child.name == "TopLeft")//左
+                {
+                    weapon.transform.position = child.transform.position;
+                }
+                else if (child.name == "Top")//移動していない
+                {
+                    weapon.transform.position = child.transform.position;
+                }
             }
         }
     }
 
+    public GameObject ThisPlayer
+    {
+        get
+        {
+            return this.transform.gameObject;
+        }
+    }
 }
