@@ -1,8 +1,12 @@
 sceneSetups:
 <<<<<<< HEAD
+<<<<<<< HEAD
 - path: Assets/#scene/Title.unity
 =======
 - path: Assets/#scene/Player.unity
 >>>>>>> master
+=======
+- path: Assets/#scene/Play.unity
+>>>>>>> 7b825e9b5f5a7249cd6da573116dfd3fae8782e1
   isLoaded: 1
   isActive: 1
