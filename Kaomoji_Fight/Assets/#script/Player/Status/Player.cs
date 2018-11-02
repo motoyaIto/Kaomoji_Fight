@@ -37,6 +37,7 @@ public class Player : RaycastController {
     private bool HaveWeapon = false;//武器を持っている(true)いない(false)
     private bool Avoidance = false; // 回避フラグ
     private bool jump = false;  // ジャンプ中か？
+    private float FlameCount = .0f;
 
     private string p_name;  // プレイヤーネーム
 
@@ -94,21 +95,22 @@ public class Player : RaycastController {
         //キャラのy軸のdirection方向にscrollの力をかける
         rig.velocity = new Vector2(scroll * direction, rig.velocity.y);
 
-        // 大ジャンプ
+        
         if (XCI.GetButtonDown(XboxButton.Y, ControlerNamber) && !jump)
         {
+            // 大ジャンプ
             rig.AddForce(Vector2.up * maxflap);
             jump = true;
-            this.gameObject.layer = LayerName.Through;
-        }
-        // 小ジャンプ
-        if (XCI.GetButtonUp(XboxButton.Y, ControlerNamber) && !jump)
-        {
-            rig.AddForce(Vector2.down);
-            jump = true;
-        }
+            //this.gameObject.layer = LayerName.Through;
 
-
+            if (XCI.GetButtonUp(XboxButton.Y, ControlerNamber) && !jump)
+            {
+                // 小ジャンプ・・・したかった・・・(´・ω・｀)
+                rig.AddForce(Vector2.up * minflap);
+                jump = true;
+                //this.gameObject.layer = LayerName.Through;
+            }
+        }
 
         // 回避をしたい
         if (XCI.GetAxis(XboxAxis.RightTrigger, ControlerNamber) < 0.0f)

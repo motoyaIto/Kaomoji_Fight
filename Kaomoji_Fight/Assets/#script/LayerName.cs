@@ -12,6 +12,8 @@ public static class LayerName
 	public const int Player = 9;
 	public const int BG = 10;
 	public const int Through = 11;
+	public const int Stage = 12;
+	public const int Weapon = 13;
 	public const int DefaultMask = 1;
 	public const int TransparentFXMask = 2;
 	public const int IgnoreRaycastMask = 4;
@@ -21,4 +23,6 @@ public static class LayerName
 	public const int PlayerMask = 512;
 	public const int BGMask = 1024;
 	public const int ThroughMask = 2048;
+	public const int StageMask = 4096;
+	public const int WeaponMask = 8192;
 }

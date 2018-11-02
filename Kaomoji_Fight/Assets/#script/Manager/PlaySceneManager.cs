@@ -165,7 +165,7 @@ public class PlaySceneManager : MonoBehaviour
     Player_data P4 ;
 
     [SerializeField, Header("プレイヤーの復帰時の場所指定")]
-    private Vector3 RevivalPos = new Vector3(2.5f, 50f, 0f);
+    private Vector3 RevivalPos = new Vector3(2.5f, 30f, 0f);
    
     [HideInInspector]
     public List<bool> death_player = new List<bool>();   // 死んだプレイヤーを判別するためのリスト
