@@ -6,7 +6,7 @@ using XboxCtrlrInput;
 public class SelectPNControll : MonoBehaviour {
 
     [SerializeField]
-    private GameObject SSManager;//セレクトシーンマネージャー
+    private GameObject TManager;//セレクトシーンマネージャー
 
     [SerializeField]
     private Camera camera;      //カメラ
@@ -115,9 +115,9 @@ public class SelectPNControll : MonoBehaviour {
             //プレイ人数を決定
             if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, ControlerNamber))
             {
-                SelectSceneManager SSManager_script = SSManager.GetComponent<SelectSceneManager>();
+                TitleManager TManager_cs = TManager.GetComponent<TitleManager>();
 
-                SSManager_script.PlayerNam_Data = PlayerNum;                
+                //TManager_cs.PlayerNam_Data = PlayerNum;                
                 sound01.PlayOneShot(sound02.clip);                
                 camera.transform.position = new Vector3(-17.8f, 0, 0);  //人数セレクトに移動
                 Debug.Log("最終値" + PlayerNum);
