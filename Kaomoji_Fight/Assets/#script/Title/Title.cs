@@ -7,8 +7,12 @@ using XboxCtrlrInput;
 public class Title : MonoBehaviour
 {
 
-    //public
-    public float speed = 1.0f;
+    [SerializeField]
+    GameObject Manager;
+    TitleManager TManager_cs;
+
+   [SerializeField]
+    private float speed = 1.0f;
 
     //private
     private Text text;
@@ -36,6 +40,8 @@ public class Title : MonoBehaviour
             thisObjType = ObjType.TEXT;
             text = this.gameObject.GetComponent<Text>();
         }
+
+        TManager_cs = Manager.GetComponent<TitleManager>();
     }
 
     void Update()
@@ -50,9 +56,13 @@ public class Title : MonoBehaviour
             text.color = GetAlphaColor(text.color);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, XboxController.First))
+        //if (TManager_cs.ControllerLock_data == false)
         {
-            SceneManagerController.ChangeScene();
+            if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, XboxController.First))
+            {
+
+                TManager_cs.ChangePage(1);
+            }
         }
     }
 
