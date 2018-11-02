@@ -35,6 +35,8 @@ public class PlaySceneManager : MonoBehaviour
 
         private float m_hp;
 
+        private Slider m_hpSlider;
+
         //コンストラクタ
         public Player_data(string name, Color col, Sprite player_face, Vector3 initialPos, XboxController controller, float hp)
         {
@@ -168,7 +170,9 @@ public class PlaySceneManager : MonoBehaviour
     private Vector3 RevivalPos = new Vector3(2.5f, 30f, 0f);
    
     [HideInInspector]
-    public List<bool> death_player = new List<bool>();   // 死んだプレイヤーを判別するためのリスト
+    public List<bool> death_player = new List<bool>();   // 落ちて死んだプレイヤーを判別するためのリスト
+    private List<bool> TrueDeath = new List<bool>(); // HPが無くなって死んだプレイヤーのリスト
+    private List<Slider> HP_Slider = new List<Slider>();    // HPゲージのリスト
 
     private CinemachineTargetGroup TargetGroup;
 
@@ -266,12 +270,13 @@ public class PlaySceneManager : MonoBehaviour
         //ゴング
         audio.volume = .5f;
         audio.PlayOneShot(audioClip_gong);
-        audio.volume = 1.0f;
+
         // リストの初期化
         for (int i = 0; i < PlayData.Instance.playerNum; i++)
         {
-            // 死亡リスト
             death_player.Add(true);
+            TrueDeath.Add(false);
+            HP_Slider.Add(CheckDamagePlayer(PlayData.Instance.PlayersName[i]).HPgage_obj.GetComponent<Slider>());
         }
     }
 
@@ -280,7 +285,7 @@ public class PlaySceneManager : MonoBehaviour
         // 死んだプレイヤーの蘇生
         for(int i = 0; i < PlayData.Instance.playerNum; i++)
         {
-            if(death_player[i] == false)
+            if(death_player[i] == false && TrueDeath[i] == false)
             {
                 RegenerationPlayer(i);
             }
@@ -374,7 +379,7 @@ public class PlaySceneManager : MonoBehaviour
     /// <summary>
     /// プレイヤーがダメージを受ける
     /// </summary>
-    public void Player_ReceiveDamage(GameObject damagePlayer, GameObject weapon)
+    public void Player_ReceiveDamage(GameObject damagePlayer, GameObject weapon, int num)
     {
         // 武器の所有者の名前とダメージを受けたプレイヤーの名前が同じならばダメージを受けない
         if (damagePlayer.name == weapon.GetComponent<WeaponBlocController>().Owner_Data)
@@ -393,12 +398,14 @@ public class PlaySceneManager : MonoBehaviour
             }
 
             //ダメージを与える
-            Slider hpSlider = player_data.HPgage_obj.GetComponent<Slider>();
-            hpSlider.value -= weapon.GetComponent<WeaponBlocController>().DamageValue_Data;
+            HP_Slider[num].value -= weapon.GetComponent<WeaponBlocController>().DamageValue_Data;
 
             //HPが0以下になったらplayerを殺す
-            if (hpSlider.value <= 0)
+            if (HP_Slider[num].value <= 0)
             {
+                TrueDeath[num] = true;
+                audio.volume = 0.3f;
+                audio.PlayOneShot(audioClip_ded);
                 Destroy(damagePlayer);
             }
 
@@ -442,31 +449,45 @@ public class PlaySceneManager : MonoBehaviour
     private void RegenerationPlayer(int num)
     {
         death_player[num] = true;
-        switch (num)
+        HP_Slider[num].value -= HP_Slider[num].maxValue / 10f;
+
+        if (HP_Slider[num].value <= .0f)
         {
-            case 0:
-                P1.Player_obj = this.CreatePlayer(P1);
-                CameraSet(P1, num);
-                break;
+            TrueDeath[num] = true;
+        }
 
-            case 1:
-                P2.Player_obj = this.CreatePlayer(P2);
-                CameraSet(P2, num);
+        if (!TrueDeath[num])
+        {
+            switch (num)
+            {
+                case 0:
+                    P1.Player_obj = this.CreatePlayer(P1);
+                    CameraSet(P1, num);
+                    break;
 
-                break;
+                case 1:
+                    P2.Player_obj = this.CreatePlayer(P2);
+                    CameraSet(P2, num);
 
-            case 2:
-                P3.Player_obj = this.CreatePlayer(P3);
-                CameraSet(P3, num);
-                break;
+                    break;
 
-            case 3:
-                P4.Player_obj = this.CreatePlayer(P4);
-                CameraSet(P4, num);
-                break;
+                case 2:
+                    P3.Player_obj = this.CreatePlayer(P3);
+                    CameraSet(P3, num);
+                    break;
 
-            default:
-                break;
+                case 3:
+                    P4.Player_obj = this.CreatePlayer(P4);
+                    CameraSet(P4, num);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+        else
+        {
+            return;
         }
 
         audio.volume = 0.3f;
