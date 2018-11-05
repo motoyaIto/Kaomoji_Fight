@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TitleManager : MonoBehaviour{
 
-    enum SELECTMODE
+    public enum SELECTMODE
     {
         TITLE,
         PLAYNAM,
@@ -24,7 +24,8 @@ public class TitleManager : MonoBehaviour{
     private GameObject Note_Gizmo;  //ノートを回す中心
     [SerializeField]
     private float Flickspd = 0.1f;  //ノートがめくれるスピード
-    private Quaternion Note_move;
+    private float count_rotation;//回転角を記憶する
+    //private Quaternion Note_move;
 
     [SerializeField]
     private GameObject[] PlayersNumSelect_texts;    //プレイヤー人数セレクト画面のオブジェクト
@@ -116,26 +117,26 @@ public class TitleManager : MonoBehaviour{
     /// 1つ前または次のページに変える
     /// </summary>
     /// <param name="nextPage">次のページか前のページか</param>
-    public void ChangePage(int nextPage)
+    public void ChangePage(SELECTMODE nextPage)
     {
         //1ページより多くめくろうとしていたら1ページに変える
-        if(nextPage < -1)
+        if(nextPage < mode - 1)
         {
             Flickpage = false;
-            nextPage = -1;
+            nextPage = mode - 1;
         }
-        if(nextPage > 1)
+        if(nextPage > mode + 1)
         {
             Flickpage = true;
-            nextPage = 1;
+            nextPage = mode + 1;
         }
 
         //最小又は最大のページより先に行かないようにする
-        if(mode == SELECTMODE.TITLE && nextPage <= -1)
+        if(nextPage == SELECTMODE.TITLE - 1)
         {
             return;
         }
-        if(mode == SELECTMODE.MAX && nextPage >= 1)
+        if(nextPage == SELECTMODE.MAX + 1)
         {
             return;
         }
@@ -143,7 +144,7 @@ public class TitleManager : MonoBehaviour{
         ControllerLock = true;
 
         //ページを更新
-        mode += nextPage;
+        mode = nextPage;
     }
     
     /// <summary>
@@ -151,31 +152,33 @@ public class TitleManager : MonoBehaviour{
     /// </summary>
     private void Flick()
     {
-        //Debug.Log(90 * (int)mode * Mathf.Deg2Rad);
         //次のページ
         if (Flickpage == true)
         {
-            if (Note_Gizmo.transform.rotation.y * Mathf.Rad2Deg <  90 * (int)mode)
-            {
-                Note_move = Note_Gizmo.transform.rotation;
-                Note_move.y += Flickspd;
-                Note_Gizmo.transform.rotation = Note_move;
-            }
-            else
-            {
-                ControllerLock = false;
-            }
+            Note_Gizmo.transform.rotation = Quaternion.Slerp(Note_Gizmo.transform.rotation, new Quaternion(0, 90, 0, 0), 0.5f);
+
+            ControllerLock = false;
+            //if (Note_Gizmo.transform.rotation.y >   -0.5* (int)mode)
+            //{
+            //    Note_move = Note_Gizmo.transform.rotation;
+            //    Note_move.y += Flickspd;
+            //    Note_Gizmo.transform.rotation = Note_move;
+            //}
+            //else
+            //{
+            //    ControllerLock = false;
+            //}
 
             return;
         }
 
         if (Flickpage == false)//前のページ
         {
-            if (Note_Gizmo.transform.rotation.y > 90 * (int)mode)
+            if (Note_Gizmo.transform.rotation.y < 90 * (int)mode)
             {
-                Note_move = Note_Gizmo.transform.rotation;
-                Note_move.y -= Flickspd;
-                Note_Gizmo.transform.rotation = Note_move;
+                //Note_move = Note_Gizmo.transform.rotation;
+                //Note_move.y -= Flickspd;
+                //Note_Gizmo.transform.rotation = Note_move;
             }
             else
             {
