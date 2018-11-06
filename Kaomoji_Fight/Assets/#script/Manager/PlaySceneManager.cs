@@ -145,17 +145,15 @@ public class PlaySceneManager : MonoBehaviour
         }
     }
 
-
-    [SerializeField]
     private GameObject UICanvases;      //UI用キャンバス
 
     private GameObject DownTimer_obj;   //ダウンタイマー
 
-    private AudioSource audio;          //オーディオ
+    private new AudioSource audio;          //オーディオ
 
     private AudioClip audioClip_gong;   //スタートで鳴らす音
     private AudioClip audioClip_ded;    //プレイヤーが死んだときに鳴らす音
-   
+    private AudioClip audioClip_hit;    //ぶつかった時の音   
 
     [SerializeField]
     Player_data P1;
@@ -165,19 +163,21 @@ public class PlaySceneManager : MonoBehaviour
     Player_data P3;
     [SerializeField]
     Player_data P4 ;
-
-    [SerializeField, Header("プレイヤーの復帰時の場所指定")]
-    private Vector3 RevivalPos = new Vector3(2.5f, 30f, 0f);
    
     [HideInInspector]
     public List<bool> death_player = new List<bool>();   // 落ちて死んだプレイヤーを判別するためのリスト
     private List<bool> TrueDeath = new List<bool>(); // HPが無くなって死んだプレイヤーのリスト
     private List<Slider> HP_Slider = new List<Slider>();    // HPゲージのリスト
 
+    private Vector3 RevivalPos = new Vector3(2.5f, 30f, 0f);    // プレイヤーの復帰場所
+
     private CinemachineTargetGroup TargetGroup;
 
     private void Awake()
     {
+        //UIオブジェクトを設定
+        UICanvases = GameObject.Find("UI").transform.gameObject;
+
         //ダウンタイマーのobjとcsを取得
         DownTimer_obj = UICanvases.transform.Find("DownTimer").gameObject;
         DownTimer DownTimer_cs = DownTimer_obj.GetComponent<DownTimer>();
@@ -189,8 +189,8 @@ public class PlaySceneManager : MonoBehaviour
         audio = this.GetComponent<AudioSource>();
         audioClip_gong = (AudioClip)Resources.Load("Sound/SE/Start/gong");  //スタートゴング
         audioClip_ded = (AudioClip)Resources.Load("Sound/SE/Deth/ded");     //死亡時の音
+        audioClip_hit = (AudioClip)Resources.Load("Sound/SE/Blow/Hit08-1");    //ぶつかる音
 
-        
         //カメラにターゲットするプレイヤーの数を設定
         TargetGroup = this.GetComponent<CinemachineTargetGroup>();
         TargetGroup.m_Targets = new CinemachineTargetGroup.Target[PlayData.Instance.playerNum];
@@ -388,6 +388,10 @@ public class PlaySceneManager : MonoBehaviour
         }
         else
         {
+            // Hit音
+            audio.volume = .3f;
+            audio.PlayOneShot(audioClip_hit);
+
             // ダメージを受けたプレイヤーデータを取得する
             Player_data player_data = CheckDamagePlayer(damagePlayer.name);
 
