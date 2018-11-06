@@ -13,7 +13,7 @@ public class SceneManagerController : MonoBehaviour
     {
         LOGO,
         TITLE,
-        SELECT,
+      
         PLAY,
         RESULT
     };
