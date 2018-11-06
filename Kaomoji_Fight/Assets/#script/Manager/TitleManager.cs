@@ -59,7 +59,7 @@ public class TitleManager : MonoBehaviour{
 
     // Use this for initialization
     void Start() {
-        this.PlayerNumController_Data();
+
     }
 	// Update is called once per frame
 	void Update () {
@@ -79,11 +79,19 @@ public class TitleManager : MonoBehaviour{
                
                 break;
             case SELECTMODE.PLAYERNAM:
-                Debug.Log("PLAYERNAM");
-                
+                if (ControllerLock == true)
+                {
+                    if (Playernam_Gizmo.GetComponent<Gizmo>().Flickpage(Flickpage) == false)
+                    {
+                        ControllerLock = false;
+
+                        mode = Nextmode;
+                    }
+                }
+
                 break;
             case SELECTMODE.STAGESELECT:
-
+                Debug.Log(playerNum);
 
                 break;
             case SELECTMODE.CHARACTERSELECT:
@@ -146,37 +154,20 @@ public class TitleManager : MonoBehaviour{
         Nextmode = nextPageName;
     }
 
-
-
-
-
-    /// <summary>
-    /// プレイヤーの合計人数を選択するときのカーソルのデータ
-    /// </summary>
-    private void PlayerNumController_Data()
-    {
-        //プレイヤーの合計人数選択テキストのワールド座標を取得する
-        PlayersNumSelect_texts_pos = new Vector3[PlayersNumSelect_texts.Length];
-
-        for (int i = 0; i < PlayersNumSelect_texts.Length; i++)
-        {
-            //カーソルの初期座標
-            PlayersNumSelect_texts_pos[i] = Cursor.transform.position;
-            //y座標をtxtの座標に修正
-            PlayersNumSelect_texts_pos[i].y = PlayersNumSelect_texts[i].transform.position.y;
-        }
-
-        //カーソルにtxtの座標を伝える
-        CursorController cursor_cs = Cursor.GetComponent<CursorController>();
-
-    }
-
    
     public SELECTMODE Mode_data
     {
         get
         {
             return mode;
+        }
+    }
+
+    public int PlayerNum_data
+    {
+        set
+        {
+           playerNum = value;
         }
     }
 }
