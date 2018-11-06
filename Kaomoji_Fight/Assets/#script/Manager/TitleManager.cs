@@ -7,30 +7,39 @@ public class TitleManager : MonoBehaviour{
     public enum SELECTMODE
     {
         TITLE,
-        PLAYNAM,
-        STAGE,
-        CHARACTER,
+        PLAYERNAM,
+        STAGESELECT,
+        CHARACTERSELECT,
 
         MAX
     }
     private SELECTMODE mode = SELECTMODE.TITLE;//選択されている画面のモード
+    private SELECTMODE Nextmode;               //次のページ
 
     private bool ControllerLock = false;//コントローラーをロックする(true)しない(false)
     private bool Flickpage = true;     //次のページ(true)前のページ(false)
 
+    //各ギズモ
     [SerializeField]
-    private GameObject Cursor;      //カーソル
+    private GameObject Title_Gizmo;         //ノートを回すギズモ
     [SerializeField]
-    private GameObject Note_Gizmo;  //ノートを回す中心
+    private GameObject Playernam_Gizmo;     //プレイヤー人数セレクトを回すギズモ
+    [SerializeField]
+    private GameObject Stageselect_Gizmo;   //ステージセレクトを回すギズモ
+    [SerializeField]
+    private GameObject Characterselect_Gizmo;     //キャラクターセレクトを回すギズモ
+
     [SerializeField]
     private float Flickspd = 0.1f;  //ノートがめくれるスピード
-    private float count_rotation;//回転角を記憶する
+    private float count_rotation;   //回転角を記憶する
     //private Quaternion Note_move;
 
     [SerializeField]
     private GameObject[] PlayersNumSelect_texts;    //プレイヤー人数セレクト画面のオブジェクト
     private Vector3[] PlayersNumSelect_texts_pos;   //プレイヤー人数セレクト画面のオブジェクトの座標
 
+    [SerializeField]
+    private GameObject Cursor;      //カーソル
     [SerializeField]
     private GameObject[] StageSelect_texts;     //ステージセレクト画面のオブジェクト
 
@@ -54,43 +63,93 @@ public class TitleManager : MonoBehaviour{
     }
 	// Update is called once per frame
 	void Update () {
-        if (ControllerLock == true)
+ 
+        switch (mode)
         {
-            Flick();
-        }
-        else
-        {
-            switch (mode)
-            {
-                case SELECTMODE.TITLE:
-                    break;
-                case SELECTMODE.PLAYNAM:
-                    Debug.Log("PLAYERNAM");
-                    this.PlayerNumController_Data();
-                    break;
-                case SELECTMODE.STAGE:
-
-
-                    break;
-                case SELECTMODE.CHARACTER:
-                    break;
-                case SELECTMODE.MAX:
-
-                    playersface = new Sprite[playerNum];
-
-                    for (int i = 0; i < playerNum; i++)
+            case SELECTMODE.TITLE:
+                if(ControllerLock == true)
+                {
+                    if(Title_Gizmo.GetComponent<Gizmo>().Flickpage(Flickpage) == false)
                     {
-                        playersface[i] = Sprite.Create((Texture2D)Resources.Load("textures/use/Player" + (i + 1)), new Rect(0, 0, 584, 211), new Vector2(0.5f, 0.5f));
+                        ControllerLock = false;
+
+                        mode = Nextmode;
                     }
-                    playedata = new PlayData(Stage_name, players_name, playersface);
+                }
+               
+                break;
+            case SELECTMODE.PLAYERNAM:
+                Debug.Log("PLAYERNAM");
+                
+                break;
+            case SELECTMODE.STAGESELECT:
 
-                    SceneManagerController.ChangeScene();
 
-                    break;
-            }
+                break;
+            case SELECTMODE.CHARACTERSELECT:
+                break;
+            case SELECTMODE.MAX:
+
+                playersface = new Sprite[playerNum];
+
+                for (int i = 0; i < playerNum; i++)
+                {
+                    playersface[i] = Sprite.Create((Texture2D)Resources.Load("textures/use/Player" + (i + 1)), new Rect(0, 0, 584, 211), new Vector2(0.5f, 0.5f));
+                }
+                playedata = new PlayData(Stage_name, players_name, playersface);
+
+                SceneManagerController.ChangeScene();
+
+                break;
         }
+        
 		
 	}
+
+    /// <summary>
+    /// 1つ前または次のページに変える
+    /// </summary>
+    /// <param name="nextPage">次のページか前のページか</param>
+    public void ChangePage(SELECTMODE nextPageName)
+    {
+        //今のページを再度開こうとしたら
+        if (nextPageName == mode)
+        {
+            return;
+        }
+            //1ページより多くめくろうとしていたら1ページに変える
+            if (nextPageName < mode - 1)
+        {
+            Flickpage = false;
+            nextPageName = mode - 1;
+        }
+        if (nextPageName > mode + 1)
+        {
+            Flickpage = true;
+            nextPageName = mode + 1;
+        }
+
+       
+        //最小又は最大のページより先に行かないようにする
+        if (nextPageName == SELECTMODE.TITLE - 1)
+        {
+            return;
+        }
+        if (nextPageName == SELECTMODE.MAX + 1)
+        {
+            return;
+        }
+        //コントローラーの操作をロック
+        ControllerLock = true;
+
+        //次のページを保存
+        Nextmode = nextPageName;
+    }
+
+
+
+
+
     /// <summary>
     /// プレイヤーの合計人数を選択するときのカーソルのデータ
     /// </summary>
@@ -110,92 +169,14 @@ public class TitleManager : MonoBehaviour{
         //カーソルにtxtの座標を伝える
         CursorController cursor_cs = Cursor.GetComponent<CursorController>();
 
-        cursor_cs.Target_pos_data = PlayersNumSelect_texts_pos;
     }
 
-    /// <summary>
-    /// 1つ前または次のページに変える
-    /// </summary>
-    /// <param name="nextPage">次のページか前のページか</param>
-    public void ChangePage(SELECTMODE nextPage)
-    {
-        //1ページより多くめくろうとしていたら1ページに変える
-        if(nextPage < mode - 1)
-        {
-            Flickpage = false;
-            nextPage = mode - 1;
-        }
-        if(nextPage > mode + 1)
-        {
-            Flickpage = true;
-            nextPage = mode + 1;
-        }
-
-        //最小又は最大のページより先に行かないようにする
-        if(nextPage == SELECTMODE.TITLE - 1)
-        {
-            return;
-        }
-        if(nextPage == SELECTMODE.MAX + 1)
-        {
-            return;
-        }
-        //コントローラーの操作をロック
-        ControllerLock = true;
-
-        //ページを更新
-        mode = nextPage;
-    }
-    
-    /// <summary>
-    /// ページをめくる
-    /// </summary>
-    private void Flick()
-    {
-        //次のページ
-        if (Flickpage == true)
-        {
-            Note_Gizmo.transform.rotation = Quaternion.Slerp(Note_Gizmo.transform.rotation, new Quaternion(0, 90, 0, 0), 0.5f);
-
-            ControllerLock = false;
-            //if (Note_Gizmo.transform.rotation.y >   -0.5* (int)mode)
-            //{
-            //    Note_move = Note_Gizmo.transform.rotation;
-            //    Note_move.y += Flickspd;
-            //    Note_Gizmo.transform.rotation = Note_move;
-            //}
-            //else
-            //{
-            //    ControllerLock = false;
-            //}
-
-            return;
-        }
-
-        if (Flickpage == false)//前のページ
-        {
-            if (Note_Gizmo.transform.rotation.y < 90 * (int)mode)
-            {
-                //Note_move = Note_Gizmo.transform.rotation;
-                //Note_move.y -= Flickspd;
-                //Note_Gizmo.transform.rotation = Note_move;
-            }
-            else
-            {
-                ControllerLock = false;
-            }
-
-            return;
-        }
-    }
-
-    public bool ControllerLock_data
+   
+    public SELECTMODE Mode_data
     {
         get
         {
-            return ControllerLock;
+            return mode;
         }
     }
-
-
 }

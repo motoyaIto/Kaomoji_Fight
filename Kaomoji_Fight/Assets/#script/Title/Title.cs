@@ -55,14 +55,12 @@ public class Title : MonoBehaviour
         {
             text.color = GetAlphaColor(text.color);
         }
-
-        //if (TManager_cs.ControllerLock_data == false)
+        
+        //スペースキー(デバッグ用)・1PコントローラーのBボタンが押されたらページをめくる
+        if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, XboxController.First))
         {
-            if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, XboxController.First))
-            {
 
-                TManager_cs.ChangePage(TitleManager.SELECTMODE.PLAYNAM);
-            }
+            TManager_cs.ChangePage(TitleManager.SELECTMODE.PLAYERNAM);
         }
     }
 

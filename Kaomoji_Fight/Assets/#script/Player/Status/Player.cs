@@ -48,7 +48,17 @@ public class Player : RaycastController {
     public CollisionInfo collisions;
     private PlaySceneManager PSM;
 
+    private new AudioSource audio;
+    private AudioClip shot_ac;   // 投げる音
+
     #endregion
+
+
+    private void Awake()
+    {
+        audio = this.GetComponent<AudioSource>();
+        shot_ac = (AudioClip)Resources.Load("Sound/SE/Shooting/launcher");   //投げる音
+    }
 
     new void Start()
     {
@@ -101,14 +111,12 @@ public class Player : RaycastController {
             // 大ジャンプ
             rig.AddForce(Vector2.up * maxflap);
             jump = true;
-            //this.gameObject.layer = LayerName.Through;
 
             //if (XCI.GetButtonUp(XboxButton.Y, ControlerNamber) && !jump)
             //{
             //    // 小ジャンプ・・・したかった・・・(´・ω・｀)
             //    rig.AddForce(Vector2.up * minflap);
             //    jump = true;
-            //    //this.gameObject.layer = LayerName.Through;
             //}
         }
 
@@ -168,9 +176,12 @@ public class Player : RaycastController {
                 WBController.SetPosition = new Vector3(this.transform.position.x + this.transform.localScale.x + 0.5f, this.transform.position.y + this.transform.localScale.y * 2.5f, 0.0f);
             }
 
-            //武器を使う
+            //武器を投げる
             if (XCI.GetButtonDown(XboxButton.B, ControlerNamber))
             {
+                audio.volume = .1f;
+                audio.PlayOneShot(shot_ac);
+
                 ChangeWeaponState();
                 WeaponBlocController WB = weapon.GetComponent<WeaponBlocController>();
 
@@ -181,6 +192,7 @@ public class Player : RaycastController {
             if (XCI.GetButton(XboxButton.X, ControlerNamber))
             {
                 ChangeWeaponState();
+                //TimersManager.SetTimer(this, 2f, delegate { ChangeWeaponState(); });
                 Destroy(weapon);
             }
         }
@@ -253,7 +265,7 @@ public class Player : RaycastController {
         {
             //床を武器として取得
             weapon = Object.Instantiate(block) as GameObject;
-            weapon.transform.parent = this.transform;
+            weapon.transform.parent = transform;
             weapon.name = "WeaponBlock" + block.name.Substring(block.name.IndexOf("("));
             weapon.tag = tag.Trim();
             //武器のスクリプトに張り替える
@@ -293,7 +305,11 @@ public class Player : RaycastController {
 
     private void OnDisable()
     {
-        PSM.death_player[CNConvert(ControlerNamber)] = false;
+        if (UnityEditor.EditorApplication.isPlaying && !UnityEditor.EditorApplication.isPlayingOrWillChangePlaymode) { return; }
+        else
+        {
+            PSM.death_player[CNConvert(ControlerNamber)] = false;
+        }
     }
 
     // Controllerの番号をint型で取得
