@@ -7,6 +7,9 @@ public class BlockController : MonoBehaviour {
     [SerializeField]
     private float ResetTime = 10.0f;
 
+    bool setPass;
+    BoxCollider2D colliderOfPass;
+
     private bool WeaponBlock = false;//武器(true)ではない(false)
 
     // Use this for initialization
@@ -17,14 +20,6 @@ public class BlockController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (setPass)
-        {
-            colliderOfPass.enabled = false;
-        }
-        if (!setPass)
-        {
-            colliderOfPass.enabled = true;
-        }
     }
 
     private void OnDisable()
@@ -48,10 +43,6 @@ public class BlockController : MonoBehaviour {
     {
         this.gameObject.SetActive(false);
     }
-
-    bool setPass;
-    BoxCollider2D colliderOfPass;
-
 
 
     //プレイヤーのIsTriggerがOnの側のコリジョンが床のIsTriggerがOnの側のコリジョンと接触している時
