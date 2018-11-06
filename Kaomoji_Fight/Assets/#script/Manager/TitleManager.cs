@@ -91,7 +91,7 @@ public class TitleManager : MonoBehaviour{
 
                 break;
             case SELECTMODE.STAGESELECT:
-                Debug.Log(playerNum);
+
 
                 break;
             case SELECTMODE.CHARACTERSELECT:
