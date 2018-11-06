@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Kaomoji_Fight/Assets/ã¼Credit.meta
+guid: 7bd70409c5d28a44c9bee2e4dcea917b
+folderAsset: yes
+timeCreated: 1541464756
+=======
 guid: 0c94ae4a1cd87a24e9d8aab48cc30e6f
 timeCreated: 1541473591
+>>>>>>> master:Kaomoji_Fight/Assets/Plugins/vivaldi/nu Assets/Shared/Scripts/Editor/ch.sycoforge.Imaging.pdb.meta
 licenseType: Free
 DefaultImporter:
   externalObjects: {}
