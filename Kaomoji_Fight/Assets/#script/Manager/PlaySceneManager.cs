@@ -149,6 +149,8 @@ public class PlaySceneManager : MonoBehaviour
 
     private GameObject DownTimer_obj;   //ダウンタイマー
 
+    private bool pause = false;
+
     private new AudioSource audio;          //オーディオ
 
     private AudioClip audioClip_gong;   //スタートで鳴らす音
@@ -168,6 +170,7 @@ public class PlaySceneManager : MonoBehaviour
     public List<bool> death_player = new List<bool>();   // 落ちて死んだプレイヤーを判別するためのリスト
     private List<bool> TrueDeath = new List<bool>(); // HPが無くなって死んだプレイヤーのリスト
     private List<Slider> HP_Slider = new List<Slider>();    // HPゲージのリスト
+    private List<XboxController> controller = new List<XboxController>();   // コントローラー番号のリスト
 
     private Vector3 RevivalPos = new Vector3(2.5f, 30f, 0f);    // プレイヤーの復帰場所
 
@@ -230,7 +233,7 @@ public class PlaySceneManager : MonoBehaviour
             switch (i)
             {
                 case 0:
-                    P1.Player_obj = this.CreatePlayer(P1);
+                    P1.Player_obj = this.CreatePlayer(P1, i);
                     P1.HPgage_obj = this.CreateHPgage(P1, new Vector3(HPgage_size.sizeDelta.x / 2, Screen.height - 10, 0f));
 
                     //カメラのターゲットに設定
@@ -238,7 +241,7 @@ public class PlaySceneManager : MonoBehaviour
                     break;
 
                 case 1:
-                    P2.Player_obj = this.CreatePlayer(P2);
+                    P2.Player_obj = this.CreatePlayer(P2, i);
                     P2.HPgage_obj = this.CreateHPgage(P2, new Vector3(Screen.width - HPgage_size.sizeDelta.x / 2, Screen.height - 10, 0));
 
                     //カメラのターゲットに設定
@@ -246,7 +249,7 @@ public class PlaySceneManager : MonoBehaviour
                     break;
 
                 case 2:
-                    P3.Player_obj = this.CreatePlayer(P3);
+                    P3.Player_obj = this.CreatePlayer(P3, i);
                     P3.HPgage_obj = this.CreateHPgage(P3, new Vector3(HPgage_size.sizeDelta.x / 2, 10, 0));
 
                     //カメラのターゲットに設定
@@ -254,7 +257,7 @@ public class PlaySceneManager : MonoBehaviour
                     break;
 
                 case 3:
-                    P4.Player_obj = this.CreatePlayer(P4);
+                    P4.Player_obj = this.CreatePlayer(P4, i);
                     P4.HPgage_obj = this.CreateHPgage(P4, new Vector3(Screen.width - HPgage_size.sizeDelta.x / 2, 10, 0));
 
                     //カメラのターゲットに設定
@@ -282,15 +285,30 @@ public class PlaySceneManager : MonoBehaviour
 
     void Update()
     {
-        // 死んだプレイヤーの蘇生
         for(int i = 0; i < PlayData.Instance.playerNum; i++)
         {
-            if(death_player[i] == false && TrueDeath[i] == false)
+            // 一時停止
+            if (XCI.GetButtonDown(XboxButton.Start, controller[i]))
+            {
+                if (!pause)
+                {
+                    Pause(.0f);
+                    pause = true;
+                }
+                else
+                {
+                    Pause(1.0f);
+                    pause = false;
+                }
+                
+            }
+
+                // 死んだプレイヤーの蘇生
+                if (death_player[i] == false && TrueDeath[i] == false)
             {
                 RegenerationPlayer(i);
             }
         }
-
     }
 
 
@@ -299,12 +317,12 @@ public class PlaySceneManager : MonoBehaviour
     /// </summary>
     /// <param name="player_data">プレイヤーデータ</param>
     /// <returns>プレイヤー</returns>
-    private GameObject CreatePlayer(Player_data player_data)
+    private GameObject CreatePlayer(Player_data player_data, int num)
     {
         //プレイヤーを生成
         GameObject player = Instantiate(player_data.Player_obj, player_data.InitialPos_Data, Quaternion.identity);
         //プレイヤーの設定
-        this.SetPlayerStatus(player, player_data);
+        this.SetPlayerStatus(player, player_data, num);
 
         return player;
 
@@ -317,7 +335,7 @@ public class PlaySceneManager : MonoBehaviour
     /// </summary>
     /// <param name="player">プレイヤーオブジェクト</param>
     /// <param name="player_data">プレイヤーデータ</param>
-    private void SetPlayerStatus(GameObject player, Player_data player_data)
+    private void SetPlayerStatus(GameObject player, Player_data player_data, int num)
     {
         //キャラの顔をセット
         SpriteRenderer playerFace = player.GetComponent<SpriteRenderer>();
@@ -329,6 +347,7 @@ public class PlaySceneManager : MonoBehaviour
         //コントローラーをセット
         Player playerScript = player.GetComponent<Player>();
         playerScript.GetControllerNamber = player_data.Controller_Data;
+        controller.Add(player_data.Controller_Data);
 
         //カメラのターゲット用ダミーを取得する
         string dummy_name = player_data.Name_Data + "_dummy";
@@ -388,7 +407,7 @@ public class PlaySceneManager : MonoBehaviour
         }
         else
         {
-            // Hit音
+            // ダメージ音
             audio.volume = .3f;
             audio.PlayOneShot(audioClip_hit);
 
@@ -411,6 +430,7 @@ public class PlaySceneManager : MonoBehaviour
                 audio.volume = 0.3f;
                 audio.PlayOneShot(audioClip_ded);
                 Destroy(damagePlayer);
+                Destroy(HP_Slider[num].gameObject);
             }
 
         }
@@ -458,6 +478,9 @@ public class PlaySceneManager : MonoBehaviour
         if (HP_Slider[num].value <= .0f)
         {
             TrueDeath[num] = true;
+            audio.volume = 0.3f;
+            audio.PlayOneShot(audioClip_ded);
+            Destroy(HP_Slider[num].gameObject);
         }
 
         if (!TrueDeath[num])
@@ -465,23 +488,23 @@ public class PlaySceneManager : MonoBehaviour
             switch (num)
             {
                 case 0:
-                    P1.Player_obj = this.CreatePlayer(P1);
+                    P1.Player_obj = this.CreatePlayer(P1, num);
                     CameraSet(P1, num);
                     break;
 
                 case 1:
-                    P2.Player_obj = this.CreatePlayer(P2);
+                    P2.Player_obj = this.CreatePlayer(P2, num);
                     CameraSet(P2, num);
 
                     break;
 
                 case 2:
-                    P3.Player_obj = this.CreatePlayer(P3);
+                    P3.Player_obj = this.CreatePlayer(P3, num);
                     CameraSet(P3, num);
                     break;
 
                 case 3:
-                    P4.Player_obj = this.CreatePlayer(P4);
+                    P4.Player_obj = this.CreatePlayer(P4, num);
                     CameraSet(P4, num);
                     break;
 
@@ -505,5 +528,10 @@ public class PlaySceneManager : MonoBehaviour
         TargetGroup.m_Targets[num].weight = 1;
         TargetGroup.m_Targets[num].radius = 1;
 
+    }
+
+    private void Pause(float num)
+    {
+        Time.timeScale = num;
     }
 }

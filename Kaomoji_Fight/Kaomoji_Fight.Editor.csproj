@@ -286,24 +286,6 @@
     <Reference Include="TextMeshPro-2017.3-Runtime">
       <HintPath>Assets\Plugins\TextMesh Pro\Plugins\Editor DLL\TextMeshPro-2017.3-Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="ch.sycoforge.Logging">
-      <HintPath>Assets\Plugins\vivaldi\nu Assets\Shared\Scripts\ch.sycoforge.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="ch.sycoforge.Unity.Runtime">
-      <HintPath>Assets\Plugins\vivaldi\nu Assets\Shared\Scripts\ch.sycoforge.Unity.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="ch.sycoforge.Imaging">
-      <HintPath>Assets\Plugins\vivaldi\nu Assets\Shared\Scripts\Editor\ch.sycoforge.Imaging.dll</HintPath>
-    </Reference>
-    <Reference Include="ch.sycoforge.Unity.Editor">
-      <HintPath>Assets\Plugins\vivaldi\nu Assets\Shared\Scripts\Editor\ch.sycoforge.Unity.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="ch.sycoforge.Vivaldi">
-      <HintPath>Assets\Plugins\vivaldi\nu Assets\Vivaldi\Scripts\ch.sycoforge.Vivaldi.dll</HintPath>
-    </Reference>
-    <Reference Include="ch.sycoforge.Vivaldi.Editor">
-      <HintPath>Assets\Plugins\vivaldi\nu Assets\Vivaldi\Scripts\Editor\ch.sycoforge.Vivaldi.Editor.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Kaomoji_Fight.Plugins.csproj">
@@ -371,6 +353,13 @@
   <ItemGroup>
     <None Include="Assets\Cinemachine\ReleaseNotes.txt" />
     <None Include="Assets\Plugins\KY_effects\MagicEffectsPackFree\ReadMe.txt" />
+<<<<<<< HEAD
+    <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\NotoSans - License.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald Bold - OFL.txt" />
+=======
     <None Include="Assets\Plugins\OutlineEffect\Resources\OutlineBufferShader.shader" />
     <None Include="Assets\Plugins\OutlineEffect\Resources\OutlineShader.shader" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\Anton OFL.txt" />
@@ -378,6 +367,7 @@
     <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\NotoSans - License.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\Oswald Bold - OFL.txt" />
+>>>>>>> master
     <None Include="Assets\Plugins\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
@@ -394,8 +384,6 @@
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\Plugins\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
-    <None Include="Assets\Plugins\vivaldi\nu Assets\Vivaldi\Scripts\ch.sycoforge.Vivaldi.XML" />
-    <None Include="Assets\Plugins\vivaldi\nu Assets\Vivaldi\Shaders\WaveformUI.shader" />
     <None Include="Assets\Resources\Texts\stage1.txt" />
     <None Include="Assets\Resources\Texts\stage2.txt" />
     <None Include="Assets\Resources\Texts\stage3.txt" />
