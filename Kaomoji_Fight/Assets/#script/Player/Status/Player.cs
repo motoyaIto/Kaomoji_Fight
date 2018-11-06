@@ -191,8 +191,8 @@ public class Player : RaycastController {
             // 武器を捨てる
             if (XCI.GetButton(XboxButton.X, ControlerNamber))
             {
-                //ChangeWeaponState();
-                TimersManager.SetTimer(this, 2f, delegate { ChangeWeaponState(); });
+                ChangeWeaponState();
+                //TimersManager.SetTimer(this, 2f, delegate { ChangeWeaponState(); });
                 Destroy(weapon);
             }
         }
@@ -305,7 +305,11 @@ public class Player : RaycastController {
 
     private void OnDisable()
     {
-        PSM.death_player[CNConvert(ControlerNamber)] = false;
+        if (UnityEditor.EditorApplication.isPlaying && !UnityEditor.EditorApplication.isPlayingOrWillChangePlaymode) { return; }
+        else
+        {
+            PSM.death_player[CNConvert(ControlerNamber)] = false;
+        }
     }
 
     // Controllerの番号をint型で取得
