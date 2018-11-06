@@ -51,33 +51,29 @@ public class CursorController : MonoBehaviour {
         //LeftStickの入力がない時
         if (LeftStickflag == false)
         {
-            //下を押したときの処理
-            if (Input.GetKeyDown(KeyCode.DownArrow) || XCI.GetDPadDown(XboxDPad.Down, XboxController.First) || (input.y < -0.9f && LeftStickflag == false))
+            if (TManager_cs.Mode_data == TitleManager.SELECTMODE.PLAYERNAM)
             {
-                //次のターゲット番号に変更
-                target_number++;
+                //下を押したときの処理
+                Push_DownButton(input);
 
-                Move();
+                //上を押したときの処理
+                Push_UpButton(input);
+
+                //プレイ人数を決定
+                if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, XboxController.First))
+                {
+                    //クリック音
+                    audio.PlayOneShot(Click_clip);
+
+                    TManager_cs.PlayerNum_data = target_number + 1;
+
+                    TManager_cs.ChangePage(TitleManager.SELECTMODE.STAGESELECT);
+                }
             }
 
-            //上を押したときの処理
-            if (Input.GetKeyDown(KeyCode.UpArrow) || XCI.GetDPadDown(XboxDPad.Up, XboxController.First) || (input.y > 0.9f && LeftStickflag == false))
+            if (TManager_cs.Mode_data == TitleManager.SELECTMODE.STAGESELECT)
             {
-                //次のターゲット番号に変更
-                target_number--;
 
-                Move();
-            }
-
-            //プレイ人数を決定
-            if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, XboxController.First))
-            {
-                //クリック音
-                audio.PlayOneShot(Click_clip);
-
-                TManager_cs.PlayerNum_data = target_number + 1;
-
-                TManager_cs.ChangePage(TitleManager.SELECTMODE.STAGESELECT);
             }
         }
         else
@@ -87,6 +83,37 @@ public class CursorController : MonoBehaviour {
             {
                 LeftStickflag = false;
             }
+        }
+    }
+
+    /// <summary>
+    /// 下入力があったとき
+    /// </summary>
+    /// <param name="input">スティック</param>
+    private void Push_DownButton(Vector2 input)
+    {
+        
+        if (Input.GetKeyDown(KeyCode.DownArrow) || XCI.GetDPadDown(XboxDPad.Down, XboxController.First) || (input.y < -0.9f && LeftStickflag == false))
+        {
+            //次のターゲット番号に変更
+            target_number++;
+
+            Move();
+        }
+    }
+
+    /// <summary>
+    /// 上の入力があったとき
+    /// </summary>
+    /// <param name="input">スティック</param>
+    private void Push_UpButton(Vector2 input)
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow) || XCI.GetDPadDown(XboxDPad.Up, XboxController.First) || (input.y > 0.9f && LeftStickflag == false))
+        {
+            //次のターゲット番号に変更
+            target_number--;
+
+            Move();
         }
     }
 
