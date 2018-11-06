@@ -2,54 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
-using Timers;
 
 [RequireComponent(typeof(Contoroller2d))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : RaycastController {
 
     #region 変数群
-    // 公開
-    [Header("移動速度")]
-    public float moveSpeed = 10;    
-
-    [SerializeField, Header("無敵時間")]
-    private float Invincible_time = .5f;
-
-    [Header("幅")]
-    public float scroll = 5f;
-
-
-    // 非公開
     [SerializeField, Header("コントローラー番号")]
     private XboxController ControlerNamber = XboxController.First;//何番目のコントローラーを適用するか
 
     private Vector3 velocity;
 
-    private float maxflap = 800f;  // ジャンプの高さ（最大）
-    private float minflap = 400f;   // ジャンプの高さ（最小）
+    private float moveSpeed = 10f;          // 移動速度
+    private float Invincible_time = .5f;    // 無敵時間
 
-    private float direction = 0;    // 方向
-    private float thrust = 1000f;       // 投擲物の推進力
+    private float scroll = 10f;               // 幅
+    private float maxflap = 800f;           // ジャンプの高さ（最大）
+    private float minflap = 400f;           // ジャンプの高さ（最小）
+
+    private float direction = 0;            // 方向
+    private float thrust = 1000f;           // 投擲物の推進力
 
     private GameObject weapon;
 
-    private bool Start_Wait = false;
-    private bool HaveWeapon = false;//武器を持っている(true)いない(false)
-    private bool Avoidance = false; // 回避フラグ
-    private bool jump = false;  // ジャンプ中か？
+    private bool HaveWeapon = false;        //武器を持っている(true)いない(false)
+    private bool Avoidance = false;         // 回避フラグ
+    private bool jump = false;              // ジャンプ中か？
     private float FlameCount = .0f;
 
-    private string p_name;  // プレイヤーネーム
+    private string p_name;                  // プレイヤーネーム
 
-    Contoroller2d controller;   // コントローラー
+    Contoroller2d controller;               // コントローラー
     Rigidbody2D rig = null;
     [HideInInspector]
     public CollisionInfo collisions;
     private PlaySceneManager PSM;
 
     private new AudioSource audio;
-    private AudioClip shot_ac;   // 投げる音
+    private AudioClip shot_ac;              // 投げる音
 
     #endregion
 
@@ -70,8 +60,6 @@ public class Player : RaycastController {
         int P_layer = LayerMask.NameToLayer("Player");
         Physics2D.IgnoreLayerCollision(P_layer, P_layer);
 
-        // タイマーのセット
-        TimersManager.SetTimer(this, 2f, delegate { ChangeState(); });
     }
 
     private void Reset()
@@ -179,10 +167,10 @@ public class Player : RaycastController {
             //武器を投げる
             if (XCI.GetButtonDown(XboxButton.B, ControlerNamber))
             {
-                audio.volume = .1f;
+                audio.volume = .15f;
                 audio.PlayOneShot(shot_ac);
 
-                ChangeWeaponState();
+                ChangeWeaponState(false);
                 WeaponBlocController WB = weapon.GetComponent<WeaponBlocController>();
 
                 WB.Attack(input, thrust);             
@@ -191,8 +179,8 @@ public class Player : RaycastController {
             // 武器を捨てる
             if (XCI.GetButton(XboxButton.X, ControlerNamber))
             {
-                ChangeWeaponState();
-                //TimersManager.SetTimer(this, 2f, delegate { ChangeWeaponState(); });
+                ChangeWeaponState(false);
+                //TimersManager.SetTimer(this, 2f, delegate { ChangeWeaponState(false); });
                 Destroy(weapon);
             }
         }
@@ -331,14 +319,9 @@ public class Player : RaycastController {
         return 4;
     }
 
-    private void ChangeState()
+    private void ChangeWeaponState(bool state)
     {
-        Start_Wait = true;
-    }
-
-    private void ChangeWeaponState()
-    {
-        HaveWeapon = false;
+        HaveWeapon = state;
     }
 
 
@@ -355,8 +338,8 @@ public class Player : RaycastController {
 
     public void WeaponPositionControll()
     {
-        if (Start_Wait == true)
-        { 
+        if (HaveWeapon)
+        {
             foreach (Transform child in this.transform)
             {
                 if (direction >= 1 && child.name == "TopRight")//右
@@ -373,6 +356,7 @@ public class Player : RaycastController {
                     weapon.transform.position = child.transform.position;
                 }
             }
+
         }
     }
 

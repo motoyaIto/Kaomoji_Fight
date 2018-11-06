@@ -1,21 +1,9 @@
--- Smart Timers Manager --
-https://assetstore.unity.com/packages/tools/integration/smart-timers-manager-55023
-
-
--- vivaldi --
-https://assetstore.unity.com/packages/tools/audio/vivaldi-64029
-
-
 -- TextMesh Pro -- 
 https://assetstore.unity.com/packages/essentials/beta-projects/textmesh-pro-84126
 
 
 -- KY Magic Effects Free--
 https://assetstore.unity.com/packages/vfx/particles/spells/ky-magic-effects-free-21927
-
-
--- Outline Effect --
-https://assetstore.unity.com/packages/vfx/shaders/fullscreen-camera-effects/outline-effect-78608
 
 
 -- XboxCtrlrInput for Unity --

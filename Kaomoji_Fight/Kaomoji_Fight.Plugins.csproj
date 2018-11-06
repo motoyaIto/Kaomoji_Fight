@@ -244,31 +244,10 @@
     <Reference Include="TextMeshPro-2017.3-Runtime">
       <HintPath>Assets\Plugins\TextMesh Pro\Plugins\Editor DLL\TextMeshPro-2017.3-Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="ch.sycoforge.Logging">
-      <HintPath>Assets\Plugins\vivaldi\nu Assets\Shared\Scripts\ch.sycoforge.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="ch.sycoforge.Unity.Runtime">
-      <HintPath>Assets\Plugins\vivaldi\nu Assets\Shared\Scripts\ch.sycoforge.Unity.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="ch.sycoforge.Vivaldi">
-      <HintPath>Assets\Plugins\vivaldi\nu Assets\Vivaldi\Scripts\ch.sycoforge.Vivaldi.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Plugins\KY_effects\Script\ConGUI.cs" />
     <Compile Include="Assets\Plugins\KY_effects\Script\Lighting.cs" />
-    <Compile Include="Assets\Plugins\OutlineEffect\Demo\MaterialSwitcher.cs" />
-    <Compile Include="Assets\Plugins\OutlineEffect\Demo\OutlineAnimation.cs" />
-    <Compile Include="Assets\Plugins\OutlineEffect\Demo\Rotate.cs" />
-    <Compile Include="Assets\Plugins\OutlineEffect\Demo\Toggle.cs" />
-    <Compile Include="Assets\Plugins\OutlineEffect\LinkedSet.cs" />
-    <Compile Include="Assets\Plugins\OutlineEffect\Outline.cs" />
-    <Compile Include="Assets\Plugins\OutlineEffect\OutlineEffect.cs" />
-    <Compile Include="Assets\Plugins\SmartTimersManager\ScriptExamples\BlueLightFlicker.cs" />
-    <Compile Include="Assets\Plugins\SmartTimersManager\ScriptExamples\RedLightFlicker.cs" />
-    <Compile Include="Assets\Plugins\SmartTimersManager\TimerManager\GUI_TimersList.cs" />
-    <Compile Include="Assets\Plugins\SmartTimersManager\TimerManager\Timer.cs" />
-    <Compile Include="Assets\Plugins\SmartTimersManager\TimerManager\TimersManager.cs" />
     <Compile Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
@@ -302,12 +281,6 @@
     <Compile Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
-    <Compile Include="Assets\Plugins\vivaldi\nu Assets\Vivaldi\Demo\Scripts\BallController.cs" />
-    <Compile Include="Assets\Plugins\vivaldi\nu Assets\Vivaldi\Demo\Scripts\BoardController.cs" />
-    <Compile Include="Assets\Plugins\vivaldi\nu Assets\Vivaldi\Demo\Scripts\MiniGunDemo.cs" />
-    <Compile Include="Assets\Plugins\vivaldi\nu Assets\Vivaldi\Demo\Scripts\ProgressBar.cs" />
-    <Compile Include="Assets\Plugins\vivaldi\nu Assets\Vivaldi\Demo\Scripts\ViewController.cs" />
-    <Compile Include="Assets\Plugins\vivaldi\nu Assets\Vivaldi\Demo\Scripts\WalkingBallController.cs" />
     <Compile Include="Assets\Plugins\XboxCtrlrInput.cs" />
     <Compile Include="Assets\Standard Assets\Cameras\Scripts\AbstractTargetFollower.cs" />
     <Compile Include="Assets\Standard Assets\Cameras\Scripts\AutoCam.cs" />
@@ -332,8 +305,6 @@
   <ItemGroup>
     <None Include="Assets\Cinemachine\ReleaseNotes.txt" />
     <None Include="Assets\Plugins\KY_effects\MagicEffectsPackFree\ReadMe.txt" />
-    <None Include="Assets\Plugins\OutlineEffect\Resources\OutlineBufferShader.shader" />
-    <None Include="Assets\Plugins\OutlineEffect\Resources\OutlineShader.shader" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\LiberationSans - OFL.txt" />
@@ -355,8 +326,6 @@
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\Plugins\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
-    <None Include="Assets\Plugins\vivaldi\nu Assets\Vivaldi\Scripts\ch.sycoforge.Vivaldi.XML" />
-    <None Include="Assets\Plugins\vivaldi\nu Assets\Vivaldi\Shaders\WaveformUI.shader" />
     <None Include="Assets\Resources\Texts\stage1.txt" />
     <None Include="Assets\Resources\Texts\stage2.txt" />
     <None Include="Assets\Resources\Texts\stage3.txt" />
