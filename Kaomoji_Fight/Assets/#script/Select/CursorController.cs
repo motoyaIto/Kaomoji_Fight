@@ -6,15 +6,18 @@ using XboxCtrlrInput;
 
 public class CursorController : MonoBehaviour {
 
-    private AudioSource audio;          //オーディオ
+    private AudioSource audio;  //オーディオ
     [SerializeField]
-    AudioClip Move_clip;//移動音
+    AudioClip Move_clip;        //移動音
     [SerializeField]
-    AudioClip Click_clip;//クリック音
+    AudioClip Click_clip;       //クリック音
 
     [SerializeField]
     GameObject TManager;     //タイトルマネージャ
     TitleManager TManager_cs;//タイトルマネージャのCS
+
+    [SerializeField]
+    GameObject[] Target;//ターゲット
 
     private bool LeftStickflag = false;//スティックが入力されていない(false)された(true)
 
@@ -22,7 +25,14 @@ public class CursorController : MonoBehaviour {
     private int target_number = 0;  //ターゲットの番号
 	void Start () {
         audio = this.GetComponent<AudioSource>();
+
+        target_pos = new Vector3[Target.Length];
         //初期座標を入力
+        for(int i = 0; i < Target.Length; i++)
+        {
+            target_pos[i] = new Vector3(this.transform.position.x, Target[i].transform.position.y, this.transform.position.z);
+        }
+
         this.transform.position = target_pos[target_number];
 
         TManager_cs = TManager.GetComponent<TitleManager>();
@@ -31,6 +41,10 @@ public class CursorController : MonoBehaviour {
 
     void Update()
     {
+        if(TManager_cs.Mode_data != TitleManager.SELECTMODE.PLAYERNAM && TManager_cs.Mode_data != TitleManager.SELECTMODE.STAGESELECT)
+        {
+            return;
+        }
         // Controllerの左スティックのAxisを取得            
         Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, XboxController.First), XCI.GetAxis(XboxAxis.LeftStickY, XboxController.First));
 
@@ -61,7 +75,9 @@ public class CursorController : MonoBehaviour {
                 //クリック音
                 audio.PlayOneShot(Click_clip);
 
-                //TManager_cs.PlayerNam_Data = target_number + 1;
+                TManager_cs.PlayerNum_data = target_number + 1;
+
+                TManager_cs.ChangePage(TitleManager.SELECTMODE.STAGESELECT);
             }
         }
         else
@@ -96,16 +112,5 @@ public class CursorController : MonoBehaviour {
         this.transform.position = target_pos[target_number];
 
         LeftStickflag = true;
-    }
-
-    /// <summary>
-    /// ターゲットの座標を取得する
-    /// </summary>
-    public Vector3[] Target_pos_data
-    {
-        set
-        {
-            target_pos = value;
-        }
     }
 }
