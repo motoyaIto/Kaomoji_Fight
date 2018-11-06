@@ -41,7 +41,7 @@ public class CursorController : MonoBehaviour {
 
     void Update()
     {
-        if(TManager_cs.Mode_data != TitleManager.SELECTMODE.PLAYERNAM)
+        if(TManager_cs.Mode_data != TitleManager.SELECTMODE.PLAYERNAM && TManager_cs.Mode_data != TitleManager.SELECTMODE.STAGESELECT)
         {
             return;
         }
@@ -74,6 +74,10 @@ public class CursorController : MonoBehaviour {
             {
                 //クリック音
                 audio.PlayOneShot(Click_clip);
+
+                TManager_cs.PlayerNum_data = target_number + 1;
+
+                TManager_cs.ChangePage(TitleManager.SELECTMODE.STAGESELECT);
             }
         }
         else

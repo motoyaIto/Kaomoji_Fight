@@ -3,68 +3,57 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using XboxCtrlrInput;
+using TMPro;
+using UnityEngine.Video;
 
 public class Title : MonoBehaviour
 {
 
     [SerializeField]
-    GameObject Manager;
-    TitleManager TManager_cs;
+    private GameObject TManager;        //Titleマネージャー
+    private TitleManager TManager_cs;   //Titleマネージャーcs
 
+    [SerializeField]
+    private VideoPlayer videoPlayer;//ビデオプレイヤー
    [SerializeField]
-    private float speed = 1.0f;
+    private float speed = 1.0f; //点滅スピード
 
-    //private
-    private Text text;
-    private Image image;
-    private float time;
+    private float time;         //タイマー
 
-    private enum ObjType
-    {
-        TEXT,
-        IMAGE
-    };
-    private ObjType thisObjType = ObjType.TEXT;
-
+    TextMeshPro TMPro_cs;//テキストメッシュプロcs
+    AudioSource audio;
+    
     void Start()
     {
-        SceneManagerController.LoadScene();
-        //アタッチしてるオブジェクトを判別
-        if (this.gameObject.GetComponent<Image>())
-        {
-            thisObjType = ObjType.IMAGE;
-            image = this.gameObject.GetComponent<Image>();
-        }
-        else if (this.gameObject.GetComponent<Text>())
-        {
-            thisObjType = ObjType.TEXT;
-            text = this.gameObject.GetComponent<Text>();
-        }
+        //初回の鳴らすのを止める
+        audio = this.GetComponent<AudioSource>();
+        audio.Stop();
 
-        TManager_cs = Manager.GetComponent<TitleManager>();
+        //各csの取得
+        TManager_cs = TManager.GetComponent<TitleManager>();
+        TMPro_cs = this.GetComponent<TextMeshPro>();
     }
 
     void Update()
     {
-        //オブジェクトのAlpha値を更新
-        if (thisObjType == ObjType.IMAGE)
-        {
-            image.color = GetAlphaColor(image.color);
-        }
-        else if (thisObjType == ObjType.TEXT)
-        {
-            text.color = GetAlphaColor(text.color);
-        }
         
+        //点滅処理
+        TMPro_cs.color = GetAlphaColor(TMPro_cs.color);
+                   
         //スペースキー(デバッグ用)・1PコントローラーのBボタンが押されたらページをめくる
         if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, XboxController.First))
         {
-
+            videoPlayer.Stop();
+            audio.PlayOneShot(audio.clip);
             TManager_cs.ChangePage(TitleManager.SELECTMODE.PLAYERNAM);
         }
     }
 
-    //Alpha値を更新してColorを返す
+    /// <summary>
+    /// Alpha値を更新
+    /// </summary>
+    /// <param name="color">色</param>
+    /// <returns>更新のかかった色</returns>
     Color GetAlphaColor(Color color)
     {
         time += Time.deltaTime * 5.0f * speed;
