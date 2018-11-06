@@ -61,7 +61,7 @@ public class Title : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, XboxController.First))
             {
 
-                TManager_cs.ChangePage(1);
+                TManager_cs.ChangePage(TitleManager.SELECTMODE.PLAYNAM);
             }
         }
     }
