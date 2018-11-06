@@ -354,9 +354,6 @@ MonoBehaviour:
   horizontalRaySpacing: 0
   verticalRaySpacing: 0
   collider: {fileID: 0}
-  moveSpeed: 10
-  Invincible_time: 0.5
-  scroll: 10
   ControlerNamber: 2
 --- !u!212 &212827996856301432
 SpriteRenderer:
