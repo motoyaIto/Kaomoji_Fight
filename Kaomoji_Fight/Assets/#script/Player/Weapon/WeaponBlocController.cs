@@ -29,6 +29,9 @@ public class WeaponBlocController : MonoBehaviour
         // 持たれているプレイヤーを取得
         parent = this.transform.parent.GetComponent<Player>();
 
+        // タグの設定
+        this.tag = "Weapon";
+
         // レイヤーの変更
         Weapon.layer = LayerName.Weapon;
 
@@ -65,7 +68,6 @@ public class WeaponBlocController : MonoBehaviour
 
         AttackFlag = true;
         weapon_throw = true;
-        this.tag = "Weapon";
         weapon_name = this.name;
 
         // 動かずに投げたら
