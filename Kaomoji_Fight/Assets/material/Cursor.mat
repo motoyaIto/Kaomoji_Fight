@@ -64,9 +64,13 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
 <<<<<<< HEAD
+    - _Hue: 140
+=======
+<<<<<<< HEAD
     - _Hue: 220
 =======
     - _Hue: 0
+>>>>>>> master
 >>>>>>> master
     - _Metallic: 0
     - _Mode: 0
