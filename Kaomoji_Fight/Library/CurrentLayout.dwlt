@@ -119,6 +119,14 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
+    width: 985
+    height: 740
+  m_MinSize: {x: 709, y: 271}
+  m_MaxSize: {x: 18004, y: 10021}
+  vertical: 0
+  controlID: 215
+=======
     width: 715
     height: 333
   m_MinSize: {x: 711, y: 271}
@@ -128,6 +136,7 @@ MonoBehaviour:
   controlID: 82
 =======
   controlID: 360
+>>>>>>> master
 >>>>>>> master
 --- !u!114 &5
 MonoBehaviour:
@@ -145,11 +154,14 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
     y: 333
     width: 715
     height: 151
 =======
 <<<<<<< HEAD
+>>>>>>> master
     y: 740
     width: 985
     height: 247
@@ -163,6 +175,8 @@ MonoBehaviour:
   m_LastSelected: 0
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 =======
     y: 30
     width: 1097
@@ -171,6 +185,7 @@ MonoBehaviour:
   m_MaxSize: {x: 22012, y: 14042}
   vertical: 0
   controlID: 172
+>>>>>>> master
 >>>>>>> master
 >>>>>>> master
 --- !u!114 &6
@@ -203,9 +218,12 @@ MonoBehaviour:
     y: 0
     width: 985
     height: 987
-  m_MinSize: {x: 715, y: 392}
-  m_MaxSize: {x: 18010, y: 14042}
+  m_MinSize: {x: 709, y: 371}
+  m_MaxSize: {x: 18004, y: 14021}
   vertical: 1
+<<<<<<< HEAD
+  controlID: 214
+=======
 <<<<<<< HEAD
   controlID: 359
 =======
@@ -216,6 +234,7 @@ MonoBehaviour:
   controlID: 495
 =======
   controlID: 2907
+>>>>>>> master
 >>>>>>> master
 >>>>>>> master
 >>>>>>> master
@@ -264,7 +283,6 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-<<<<<<< HEAD
     y: 0
     width: 1097
     height: 30
@@ -279,6 +297,8 @@ MonoBehaviour:
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
   m_LastLoadedLayoutName: 2gamen
+<<<<<<< HEAD
+=======
 =======
     y: 242
     width: 382
@@ -290,6 +310,7 @@ MonoBehaviour:
   - {fileID: 15}
   m_Selected: 0
   m_LastSelected: 0
+>>>>>>> master
 >>>>>>> master
 >>>>>>> master
 --- !u!114 &9
@@ -320,9 +341,12 @@ MonoBehaviour:
 =======
     width: 1920
     height: 987
-  m_MinSize: {x: 917, y: 442}
-  m_MaxSize: {x: 22012, y: 14042}
+  m_MinSize: {x: 911, y: 442}
+  m_MaxSize: {x: 22006, y: 14021}
   vertical: 0
+<<<<<<< HEAD
+  controlID: 213
+=======
 <<<<<<< HEAD
   controlID: 358
 =======
@@ -343,6 +367,7 @@ MonoBehaviour:
 >>>>>>> master
 >>>>>>> master
 >>>>>>> master
+>>>>>>> master
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -359,6 +384,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
     y: 514
     width: 1097
     height: 20
@@ -366,11 +393,14 @@ MonoBehaviour:
   m_MaxSize: {x: 0, y: 0}
 =======
 <<<<<<< HEAD
+>>>>>>> master
     y: 1017
     width: 1920
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
+<<<<<<< HEAD
+=======
 =======
     y: 0
     width: 715
@@ -379,6 +409,7 @@ MonoBehaviour:
   m_MaxSize: {x: 18010, y: 10021}
   vertical: 0
   controlID: 174
+>>>>>>> master
 >>>>>>> master
 >>>>>>> master
 --- !u!114 &11
@@ -412,7 +443,11 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 442}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
+<<<<<<< HEAD
+  controlID: 195
+=======
   controlID: 450
+>>>>>>> master
 >>>>>>> master
 --- !u!114 &12
 MonoBehaviour:
@@ -556,6 +591,8 @@ MonoBehaviour:
 =======
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
   m_Script: {fileID: 12013, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -635,6 +672,7 @@ MonoBehaviour:
   m_EditorHideFlags: 1
 >>>>>>> master
 >>>>>>> master
+>>>>>>> master
   m_Script: {fileID: 12061, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -668,21 +706,17 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 5e2a0000
-    m_LastClickedID: 0
-<<<<<<< HEAD
-    m_ExpandedIDs: 42deffff2af0ffff44f2fffff0faffff00000000
-=======
-    m_ExpandedIDs: b269fefff66bfeffc070feffd0faffff00000000fe3500002a360000
-=======
-<<<<<<< HEAD
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
+    m_ExpandedIDs: 42defffff0faffff96fbffff0000000022340000
+=======
     m_ExpandedIDs: 42deffffa8e7fffff0faffff000000004e360000
 =======
     m_SelectedIDs: 7a3fffff
     m_LastClickedID: -49286
     m_ExpandedIDs: d0daffffe2deffff0000000094430000c0430000ee43000026440000
+>>>>>>> master
 >>>>>>> master
 >>>>>>> master
 >>>>>>> master
@@ -803,6 +837,13 @@ MonoBehaviour:
     m_SearchArea: 0
     m_Folders:
 <<<<<<< HEAD
+    - Assets/#script/Sound
+  m_ViewMode: 1
+  m_StartGridSize: 16
+  m_LastFolders:
+  - Assets/#script/Sound
+=======
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
     - Assets/Resources/Sound/SE/Jump
@@ -837,11 +878,17 @@ MonoBehaviour:
 >>>>>>> master
 >>>>>>> master
 >>>>>>> master
+>>>>>>> master
   m_LastFoldersGridSize: 16
   m_LastProjectPath: "C:\\Users\\s162145\\Desktop\\\u5352\u696D\u5236\u4F5C\\Kaomoji_Fight\\Kaomoji_Fight"
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
+    m_SelectedIDs: 1c2f0000
+    m_LastClickedID: 12060
+    m_ExpandedIDs: 00000000cc2e0000642f0000023000002e3000004a300000943000009e300000e030000038310000f031000000ca9a3bffffff7f
+=======
 <<<<<<< HEAD
     m_SelectedIDs: 16330000
     m_LastClickedID: 13078
@@ -865,6 +912,7 @@ MonoBehaviour:
     m_SelectedIDs: da420000
     m_LastClickedID: 17114
     m_ExpandedIDs: 000000005e3d0000483f00006a3f0000a83f0000bc3f0000124000004c41000000ca9a3bffffff7f
+>>>>>>> master
 >>>>>>> master
 >>>>>>> master
 >>>>>>> master
@@ -897,6 +945,9 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
 <<<<<<< HEAD
+    m_ExpandedIDs: 00000000cc2e0000023000002e3000004a300000943000009e300000e030000038310000f031000000ca9a3bffffff7f
+=======
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000c62e0000fe2f00002a300000463000005e300000903000009a300000dc30000022320000
 =======
 <<<<<<< HEAD
@@ -909,6 +960,7 @@ MonoBehaviour:
     m_ExpandedIDs: 00000000c62e0000fc2f000044300000463000008e30000098300000da30000032310000ea31000000ca9a3bffffff7f
 =======
     m_ExpandedIDs: 000000005e3d0000483f00006a3f0000a83f0000bc3f0000124000004c41000000ca9a3bffffff7f
+>>>>>>> master
 >>>>>>> master
 >>>>>>> master
 >>>>>>> master
@@ -1009,7 +1061,6 @@ MonoBehaviour:
     width: 933
     height: 459
   m_PersistentViewDataDictionary: {fileID: 0}
-<<<<<<< HEAD
   m_MaximizeOnPlay: 0
   m_Gizmos: 0
   m_Stats: 0
@@ -1088,6 +1139,8 @@ MonoBehaviour:
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000100000100
+<<<<<<< HEAD
+=======
 =======
   m_ScrollPosition: {x: 0, y: 0}
   m_InspectorMode: 0
@@ -1096,6 +1149,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
+>>>>>>> master
 >>>>>>> master
 >>>>>>> master
 --- !u!114 &20
@@ -1139,6 +1193,11 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_Position:
 <<<<<<< HEAD
+    m_Target: {x: 37.25465, y: -13.174809, z: -0.44420162}
+    speed: 2
+    m_Value: {x: 37.25465, y: -13.174809, z: -0.44420162}
+=======
+<<<<<<< HEAD
     m_Target: {x: -1.4262475, y: 0.05138831, z: -0.96752816}
     speed: 2
     m_Value: {x: -1.4262475, y: 0.05138831, z: -0.96752816}
@@ -1146,6 +1205,7 @@ MonoBehaviour:
     m_Target: {x: 39.020813, y: -11.44546, z: -0.453125}
     speed: 2
     m_Value: {x: 39.020813, y: -11.44546, z: -0.453125}
+>>>>>>> master
 >>>>>>> master
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
@@ -1175,6 +1235,11 @@ MonoBehaviour:
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
 <<<<<<< HEAD
+    m_Target: 53.80142
+    speed: 2
+    m_Value: 53.80142
+=======
+<<<<<<< HEAD
     m_Target: 19.058102
     speed: 2
     m_Value: 19.058102
@@ -1182,6 +1247,7 @@ MonoBehaviour:
     m_Target: 55.960926
     speed: 2
     m_Value: 55.960926
+>>>>>>> master
 >>>>>>> master
   m_Ortho:
     m_Target: 1

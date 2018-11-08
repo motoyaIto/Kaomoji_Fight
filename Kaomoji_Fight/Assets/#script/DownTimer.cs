@@ -64,5 +64,9 @@ public class DownTimer : MonoBehaviour {
         {
             DownTimer_State = value;
         }
+        get
+        {
+            return DownTimer_State;
+        }
     }
 }
