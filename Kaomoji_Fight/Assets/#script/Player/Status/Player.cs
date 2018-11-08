@@ -148,7 +148,7 @@ public class Player : RaycastController {
         {
             Avoidance = false;
         }
-        
+
         //武器を持っている
         if (HaveWeapon == true)
         {
@@ -285,7 +285,10 @@ public class Player : RaycastController {
         if(collision.transform.tag == "Weapon" && Avoidance == false)
         {
             WeaponBlocController WBController = collision.gameObject.GetComponent<WeaponBlocController>();
-            PSM.Player_ReceiveDamage(this.gameObject, collision.gameObject, CNConvert(ControlerNamber));
+            if (!Avoidance)
+            {
+                PSM.Player_ReceiveDamage(this.gameObject, collision.gameObject, CNConvert(ControlerNamber));
+            }
         }
 
         // ジャンプ制限
