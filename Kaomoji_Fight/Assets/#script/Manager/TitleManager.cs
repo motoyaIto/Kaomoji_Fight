@@ -7,7 +7,7 @@ public class TitleManager : MonoBehaviour{
     public enum SELECTMODE
     {
         TITLE,
-        PLAYERNAM,
+        PLAYERNUM,
         STAGESELECT,
         CHARACTERSELECT,
 
@@ -21,31 +21,17 @@ public class TitleManager : MonoBehaviour{
 
     //各ギズモ
     [SerializeField]
-    private GameObject Title_Gizmo;         //ノートを回すギズモ
+    private GameObject Title_Gizmo;             //ノートを回すギズモ
     [SerializeField]
-    private GameObject Playernam_Gizmo;     //プレイヤー人数セレクトを回すギズモ
+    private GameObject Playernam_Gizmo;         //プレイヤー人数セレクトを回すギズモ
     [SerializeField]
-    private GameObject Stageselect_Gizmo;   //ステージセレクトを回すギズモ
+    private GameObject Stageselect_Gizmo;       //ステージセレクトを回すギズモ
     [SerializeField]
-    private GameObject Characterselect_Gizmo;     //キャラクターセレクトを回すギズモ
+    private GameObject Characterselect_Gizmo;   //キャラクターセレクトを回すギズモ
 
     [SerializeField]
-    private float Flickspd = 0.1f;  //ノートがめくれるスピード
-    private float count_rotation;   //回転角を記憶する
-    //private Quaternion Note_move;
-
-    [SerializeField]
-    private GameObject[] PlayersNumSelect_texts;    //プレイヤー人数セレクト画面のオブジェクト
-    private Vector3[] PlayersNumSelect_texts_pos;   //プレイヤー人数セレクト画面のオブジェクトの座標
-
-    [SerializeField]
-    private GameObject Cursor;      //カーソル
-    [SerializeField]
-    private GameObject[] StageSelect_texts;     //ステージセレクト画面のオブジェクト
-
-    [SerializeField]
-    private GameObject[] CharaSelect_texts;     //キャラクターセレクト画面のオブジェクト
-
+    private float Flickspd = 0.1f;      //ノートがめくれるスピード
+    private float count_rotation;       //回転角を記憶する
 
     private PlayData playedata;         //プレイデータ
 
@@ -78,7 +64,7 @@ public class TitleManager : MonoBehaviour{
                 }
                
                 break;
-            case SELECTMODE.PLAYERNAM:
+            case SELECTMODE.PLAYERNUM:
                 if (ControllerLock == true)
                 {
                     if (Playernam_Gizmo.GetComponent<Gizmo>().Flickpage(Flickpage) == false)
@@ -91,7 +77,15 @@ public class TitleManager : MonoBehaviour{
 
                 break;
             case SELECTMODE.STAGESELECT:
+                if (ControllerLock == true)
+                {
+                    if (Stageselect_Gizmo.GetComponent<Gizmo>().Flickpage(Flickpage) == false)
+                    {
+                        ControllerLock = false;
 
+                        mode = Nextmode;
+                    }
+                }
 
                 break;
             case SELECTMODE.CHARACTERSELECT:
@@ -155,19 +149,34 @@ public class TitleManager : MonoBehaviour{
     }
 
    
-    public SELECTMODE Mode_data
+    public SELECTMODE Mode_Data
     {
         get
         {
             return mode;
         }
     }
+    public bool ControllerLock_Data
+    {
+        get
+        {
+            return ControllerLock;
+        }
+    }
 
-    public int PlayerNum_data
+    public int PlayerNum_Data
     {
         set
         {
            playerNum = value;
+        }
+    }
+
+    public string Stage_name_Data
+    {
+        set
+        {
+            Stage_name = value;
         }
     }
 }
