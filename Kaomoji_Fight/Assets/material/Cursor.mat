@@ -63,11 +63,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-<<<<<<< HEAD
-    - _Hue: 220
-=======
-    - _Hue: 0
->>>>>>> master
+    - _Hue: 245
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1

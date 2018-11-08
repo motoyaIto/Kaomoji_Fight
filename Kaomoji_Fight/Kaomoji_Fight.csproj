@@ -265,9 +265,6 @@
     <Compile Include="Assets\%23script\SceneManagerController.cs" />
     <Compile Include="Assets\%23script\SceneTimer.cs" />
     <Compile Include="Assets\%23script\Select\CharSelectControll.cs" />
-    <Compile Include="Assets\%23script\Select\CursorController.cs" />
-    <Compile Include="Assets\%23script\Select\CursorHue.cs" />
-    <Compile Include="Assets\%23script\Select\Gizmo.cs" />
     <Compile Include="Assets\%23script\Select\SelectChar.cs" />
     <Compile Include="Assets\%23script\Select\SelectPNControll.cs" />
     <Compile Include="Assets\%23script\Select\SelectStage.cs" />
@@ -276,6 +273,11 @@
     <Compile Include="Assets\%23script\Stage\BlockController.cs" />
     <Compile Include="Assets\%23script\Stage\CreateStage.cs" />
     <Compile Include="Assets\%23script\Test\TestShader.cs" />
+    <Compile Include="Assets\%23script\Title\CursorController.cs" />
+    <Compile Include="Assets\%23script\Title\CursorHue.cs" />
+    <Compile Include="Assets\%23script\Title\Gizmo.cs" />
+    <Compile Include="Assets\%23script\Title\PlayernumController.cs" />
+    <Compile Include="Assets\%23script\Title\StageselectController.cs" />
     <Compile Include="Assets\%23script\Title\Title.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBlendListCamera.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBrain.cs" />
@@ -336,21 +338,11 @@
   <ItemGroup>
     <None Include="Assets\Cinemachine\ReleaseNotes.txt" />
     <None Include="Assets\Plugins\KY_effects\MagicEffectsPackFree\ReadMe.txt" />
-<<<<<<< HEAD
-    <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
-    <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
-    <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\LiberationSans - OFL.txt" />
-    <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\NotoSans - License.txt" />
-    <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald Bold - OFL.txt" />
-=======
-    <None Include="Assets\Plugins\OutlineEffect\Resources\OutlineBufferShader.shader" />
-    <None Include="Assets\Plugins\OutlineEffect\Resources\OutlineShader.shader" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\Anton OFL.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\Bangers - OFL.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\NotoSans - License.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\Oswald Bold - OFL.txt" />
->>>>>>> master
     <None Include="Assets\Plugins\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
