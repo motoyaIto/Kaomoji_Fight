@@ -36,7 +36,7 @@ public class Title : MonoBehaviour
 
     void Update()
     {
-        if (TManager_cs.Mode_data != TitleManager.SELECTMODE.TITLE)
+        if (TManager_cs.Mode_Data != TitleManager.SELECTMODE.TITLE || TManager_cs.ControllerLock_Data == true)
         {
             return;
         }
@@ -49,7 +49,7 @@ public class Title : MonoBehaviour
         {
             videoPlayer.Stop();
             audio.PlayOneShot(audio.clip);
-            TManager_cs.ChangePage(TitleManager.SELECTMODE.PLAYERNAM);
+            TManager_cs.ChangePage(TitleManager.SELECTMODE.PLAYERNUM);
         }
     }
 
