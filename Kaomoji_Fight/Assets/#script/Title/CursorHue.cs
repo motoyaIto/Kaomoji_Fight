@@ -45,7 +45,7 @@ public class CursorHue : MonoBehaviour {
     }
 
     // 色を変える
-    public void ChangeHue(float val = 25)
+    public void ChangeHue(float val = 5)
     {
         hue += val;
         hue = hue % 360f;
