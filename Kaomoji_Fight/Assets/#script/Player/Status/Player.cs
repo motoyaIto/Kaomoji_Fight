@@ -89,7 +89,7 @@ public class Player : RaycastController {
         if (HaveWeapon)
         {
             //武器の位置を持ち変える
-            WeaponPositionControll();
+            WeaponPositionControll(input);
         }
 
         //キャラのy軸のdirection方向にscrollの力をかける
@@ -237,7 +237,7 @@ public class Player : RaycastController {
             //ステージから武器に変換
             if(hitFoot.transform.tag == "Stage")
             {
-                this.GetWeapon(hitFoot);
+                this.GetWeapon(hitFoot, this.transform.position);
             }
         }
     }
@@ -247,7 +247,7 @@ public class Player : RaycastController {
     /// </summary>
     /// <param name="hitFoot">足元にあった武器</param>
     /// <param name="directionX">右か左か</param>
-    private void GetWeapon(RaycastHit2D hitFoot)
+    private void GetWeapon(RaycastHit2D hitFoot, Vector2 pos)
     {
         GameObject block = hitFoot.collider.gameObject;
         BlockController block_cs = block.GetComponent<BlockController>();
@@ -272,7 +272,7 @@ public class Player : RaycastController {
             HaveWeapon = true;
 
             //プレイヤーの移動する向きに合わせて位置を調整
-            this.WeaponPositionControll();
+            this.WeaponPositionControll(pos);
 
             // 持ったプレイヤーの名前を取得
             p_name = this.name;
@@ -343,7 +343,7 @@ public class Player : RaycastController {
         }
     }
 
-    public void WeaponPositionControll()
+    public void WeaponPositionControll(Vector2 vec2)
     {
         if (HaveWeapon)
         {
