@@ -63,9 +63,9 @@ public class StageselectController : CursorController {
             //クリック音
             audiosource.PlayOneShot(Click_clip);
 
-            //TManager_cs.Stage_name_Data;
+            TManager_cs.Stage_name_Data = Target[target_number].name;
 
-            TManager_cs.ChangePage(TitleManager.SELECTMODE.PLAYERNUM);
+            TManager_cs.ChangePage(TitleManager.SELECTMODE.CHARACTERSELECT);
         }
     }
 }
