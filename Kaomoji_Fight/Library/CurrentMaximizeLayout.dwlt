@@ -22,10 +22,10 @@ MonoBehaviour:
     y: 30
     width: 1280
     height: 627
-  m_MinSize: {x: 909, y: 542}
-  m_MaxSize: {x: 22004, y: 12042}
+  m_MinSize: {x: 913, y: 542}
+  m_MaxSize: {x: 22008, y: 12042}
   vertical: 0
-  controlID: 793
+  controlID: 6665
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 542}
   m_MaxSize: {x: 4002, y: 12042}
   vertical: 1
-  controlID: 794
+  controlID: 6644
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -146,8 +146,8 @@ MonoBehaviour:
     y: 0
     width: 565
     height: 235
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 5}
   m_Panes:
   - {fileID: 5}
@@ -389,9 +389,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 7efbffff
-    m_LastClickedID: -1154
-    m_ExpandedIDs: 94fbffff00000000
+    m_SelectedIDs: 36340000
+    m_LastClickedID: 13366
+    m_ExpandedIDs: 2efbffff0000000096340000b234000030350000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -478,19 +478,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/#scene
+    - Assets/#script/Title
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/#scene
+  - Assets/#script/Title
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\s162079\Documents\Kaomoji_Fight\Kaomoji_Fight
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a62f0000
-    m_LastClickedID: 12198
-    m_ExpandedIDs: 00000000c82e0000463000005e300000903000009a300000dc300000ec31000000ca9a3bffffff7f
+    m_SelectedIDs: 8c330000
+    m_LastClickedID: 13196
+    m_ExpandedIDs: 00000000522a0000c02b0000f82c0000522d0000962d0000582e0000702e00001c2f0000ba2f00000831000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -518,7 +518,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c82e0000463000005e300000903000009a300000dc300000ec31000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000522a0000c02b0000f82c0000522d0000962d0000582e0000702e00001c2f0000ba2f00000831000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -543,8 +543,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 7efbffff
-    m_LastClickedInstanceID: -1154
+    m_SelectedInstanceIDs: 36340000
+    m_LastClickedInstanceID: 13366
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
@@ -562,7 +562,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 12}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0

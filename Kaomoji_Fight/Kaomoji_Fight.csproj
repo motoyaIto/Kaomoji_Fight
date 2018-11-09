@@ -266,9 +266,6 @@
     <Compile Include="Assets\#script\SceneManagerController.cs" />
     <Compile Include="Assets\#script\SceneTimer.cs" />
     <Compile Include="Assets\#script\Select\CharSelectControll.cs" />
-    <Compile Include="Assets\#script\Select\CursorController.cs" />
-    <Compile Include="Assets\#script\Select\CursorHue.cs" />
-    <Compile Include="Assets\#script\Select\Gizmo.cs" />
     <Compile Include="Assets\#script\Select\SelectChar.cs" />
     <Compile Include="Assets\#script\Select\SelectPNControll.cs" />
     <Compile Include="Assets\#script\Select\SelectStage.cs" />
@@ -277,6 +274,11 @@
     <Compile Include="Assets\#script\Stage\BlockController.cs" />
     <Compile Include="Assets\#script\Stage\CreateStage.cs" />
     <Compile Include="Assets\#script\Test\TestShader.cs" />
+    <Compile Include="Assets\#script\Title\CursorController.cs" />
+    <Compile Include="Assets\#script\Title\CursorHue.cs" />
+    <Compile Include="Assets\#script\Title\Gizmo.cs" />
+    <Compile Include="Assets\#script\Title\PlayernumController.cs" />
+    <Compile Include="Assets\#script\Title\StageselectController.cs" />
     <Compile Include="Assets\#script\Title\Title.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBlendListCamera.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBrain.cs" />
