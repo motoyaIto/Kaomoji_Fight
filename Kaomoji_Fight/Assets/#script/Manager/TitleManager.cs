@@ -98,7 +98,7 @@ public class TitleManager : MonoBehaviour{
                 {
                     playersface[i] = Sprite.Create((Texture2D)Resources.Load("textures/use/Player" + (i + 1)), new Rect(0, 0, 584, 211), new Vector2(0.5f, 0.5f));
                 }
-                playedata = new PlayData(Stage_name, players_name, playersface);
+                //playedata = new PlayData(Stage_name, players_name, playersface);
 
                 SceneManagerController.ChangeScene();
 

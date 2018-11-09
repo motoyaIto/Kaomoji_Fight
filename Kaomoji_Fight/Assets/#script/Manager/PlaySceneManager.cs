@@ -12,140 +12,6 @@ using UnityEngine.SceneManagement;
 
 public class PlaySceneManager : MonoBehaviour
 {
-    //プレイヤーのデータを管理する
-    [System.Serializable]
-    private class Player_data
-    {
-        private GameObject m_Player;
-        private GameObject m_HPgage;
-
-        [SerializeField]
-        private string m_name;          //プレイヤー名
-        [SerializeField]
-        private Color m_nameColor;      //HPバーに表示される名前の色
-
-        [SerializeField]
-        private Sprite m_playerFace;//プレイヤーの顔文字
-
-        [SerializeField]
-        private Vector3 m_initialPos;   //初期ポップ位置
-
-        private XboxController m_controller;
-
-        private Transform m_myCamera = null;
-
-        private float m_hp;
-
-        private Slider m_hpSlider;
-
-        //コンストラクタ
-        public Player_data(string name, Color col, Sprite player_face, Vector3 initialPos, XboxController controller, float hp)
-        {
-            m_Player = (GameObject)Resources.Load("prefab/Player");
-            m_HPgage = (GameObject)Resources.Load("prefab/UI/HPgage");
-            m_name = name;
-            m_nameColor = col;
-            m_playerFace = player_face;
-            m_initialPos = initialPos;
-            m_controller = controller;
-            m_hp = hp;
-        }
-        
-        //getter:seter
-        public GameObject Player_obj
-        {
-            get
-            {
-                return m_Player;
-            }
-            set
-            {
-                if(m_Player == null)
-                {
-                    m_Player = value;
-                }
-            }
-        }
-
-        public GameObject HPgage_obj
-        {
-            get
-            {
-                return m_HPgage;
-            }
-            set
-            {
-                m_HPgage = value;
-            }
-        }
-        public string Name_Data
-        {
-            get
-            {
-                return m_name;
-            }
-        }
-
-        public Color Color_Data
-        {
-            get
-            {
-                return m_nameColor;
-            }
-        }
-
-        public Sprite PlayerFace_Data
-        {
-            get
-            {
-                return m_playerFace;
-            }
-        }
-
-        public Vector3 InitialPos_Data
-        {
-            get
-            {
-                return m_initialPos;
-            }
-        }
-
-        public XboxController Controller_Data
-        {
-            get
-            {
-                return m_controller;
-            }
-        }
-
-        public Transform My_Camera_data
-        {
-            set
-            {
-                if(m_myCamera == null)
-                {
-                    m_myCamera = value;
-                }
-            }
-            get
-            {
-                return m_myCamera;
-            }
-        }
-
-        public float HP_Date
-        {
-            set
-            {
-                m_hp = value;
-            }
-            get
-            {
-                return m_hp;
-            }
-        }
-    }
-
     private GameObject UICanvases;      //UI用キャンバス
 
     private GameObject DownTimer_obj;   //ダウンタイマー
@@ -160,13 +26,13 @@ public class PlaySceneManager : MonoBehaviour
     private AudioClip audioClip_hit;    //ぶつかった時の音   
 
     [SerializeField]
-    Player_data P1;
+    PlayerData P1;
     [SerializeField]
-    Player_data P2;
+    PlayerData P2;
     [SerializeField]
-    Player_data P3;
+    PlayerData P3;
     [SerializeField]
-    Player_data P4 ;
+    PlayerData P4 ;
    
     [HideInInspector]
     public List<bool> death_player = new List<bool>();   // 落ちて死んだプレイヤーを判別するためのリスト
@@ -204,25 +70,41 @@ public class PlaySceneManager : MonoBehaviour
         switch (PlayData.Instance.playerNum)
         {
             case 1:
-                P1 = new Player_data(PlayData.Instance.PlayersName[0], P1.Color_Data, PlayData.Instance.PlayersFace[0], P1.InitialPos_Data, XboxController.First, 100f);
+                P1 = PlayData.Instance.PlayersData[0];
+                P1.LoadGameObject();
 
                 break;
             case 2:
-                P1 = new Player_data(PlayData.Instance.PlayersName[0], P1.Color_Data, PlayData.Instance.PlayersFace[0], P1.InitialPos_Data, XboxController.First, 100f);
-                P2 = new Player_data(PlayData.Instance.PlayersName[1], P2.Color_Data, PlayData.Instance.PlayersFace[1], P2.InitialPos_Data, XboxController.Second, 100f);
+                P1 = PlayData.Instance.PlayersData[0];
+                P1.LoadGameObject();
+
+                P2 = PlayData.Instance.PlayersData[1];
+                P2.LoadGameObject();
 
                 break;
             case 3:
-                P1 = new Player_data(PlayData.Instance.PlayersName[0], P1.Color_Data, PlayData.Instance.PlayersFace[0], P1.InitialPos_Data, XboxController.First, 100f);
-                P2 = new Player_data(PlayData.Instance.PlayersName[1], P2.Color_Data, PlayData.Instance.PlayersFace[1], P2.InitialPos_Data, XboxController.Second, 100f);
-                P3 = new Player_data(PlayData.Instance.PlayersName[2], P3.Color_Data, PlayData.Instance.PlayersFace[2], P3.InitialPos_Data, XboxController.Third, 100f);
+                P1 = PlayData.Instance.PlayersData[0];
+                P1.LoadGameObject();
 
+                P2 = PlayData.Instance.PlayersData[1];
+                P2.LoadGameObject();
+
+                P3 = PlayData.Instance.PlayersData[2];
+                P3.LoadGameObject();
                 break;
             case 4:
-                P1 = new Player_data(PlayData.Instance.PlayersName[0], P1.Color_Data, PlayData.Instance.PlayersFace[0], P1.InitialPos_Data, XboxController.First, 100f);
-                P2 = new Player_data(PlayData.Instance.PlayersName[1], P2.Color_Data, PlayData.Instance.PlayersFace[1], P2.InitialPos_Data, XboxController.Second, 100f);
-                P3 = new Player_data(PlayData.Instance.PlayersName[2], P3.Color_Data, PlayData.Instance.PlayersFace[2], P3.InitialPos_Data, XboxController.Third, 100f);
-                P4 = new Player_data(PlayData.Instance.PlayersName[3], P4.Color_Data, PlayData.Instance.PlayersFace[3], P4.InitialPos_Data, XboxController.Fourth, 100f);
+                P1 = PlayData.Instance.PlayersData[0];
+                P1.LoadGameObject();
+
+                P2 = PlayData.Instance.PlayersData[1];
+                P2.LoadGameObject();
+
+                P3 = PlayData.Instance.PlayersData[2];
+                P3.LoadGameObject();
+
+                P4 = PlayData.Instance.PlayersData[3];
+                P4.LoadGameObject();
+
                 break;
         }
 
@@ -283,7 +165,7 @@ public class PlaySceneManager : MonoBehaviour
         {
             death_player.Add(true);
             TrueDeath.Add(false);
-            HP_Slider.Add(CheckDamagePlayer(PlayData.Instance.PlayersName[i]).HPgage_obj.GetComponent<Slider>());
+            HP_Slider.Add(CheckDamagePlayer(PlayData.Instance.PlayersData[i].Name_Data).HPgage_obj.GetComponent<Slider>());
         }
     }
 
@@ -327,7 +209,7 @@ public class PlaySceneManager : MonoBehaviour
     /// </summary>
     /// <param name="player_data">プレイヤーデータ</param>
     /// <returns>プレイヤー</returns>
-    private GameObject CreatePlayer(Player_data player_data, int num)
+    private GameObject CreatePlayer(PlayerData player_data, int num)
     {
         //プレイヤーを生成
         GameObject player = Instantiate(player_data.Player_obj, player_data.InitialPos_Data, Quaternion.identity);
@@ -345,7 +227,7 @@ public class PlaySceneManager : MonoBehaviour
     /// </summary>
     /// <param name="player">プレイヤーオブジェクト</param>
     /// <param name="player_data">プレイヤーデータ</param>
-    private void SetPlayerStatus(GameObject player, Player_data player_data, int num)
+    private void SetPlayerStatus(GameObject player, PlayerData player_data, int num)
     {
         //キャラの顔をセット
         SpriteRenderer playerFace = player.GetComponent<SpriteRenderer>();
@@ -386,7 +268,7 @@ public class PlaySceneManager : MonoBehaviour
     /// <param name="player_data">プレイヤーデータ</param>
     /// <param name="pos">HPゲージの描画座標</param>
     /// <returns>HPゲージ</returns>
-    private GameObject CreateHPgage(Player_data player_data, Vector3 pos)
+    private GameObject CreateHPgage(PlayerData player_data, Vector3 pos)
     {
         //HPゲージを生成
         GameObject HPgage = Instantiate(player_data.HPgage_obj, pos, Quaternion.identity, UICanvases.transform);
@@ -422,7 +304,7 @@ public class PlaySceneManager : MonoBehaviour
             audio.PlayOneShot(audioClip_hit);
 
             // ダメージを受けたプレイヤーデータを取得する
-            Player_data player_data = CheckDamagePlayer(damagePlayer.name);
+            PlayerData player_data = CheckDamagePlayer(damagePlayer.name);
 
             //ダメージを受けたプレイヤーがいなかったとき
             if (player_data == null)
@@ -453,7 +335,7 @@ public class PlaySceneManager : MonoBehaviour
     /// </summary>
     /// <param name="Damage_Pname">ダメージを受けたプレイヤーの名前</param>
     /// <returns>プレイヤーデータ</returns>
-    private Player_data CheckDamagePlayer(string Damage_Pname)
+    private PlayerData CheckDamagePlayer(string Damage_Pname)
     {
         if (Damage_Pname == P1.Name_Data)
         {
@@ -533,7 +415,7 @@ public class PlaySceneManager : MonoBehaviour
         audio.PlayOneShot(audioClip_ded);
     }
 
-    private void CameraSet(Player_data player, int num)
+    private void CameraSet(PlayerData player, int num)
     {
         //カメラのターゲットに設定
         TargetGroup.m_Targets[num].target = player.My_Camera_data;
