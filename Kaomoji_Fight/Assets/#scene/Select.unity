@@ -466,7 +466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 257500d7f36219840a14be1a76304d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hue: 345
+  hue: 50
 --- !u!114 &126386015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,7 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: a534d3ab492f05c4abec107a34f48ff6, type: 2}
+  m_Material: {fileID: 2100000, guid: 06172427789b6f84a9f7423bf4648e68, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -514,7 +514,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a534d3ab492f05c4abec107a34f48ff6, type: 2}
+  - {fileID: 2100000, guid: 06172427789b6f84a9f7423bf4648e68, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1331,7 +1331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 257500d7f36219840a14be1a76304d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hue: 10
+  hue: 75
 --- !u!114 &487768674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1343,7 +1343,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: a534d3ab492f05c4abec107a34f48ff6, type: 2}
+  m_Material: {fileID: 2100000, guid: 06172427789b6f84a9f7423bf4648e68, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -1379,7 +1379,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a534d3ab492f05c4abec107a34f48ff6, type: 2}
+  - {fileID: 2100000, guid: 06172427789b6f84a9f7423bf4648e68, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4498,9 +4498,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bd51502b2268614193e21686af5b014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Move_clip: {fileID: 8300000, guid: ddad8e57316648b4a8d3d400777163eb, type: 3}
-  Click_clip: {fileID: 8300000, guid: c569fbbde68d4ba40b4f062030696ff2, type: 3}
-  SSManager: {fileID: 1909202849}
 --- !u!1 &1834431082
 GameObject:
   m_ObjectHideFlags: 0
@@ -4530,6 +4527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gizmoSize: 0.3
   gizmoColor: {r: 1, g: 0, b: 0, a: 1}
+  Flick_spd: 0.1
 --- !u!4 &1834431084
 Transform:
   m_ObjectHideFlags: 0
@@ -4656,15 +4654,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6a249a6d9630264fba929ac6b14bcb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cursor: {fileID: 1830097620}
-  Note_Gizmo: {fileID: 1834431082}
-  PlayersNumSelect_texts:
-  - {fileID: 85270681}
-  - {fileID: 685114927}
-  - {fileID: 1790883985}
-  - {fileID: 1419983581}
-  StageSelect_texts: []
-  CharaSelect_texts: []
+  Title_Gizmo: {fileID: 0}
+  Playernam_Gizmo: {fileID: 0}
+  Stageselect_Gizmo: {fileID: 0}
+  Characterselect_Gizmo: {fileID: 0}
+  Flickspd: 0.1
 --- !u!4 &1909202851
 Transform:
   m_ObjectHideFlags: 0
