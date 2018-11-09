@@ -89,6 +89,7 @@ public class TitleManager : MonoBehaviour{
 
                 break;
             case SELECTMODE.CHARACTERSELECT:
+
                 break;
             case SELECTMODE.MAX:
 

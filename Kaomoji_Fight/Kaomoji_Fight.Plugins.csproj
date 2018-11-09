@@ -228,12 +228,15 @@
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>Library\UnityAssemblies\UnityEngine.StandardEvents.dll</HintPath>
+<<<<<<< HEAD
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Common">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+=======
+>>>>>>> master
     </Reference>
     <Reference Include="XInputDotNetPure">
       <HintPath>Assets\Plugins\XInputDotNetPure.dll</HintPath>
@@ -248,6 +251,7 @@
   <ItemGroup>
     <Compile Include="Assets\Plugins\KY_effects\Script\ConGUI.cs" />
     <Compile Include="Assets\Plugins\KY_effects\Script\Lighting.cs" />
+<<<<<<< HEAD
     <Compile Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
@@ -281,6 +285,41 @@
     <Compile Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
+=======
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\Benchmark01.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\Benchmark01_UGUI.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\Benchmark02.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\Benchmark03.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\Benchmark04.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\ChatController.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\EnvMapAnimator.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\ObjectSpin.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\ShaderPropAnimator.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\SimpleScript.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\SkewTextExample.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\TeleType.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\TextConsoleSimulator.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\TextMeshProFloatingText.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\TextMeshSpawner.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\TMP_DigitValidator.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\TMP_ExampleScript_01.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\TMP_FrameRateCounter.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\TMP_PhoneNumberValidator.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\TMP_TextEventCheck.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\TMP_TextEventHandler.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\TMP_TextInfoDebugTool.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\TMP_TextSelector_A.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\TMP_TextSelector_B.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\TMP_UiFrameRateCounter.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\TMPro_InstructionOverlay.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\VertexColorCycler.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\VertexJitter.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\VertexShakeA.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\VertexShakeB.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\VertexZoom.cs" />
+    <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\WarpTextExample.cs" />
+>>>>>>> master
     <Compile Include="Assets\Plugins\XboxCtrlrInput.cs" />
     <Compile Include="Assets\Standard Assets\Cameras\Scripts\AbstractTargetFollower.cs" />
     <Compile Include="Assets\Standard Assets\Cameras\Scripts\AutoCam.cs" />
@@ -305,11 +344,19 @@
   <ItemGroup>
     <None Include="Assets\Cinemachine\ReleaseNotes.txt" />
     <None Include="Assets\Plugins\KY_effects\MagicEffectsPackFree\ReadMe.txt" />
+<<<<<<< HEAD
     <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\NotoSans - License.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald Bold - OFL.txt" />
+=======
+    <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\Anton OFL.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\Bangers - OFL.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\NotoSans - License.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\Oswald Bold - OFL.txt" />
+>>>>>>> master
     <None Include="Assets\Plugins\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
@@ -343,10 +390,17 @@
     <None Include="Assets\Shader\Test\VertexShader.shader" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+<<<<<<< HEAD
     <None Include="Assets\ーCredit\Assets.txt" />
     <None Include="Assets\ーCredit\ButtleBGMクレジット.txt" />
     <None Include="Assets\ーCredit\SE.txt" />
     <None Include="Assets\ーCredit\参考サイト.txt" />
+=======
+    <None Include="Assets\%E3%83%BCCredit\Assets.txt" />
+    <None Include="Assets\%E3%83%BCCredit\ButtleBGM%E3%82%AF%E3%83%AC%E3%82%B8%E3%83%83%E3%83%88.txt" />
+    <None Include="Assets\%E3%83%BCCredit\SE.txt" />
+    <None Include="Assets\%E3%83%BCCredit\%E5%8F%82%E8%80%83%E3%82%B5%E3%82%A4%E3%83%88.txt" />
+>>>>>>> master
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

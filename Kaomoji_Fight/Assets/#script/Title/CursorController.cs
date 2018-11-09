@@ -57,8 +57,6 @@ abstract public class CursorController : MonoBehaviour
             if (target_number < NowNumberColumn * Numberbefore_Linebreak)
             {
                 target_number = Numberbefore_Linebreak * (NowNumberColumn + 1) - 1;
-
-                Debug.Log(target_number);
             }
 
             Move();
