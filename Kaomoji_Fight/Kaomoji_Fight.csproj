@@ -252,41 +252,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Compile Include="Assets\%23scene\Test\MoveScript1.cs" />
-    <Compile Include="Assets\%23scene\Test\SliderTest.cs" />
-    <Compile Include="Assets\%23script\Camera\MultipleTargetCamera.cs" />
-    <Compile Include="Assets\%23script\DownTimer.cs" />
-    <Compile Include="Assets\%23script\DummySceneStart.cs" />
-    <Compile Include="Assets\%23script\LayerName.cs" />
-    <Compile Include="Assets\%23script\Manager\PlaySceneManager.cs" />
-    <Compile Include="Assets\%23script\Manager\TitleManager.cs" />
-    <Compile Include="Assets\%23script\PlayData.cs" />
-    <Compile Include="Assets\%23script\Player\Jump\Controller2D.cs" />
-    <Compile Include="Assets\%23script\Player\Jump\PlatformController.cs" />
-    <Compile Include="Assets\%23script\Player\Jump\RaycastController.cs" />
-    <Compile Include="Assets\%23script\Player\Status\Contoroller2d.cs" />
-    <Compile Include="Assets\%23script\Player\Status\Player.cs" />
-    <Compile Include="Assets\%23script\Player\Weapon\WeaponBlocController.cs" />
-    <Compile Include="Assets\%23script\PlayTimer.cs" />
-    <Compile Include="Assets\%23script\SceneManagerController.cs" />
-    <Compile Include="Assets\%23script\SceneTimer.cs" />
-    <Compile Include="Assets\%23script\Select\CharSelectControll.cs" />
-    <Compile Include="Assets\%23script\Select\SelectChar.cs" />
-    <Compile Include="Assets\%23script\Select\SelectPNControll.cs" />
-    <Compile Include="Assets\%23script\Select\SelectStage.cs" />
-    <Compile Include="Assets\%23script\SingletonMonoBehaviour.cs" />
-    <Compile Include="Assets\%23script\Sound\PlayBGM.cs" />
-    <Compile Include="Assets\%23script\Stage\BlockController.cs" />
-    <Compile Include="Assets\%23script\Stage\CreateStage.cs" />
-    <Compile Include="Assets\%23script\Test\TestShader.cs" />
-    <Compile Include="Assets\%23script\Title\CursorController.cs" />
-    <Compile Include="Assets\%23script\Title\CursorHue.cs" />
-    <Compile Include="Assets\%23script\Title\Gizmo.cs" />
-    <Compile Include="Assets\%23script\Title\PlayernumController.cs" />
-    <Compile Include="Assets\%23script\Title\StageselectController.cs" />
-    <Compile Include="Assets\%23script\Title\Title.cs" />
-=======
     <Compile Include="Assets\#scene\Test\MoveScript1.cs" />
     <Compile Include="Assets\#scene\Test\SliderTest.cs" />
     <Compile Include="Assets\#script\Camera\MultipleTargetCamera.cs" />
@@ -306,9 +271,6 @@
     <Compile Include="Assets\#script\SceneManagerController.cs" />
     <Compile Include="Assets\#script\SceneTimer.cs" />
     <Compile Include="Assets\#script\Select\CharSelectControll.cs" />
-    <Compile Include="Assets\#script\Select\CursorController.cs" />
-    <Compile Include="Assets\#script\Select\CursorHue.cs" />
-    <Compile Include="Assets\#script\Select\Gizmo.cs" />
     <Compile Include="Assets\#script\Select\SelectChar.cs" />
     <Compile Include="Assets\#script\Select\SelectPNControll.cs" />
     <Compile Include="Assets\#script\Select\SelectStage.cs" />
@@ -317,8 +279,12 @@
     <Compile Include="Assets\#script\Stage\BlockController.cs" />
     <Compile Include="Assets\#script\Stage\CreateStage.cs" />
     <Compile Include="Assets\#script\Test\TestShader.cs" />
+    <Compile Include="Assets\#script\Title\CursorController.cs" />
+    <Compile Include="Assets\#script\Title\CursorHue.cs" />
+    <Compile Include="Assets\#script\Title\Gizmo.cs" />
+    <Compile Include="Assets\#script\Title\PlayernumController.cs" />
+    <Compile Include="Assets\#script\Title\StageselectController.cs" />
     <Compile Include="Assets\#script\Title\Title.cs" />
->>>>>>> master
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBlendListCamera.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBrain.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineClearShot.cs" />
@@ -378,19 +344,11 @@
   <ItemGroup>
     <None Include="Assets\Cinemachine\ReleaseNotes.txt" />
     <None Include="Assets\Plugins\KY_effects\MagicEffectsPackFree\ReadMe.txt" />
-<<<<<<< HEAD
-    <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\Anton OFL.txt" />
-    <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\Bangers - OFL.txt" />
-    <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\LiberationSans - OFL.txt" />
-    <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\NotoSans - License.txt" />
-    <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\Oswald Bold - OFL.txt" />
-=======
     <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\NotoSans - License.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald Bold - OFL.txt" />
->>>>>>> master
     <None Include="Assets\Plugins\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
