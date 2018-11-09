@@ -518,7 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 257500d7f36219840a14be1a76304d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hue: 195
+  hue: 120
 --- !u!114 &385762492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -837,7 +837,7 @@ GameObject:
   - component: {fileID: 574156395}
   - component: {fileID: 574156394}
   m_Layer: 0
-  m_Name: Playernam_Gizmo
+  m_Name: Playernum_Gizmo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -867,9 +867,9 @@ Transform:
   m_LocalPosition: {x: -10.83, y: 0, z: -1.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1276550066}
   - {fileID: 1767454551}
   - {fileID: 1111040546}
-  - {fileID: 1276550066}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1196,7 +1196,7 @@ Transform:
   - {fileID: 1357137100}
   - {fileID: 901047216}
   m_Father: {fileID: 574156395}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1121943204
 GameObject:
@@ -1319,7 +1319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 257500d7f36219840a14be1a76304d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hue: 350
+  hue: 30
 --- !u!114 &1123890775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1752,8 +1752,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1195684036}
   - component: {fileID: 1195684039}
-  - component: {fileID: 1195684038}
   - component: {fileID: 1195684037}
+  - component: {fileID: 1195684038}
   m_Layer: 0
   m_Name: Stageselect_Cursor
   m_TagString: Untagged
@@ -1863,17 +1863,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1195684035}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bd51502b2268614193e21686af5b014, type: 3}
+  m_Script: {fileID: 11500000, guid: d8a4f8494ee89a04c8bb66ef9967013f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Move_clip: {fileID: 8300000, guid: ddad8e57316648b4a8d3d400777163eb, type: 3}
-  Click_clip: {fileID: 8300000, guid: c569fbbde68d4ba40b4f062030696ff2, type: 3}
   TManager: {fileID: 1565067913}
   Target:
-  - {fileID: 1619007921}
-  - {fileID: 379038607}
-  - {fileID: 1357137099}
-  - {fileID: 901047215}
+  - {fileID: 1745737542}
+  - {fileID: 1377877367}
+  - {fileID: 413003041}
+  - {fileID: 716456359}
+  - {fileID: 1169159954}
+  - {fileID: 1796484193}
+  - {fileID: 1997054562}
+  - {fileID: 2074254026}
+  Numberbefore_Linebreak: 4
+  NumberColumns: 2
 --- !u!212 &1195684039
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1927,8 +1931,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1276550066}
   - component: {fileID: 1276550069}
-  - component: {fileID: 1276550068}
   - component: {fileID: 1276550067}
+  - component: {fileID: 1276550068}
   m_Layer: 0
   m_Name: PlayerNum_Cursor
   m_TagString: Untagged
@@ -1948,7 +1952,7 @@ Transform:
   m_Children:
   - {fileID: 385762490}
   m_Father: {fileID: 574156395}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1276550067
 AudioSource:
@@ -2038,17 +2042,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1276550065}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bd51502b2268614193e21686af5b014, type: 3}
+  m_Script: {fileID: 11500000, guid: 317c569dad3812644ac64fa3faa0bfdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Move_clip: {fileID: 8300000, guid: ddad8e57316648b4a8d3d400777163eb, type: 3}
-  Click_clip: {fileID: 8300000, guid: c569fbbde68d4ba40b4f062030696ff2, type: 3}
   TManager: {fileID: 1565067913}
   Target:
   - {fileID: 1619007921}
   - {fileID: 379038607}
   - {fileID: 1357137099}
   - {fileID: 901047215}
+  Numberbefore_Linebreak: 4
+  NumberColumns: 1
 --- !u!212 &1276550069
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2480,14 +2484,6 @@ MonoBehaviour:
   Stageselect_Gizmo: {fileID: 876162072}
   Characterselect_Gizmo: {fileID: 157586222}
   Flickspd: 0.1
-  PlayersNumSelect_texts:
-  - {fileID: 1619007921}
-  - {fileID: 379038607}
-  - {fileID: 1357137099}
-  - {fileID: 901047215}
-  Cursor: {fileID: 1276550065}
-  StageSelect_texts: []
-  CharaSelect_texts: []
 --- !u!4 &1565067915
 Transform:
   m_ObjectHideFlags: 0
@@ -2964,7 +2960,7 @@ Transform:
   m_LocalScale: {x: 1.1759684, y: 1.1835393, z: 1}
   m_Children: []
   m_Father: {fileID: 574156395}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1767454552
 SpriteRenderer:
@@ -3035,7 +3031,7 @@ Transform:
   m_GameObject: {fileID: 1796484193}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 18.18, y: 0.28, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 377315965}
   m_RootOrder: 5

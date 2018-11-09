@@ -16,7 +16,7 @@ public class Player : RaycastController {
     private float moveSpeed = 10f;          // 移動速度
     private float Invincible_time = .5f;    // 無敵時間
 
-    private float scroll = 10f;               // 幅
+    private float scroll = 10f;             // 幅
     private float maxflap = 800f;           // ジャンプの高さ（最大）
     private float minflap = 400f;           // ジャンプの高さ（最小）
 
@@ -40,6 +40,7 @@ public class Player : RaycastController {
 
     private new AudioSource audio;
     private AudioClip shot_ac;              // 投げる音
+    private AudioClip jump_ac;              // ジャンプ
 
     #endregion
 
@@ -48,6 +49,7 @@ public class Player : RaycastController {
     {
         audio = this.GetComponent<AudioSource>();
         shot_ac = (AudioClip)Resources.Load("Sound/SE/Shooting/launcher");   //投げる音
+        jump_ac = (AudioClip)Resources.Load("Sound/SE/Jump/jump");           //ジャンプ音
     }
 
     new void Start()
@@ -97,6 +99,8 @@ public class Player : RaycastController {
         if (XCI.GetButtonDown(XboxButton.Y, ControlerNamber) && !jump)
         {
             // 大ジャンプ
+            audio.volume = .2f;
+            audio.PlayOneShot(jump_ac);
             rig.AddForce(Vector2.up * maxflap);
             jump = true;
 
@@ -144,7 +148,7 @@ public class Player : RaycastController {
         {
             Avoidance = false;
         }
-        
+
         //武器を持っている
         if (HaveWeapon == true)
         {
@@ -281,11 +285,14 @@ public class Player : RaycastController {
         if(collision.transform.tag == "Weapon" && Avoidance == false)
         {
             WeaponBlocController WBController = collision.gameObject.GetComponent<WeaponBlocController>();
-            PSM.Player_ReceiveDamage(this.gameObject, collision.gameObject, CNConvert(ControlerNamber));
+            if (!Avoidance)
+            {
+                PSM.Player_ReceiveDamage(this.gameObject, collision.gameObject, CNConvert(ControlerNamber));
+            }
         }
 
         // ジャンプ制限
-        if (collision.gameObject.CompareTag("Stage") || collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Stage"))
         {
             jump = false;
         }

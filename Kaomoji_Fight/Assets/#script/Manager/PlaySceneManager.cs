@@ -7,6 +7,7 @@ using XboxCtrlrInput;
 using TMPro;
 using Cinemachine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 
 public class PlaySceneManager : MonoBehaviour
@@ -149,7 +150,8 @@ public class PlaySceneManager : MonoBehaviour
 
     private GameObject DownTimer_obj;   //ダウンタイマー
 
-    private bool pause = false;
+    private int death_count;            //残り人数が一人になったかどうかを調べるやつ
+    private bool pause = false;         //ポーズ画面のフラグ
 
     private new AudioSource audio;          //オーディオ
 
@@ -186,7 +188,7 @@ public class PlaySceneManager : MonoBehaviour
         DownTimer DownTimer_cs = DownTimer_obj.GetComponent<DownTimer>();
 
         //ダウンタイマーを起動
-        DownTimer_cs.DownTimer_On_data = true;
+        DownTimer_cs.DownTimer_State_data = true;
 
         //オーディオを取得
         audio = this.GetComponent<AudioSource>();
@@ -223,6 +225,8 @@ public class PlaySceneManager : MonoBehaviour
                 P4 = new Player_data(PlayData.Instance.PlayersName[3], P4.Color_Data, PlayData.Instance.PlayersFace[3], P4.InitialPos_Data, XboxController.Fourth, 100f);
                 break;
         }
+
+        death_count = PlayData.Instance.playerNum;
 
         RectTransform HPgage_size = P1.HPgage_obj.GetComponent<RectTransform>();
 
@@ -303,11 +307,17 @@ public class PlaySceneManager : MonoBehaviour
                 
             }
 
-                // 死んだプレイヤーの蘇生
-                if (death_player[i] == false && TrueDeath[i] == false)
+            // 死んだプレイヤーの蘇生
+            if (death_player[i] == false && TrueDeath[i] == false)
             {
                 RegenerationPlayer(i);
             }
+        }
+
+        // プレイヤーが独りになったらリザルトに遷移
+        if (death_count == 1)
+        {
+            //Result();
         }
     }
 
@@ -431,6 +441,7 @@ public class PlaySceneManager : MonoBehaviour
                 audio.PlayOneShot(audioClip_ded);
                 Destroy(damagePlayer);
                 Destroy(HP_Slider[num].gameObject);
+                death_count--;
             }
 
         }
@@ -481,6 +492,7 @@ public class PlaySceneManager : MonoBehaviour
             audio.volume = 0.3f;
             audio.PlayOneShot(audioClip_ded);
             Destroy(HP_Slider[num].gameObject);
+            death_count--;
         }
 
         if (!TrueDeath[num])
@@ -533,5 +545,10 @@ public class PlaySceneManager : MonoBehaviour
     private void Pause(float num)
     {
         Time.timeScale = num;
+    }
+
+    public void Result()
+    {
+        SceneManager.LoadScene("Result");
     }
 }
