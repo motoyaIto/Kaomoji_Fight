@@ -24,7 +24,7 @@ public class CursorHue : MonoBehaviour {
         {
             if (Img.material == null || !Img.material.HasProperty("_Hue"))
             {
-                Img.material = new Material(Shader.Find("Custom/Cursor"));
+                Img.material = new Material(Shader.Find("Custom/Select/Cursor"));
             }
             return Img.material;
         }
