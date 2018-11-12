@@ -638,7 +638,7 @@ Prefab:
         type: 3}
 =======
       propertyPath: Stage_name
-      value: stage4
+      value: stage7
       objectReference: {fileID: 0}
 >>>>>>> master
     m_RemovedComponents: []
