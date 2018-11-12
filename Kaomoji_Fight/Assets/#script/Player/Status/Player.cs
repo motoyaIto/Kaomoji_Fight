@@ -293,11 +293,7 @@ public class Player : RaycastController {
 
     private void OnDisable()
     {
-        if (UnityEditor.EditorApplication.isPlaying && !UnityEditor.EditorApplication.isPlayingOrWillChangePlaymode) { return; }
-        else
-        {
-            PSM.death_player[CNConvert(ControlerNamber)] = false;
-        }
+        PSM.death_player[CNConvert(ControlerNamber)] = false;
     }
 
     // Controllerの番号をint型で取得
