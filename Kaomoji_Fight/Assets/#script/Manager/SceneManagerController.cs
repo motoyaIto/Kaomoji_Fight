@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class SceneManagerController : MonoBehaviour
+public static class SceneManagerController
 {
     private static AsyncOperation ope = null;//シーンを格納
 
