@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XboxCtrlrInput;
 
 public class TitleManager : MonoBehaviour{
 
@@ -33,12 +34,16 @@ public class TitleManager : MonoBehaviour{
     private float Flickspd = 0.1f;      //ノートがめくれるスピード
     private float count_rotation;       //回転角を記憶する
 
-    private PlayData playedata;         //プレイデータ
+    private PlayData playdata;         //プレイデータ
 
     private int playerNum;              //プレイヤーの合計人数
     private string Stage_name = null;   //選択したステージ
+    [SerializeField]
     private Sprite[] playersface = null;//プレイヤーの顔文字
     private string[] players_name = { "P1", "P2", "P3", "P4" };//各プレイヤーの名前
+    private Color[] Players_color = { Color.red, Color.green, Color.blue, Color.yellow };//プレイヤーの色
+
+    private PlayerData[] playerdata = null;
 
 
     private bool GamePlay_flag = false;//プレイスタートボタンを表示(true)非表示(false)
@@ -79,30 +84,39 @@ public class TitleManager : MonoBehaviour{
             case SELECTMODE.STAGESELECT:
                 if (ControllerLock == true)
                 {
-                    if (Stageselect_Gizmo.GetComponent<Gizmo>().Flickpage(Flickpage) == false)
-                    {
-                        ControllerLock = false;
+                    //if (Stageselect_Gizmo.GetComponent<Gizmo>().Flickpage(Flickpage) == false)
+                    //{
+                    //    ControllerLock = false;
 
-                        mode = Nextmode;
-                    }
+                    //    mode = Nextmode;
+                    //}
+
+                    mode = SELECTMODE.MAX;
+                    ControllerLock = false;
                 }
 
+             
                 break;
             case SELECTMODE.CHARACTERSELECT:
 
                 break;
             case SELECTMODE.MAX:
 
-                playersface = new Sprite[playerNum];
+                //playersface = new Sprite[playerNum];
 
-                for (int i = 0; i < playerNum; i++)
-                {
-                    playersface[i] = Sprite.Create((Texture2D)Resources.Load("textures/use/Player" + (i + 1)), new Rect(0, 0, 584, 211), new Vector2(0.5f, 0.5f));
-                }
-                //playedata = new PlayData(Stage_name, players_name, playersface);
+                //for (int i = 0; i < playerNum; i++)
+                //{
+                //    playersface[i] = Sprite.Create((Texture2D)Resources.Load("textures/use/Player" + (i + 1)), new Rect(0, 0, 584, 211), new Vector2(0.5f, 0.5f));
+                //}
+                ////playedata = new PlayData(Stage_name, players_name, playersface);
+
+                //SceneManagerController.ChangeScene();
+
+                CreatePlayer_data();
+
+                playdata = new PlayData(Stage_name, playerdata);
 
                 SceneManagerController.ChangeScene();
-
                 break;
         }
         
@@ -149,6 +163,16 @@ public class TitleManager : MonoBehaviour{
         Nextmode = nextPageName;
     }
 
+
+    public void CreatePlayer_data()
+    {
+        playerdata = new PlayerData[playerNum];
+
+        for(int i = 0; i < playerNum; i++)
+        {
+            playerdata[i] = new PlayerData(players_name[i], Players_color[i], playersface[i], new Vector3(10 * (i + 1), 50, 0), XboxController.First + i, 100);
+        }
+    }
    
     public SELECTMODE Mode_Data
     {

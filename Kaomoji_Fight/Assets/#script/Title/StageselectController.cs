@@ -63,6 +63,10 @@ public class StageselectController : CursorController {
             //クリック音
             audiosource.PlayOneShot(Click_clip);
 
+            if(Target[target_number].name == "Random")
+            {
+                Target[target_number].name = Target[Random.Range(0, 6)].name;
+            }
             TManager_cs.Stage_name_Data = Target[target_number].name;
 
             TManager_cs.ChangePage(TitleManager.SELECTMODE.CHARACTERSELECT);
