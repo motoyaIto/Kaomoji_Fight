@@ -14,7 +14,8 @@ public class Player : RaycastController {
     private Vector3 velocity;
 
     private float moveSpeed = 10f;          // 移動速度
-    private float Invincible_time = .5f;    // 無敵時間
+    float Avoidance_time = .0f;             // 回避時間
+    private float Invincible_time = 8.0f;   // クールタイム
 
     private float scroll = 10f;             // 幅
     private float maxflap = 800f;           // ジャンプの高さ（最大）
@@ -113,10 +114,8 @@ public class Player : RaycastController {
         }
 
         // 回避をしたい
-        if (XCI.GetAxis(XboxAxis.RightTrigger, ControlerNamber) < 0.0f)
+        if (XCI.GetAxis(XboxAxis.RightTrigger, ControlerNamber) < 0.0f && !Avoidance)
         {
-            // 回避時間
-            float Avoidance_time = .0f;
             // アニメーションに差し替え予定？
             if (!Avoidance)
             {
@@ -130,23 +129,18 @@ public class Player : RaycastController {
                 }
                 Avoidance = true;
             }
-
-            // 回避中であれば
-            if (Avoidance_time <= Invincible_time)
-            {
-                // 攻撃を受け付けない                
-                Avoidance_time += .1f;
-            }
-            else
-            {
-                // 攻撃を受け付けるようにする
-                Avoidance = false;
-            }
-
         }
-        else if (XCI.GetAxis(XboxAxis.RightTrigger) == .0f)
+
+        // 回避のクールタイム計測
+        if (Avoidance && Avoidance_time <= Invincible_time)
         {
+            Avoidance_time += .1f;
+        }
+        else
+        {
+            // 回避ができるようにする
             Avoidance = false;
+            Avoidance_time = .0f;
         }
 
         //武器を持っている
@@ -184,7 +178,6 @@ public class Player : RaycastController {
             if (XCI.GetButton(XboxButton.X, ControlerNamber))
             {
                 ChangeWeaponState(false);
-                //TimersManager.SetTimer(this, 2f, delegate { ChangeWeaponState(false); });
                 Destroy(weapon);
             }
         }
@@ -349,21 +342,32 @@ public class Player : RaycastController {
         {
             foreach (Transform child in this.transform)
             {
-                if (direction >= 1 && child.name == "TopRight")//右
+                if (vec2.x > .0f && vec2.y > .0f && child.name == "TopRight")//右上
                 {
                     weapon.transform.position = child.transform.position;
                 }
 
-                else if (direction <= -1 && child.name == "TopLeft")//左
+                else if (vec2.x < .0f && vec2.y > .0f && child.name == "TopLeft")//左下
                 {
                     weapon.transform.position = child.transform.position;
                 }
-                else if (child.name == "Top")//移動していない
+                else if (vec2.x == .0f && vec2.y == .0f && child.name == "Top")//移動していない
+                {
+                    weapon.transform.position = child.transform.position;
+                }
+                else if(vec2.x > .0f && vec2.y < .0f && child.name == "DownRight")//右下
+                {
+                    weapon.transform.position = child.transform.position;
+                }
+                else if (vec2.x < .0f && vec2.y < .0f && child.name == "DownLeft")//左下
+                {
+                    weapon.transform.position = child.transform.position;
+                }
+                else if (vec2.x == .0f && vec2.y < .0f && child.name == "Down")//下
                 {
                     weapon.transform.position = child.transform.position;
                 }
             }
-
         }
     }
 
