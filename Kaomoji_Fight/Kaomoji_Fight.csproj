@@ -262,6 +262,7 @@
     <Compile Include="Assets\#script\Data\ResultData.cs" />
     <Compile Include="Assets\#script\DummySceneStart.cs" />
     <Compile Include="Assets\#script\Manager\PlaySceneManager.cs" />
+    <Compile Include="Assets\#script\Manager\ResultSceneManager.cs" />
     <Compile Include="Assets\#script\Manager\SceneManagerController.cs" />
     <Compile Include="Assets\#script\Manager\TitleManager.cs" />
     <Compile Include="Assets\#script\Player\Jump\Controller2D.cs" />
@@ -275,6 +276,7 @@
     <Compile Include="Assets\#script\Select\SelectPNControll.cs" />
     <Compile Include="Assets\#script\Select\SelectStage.cs" />
     <Compile Include="Assets\#script\Sound\PlayBGM.cs" />
+    <Compile Include="Assets\#script\Sound\ResultBGM.cs" />
     <Compile Include="Assets\#script\Stage\BlockController.cs" />
     <Compile Include="Assets\#script\Stage\CreateStage.cs" />
     <Compile Include="Assets\#script\Test\TestShader.cs" />
@@ -351,6 +353,7 @@
     <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\NotoSans - License.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald Bold - OFL.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\characters.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
@@ -385,7 +388,7 @@
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\ーCredit\Assets.txt" />
-    <None Include="Assets\ーCredit\ButtleBGMクレジット.txt" />
+    <None Include="Assets\ーCredit\BGM.txt" />
     <None Include="Assets\ーCredit\SE.txt" />
     <None Include="Assets\ーCredit\参考サイト.txt" />
   </ItemGroup>

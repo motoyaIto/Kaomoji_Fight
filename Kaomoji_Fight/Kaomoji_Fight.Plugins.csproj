@@ -310,6 +310,7 @@
     <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\NotoSans - License.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald Bold - OFL.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\characters.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
@@ -344,7 +345,7 @@
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\ーCredit\Assets.txt" />
-    <None Include="Assets\ーCredit\ButtleBGMクレジット.txt" />
+    <None Include="Assets\ーCredit\BGM.txt" />
     <None Include="Assets\ーCredit\SE.txt" />
     <None Include="Assets\ーCredit\参考サイト.txt" />
   </ItemGroup>
