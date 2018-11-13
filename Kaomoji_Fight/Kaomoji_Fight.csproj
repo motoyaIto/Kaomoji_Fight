@@ -252,6 +252,45 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <Compile Include="Assets\#scene\Test\MoveScript1.cs" />
+    <Compile Include="Assets\#scene\Test\SliderTest.cs" />
+    <Compile Include="Assets\#script\ーOther\LayerName.cs" />
+    <Compile Include="Assets\#script\ーOther\SingletonMonoBehaviour.cs" />
+    <Compile Include="Assets\#script\Camera\MultipleTargetCamera.cs" />
+    <Compile Include="Assets\#script\Data\PlayData.cs" />
+    <Compile Include="Assets\#script\Data\PlayerData.cs" />
+    <Compile Include="Assets\#script\Data\ResultData.cs" />
+    <Compile Include="Assets\#script\DummySceneStart.cs" />
+    <Compile Include="Assets\#script\Manager\PlaySceneManager.cs" />
+    <Compile Include="Assets\#script\Manager\ResultSceneManager.cs" />
+    <Compile Include="Assets\#script\Manager\SceneManagerController.cs" />
+    <Compile Include="Assets\#script\Manager\TitleManager.cs" />
+    <Compile Include="Assets\#script\Player\Jump\Controller2D.cs" />
+    <Compile Include="Assets\#script\Player\Jump\PlatformController.cs" />
+    <Compile Include="Assets\#script\Player\Jump\RaycastController.cs" />
+    <Compile Include="Assets\#script\Player\Status\Contoroller2d.cs" />
+    <Compile Include="Assets\#script\Player\Status\Player.cs" />
+    <Compile Include="Assets\#script\Player\Weapon\WeaponBlocController.cs" />
+    <Compile Include="Assets\#script\Select\CharSelectControll.cs" />
+    <Compile Include="Assets\#script\Select\SelectChar.cs" />
+    <Compile Include="Assets\#script\Select\SelectPNControll.cs" />
+    <Compile Include="Assets\#script\Select\SelectStage.cs" />
+    <Compile Include="Assets\#script\Sound\PlayBGM.cs" />
+    <Compile Include="Assets\#script\Sound\ResultBGM.cs" />
+    <Compile Include="Assets\#script\Stage\BlockController.cs" />
+    <Compile Include="Assets\#script\Stage\CreateStage.cs" />
+    <Compile Include="Assets\#script\Test\TestShader.cs" />
+    <Compile Include="Assets\#script\Timer\DownTimer.cs" />
+    <Compile Include="Assets\#script\Timer\PlayTimer.cs" />
+    <Compile Include="Assets\#script\Timer\SceneTimer.cs" />
+    <Compile Include="Assets\#script\Title\CursorController.cs" />
+    <Compile Include="Assets\#script\Title\CursorHue.cs" />
+    <Compile Include="Assets\#script\Title\Gizmo.cs" />
+    <Compile Include="Assets\#script\Title\PlayernumController.cs" />
+    <Compile Include="Assets\#script\Title\StageselectController.cs" />
+    <Compile Include="Assets\#script\Title\Title.cs" />
+=======
     <Compile Include="Assets\%23scene\Test\MoveScript1.cs" />
     <Compile Include="Assets\%23scene\Test\SliderTest.cs" />
     <Compile Include="Assets\%23script\%E3%83%BCOther\LayerName.cs" />
@@ -287,6 +326,7 @@
     <Compile Include="Assets\%23script\Title\Cursor\StageselectController.cs" />
     <Compile Include="Assets\%23script\Title\Gizmo.cs" />
     <Compile Include="Assets\%23script\Title\Title.cs" />
+>>>>>>> master
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBlendListCamera.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBrain.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineClearShot.cs" />
@@ -346,11 +386,20 @@
   <ItemGroup>
     <None Include="Assets\Cinemachine\ReleaseNotes.txt" />
     <None Include="Assets\Plugins\KY_effects\MagicEffectsPackFree\ReadMe.txt" />
+<<<<<<< HEAD
+    <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\NotoSans - License.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald Bold - OFL.txt" />
+    <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\characters.txt" />
+=======
     <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\Anton OFL.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\Bangers - OFL.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\NotoSans - License.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\Oswald Bold - OFL.txt" />
+>>>>>>> master
     <None Include="Assets\Plugins\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
@@ -384,10 +433,17 @@
     <None Include="Assets\Shader\Test\VertexShader.shader" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+<<<<<<< HEAD
+    <None Include="Assets\ーCredit\Assets.txt" />
+    <None Include="Assets\ーCredit\BGM.txt" />
+    <None Include="Assets\ーCredit\SE.txt" />
+    <None Include="Assets\ーCredit\参考サイト.txt" />
+=======
     <None Include="Assets\%E3%83%BCCredit\Assets.txt" />
     <None Include="Assets\%E3%83%BCCredit\ButtleBGM%E3%82%AF%E3%83%AC%E3%82%B8%E3%83%83%E3%83%88.txt" />
     <None Include="Assets\%E3%83%BCCredit\SE.txt" />
     <None Include="Assets\%E3%83%BCCredit\%E5%8F%82%E8%80%83%E3%82%B5%E3%82%A4%E3%83%88.txt" />
+>>>>>>> master
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
