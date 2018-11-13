@@ -229,6 +229,12 @@
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>Library\UnityAssemblies\UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
+    <Reference Include="I18N.CJK">
+      <HintPath>Assets\I18N.CJK.dll</HintPath>
+    </Reference>
+    <Reference Include="I18N">
+      <HintPath>Assets\I18N.dll</HintPath>
+    </Reference>
     <Reference Include="XInputDotNetPure">
       <HintPath>Assets\Plugins\XInputDotNetPure.dll</HintPath>
     </Reference>
@@ -237,12 +243,6 @@
     </Reference>
     <Reference Include="TextMeshPro-2017.3-Runtime">
       <HintPath>Assets\Plugins\TextMesh Pro\Plugins\Editor DLL\TextMeshPro-2017.3-Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="I18N">
-      <HintPath>Assets\I18N.dll</HintPath>
-    </Reference>
-    <Reference Include="I18N.CJK">
-      <HintPath>Assets\I18N.CJK.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -320,11 +320,11 @@
     <Compile Include="Assets\%23script\Timer\DownTimer.cs" />
     <Compile Include="Assets\%23script\Timer\PlayTimer.cs" />
     <Compile Include="Assets\%23script\Timer\SceneTimer.cs" />
-    <Compile Include="Assets\%23script\Title\CursorController.cs" />
-    <Compile Include="Assets\%23script\Title\CursorHue.cs" />
+    <Compile Include="Assets\%23script\Title\Cursor\CursorController.cs" />
+    <Compile Include="Assets\%23script\Title\Cursor\CursorHue.cs" />
+    <Compile Include="Assets\%23script\Title\Cursor\PlayernumController.cs" />
+    <Compile Include="Assets\%23script\Title\Cursor\StageselectController.cs" />
     <Compile Include="Assets\%23script\Title\Gizmo.cs" />
-    <Compile Include="Assets\%23script\Title\PlayernumController.cs" />
-    <Compile Include="Assets\%23script\Title\StageselectController.cs" />
     <Compile Include="Assets\%23script\Title\Title.cs" />
 >>>>>>> master
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBlendListCamera.cs" />
