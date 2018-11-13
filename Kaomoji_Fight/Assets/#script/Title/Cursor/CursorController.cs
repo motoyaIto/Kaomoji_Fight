@@ -16,26 +16,36 @@ abstract public class CursorController : MonoBehaviour
     protected TitleManager TManager_cs;   //タイトルマネージャのCS
 
     [SerializeField]
-    protected GameObject[] Target;        //ターゲット
+    private float Difference_x = 0.0f;   //X座標の差
     [SerializeField]
-    protected int Numberbefore_Linebreak = 4;//改行直前のステージ番号
+    private float Difference_y = 0.0f;   //y座標の差
+     
     [SerializeField]
-    private int NumberColumns = 2;//列数
-    private int NowNumberColumn = 0;//今いる行番号
+    private int NumberLine = 4;     //行数
+    private int NowNumberLine = 0;  //今いる行
+    [SerializeField]
+    private int NumberColumns = 2;  //列数
+    private int NowNumberColumn = 0;//今いる列号
 
+    [SerializeField]
+    private GameObject FirstTarget;         //最初にカーソルに入れるオブジェクト
+    private Vector2 DifferenceCursor = Vector2.zero;//カーソルとの差
 
-    protected bool LeftStickflag = false;//スティックが入力されていない(false)された(true)
+    protected bool LeftStickflag = false;   //スティックが入力されていない(false)された(true)
 
-    protected Vector3[] target_pos;   //ターゲットのy座標
-    protected int target_number = 0;  //ターゲットの番号
-	protected virtual void Start () {
+    protected virtual void Start ()
+    {
         Move_clip = (AudioClip)Resources.Load("Sound/SE/Select/Decision/cursor2");  //移動音
         Click_clip = (AudioClip)Resources.Load("Sound/SE/Select/Decision/decision2");  //クリック音
 
         audiosource = this.GetComponent<AudioSource>();
-        target_pos = new Vector3[Target.Length];
 
         TManager_cs = TManager.GetComponent<TitleManager>();
+
+        DifferenceCursor = this.transform.GetChild(0).transform.GetComponent<RectTransform>().sizeDelta;
+       
+        //初期座標を入力
+        this.transform.position = FirstTarget.transform.position + new Vector3(Difference_x * NowNumberColumn - DifferenceCursor.x, Difference_y * NowNumberLine);
     }
 
 
@@ -50,13 +60,12 @@ abstract public class CursorController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow) || XCI.GetDPadDown(XboxDPad.Up, XboxController.First) || (input.y > 0.9f && LeftStickflag == false))
         {
-            //次のターゲット番号に変更
-            target_number--;
-
-            //ターゲットが配列をオーバーしたら
-            if (target_number < NowNumberColumn * Numberbefore_Linebreak)
+            //行数を一つ戻す
+            NowNumberLine--;
+            //カーソルが行数を超えようとしたら
+            if (NowNumberLine < 0)
             {
-                target_number = Numberbefore_Linebreak * (NowNumberColumn + 1) - 1;
+                NowNumberLine = NumberLine - 1;
             }
 
             Move();
@@ -77,13 +86,13 @@ abstract public class CursorController : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.DownArrow) || XCI.GetDPadDown(XboxDPad.Down, XboxController.First) || (input.y < -0.9f && LeftStickflag == false))
         {
-            //次のターゲット番号に変更
-            target_number++;
+            //行数を一つ進める
+            NowNumberLine++;
 
-            //ターゲットが配列をオーバーしたら
-            if (target_number >= Numberbefore_Linebreak * (NowNumberColumn + 1))
+            //カーソルが行数を超えようとしたら
+            if (NowNumberLine > NumberLine - 1)
             {
-                target_number = target_number - Numberbefore_Linebreak;
+                NowNumberLine = 0;
             }
 
             Move();
@@ -104,15 +113,15 @@ abstract public class CursorController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow) || XCI.GetDPadDown(XboxDPad.Right, XboxController.First) || (input.x > 0.9f && LeftStickflag == false))
         {
             //次のターゲット番号に変更
-            target_number += Numberbefore_Linebreak;
+            //target_number += Numberbefore_Linebreak;
 
             //ターゲットが配列をオーバーしたら
-            if (target_number >= target_pos.Length)
-            {
-                target_number = target_number - Numberbefore_Linebreak * NumberColumns;
-            }
+            //if (target_number >= target_pos.Length)
+            //{
+            //    target_number = target_number - Numberbefore_Linebreak * NumberColumns;
+            //}
 
-            Move();
+            //Move();
 
             return true;
         }
@@ -129,15 +138,15 @@ abstract public class CursorController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftArrow) || XCI.GetDPadDown(XboxDPad.Left, XboxController.First) || (input.x < -0.9f && LeftStickflag == false))
         {
             //次のターゲット番号に変更
-            target_number -= Numberbefore_Linebreak;
+            //target_number -= Numberbefore_Linebreak;
 
             //ターゲットが配列をオーバーしたら
-            if (target_number < 0)
-            {
-                target_number = Numberbefore_Linebreak * NumberColumns + target_number;
-            }
+            //if (target_number < 0)
+            //{
+            //    target_number = Numberbefore_Linebreak * NumberColumns + target_number;
+            //}
 
-            Move();
+            //Move();
 
             return true;
         }
@@ -154,10 +163,8 @@ abstract public class CursorController : MonoBehaviour
         audiosource.PlayOneShot(Move_clip);
 
         //ターゲットのy座標に変更
-        this.transform.position = target_pos[target_number];
-
-        NowNumberColumn = target_number / Numberbefore_Linebreak;
-
+        this.transform.position = FirstTarget.transform.position + new Vector3(Difference_x * NowNumberColumn - DifferenceCursor.x, (Difference_y - DifferenceCursor.y * NowNumberLine)  * NowNumberLine);
+        Debug.Log(FirstTarget.transform.localPosition) ;
         LeftStickflag = true;
     }
 }

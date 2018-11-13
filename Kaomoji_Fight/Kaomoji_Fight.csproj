@@ -229,12 +229,15 @@
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>Library\UnityAssemblies\UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
+<<<<<<< HEAD
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Common">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
     </Reference>
+=======
+>>>>>>> master
     <Reference Include="I18N.CJK">
       <HintPath>Assets\I18N.CJK.dll</HintPath>
     </Reference>
@@ -295,6 +298,46 @@
     <Compile Include="Assets\#script\Title\PlayernumController.cs" />
     <Compile Include="Assets\#script\Title\StageselectController.cs" />
     <Compile Include="Assets\#script\Title\Title.cs" />
+<<<<<<< HEAD
+=======
+=======
+    <Compile Include="Assets\%23scene\Test\MoveScript1.cs" />
+    <Compile Include="Assets\%23scene\Test\SliderTest.cs" />
+    <Compile Include="Assets\%23script\%E3%83%BCOther\LayerName.cs" />
+    <Compile Include="Assets\%23script\%E3%83%BCOther\SingletonMonoBehaviour.cs" />
+    <Compile Include="Assets\%23script\Camera\MultipleTargetCamera.cs" />
+    <Compile Include="Assets\%23script\Data\PlayData.cs" />
+    <Compile Include="Assets\%23script\Data\PlayerData.cs" />
+    <Compile Include="Assets\%23script\Data\ResultData.cs" />
+    <Compile Include="Assets\%23script\DummySceneStart.cs" />
+    <Compile Include="Assets\%23script\Manager\PlaySceneManager.cs" />
+    <Compile Include="Assets\%23script\Manager\SceneManagerController.cs" />
+    <Compile Include="Assets\%23script\Manager\TitleManager.cs" />
+    <Compile Include="Assets\%23script\Player\Jump\Controller2D.cs" />
+    <Compile Include="Assets\%23script\Player\Jump\PlatformController.cs" />
+    <Compile Include="Assets\%23script\Player\Jump\RaycastController.cs" />
+    <Compile Include="Assets\%23script\Player\Status\Contoroller2d.cs" />
+    <Compile Include="Assets\%23script\Player\Status\Player.cs" />
+    <Compile Include="Assets\%23script\Player\Weapon\WeaponBlocController.cs" />
+    <Compile Include="Assets\%23script\Select\CharSelectControll.cs" />
+    <Compile Include="Assets\%23script\Select\SelectChar.cs" />
+    <Compile Include="Assets\%23script\Select\SelectPNControll.cs" />
+    <Compile Include="Assets\%23script\Select\SelectStage.cs" />
+    <Compile Include="Assets\%23script\Sound\PlayBGM.cs" />
+    <Compile Include="Assets\%23script\Stage\BlockController.cs" />
+    <Compile Include="Assets\%23script\Stage\CreateStage.cs" />
+    <Compile Include="Assets\%23script\Test\TestShader.cs" />
+    <Compile Include="Assets\%23script\Timer\DownTimer.cs" />
+    <Compile Include="Assets\%23script\Timer\PlayTimer.cs" />
+    <Compile Include="Assets\%23script\Timer\SceneTimer.cs" />
+    <Compile Include="Assets\%23script\Title\Cursor\CursorController.cs" />
+    <Compile Include="Assets\%23script\Title\Cursor\CursorHue.cs" />
+    <Compile Include="Assets\%23script\Title\Cursor\PlayernumController.cs" />
+    <Compile Include="Assets\%23script\Title\Cursor\StageselectController.cs" />
+    <Compile Include="Assets\%23script\Title\Gizmo.cs" />
+    <Compile Include="Assets\%23script\Title\Title.cs" />
+>>>>>>> master
+>>>>>>> master
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBlendListCamera.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBrain.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineClearShot.cs" />

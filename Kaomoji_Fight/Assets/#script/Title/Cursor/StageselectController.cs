@@ -9,20 +9,20 @@ public class StageselectController : CursorController {
     {
         base.Start();
 
-        //初期座標を入力
-        for (int i = 0; i < Target.Length; i++)
-        {
-            if (i < Numberbefore_Linebreak)
-            {
-                target_pos[i] = new Vector3(Target[i].transform.position.x - (Target[i].transform.position.x - this.transform.position.x), Target[i].transform.position.y, this.transform.position.z);
-            }
-            else
-            {
-                target_pos[i] = new Vector3(2.7f, Target[i].transform.position.y, this.transform.position.z);
-            }
-        }
+        ////初期座標を入力
+        //for (int i = 0; i < Target.Length; i++)
+        //{
+        //    if (i < Numberbefore_Linebreak)
+        //    {
+        //        target_pos[i] = new Vector3(Target[i].transform.position.x - (Target[i].transform.position.x - this.transform.position.x), Target[i].transform.position.y, this.transform.position.z);
+        //    }
+        //    else
+        //    {
+        //        target_pos[i] = new Vector3(2.7f, Target[i].transform.position.y, this.transform.position.z);
+        //    }
+        //}
 
-        this.transform.position = target_pos[target_number];
+        //this.transform.position = target_pos[target_number];
     }
     protected override void Update()
     {
@@ -61,15 +61,15 @@ public class StageselectController : CursorController {
         if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, XboxController.First))
         {
             //クリック音
-            audiosource.PlayOneShot(Click_clip);
+            //audiosource.PlayOneShot(Click_clip);
 
-            if(Target[target_number].name == "Random")
-            {
-                Target[target_number].name = Target[Random.Range(0, 6)].name;
-            }
-            TManager_cs.Stage_name_Data = Target[target_number].name;
+            //if(Target[target_number].name == "Random")
+            //{
+            //    Target[target_number].name = Target[Random.Range(0, 6)].name;
+            //}
+            //TManager_cs.Stage_name_Data = Target[target_number].name;
 
-            TManager_cs.ChangePage(TitleManager.SELECTMODE.CHARACTERSELECT);
+            //TManager_cs.ChangePage(TitleManager.SELECTMODE.CHARACTERSELECT);
         }
     }
 }

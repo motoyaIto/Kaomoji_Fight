@@ -10,13 +10,13 @@ public class PlayernumController : CursorController {
     {
         base.Start();
 
-        //初期座標を入力
-        for (int i = 0; i < Target.Length; i++)
-        {
-            target_pos[i] = new Vector3(this.transform.position.x, Target[i].transform.position.y, this.transform.position.z);
-        }
+        ////初期座標を入力
+        //for (int i = 0; i < Target.Length; i++)
+        //{
+        //    target_pos[i] = new Vector3(this.transform.position.x, Target[i].transform.position.y, this.transform.position.z);
+        //}
 
-        this.transform.position = target_pos[target_number];
+        //this.transform.position = target_pos[target_number];
     }
 
     protected override void Update()
@@ -53,7 +53,7 @@ public class PlayernumController : CursorController {
             //クリック音
             audiosource.PlayOneShot(Click_clip);
 
-            TManager_cs.PlayerNum_Data = target_number + 1;
+            //TManager_cs.PlayerNum_Data = target_number + 1;
 
             TManager_cs.ChangePage(TitleManager.SELECTMODE.STAGESELECT);
         }
