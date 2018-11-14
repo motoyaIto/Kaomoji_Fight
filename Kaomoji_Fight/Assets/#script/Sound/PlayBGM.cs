@@ -115,7 +115,13 @@ public class PlayBGM : MonoBehaviour {
         // 制限時間になったらBGMを止める
         if (!timer.DownTimer_State_data)
         {
-            audioPlay.Stop();
+            BgmStop();
         }
 	}
+
+
+    public void BgmStop()
+    {
+        audioPlay.Stop();
+    }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
 
-[RequireComponent(typeof(Contoroller2d))]
+//[RequireComponent(typeof(Contoroller2d))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : RaycastController {
 
@@ -23,6 +23,8 @@ public class Player : RaycastController {
 
     private float direction = 0;            // 方向
     private float thrust = 1000f;           // 投擲物の推進力
+
+    private float give_damage = .0f;        // 他のプレイヤーにどれだけダメージを与えたか
 
     private GameObject weapon;
 
@@ -367,11 +369,15 @@ public class Player : RaycastController {
         }
     }
 
-    public GameObject ThisPlayer
+    public float DamageCount
     {
+        set
+        {
+            give_damage += value;
+        }
         get
         {
-            return this.transform.gameObject;
+            return give_damage;
         }
     }
 }
