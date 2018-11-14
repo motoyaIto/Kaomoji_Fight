@@ -40,7 +40,7 @@ public class TitleManager : MonoBehaviour{
     private int playerNum;              //プレイヤーの合計人数
     private string Stage_name = null;   //選択したステージ
     [SerializeField]
-    private Sprite[] playersface = null;//プレイヤーの顔文字
+    private List<Sprite> playersface = new List<Sprite>();//プレイヤーの顔文字
     private string[] players_name = { "P1", "P2", "P3", "P4" };//各プレイヤーの名前
     private Color[] Players_color = { Color.red, Color.green, Color.blue, Color.yellow };//プレイヤーの色
 
@@ -51,7 +51,7 @@ public class TitleManager : MonoBehaviour{
 
     // Use this for initialization
     void Start() {
-
+        playersface.Clear();
     }
 	// Update is called once per frame
 	void Update () {
@@ -68,7 +68,9 @@ public class TitleManager : MonoBehaviour{
                         mode = Nextmode;
                     }
                 }
-               
+
+                Debug.Log(playersface.Count);
+
                 break;
             case SELECTMODE.PLAYERNUM:
                 if (ControllerLock == true)
@@ -110,15 +112,29 @@ public class TitleManager : MonoBehaviour{
                 {
                     cursors.transform.GetChild(i).gameObject.SetActive(true);
                 }
-                //mode = SELECTMODE.MAX;
+
+               
+                if (playerNum == playersface.Count)
+                {
+                    Debug.Log("ok");
+                        ControllerLock = false;
+
+                        mode = Nextmode;
+                    
+                }
 
                 break;
             case SELECTMODE.MAX:
-                CreatePlayer_data();
 
-                playdata = new PlayData(Stage_name, playerdata);
+                for(int i = 0; i < playersface.Count; i++)
+                {
+                    Debug.Log(playersface[i].name);
+                }
+                //CreatePlayer_data();
 
-                SceneManagerController.ChangeScene();
+                //playdata = new PlayData(Stage_name, playerdata);
+
+                //SceneManagerController.ChangeScene();
                 break;
         }
         
@@ -206,5 +222,9 @@ public class TitleManager : MonoBehaviour{
         {
             Stage_name = value;
         }
+    }
+    public void SetPlayerFace(int number, Sprite face)
+    {
+        playersface.Insert(number, face);
     }
 }
