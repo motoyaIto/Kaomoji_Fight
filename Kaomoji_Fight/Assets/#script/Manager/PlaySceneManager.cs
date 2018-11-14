@@ -112,7 +112,10 @@ public class PlaySceneManager : MonoBehaviour
 
         death_count = PlayData.Instance.playerNum;
 
-        RectTransform HPgage_size = P1.HPgage_obj.GetComponent<RectTransform>();
+        GameObject HPgage = (GameObject)Resources.Load("prefab/UI/HPgage");
+        //HPゲージを生成
+        HPgage = Instantiate(HPgage, new Vector3(0, 0, 0), Quaternion.identity, UICanvases.transform);
+        RectTransform HPgage_size = HPgage.transform.GetComponent<RectTransform>();
 
         //プレイヤーとHPを生成
         for (int i = 0; i < PlayData.Instance.playerNum; i++)
