@@ -31,7 +31,8 @@ public class Player : RaycastController {
     private bool HaveWeapon = false;        //武器を持っている(true)いない(false)
     private bool Avoidance = false;         // 回避フラグ
     private bool jump = false;              // ジャンプ中か？
-    private float FlameCount = .0f;
+
+    private bool isQuitting = false;        // エディタ実行終了時か？
 
     private string p_name;                  // プレイヤーネーム
 
@@ -294,8 +295,14 @@ public class Player : RaycastController {
         }
     }
 
+    private void OnApplicationQuit()
+    {
+        isQuitting = true;
+    }
+
     private void OnDisable()
     {
+        if (isQuitting) return;
         PSM.death_player[CNConvert(ControlerNamber)] = false;
     }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ResultData
 {
     PlayerData[] PlaersData;    //プレイヤーデータ
-
+    private float time;          //時間
 
     public static ResultData Instance
     {
@@ -17,6 +17,20 @@ public class ResultData
         Instance = this;
 
         PlaersData = BattlePlayers;
+
+        
+    }
+
+    public float PlayingTime
+    {
+        set
+        {
+            time = value;
+        }
+        get
+        {
+            return time;
+        }
     }
 
 }
