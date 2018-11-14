@@ -43,6 +43,7 @@ public class DownTimer : MonoBehaviour {
         if (remainingTime <= 0)
         {
             DownTimer_State = false;
+            ResultData.Instance.PlayingTime = nowTime;
             //PSM.Result();
         }
 
