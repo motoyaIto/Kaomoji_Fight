@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
@@ -9,67 +10,47 @@ public class StageselectController : CursorController {
     {
         base.Start();
 
-        ////初期座標を入力
-        //for (int i = 0; i < Target.Length; i++)
-        //{
-        //    if (i < Numberbefore_Linebreak)
-        //    {
-        //        target_pos[i] = new Vector3(Target[i].transform.position.x - (Target[i].transform.position.x - this.transform.position.x), Target[i].transform.position.y, this.transform.position.z);
-        //    }
-        //    else
-        //    {
-        //        target_pos[i] = new Vector3(2.7f, Target[i].transform.position.y, this.transform.position.z);
-        //    }
-        //}
+        DifferenceCursor = this.transform.GetChild(0).transform.GetComponent<RectTransform>().sizeDelta;
 
-        //this.transform.position = target_pos[target_number];
+        //初期座標を入力
+        this.transform.position = FirstTarget.transform.position + new Vector3(Difference_x * NowNumberColumn - DifferenceCursor.x, -(Difference_y * NowNumberLine));
     }
-    protected override void Update()
+    protected override bool SelectMyMode()
     {
         if (TManager_cs.Mode_Data != TitleManager.SELECTMODE.STAGESELECT || TManager_cs.ControllerLock_Data == true)
         {
-            return;
+            return false;
         }
-        // Controllerの左スティックのAxisを取得            
-        Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, XboxController.First), XCI.GetAxis(XboxAxis.LeftStickY, XboxController.First));
 
-        //LeftStickの入力がない時
-        if (LeftStickflag == false)
+        return true;
+    }
+
+    protected override void PushButton()
+    {
+        //下を押したときの処理
+        if (Push_DownButton() == true) { return; }
+
+        //上を押したときの処理
+        if (Push_UpButton() == true) { return; }
+
+        //右を押したときの処理
+        if (Push_RightBiutton() == true) { return; }
+
+        //左を押したときの処理
+        if (Push_LeftBiutton() == true) { return; }
+    }
+
+    protected override void Decide()
+    {
+        int number = ((NumberLine * NowNumberColumn)) + (NowNumberLine + 1);
+
+        if (number == 8)
         {
-            //下を押したときの処理
-            if (Push_DownButton(input)) { return; }
-
-            //上を押したときの処理
-            if(Push_UpButton(input)){ return; }
-
-            //右を押したときの処理
-            if(Push_RightBiutton(input)) { return; }
-
-            //左を押したときの処理
-            if (Push_LeftBiutton(input)) { return; }
-        }
-        else
-        {
-            //スッティックが中心近くまで戻っていたら
-            if ((input.y < 0.1f && input.y > -0.1f) && (input.x < 0.1f && input.x > -0.1f))
-            {
-                LeftStickflag = false;
-            }
+            number = UnityEngine.Random.Range(1, 7);
         }
 
-        //プレイ人数を決定
-        if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, XboxController.First))
-        {
-            //クリック音
-            //audiosource.PlayOneShot(Click_clip);
+        TManager_cs.Stage_name_Data = "stage" + number.ToString();
 
-            //if(Target[target_number].name == "Random")
-            //{
-            //    Target[target_number].name = Target[Random.Range(0, 6)].name;
-            //}
-            //TManager_cs.Stage_name_Data = Target[target_number].name;
-
-            //TManager_cs.ChangePage(TitleManager.SELECTMODE.CHARACTERSELECT);
-        }
+        TManager_cs.ChangePage(TitleManager.SELECTMODE.CHARACTERSELECT);
     }
 }
