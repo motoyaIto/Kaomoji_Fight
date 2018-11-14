@@ -1,13 +1,11 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 53aa88944038bc94faba15865fed298b
+guid: 686fae3c9a5896549a0dc8160644ad80
 folderAsset: yes
-timeCreated: 1542155510
+<<<<<<< HEAD:Kaomoji_Fight/Assets/#script/ã¼Other.meta
+timeCreated: 1542163926
 =======
-guid: 596993710fb9de94685c0803291dc99e
-folderAsset: yes
-timeCreated: 1542154894
->>>>>>> master
+timeCreated: 1542155006
+>>>>>>> 7e36be6a7995bcf603d623bc29281298998125c4:Kaomoji_Fight/Assets/#script/Title/Cursor.meta
 licenseType: Free
 DefaultImporter:
   externalObjects: {}
