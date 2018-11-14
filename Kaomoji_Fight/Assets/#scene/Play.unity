@@ -199,6 +199,11 @@ Prefab:
       propertyPath: UICanvases
       value: 
       objectReference: {fileID: 1800389749}
+    - target: {fileID: 82988840874075492, guid: cfc1354b8c804a340bf20c566c050726,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cfc1354b8c804a340bf20c566c050726, type: 2}
   m_IsPrefabParent: 0

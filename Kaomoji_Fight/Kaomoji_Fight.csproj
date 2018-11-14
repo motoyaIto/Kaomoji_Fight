@@ -227,21 +227,6 @@
     <Reference Include="I18N">
       <HintPath>Assets/I18N.dll</HintPath>
     </Reference>
-<<<<<<< HEAD
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
-    </Reference>
-=======
->>>>>>> master
-    <Reference Include="I18N.CJK">
-      <HintPath>Assets\I18N.CJK.dll</HintPath>
-    </Reference>
-    <Reference Include="I18N">
-      <HintPath>Assets\I18N.dll</HintPath>
-    </Reference>
     <Reference Include="XInputDotNetPure">
       <HintPath>Assets/Plugins/XInputDotNetPure.dll</HintPath>
     </Reference>
@@ -251,7 +236,6 @@
     <Reference Include="TextMeshPro-2017.3-Runtime">
       <HintPath>Assets/Plugins/TextMesh Pro/Plugins/Editor DLL/TextMeshPro-2017.3-Runtime.dll</HintPath>
     </Reference>
-<<<<<<< HEAD
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/Users/s162079/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/UnityEngine.Analytics.dll</HintPath>
     </Reference>
@@ -261,8 +245,6 @@
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/s162079/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
-=======
->>>>>>> master
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Kaomoji_Fight.Plugins.csproj">
@@ -280,11 +262,9 @@
     <Compile Include="Assets\#script\Data\PlayerData.cs" />
     <Compile Include="Assets\#script\Data\ResultData.cs" />
     <Compile Include="Assets\#script\DummySceneStart.cs" />
+    <Compile Include="Assets\#script\Effect\EffectControll.cs" />
     <Compile Include="Assets\#script\Manager\PlaySceneManager.cs" />
-<<<<<<< HEAD
-=======
     <Compile Include="Assets\#script\Manager\ResultSceneManager.cs" />
->>>>>>> master
     <Compile Include="Assets\#script\Manager\SceneManagerController.cs" />
     <Compile Include="Assets\#script\Manager\TitleManager.cs" />
     <Compile Include="Assets\#script\Player\Jump\Controller2D.cs" />
@@ -298,65 +278,19 @@
     <Compile Include="Assets\#script\Select\SelectPNControll.cs" />
     <Compile Include="Assets\#script\Select\SelectStage.cs" />
     <Compile Include="Assets\#script\Sound\PlayBGM.cs" />
-<<<<<<< HEAD
-=======
     <Compile Include="Assets\#script\Sound\ResultBGM.cs" />
->>>>>>> master
     <Compile Include="Assets\#script\Stage\BlockController.cs" />
     <Compile Include="Assets\#script\Stage\CreateStage.cs" />
     <Compile Include="Assets\#script\Test\TestShader.cs" />
     <Compile Include="Assets\#script\Timer\DownTimer.cs" />
     <Compile Include="Assets\#script\Timer\PlayTimer.cs" />
     <Compile Include="Assets\#script\Timer\SceneTimer.cs" />
-    <Compile Include="Assets\#script\Title\CursorController.cs" />
-    <Compile Include="Assets\#script\Title\CursorHue.cs" />
+    <Compile Include="Assets\#script\Title\Cursor\CursorController.cs" />
+    <Compile Include="Assets\#script\Title\Cursor\CursorHue.cs" />
+    <Compile Include="Assets\#script\Title\Cursor\PlayernumController.cs" />
+    <Compile Include="Assets\#script\Title\Cursor\StageselectController.cs" />
     <Compile Include="Assets\#script\Title\Gizmo.cs" />
-    <Compile Include="Assets\#script\Title\PlayernumController.cs" />
-    <Compile Include="Assets\#script\Title\StageselectController.cs" />
     <Compile Include="Assets\#script\Title\Title.cs" />
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-=======
-    <Compile Include="Assets\%23scene\Test\MoveScript1.cs" />
-    <Compile Include="Assets\%23scene\Test\SliderTest.cs" />
-    <Compile Include="Assets\%23script\%E3%83%BCOther\LayerName.cs" />
-    <Compile Include="Assets\%23script\%E3%83%BCOther\SingletonMonoBehaviour.cs" />
-    <Compile Include="Assets\%23script\Camera\MultipleTargetCamera.cs" />
-    <Compile Include="Assets\%23script\Data\PlayData.cs" />
-    <Compile Include="Assets\%23script\Data\PlayerData.cs" />
-    <Compile Include="Assets\%23script\Data\ResultData.cs" />
-    <Compile Include="Assets\%23script\DummySceneStart.cs" />
-    <Compile Include="Assets\%23script\Manager\PlaySceneManager.cs" />
-    <Compile Include="Assets\%23script\Manager\SceneManagerController.cs" />
-    <Compile Include="Assets\%23script\Manager\TitleManager.cs" />
-    <Compile Include="Assets\%23script\Player\Jump\Controller2D.cs" />
-    <Compile Include="Assets\%23script\Player\Jump\PlatformController.cs" />
-    <Compile Include="Assets\%23script\Player\Jump\RaycastController.cs" />
-    <Compile Include="Assets\%23script\Player\Status\Contoroller2d.cs" />
-    <Compile Include="Assets\%23script\Player\Status\Player.cs" />
-    <Compile Include="Assets\%23script\Player\Weapon\WeaponBlocController.cs" />
-    <Compile Include="Assets\%23script\Select\CharSelectControll.cs" />
-    <Compile Include="Assets\%23script\Select\SelectChar.cs" />
-    <Compile Include="Assets\%23script\Select\SelectPNControll.cs" />
-    <Compile Include="Assets\%23script\Select\SelectStage.cs" />
-    <Compile Include="Assets\%23script\Sound\PlayBGM.cs" />
-    <Compile Include="Assets\%23script\Stage\BlockController.cs" />
-    <Compile Include="Assets\%23script\Stage\CreateStage.cs" />
-    <Compile Include="Assets\%23script\Test\TestShader.cs" />
-    <Compile Include="Assets\%23script\Timer\DownTimer.cs" />
-    <Compile Include="Assets\%23script\Timer\PlayTimer.cs" />
-    <Compile Include="Assets\%23script\Timer\SceneTimer.cs" />
-    <Compile Include="Assets\%23script\Title\Cursor\CursorController.cs" />
-    <Compile Include="Assets\%23script\Title\Cursor\CursorHue.cs" />
-    <Compile Include="Assets\%23script\Title\Cursor\PlayernumController.cs" />
-    <Compile Include="Assets\%23script\Title\Cursor\StageselectController.cs" />
-    <Compile Include="Assets\%23script\Title\Gizmo.cs" />
-    <Compile Include="Assets\%23script\Title\Title.cs" />
->>>>>>> master
->>>>>>> master
->>>>>>> master
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBlendListCamera.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBrain.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineClearShot.cs" />
@@ -422,10 +356,7 @@
     <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\NotoSans - License.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald Bold - OFL.txt" />
-<<<<<<< HEAD
-=======
     <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\characters.txt" />
->>>>>>> master
     <None Include="Assets\Plugins\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
@@ -451,7 +382,6 @@
     <None Include="Assets\Shader\Test\VertexShader.shader" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
-<<<<<<< HEAD
     <None Include="Assets\UETools\Magic_Particle_Effects\Readme.txt" />
     <None Include="Assets\resources\Texts\stage1.txt" />
     <None Include="Assets\resources\Texts\stage2.txt" />
@@ -462,11 +392,7 @@
     <None Include="Assets\resources\Texts\stage7.txt" />
     <None Include="Assets\resources\Texts\test.txt" />
     <None Include="Assets\ーCredit\Assets.txt" />
-    <None Include="Assets\ーCredit\ButtleBGMクレジット.txt" />
-=======
-    <None Include="Assets\ーCredit\Assets.txt" />
     <None Include="Assets\ーCredit\BGM.txt" />
->>>>>>> master
     <None Include="Assets\ーCredit\SE.txt" />
     <None Include="Assets\ーCredit\参考サイト.txt" />
   </ItemGroup>
