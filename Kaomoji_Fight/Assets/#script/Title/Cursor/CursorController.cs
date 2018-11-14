@@ -16,7 +16,7 @@ abstract public class CursorController : MonoBehaviour
     protected TitleManager TManager_cs;   //タイトルマネージャのCS
 
     [SerializeField]
-    XboxController controllerNumber = XboxController.First;
+    protected XboxController controllerNumber = XboxController.First;
     [SerializeField]
     protected float Difference_x = 0.0f;   //X座標の差(StageSelect:10)
     [SerializeField]

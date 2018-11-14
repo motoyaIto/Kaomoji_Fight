@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XboxCtrlrInput;
+
 
 public class CharacterselectController : CursorController
 {
@@ -39,7 +41,28 @@ public class CharacterselectController : CursorController
 
     protected override void Decide()
     {
-        //throw new NotImplementedException();
+        int number = ((NumberLine * NowNumberColumn)) + (NowNumberLine + 1);
+
+        Sprite face = (Sprite)Resources.Load("prefab/textures/use/Player/Player" + number.ToString());
+        TManager_cs.SetPlayerFace(CNConvert(controllerNumber), face);
+    }
+
+    private int CNConvert(XboxController controlerNum)
+    {
+        switch (controlerNum)
+        {
+            case XboxController.First:
+                return 0;
+            case XboxController.Second:
+                return 1;
+            case XboxController.Third:
+                return 2;
+            case XboxController.Fourth:
+                return 3;
+            default:
+                break;
+        }
+        return 4;
     }
 
 }
