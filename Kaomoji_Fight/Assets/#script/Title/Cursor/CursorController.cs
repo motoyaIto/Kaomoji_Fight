@@ -7,9 +7,9 @@ using XboxCtrlrInput;
 abstract public class CursorController : MonoBehaviour
 {
 
-    private AudioSource audiosource;  //オーディオ
+    protected AudioSource audiosource;  //オーディオ
     private AudioClip Move_clip;        //移動音
-    private AudioClip Click_clip;     //クリック音
+    protected AudioClip Click_clip;     //クリック音
 
     [SerializeField]
     private GameObject TManager;        //タイトルマネージャ
@@ -33,8 +33,8 @@ abstract public class CursorController : MonoBehaviour
     protected GameObject FirstTarget;                 //最初にカーソルに入れるオブジェクト
     protected Vector2 DifferenceCursor = Vector2.zero;//カーソルとの差
 
-    private Vector2 LeftStickInput = Vector2.zero;  //Controllerの左スティックのAxisを取得
-    private bool LeftStickflag = false;           //スティックが入力されていない(false)された(true)
+    protected Vector2 LeftStickInput = Vector2.zero;  //Controllerの左スティックのAxisを取得
+    protected bool LeftStickflag = false;           //スティックが入力されていない(false)された(true)
 
     protected virtual void Start ()
     {
@@ -47,7 +47,7 @@ abstract public class CursorController : MonoBehaviour
     }
 
 
-    protected void Update()
+    protected virtual void Update()
     {
         if(this.SelectMyMode() == false) { return; }
 
