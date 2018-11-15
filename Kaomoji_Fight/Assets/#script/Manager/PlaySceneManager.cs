@@ -44,10 +44,16 @@ public class PlaySceneManager : MonoBehaviour
 
     private CinemachineTargetGroup TargetGroup;
 
-     private EffectControll effectControll;  //エフェクト
+    [SerializeField]
+    public GameObject dedEffect;        // 死亡エフェクト
+
+    //private EffectControll effectControll;  //エフェクト
 
     private void Awake()
     {
+
+        //エフェクトを設定
+        dedEffect = (GameObject)Resources.Load("prefab/Effect/Star_Burst_02");
         //UIオブジェクトを設定
         UICanvases = GameObject.Find("UI").transform.gameObject;
 
@@ -112,7 +118,8 @@ public class PlaySceneManager : MonoBehaviour
 
         death_count = PlayData.Instance.playerNum;
 
-        RectTransform HPgage_size = P1.HPgage_obj.GetComponent<RectTransform>();
+        GameObject HPgage = Resources.Load<GameObject>("prefab/UI/HPgage");
+        RectTransform HPgage_size = HPgage.transform.GetComponent<RectTransform>();
 
         //プレイヤーとHPを生成
         for (int i = 0; i < PlayData.Instance.playerNum; i++)
@@ -153,7 +160,6 @@ public class PlaySceneManager : MonoBehaviour
                     break;
             }
         }
-
     }
 
     void Start()
@@ -321,6 +327,7 @@ public class PlaySceneManager : MonoBehaviour
             //HPが0以下になったらplayerを殺す
             if (HP_Slider[num].value <= 0)
             {
+                var dedobj = Instantiate(dedEffect, damagePlayer.transform.position + transform.forward, Quaternion.identity) as GameObject;
                 TrueDeath[num] = true;
                 audio.volume = 0.3f;
                 audio.PlayOneShot(audioClip_ded);

@@ -941,7 +941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 257500d7f36219840a14be1a76304d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hue: 330
+  hue: 245
 --- !u!114 &385762492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2212,7 +2212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 257500d7f36219840a14be1a76304d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hue: 285
+  hue: 200
 --- !u!114 &1123890775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3808,7 +3808,7 @@ MonoBehaviour:
   Playernam_Gizmo: {fileID: 574156393}
   Stageselect_Gizmo: {fileID: 876162072}
   Characterselect_Gizmo: {fileID: 157586222}
-  Flickspd: 0.1
+  Flickspd: 0.01
   playersface:
   - {fileID: 21300000, guid: a66afbca53759544e901cbcc6db44a30, type: 3}
   - {fileID: 21300000, guid: 933d89c59ff2c0c449bd879bb1fd2a61, type: 3}
@@ -3954,7 +3954,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1229564129286754, guid: c9529d12034635d4e9fedc91c9d6163e, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c9529d12034635d4e9fedc91c9d6163e, type: 2}
@@ -4275,7 +4275,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _ColorMask: 15
-    - _Hue: 330
+    - _Hue: 245
     - _Sat: 1
     - _Stencil: 0
     - _StencilComp: 8
@@ -4383,7 +4383,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _ColorMask: 15
-    - _Hue: 285
+    - _Hue: 200
     - _Sat: 1
     - _Stencil: 0
     - _StencilComp: 8

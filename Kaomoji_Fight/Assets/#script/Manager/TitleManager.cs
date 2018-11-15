@@ -39,8 +39,10 @@ public class TitleManager : MonoBehaviour{
 
     private int playerNum;              //プレイヤーの合計人数
     private string Stage_name = null;   //選択したステージ
+
     [SerializeField]
     private Sprite[] playersface = null;//プレイヤーの顔文字
+    private bool Initializeface = false;//顔選択の時の初期化処理をした(true)していない(false)
     private string[] players_name = { "P1", "P2", "P3", "P4" };//各プレイヤーの名前
     private Color[] Players_color = { Color.red, Color.green, Color.blue, Color.yellow };//プレイヤーの色
 
@@ -51,7 +53,7 @@ public class TitleManager : MonoBehaviour{
 
     // Use this for initialization
     void Start() {
-
+        
     }
 	// Update is called once per frame
 	void Update () {
@@ -68,8 +70,8 @@ public class TitleManager : MonoBehaviour{
                         mode = Nextmode;
                     }
                 }
-               
                 break;
+
             case SELECTMODE.PLAYERNUM:
                 if (ControllerLock == true)
                 {
@@ -77,11 +79,14 @@ public class TitleManager : MonoBehaviour{
                     {
                         ControllerLock = false;
 
+                        playersface = new Sprite[playerNum];
+
                         mode = Nextmode;
                     }
                 }
 
                 break;
+
             case SELECTMODE.STAGESELECT:
                 if (ControllerLock == true)
                 {
@@ -95,24 +100,42 @@ public class TitleManager : MonoBehaviour{
 
              
                 break;
-            case SELECTMODE.CHARACTERSELECT:
-                GameObject cursors = null;
 
-                foreach(Transform Child in Characterselect_Gizmo.transform)
+            case SELECTMODE.CHARACTERSELECT:
+
+                //初期化処理
+                if (Initializeface == false)
                 {
-                    if(Child.transform.name == "Cursors")
+                    GameObject cursors = null;
+
+                    //カーソルの集まりを取得
+                    foreach (Transform Child in Characterselect_Gizmo.transform)
                     {
-                        cursors = Child.gameObject;
+                        if (Child.transform.name == "Cursors")
+                        {
+                            cursors = Child.gameObject;
+                        }
+                    }
+
+                    //プレイヤー人数分カーソルを表示する
+                    for (int i = 0; i < playerNum; i++)
+                    {
+                        cursors.transform.GetChild(i).gameObject.SetActive(true);
                     }
                 }
 
-               for(int i = 0; i < playerNum; i++)
+                for(int i = 0; i < playersface.Length; i++)
                 {
-                    cursors.transform.GetChild(i).gameObject.SetActive(true);
+                    if(playersface[i] == null)
+                    {
+                        return;
+                    }
                 }
-                //mode = SELECTMODE.MAX;
+
+                mode = SELECTMODE.MAX;
 
                 break;
+
             case SELECTMODE.MAX:
                 CreatePlayer_data();
 
@@ -206,5 +229,9 @@ public class TitleManager : MonoBehaviour{
         {
             Stage_name = value;
         }
+    }
+    public void SetPlayerFace(int number, Sprite face)
+    {
+        playersface[number] = face;
     }
 }
