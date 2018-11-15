@@ -49,11 +49,19 @@ public class ResultSceneManager : MonoBehaviour {
         if(XCI.GetButton(XboxButton.B, XboxController.First))
         {
             //SceneManager.LoadScene("Title");
-            Debug.Log("タイトルシーンに戻るよ(=ﾟωﾟ)ﾉ");
         }
 	}
 
     private void ResultRender()
+    {
+        for (int i = 0; i < PlayData.Instance.playerNum; i++)
+        {
+            // 順位表示
+
+        }
+    }
+
+    private void DataRender()
     {
         // プレイ時間の計測
         if (time <= 60.0f)
@@ -67,10 +75,12 @@ public class ResultSceneManager : MonoBehaviour {
             second = (int)time;
         }
 
-        for (int i = 0; i < PlayData.Instance.playerNum; i++)
-        {
-            // 順位表示
+        // 時間表示
+        TextMeshProUGUI timer = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
+        timer.text = min + ":" + second;
 
-        }
+        // ダメージを一番与えたプレイヤーの表示
+        TextMeshProUGUI player = GameObject.Find("Name").GetComponent<TextMeshProUGUI>();
+        //player.text=
     }
 }
