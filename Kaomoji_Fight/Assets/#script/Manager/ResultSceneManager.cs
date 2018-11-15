@@ -38,7 +38,7 @@ public class ResultSceneManager : MonoBehaviour {
         canvas = GameObject.Find("ResultUI").transform.gameObject;
 
         // 遊んだ時間の取得
-        time = ResultData.Instance.PlayingTime;
+        time = ResultData.Instance.Time;
 
         // リザルトの表示
         ResultRender();
