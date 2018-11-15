@@ -138,7 +138,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -162,29 +162,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a473e2730bec54f9453f578709e7fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UICanvases: {fileID: 0}
   P1:
     m_name: kadsaf
     m_nameColor: {r: 1, g: 0.9610727, b: 0.6691176, a: 1}
     m_playerFace: {fileID: 0}
     m_initialPos: {x: 10, y: 50, z: 0}
+    m_controller: 0
+    m_hp: 0
   P2:
     m_name: 
     m_nameColor: {r: 0.7352941, g: 0.97664356, b: 1, a: 1}
     m_playerFace: {fileID: 0}
     m_initialPos: {x: 15, y: 50, z: 0}
+    m_controller: 0
+    m_hp: 0
   P3:
     m_name: 
     m_nameColor: {r: 1, g: 0.6691176, b: 0.9610726, a: 1}
     m_playerFace: {fileID: 0}
     m_initialPos: {x: 20, y: 50, z: 0}
+    m_controller: 0
+    m_hp: 0
   P4:
     m_name: 
     m_nameColor: {r: 0.6985294, g: 1, b: 0.7206964, a: 1}
     m_playerFace: {fileID: 0}
     m_initialPos: {x: 30, y: 50, z: 0}
-  RevivalPos: {x: 2.5, y: 50, z: 0}
+    m_controller: 0
+    m_hp: 0
   death_player: 
+  dedEffect: {fileID: 0}
 --- !u!114 &114391247859686516
 MonoBehaviour:
   m_ObjectHideFlags: 1

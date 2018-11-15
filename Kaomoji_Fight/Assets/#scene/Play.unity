@@ -204,6 +204,16 @@ Prefab:
       propertyPath: spreadCustomCurve.m_RotationOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114237331437602908, guid: cfc1354b8c804a340bf20c566c050726,
+        type: 2}
+      propertyPath: dedEffect
+      value: 
+      objectReference: {fileID: 100000, guid: 6264b2b598b1d2f44a146d818eccb054, type: 2}
+    - target: {fileID: 114237331437602908, guid: cfc1354b8c804a340bf20c566c050726,
+        type: 2}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 100000, guid: 9141ac68753bca04d94abf0fc30d2d30, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cfc1354b8c804a340bf20c566c050726, type: 2}
   m_IsPrefabParent: 0
@@ -504,6 +514,11 @@ Prefab:
         type: 2}
       propertyPath: Players.Array.data[2].m_hp
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
+        type: 2}
+      propertyPath: Stage_name
+      value: stage6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c9529d12034635d4e9fedc91c9d6163e, type: 2}

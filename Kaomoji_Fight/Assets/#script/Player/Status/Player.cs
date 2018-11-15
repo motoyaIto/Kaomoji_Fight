@@ -45,8 +45,7 @@ public class Player : RaycastController {
     private new AudioSource audio;
     private AudioClip shot_ac;              // 投げる音
     private AudioClip jump_ac;              // ジャンプ
-   
-
+    
     #endregion
 
 
@@ -54,7 +53,7 @@ public class Player : RaycastController {
     {
         audio = this.GetComponent<AudioSource>();
         shot_ac = (AudioClip)Resources.Load("Sound/SE/Shooting/launcher");   //投げる音
-        jump_ac = (AudioClip)Resources.Load("Sound/SE/Jump/jump");           //ジャンプ音
+        jump_ac = (AudioClip)Resources.Load("Sound/SE/Jump/jump");           //ジャンプ音       
     }
 
     new void Start()
@@ -387,5 +386,5 @@ public class Player : RaycastController {
         {
             return give_damage;
         }
-    }
+    }   
 }
