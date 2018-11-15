@@ -259,6 +259,7 @@
     <Compile Include="Assets\%23script\Camera\MultipleTargetCamera.cs" />
     <Compile Include="Assets\%23script\Data\PlayData.cs" />
     <Compile Include="Assets\%23script\Data\PlayerData.cs" />
+    <Compile Include="Assets\%23script\Data\RankingData.cs" />
     <Compile Include="Assets\%23script\Data\ResultData.cs" />
     <Compile Include="Assets\%23script\DummySceneStart.cs" />
     <Compile Include="Assets\%23script\Effect\EffectControll.cs" />

@@ -13,12 +13,9 @@ public class DownTimer : MonoBehaviour {
 
     private bool DownTimer_State = false;  //カウントダウンを開始する(ture)しない(false)
 
-    private PlaySceneManager PSM;
-
 	// Use this for initialization
 	void Start () {
         Write_DownTimerText();
-        PSM = GameObject.Find("PlaySceneManager").GetComponent<PlaySceneManager>();
     }
 	
 	// Update is called once per frame
@@ -43,8 +40,6 @@ public class DownTimer : MonoBehaviour {
         if (remainingTime <= 0)
         {
             DownTimer_State = false;
-            ResultData.Instance.PlayingTime = nowTime;
-            //PSM.Result();
         }
 
         //分秒に変換
@@ -68,6 +63,14 @@ public class DownTimer : MonoBehaviour {
         get
         {
             return DownTimer_State;
+        }
+    }
+
+    public int DownTimer_time
+    {
+        get
+        {
+            return (int)(TimeLimit - nowTime);
         }
     }
 }
