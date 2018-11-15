@@ -7,6 +7,7 @@ using XboxCtrlrInput;
 
 public class CharacterselectController : CursorController
 {
+    private bool selectFace = false;//顔を選択した(true)していない(false)
     protected override void Start()
     {
         base.Start();
@@ -14,6 +15,38 @@ public class CharacterselectController : CursorController
         //初期座標を入力
         this.transform.position = new Vector3(FirstTarget.transform.position.x + Difference_x * NowNumberColumn, (FirstTarget.transform.position.y + Difference_y * NowNumberLine) + 0.35f);
     }
+
+    protected override void Update()
+    {
+        if (this.SelectMyMode() == false|| selectFace == true) { return; }
+        
+        // Controllerの左スティックのAxisを取得            
+        LeftStickInput = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, controllerNumber), XCI.GetAxis(XboxAxis.LeftStickY, controllerNumber));
+
+        //LeftStickの入力がない時
+        if (LeftStickflag == false)
+        {
+            this.PushButton();
+        }
+        else
+        {
+            //スッティックが中心近くまで戻っていたら
+            if ((LeftStickInput.y < 0.1f && LeftStickInput.y > -0.1f) && (LeftStickInput.x < 0.1f && LeftStickInput.x > -0.1f))
+            {
+                LeftStickflag = false;
+            }
+        }
+
+        //プレイ人数を決定
+        if (Input.GetKeyDown(KeyCode.Space) || XCI.GetButtonDown(XboxButton.B, controllerNumber))
+        {
+            //クリック音
+            audiosource.PlayOneShot(Click_clip);
+
+            this.Decide();
+        }
+    }
+
     protected override bool SelectMyMode()
     {
         if (TManager_cs.Mode_Data != TitleManager.SELECTMODE.CHARACTERSELECT || TManager_cs.ControllerLock_Data == true)
@@ -43,8 +76,10 @@ public class CharacterselectController : CursorController
     {
         int number = ((NumberLine * NowNumberColumn)) + (NowNumberLine + 1);
 
-        Sprite face = (Sprite)Resources.Load("prefab/textures/use/Player/Player" + number.ToString());
+        Sprite face = Resources.Load<Sprite>("textures/use/Player/Player" + number.ToString());
         TManager_cs.SetPlayerFace(CNConvert(controllerNumber), face);
+
+        selectFace = true;  
     }
 
     private int CNConvert(XboxController controlerNum)
