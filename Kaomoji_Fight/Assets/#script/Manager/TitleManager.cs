@@ -14,6 +14,7 @@ public class TitleManager : MonoBehaviour{
 
         MAX
     }
+    [SerializeField]
     private SELECTMODE mode = SELECTMODE.TITLE;//選択されている画面のモード
     private SELECTMODE Nextmode;               //次のページ
 
@@ -84,34 +85,35 @@ public class TitleManager : MonoBehaviour{
             case SELECTMODE.STAGESELECT:
                 if (ControllerLock == true)
                 {
-                    //if (Stageselect_Gizmo.GetComponent<Gizmo>().Flickpage(Flickpage) == false)
-                    //{
-                    //    ControllerLock = false;
+                    if (Stageselect_Gizmo.GetComponent<Gizmo>().Flickpage(Flickpage) == false)
+                    {
+                        ControllerLock = false;
 
-                    //    mode = Nextmode;
-                    //}
-
-                    mode = SELECTMODE.MAX;
-                    ControllerLock = false;
+                        mode = Nextmode;
+                    }
                 }
 
              
                 break;
             case SELECTMODE.CHARACTERSELECT:
+                GameObject cursors = null;
+
+                foreach(Transform Child in Characterselect_Gizmo.transform)
+                {
+                    if(Child.transform.name == "Cursors")
+                    {
+                        cursors = Child.gameObject;
+                    }
+                }
+
+               for(int i = 0; i < playerNum; i++)
+                {
+                    cursors.transform.GetChild(i).gameObject.SetActive(true);
+                }
+                //mode = SELECTMODE.MAX;
 
                 break;
             case SELECTMODE.MAX:
-
-                //playersface = new Sprite[playerNum];
-
-                //for (int i = 0; i < playerNum; i++)
-                //{
-                //    playersface[i] = Sprite.Create((Texture2D)Resources.Load("textures/use/Player" + (i + 1)), new Rect(0, 0, 584, 211), new Vector2(0.5f, 0.5f));
-                //}
-                ////playedata = new PlayData(Stage_name, players_name, playersface);
-
-                //SceneManagerController.ChangeScene();
-
                 CreatePlayer_data();
 
                 playdata = new PlayData(Stage_name, playerdata);
@@ -134,16 +136,15 @@ public class TitleManager : MonoBehaviour{
         {
             return;
         }
-            //1ページより多くめくろうとしていたら1ページに変える
-            if (nextPageName < mode - 1)
+
+        //1ページより多くめくろうとしていたら1ページに変える
+        if (nextPageName < mode)
         {
             Flickpage = false;
-            nextPageName = mode - 1;
         }
-        if (nextPageName > mode + 1)
+        if (nextPageName > mode)
         {
             Flickpage = true;
-            nextPageName = mode + 1;
         }
 
        
@@ -163,7 +164,9 @@ public class TitleManager : MonoBehaviour{
         Nextmode = nextPageName;
     }
 
-
+    /// <summary>
+    /// プレイヤーデータの生成
+    /// </summary>
     public void CreatePlayer_data()
     {
         playerdata = new PlayerData[playerNum];

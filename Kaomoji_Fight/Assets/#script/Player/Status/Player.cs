@@ -45,6 +45,7 @@ public class Player : RaycastController {
     private new AudioSource audio;
     private AudioClip shot_ac;              // 投げる音
     private AudioClip jump_ac;              // ジャンプ
+   
 
     #endregion
 
@@ -283,8 +284,8 @@ public class Player : RaycastController {
             WeaponBlocController WBController = collision.gameObject.GetComponent<WeaponBlocController>();
             if (!Avoidance)
             {
-                PSM.Player_ReceiveDamage(this.gameObject, collision.gameObject, CNConvert(ControlerNamber));
-            }
+                PSM.Player_ReceiveDamage(this.gameObject, collision.gameObject, CNConvert(ControlerNamber));                
+            }            
         }
 
         // ジャンプ制限

@@ -44,6 +44,8 @@ public class PlaySceneManager : MonoBehaviour
 
     private CinemachineTargetGroup TargetGroup;
 
+     private EffectControll effectControll;  //エフェクト
+
     private void Awake()
     {
         //UIオブジェクトを設定
@@ -299,6 +301,7 @@ public class PlaySceneManager : MonoBehaviour
         }
         else
         {
+            //effectControll.HitEffect();
             // ダメージ音
             audio.volume = .3f;
             audio.PlayOneShot(audioClip_hit);

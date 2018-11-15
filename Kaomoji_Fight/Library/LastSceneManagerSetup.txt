@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
+- path: Assets/#scene/Play.unity
+=======
 - path: Assets/#scene/Result.unity
+>>>>>>> 7e36be6a7995bcf603d623bc29281298998125c4
   isLoaded: 1
   isActive: 1
