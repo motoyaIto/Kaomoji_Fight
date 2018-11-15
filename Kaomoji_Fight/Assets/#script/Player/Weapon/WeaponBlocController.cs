@@ -95,6 +95,7 @@ public class WeaponBlocController : MonoBehaviour
         if(parent.name != collision.gameObject.name && weapon_throw && collision.transform.tag != "Stage")
         {
             var hitobj = Instantiate(hitEffect, this.transform.position + transform.forward, Quaternion.identity) as GameObject;
+            collision.transform.gameObject.GetComponent<Player>().DamageCount = DamageValue;
             Destroy(this.gameObject);
             weapon_throw = false;
         }
