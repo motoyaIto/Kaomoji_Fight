@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class EffectControll : MonoBehaviour {
 
+    [SerializeField]
     public GameObject hitEffect;        // ヒットエフェクト
+    [SerializeField]
     public GameObject dedEffect;        // 死亡エフェクト
 
     public Transform[] hitPoints;         // ヒット地点
@@ -12,26 +14,20 @@ public class EffectControll : MonoBehaviour {
 
 
     public void HitEffect()
-    {        
-        foreach (Transform hitPos in hitPoints)
-        {
-            GameObject hit = Instantiate(hitEffect,               // エフェクトの生成
-                hitPos.position, transform.rotation) as GameObject;
-
-            Destroy(hit, 1f);                                             // 1秒後に消す
-        }
-    }
-
-    public void DedEffect()
     {
-        foreach (Transform dedPos in dedPoints)
-        {
-            GameObject ded = Instantiate(dedEffect,               // エフェクトの生成
-                dedPos.position, transform.rotation) as GameObject;
-
-            Destroy(ded, 1f);                                             // 1秒後に消す
-        }
+        var hitobj = Instantiate(hitEffect, transform.position + transform.forward, Quaternion.identity) as GameObject;
     }
+
+    //public void DedEffect()
+    //{
+    //    foreach (Transform dedPos in dedPoints)
+    //    {
+    //        GameObject ded = Instantiate(dedEffect,               // エフェクトの生成
+    //            dedPos.position, transform.rotation) as GameObject;
+
+    //        Destroy(ded, 1f);                                             // 1秒後に消す
+    //    }
+    //}
 
     // Use this for initialization
     void Start () {
@@ -40,6 +36,7 @@ public class EffectControll : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        var hitobj = Instantiate(hitEffect, transform.position + transform.forward, Quaternion.identity) as GameObject;
+        var dedobj = Instantiate(dedEffect, transform.position + transform.forward, Quaternion.identity) as GameObject;
+    }
 }

@@ -20,9 +20,18 @@ public class WeaponBlocController : MonoBehaviour
     private string onwer;                   //所有者の名前
     private bool weapon_throw = false;      //武器を投げた(true)投げてない(false)
 
+    [SerializeField]
+    public GameObject hitEffect;        // ヒットエフェクト
+   
+
+    private void Awake()
+    {
+        hitEffect = Resources.Load<GameObject>("prefab/Effect/Wave_01");        
+    }
+
     // Use this for initialization
     void Start()
-    {
+    {        
         Weapon = this.transform.gameObject;
         Weapon.AddComponent<Rigidbody2D>();
 
@@ -85,6 +94,7 @@ public class WeaponBlocController : MonoBehaviour
     {
         if(parent.name != collision.gameObject.name && weapon_throw && collision.transform.tag != "Stage")
         {
+            var hitobj = Instantiate(hitEffect, this.transform.position + transform.forward, Quaternion.identity) as GameObject;
             Destroy(this.gameObject);
             weapon_throw = false;
         }
