@@ -291,6 +291,7 @@
     <Compile Include="Assets\%23script\Title\Cursor\PlayernumController.cs" />
     <Compile Include="Assets\%23script\Title\Cursor\StageselectController.cs" />
     <Compile Include="Assets\%23script\Title\Gizmo.cs" />
+    <Compile Include="Assets\%23script\Title\Sound.cs" />
     <Compile Include="Assets\%23script\Title\Title.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBlendListCamera.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBrain.cs" />
