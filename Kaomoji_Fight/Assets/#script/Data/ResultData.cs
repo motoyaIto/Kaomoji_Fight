@@ -4,34 +4,32 @@ using UnityEngine;
 
 public class ResultData
 {
-    PlayerData[] PlaersData;    //プレイヤーデータ
-    private float time;          //時間
-    private string name;        //名前
+    public int[] Ranking;      //ランキング
+    public float Time;         //時間
+
+    public float MAXDamage;                //与えた合計が一番大きかった数値
+    public string MAXDamage_playerName;    //与えた合計が一番大きかった数値のプレイヤー名
+
+    public string[] PlayersName;   //名前
+    public Sprite[] PlayersFace;   //顔
+
 
     public static ResultData Instance
     {
         get;
         private set;
     }
-    public ResultData(PlayerData[] BattlePlayers)
+    public ResultData(int[] ranking = null, float time = 0.00f, float MAXdamage = 0, string MAXdamage_playerName = null, string[] playersName = null, Sprite[] playersFace = null)
     {
         Instance = this;
 
-        PlaersData = BattlePlayers;
-        
-        
-    }
+        Ranking = ranking;
+        Time = time;
 
-    public float PlayingTime
-    {
-        set
-        {
-            time = value;
-        }
-        get
-        {
-            return time;
-        }
-    }
+        MAXDamage = MAXdamage;
+        MAXDamage_playerName = MAXdamage_playerName;
 
+        PlayersName = playersName;
+        PlayersFace = playersFace;
+    }
 }

@@ -8,6 +8,7 @@ using TMPro;
 using Cinemachine;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using System;
 
 
 public class PlaySceneManager : MonoBehaviour
@@ -15,11 +16,12 @@ public class PlaySceneManager : MonoBehaviour
     private GameObject UICanvases;      //UI用キャンバス
 
     private GameObject DownTimer_obj;   //ダウンタイマー
+    private DownTimer DownTimer_cs;     //ダウンタイマーのcs
 
     private int death_count;            //残り人数が一人になったかどうかを調べるやつ
     private bool pause = false;         //ポーズ画面のフラグ
 
-    private new AudioSource audio;          //オーディオ
+    private new AudioSource audio;      //オーディオ
 
     private AudioClip audioClip_gong;   //スタートで鳴らす音
     private AudioClip audioClip_ded;    //プレイヤーが死んだときに鳴らす音
@@ -47,6 +49,7 @@ public class PlaySceneManager : MonoBehaviour
     [SerializeField]
     public GameObject dedEffect;        // 死亡エフェクト
 
+    private ResultData resultdata;//resultデータ
     //private EffectControll effectControll;  //エフェクト
 
     private void Awake()
@@ -59,7 +62,7 @@ public class PlaySceneManager : MonoBehaviour
 
         //ダウンタイマーのobjとcsを取得
         DownTimer_obj = UICanvases.transform.Find("DownTimer").gameObject;
-        DownTimer DownTimer_cs = DownTimer_obj.GetComponent<DownTimer>();
+        DownTimer_cs = DownTimer_obj.GetComponent<DownTimer>();
 
         //ダウンタイマーを起動
         DownTimer_cs.DownTimer_State_data = true;
@@ -204,10 +207,10 @@ public class PlaySceneManager : MonoBehaviour
             }
         }
 
-        // プレイヤーが独りになったらリザルトに遷移
-        if (death_count == 1)
+        // プレイヤーが独り、または時間が来たらリザルトに遷移
+        if (death_count == 1 || DownTimer_cs.DownTimer_time < 0)
         {
-            //Result();
+            this.EndFight(DownTimer_cs.DownTimer_time);
         }
     }
 
@@ -439,8 +442,42 @@ public class PlaySceneManager : MonoBehaviour
         Time.timeScale = num;
     }
 
-    public void Result()
+    public void EndFight(float endtime)
     {
-        SceneManager.LoadScene("Result");
+        int[] ranking = new int[PlayData.Instance.playerNum];
+        float[] damage = new float[PlayData.Instance.playerNum];
+
+        damage = SetDamageValue(); 
+
+       resultdata = new ResultData();
+    }
+
+    private float[] SetDamageValue()
+    {
+        float[] damage = new float[PlayData.Instance.playerNum];
+
+        for (int i = 0; i < PlayData.Instance.playerNum; i++)
+        {
+            switch (i)
+            {
+                case 0:
+                    damage[0] = P1.Player_obj.GetComponent<Player>().DamageCount;
+                    break;
+
+                case 1:
+                    damage[1] = P2.Player_obj.GetComponent<Player>().DamageCount;
+                    break;
+
+                case 2:
+                    damage[2] = P3.Player_obj.GetComponent<Player>().DamageCount;
+                    break;
+
+                case 3:
+                    damage[3] = P4.Player_obj.GetComponent<Player>().DamageCount;
+                    break;
+            }
+        }
+
+        return damage;
     }
 }

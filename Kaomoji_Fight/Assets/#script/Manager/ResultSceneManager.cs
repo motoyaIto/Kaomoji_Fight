@@ -43,7 +43,6 @@ public class ResultSceneManager : MonoBehaviour
 
         // 遊んだ時間の取得
 
-
         // リザルトの表示
         ResultRender();
         DataRender();
