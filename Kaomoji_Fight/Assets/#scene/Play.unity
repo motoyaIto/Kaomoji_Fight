@@ -329,12 +329,12 @@ Prefab:
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
       propertyPath: Players.Array.data[0].m_nameColor.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
       propertyPath: Players.Array.data[0].m_nameColor.b
-      value: 0.60294104
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
@@ -370,17 +370,17 @@ Prefab:
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
       propertyPath: Players.Array.data[1].m_nameColor.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
       propertyPath: Players.Array.data[1].m_nameColor.g
-      value: 0
+      value: 0.029411793
       objectReference: {fileID: 0}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
       propertyPath: Players.Array.data[1].m_nameColor.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
@@ -519,6 +519,11 @@ Prefab:
         type: 2}
       propertyPath: Stage_name
       value: stage4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
+        type: 2}
+      propertyPath: Players.Array.data[0].m_nameColor.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c9529d12034635d4e9fedc91c9d6163e, type: 2}

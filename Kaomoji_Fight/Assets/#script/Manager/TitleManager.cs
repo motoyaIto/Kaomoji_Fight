@@ -44,6 +44,7 @@ public class TitleManager : MonoBehaviour{
     private Sprite[] playersface = null;//プレイヤーの顔文字
     private bool Initializeface = false;//顔選択の時の初期化処理をした(true)していない(false)
     private string[] players_name = { "P1", "P2", "P3", "P4" };//各プレイヤーの名前
+    [SerializeField]
     private Color[] Players_color = { Color.red, Color.green, Color.blue, Color.yellow };//プレイヤーの色
 
     private PlayerData[] playerdata = null;
