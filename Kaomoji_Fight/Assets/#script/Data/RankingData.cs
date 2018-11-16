@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class RankingData
 {
+    [SerializeField]
     private string PlayerName = null;   //名前
+    [SerializeField]
     private Sprite PlayerFace = null;   //顔
-
+    [SerializeField]
     private int AttackDamage = 0;     //攻撃したダメージ数
 
     public string PlayerName_data
