@@ -15,9 +15,6 @@ public class ResultSceneManager : MonoBehaviour
     // UIキャンバス
     private GameObject canvas;
 
-    // プレイヤーデータ
-    private List<ResultData> players = new List<ResultData>();
-
     // プレイタイム
     private float time;
     private int min;
@@ -26,7 +23,6 @@ public class ResultSceneManager : MonoBehaviour
     // 鳴らすかもしれない音
     private AudioSource As;
     private AudioClip se;
-
 
     private void Awake()
     {
@@ -42,17 +38,11 @@ public class ResultSceneManager : MonoBehaviour
         canvas = GameObject.Find("ResultUI").transform.gameObject;
 
         // 遊んだ時間の取得
-
-
-        // リストの管理
-        for(int i = 0; i < PlayData.Instance.playerNum; i++)
-        {
-            players.Add(null);
-        }
+        time = ResultData.Instance.Time;
 
         // リザルトの表示
-        ResultRender();
         DataRender();
+        ResultRender();
     }
 
     void Update()
@@ -72,7 +62,7 @@ public class ResultSceneManager : MonoBehaviour
             // 順位表示
             canvas.transform.GetChild(1).transform.GetChild(i).transform.gameObject.SetActive(true);
             TextMeshProUGUI playerName = canvas.transform.GetChild(1).transform.GetChild(i).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-            playerName.text = players[i].Ranking[i].PlayerName_data;
+            playerName.text = ResultData.Instance.Ranking[i].PlayerName_data;
 
             // プレイヤーの顔表示
             PlayerSpriteRender(i);
@@ -82,7 +72,7 @@ public class ResultSceneManager : MonoBehaviour
     private void DataRender()
     {
         // プレイ時間の計測
-        if (time <= 60.0f)
+        if (time >= 60.0f)
         {
             min = (int)(time / 60.0f);
             second = (int)(time - 60 * min);
@@ -100,7 +90,7 @@ public class ResultSceneManager : MonoBehaviour
 
         // ダメージを一番与えたプレイヤーの表示
         TextMeshProUGUI player = GameObject.Find("Name").GetComponent<TextMeshProUGUI>();
-        player.text = "しょぼん";
+        player.text = ResultData.Instance.MAXDamage_playerName;
     }
 
     private void PlayerSpriteRender(int num)
@@ -110,15 +100,19 @@ public class ResultSceneManager : MonoBehaviour
         {
             case 0:
                 playerFace = GameObject.Find("FirstPlayerFace").transform.gameObject;
+                playerFace.GetComponent<Image>().sprite = ResultData.Instance.Ranking[num].PlayerFace_data;
                 break;
             case 1:
                 playerFace = GameObject.Find("SecondPlayerFace").transform.gameObject;
+                playerFace.GetComponent<Image>().sprite = ResultData.Instance.Ranking[num].PlayerFace_data;
                 break;
             case 2:
                 playerFace = GameObject.Find("ThirdPlayerFace").transform.gameObject;
+                playerFace.GetComponent<Image>().sprite = ResultData.Instance.Ranking[num].PlayerFace_data;
                 break;
             case 3:
                 playerFace = GameObject.Find("ForthPlayerFace").transform.gameObject;
+                playerFace.GetComponent<Image>().sprite = ResultData.Instance.Ranking[num].PlayerFace_data;
                 break;
             default:
                 break;
