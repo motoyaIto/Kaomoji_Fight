@@ -27,13 +27,9 @@ public class PlaySceneManager : MonoBehaviour
     private AudioClip audioClip_ded;    //プレイヤーが死んだときに鳴らす音
     private AudioClip audioClip_hit;    //ぶつかった時の音   
 
-    [SerializeField]
     PlayerData P1;
-    [SerializeField]
     PlayerData P2;
-    [SerializeField]
     PlayerData P3;
-    [SerializeField]
     PlayerData P4 ;
    
     [HideInInspector]
@@ -125,6 +121,9 @@ public class PlaySceneManager : MonoBehaviour
         GameObject HPgage = Resources.Load<GameObject>("prefab/UI/HPgage");
         RectTransform HPgage_size = HPgage.transform.GetComponent<RectTransform>();
 
+        float UICanvases_width = UICanvases.transform.GetComponent<RectTransform>().rect.width;
+        float residualFlame = (UICanvases_width - HPgage_size.sizeDelta.x * PlayData.Instance.playerNum) / (PlayData.Instance.playerNum + 1);
+
         //プレイヤーとHPを生成
         for (int i = 0; i < PlayData.Instance.playerNum; i++)
         {
@@ -133,7 +132,7 @@ public class PlaySceneManager : MonoBehaviour
             {
                 case 0:
                     P1.Player_obj = this.CreatePlayer(P1, i, (Material)Resources.Load("Material/P1Color"));
-                    P1.HPgage_obj = this.CreateHPgage(P1, new Vector3(HPgage_size.sizeDelta.x / 2, Screen.height - 10, 0f));
+                    P1.HPgage_obj = this.CreateHPgage(P1, new Vector3(UICanvases_width - ((HPgage_size.sizeDelta.x / 2) + HPgage_size.sizeDelta.x * 4) + residualFlame * 1, 10, 0f));
 
                     //カメラのターゲットに設定
                     CameraSet(P1, i);
@@ -141,7 +140,7 @@ public class PlaySceneManager : MonoBehaviour
 
                 case 1:
                     P2.Player_obj = this.CreatePlayer(P2, i, (Material)Resources.Load("Material/P2Color"));
-                    P2.HPgage_obj = this.CreateHPgage(P2, new Vector3(Screen.width - HPgage_size.sizeDelta.x / 2, Screen.height - 10, 0));
+                    P2.HPgage_obj = this.CreateHPgage(P2, new Vector3(UICanvases_width - ((HPgage_size.sizeDelta.x / 2) + HPgage_size.sizeDelta.x * 3) + residualFlame * 2, 10, 0));
 
                     //カメラのターゲットに設定
                     CameraSet(P2, i);
@@ -149,7 +148,7 @@ public class PlaySceneManager : MonoBehaviour
 
                 case 2:
                     P3.Player_obj = this.CreatePlayer(P3, i, (Material)Resources.Load("Material/P3Color"));
-                    P3.HPgage_obj = this.CreateHPgage(P3, new Vector3(HPgage_size.sizeDelta.x / 2, 10, 0));
+                    P3.HPgage_obj = this.CreateHPgage(P3, new Vector3(UICanvases_width - ((HPgage_size.sizeDelta.x / 2) + HPgage_size.sizeDelta.x * 2) + residualFlame * 3, 10, 0));
 
                     //カメラのターゲットに設定
                     CameraSet(P3, i);
@@ -157,7 +156,7 @@ public class PlaySceneManager : MonoBehaviour
 
                 case 3:
                     P4.Player_obj = this.CreatePlayer(P4, i, (Material)Resources.Load("Material/P4Color"));
-                    P4.HPgage_obj = this.CreateHPgage(P4, new Vector3(Screen.width - HPgage_size.sizeDelta.x / 2, 10, 0));
+                    P4.HPgage_obj = this.CreateHPgage(P4, new Vector3(UICanvases_width - ((HPgage_size.sizeDelta.x / 2) + HPgage_size.sizeDelta.x * 1) + residualFlame * 4, 10, 0));
 
                     //カメラのターゲットに設定
                     CameraSet(P4, i);
