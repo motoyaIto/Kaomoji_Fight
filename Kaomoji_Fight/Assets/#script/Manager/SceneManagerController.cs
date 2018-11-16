@@ -30,7 +30,7 @@ public static class SceneManagerController
         }
         else
         {
-            ope = SceneManager.LoadSceneAsync(2);
+            ope = SceneManager.LoadSceneAsync(1);
         }
 
         //自動再生を無効にする
