@@ -252,48 +252,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Compile Include="Assets\#scene\Test\MoveScript1.cs" />
-    <Compile Include="Assets\#scene\Test\SliderTest.cs" />
-    <Compile Include="Assets\#script\ーOther\LayerName.cs" />
-    <Compile Include="Assets\#script\ーOther\SingletonMonoBehaviour.cs" />
-    <Compile Include="Assets\#script\Camera\MultipleTargetCamera.cs" />
-    <Compile Include="Assets\#script\Data\PlayData.cs" />
-    <Compile Include="Assets\#script\Data\PlayerData.cs" />
-    <Compile Include="Assets\#script\Data\RankingData.cs" />
-    <Compile Include="Assets\#script\Data\ResultData.cs" />
-    <Compile Include="Assets\#script\DummySceneStart.cs" />
-    <Compile Include="Assets\#script\Effect\EffectControll.cs" />
-    <Compile Include="Assets\#script\Manager\PlaySceneManager.cs" />
-    <Compile Include="Assets\#script\Manager\ResultSceneManager.cs" />
-    <Compile Include="Assets\#script\Manager\SceneManagerController.cs" />
-    <Compile Include="Assets\#script\Manager\TitleManager.cs" />
-    <Compile Include="Assets\#script\Player\Jump\Controller2D.cs" />
-    <Compile Include="Assets\#script\Player\Jump\PlatformController.cs" />
-    <Compile Include="Assets\#script\Player\Jump\RaycastController.cs" />
-    <Compile Include="Assets\#script\Player\Status\Contoroller2d.cs" />
-    <Compile Include="Assets\#script\Player\Status\Player.cs" />
-    <Compile Include="Assets\#script\Player\Weapon\WeaponBlocController.cs" />
-    <Compile Include="Assets\#script\Select\CharSelectControll.cs" />
-    <Compile Include="Assets\#script\Select\SelectChar.cs" />
-    <Compile Include="Assets\#script\Select\SelectPNControll.cs" />
-    <Compile Include="Assets\#script\Select\SelectStage.cs" />
-    <Compile Include="Assets\#script\Sound\PlayBGM.cs" />
-    <Compile Include="Assets\#script\Sound\ResultBGM.cs" />
-    <Compile Include="Assets\#script\Stage\BlockController.cs" />
-    <Compile Include="Assets\#script\Stage\CreateStage.cs" />
-    <Compile Include="Assets\#script\Test\TestShader.cs" />
-    <Compile Include="Assets\#script\Timer\DownTimer.cs" />
-    <Compile Include="Assets\#script\Timer\PlayTimer.cs" />
-    <Compile Include="Assets\#script\Timer\SceneTimer.cs" />
-    <Compile Include="Assets\#script\Title\Cursor\CharacterselectController.cs" />
-    <Compile Include="Assets\#script\Title\Cursor\CursorController.cs" />
-    <Compile Include="Assets\#script\Title\Cursor\CursorHue.cs" />
-    <Compile Include="Assets\#script\Title\Cursor\PlayernumController.cs" />
-    <Compile Include="Assets\#script\Title\Cursor\StageselectController.cs" />
-    <Compile Include="Assets\#script\Title\Gizmo.cs" />
-    <Compile Include="Assets\#script\Title\Title.cs" />
-=======
     <Compile Include="Assets\%23scene\Test\MoveScript1.cs" />
     <Compile Include="Assets\%23scene\Test\SliderTest.cs" />
     <Compile Include="Assets\%23script\%E3%83%BCOther\LayerName.cs" />
@@ -334,7 +292,6 @@
     <Compile Include="Assets\%23script\Title\Cursor\StageselectController.cs" />
     <Compile Include="Assets\%23script\Title\Gizmo.cs" />
     <Compile Include="Assets\%23script\Title\Title.cs" />
->>>>>>> master
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBlendListCamera.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBrain.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineClearShot.cs" />
@@ -435,16 +392,9 @@
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\UETools\Magic_Particle_Effects\Readme.txt" />
-<<<<<<< HEAD
-    <None Include="Assets\ーCredit\Assets.txt" />
-    <None Include="Assets\ーCredit\BGM.txt" />
-    <None Include="Assets\ーCredit\SE.txt" />
-=======
     <None Include="Assets\%E3%83%BCCredit\Assets.txt" />
     <None Include="Assets\%E3%83%BCCredit\BGM.txt" />
     <None Include="Assets\%E3%83%BCCredit\SE.txt" />
-    <None Include="Assets\%E3%83%BCCredit\%E5%8F%82%E8%80%83%E3%82%B5%E3%82%A4%E3%83%88.txt" />
->>>>>>> master
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
