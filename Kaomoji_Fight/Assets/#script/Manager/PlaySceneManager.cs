@@ -135,6 +135,10 @@ public class PlaySceneManager : MonoBehaviour
                     P1.Player_obj = this.CreatePlayer(P1, i);
                     P1.HPgage_obj = this.CreateHPgage(P1, new Vector3(HPgage_size.sizeDelta.x / 2, Screen.height - 10, 0f));
 
+                    Material P1mate = Resources.Load<Material>("Material/P1Color");
+                    Renderer P1objMat = P1.Player_obj.GetComponent<Renderer>();
+                    P1objMat.material = P1mate;
+
                     //カメラのターゲットに設定
                     CameraSet(P1, i);
                     break;
@@ -142,6 +146,10 @@ public class PlaySceneManager : MonoBehaviour
                 case 1:
                     P2.Player_obj = this.CreatePlayer(P2, i);
                     P2.HPgage_obj = this.CreateHPgage(P2, new Vector3(Screen.width - HPgage_size.sizeDelta.x / 2, Screen.height - 10, 0));
+
+                    Material P2mate = Resources.Load<Material>("Material/P2Color");
+                    Renderer P2objMat = P2.Player_obj.GetComponent<Renderer>();
+                    P2objMat.material = P2mate;
 
                     //カメラのターゲットに設定
                     CameraSet(P2, i);
@@ -485,6 +493,11 @@ public class PlaySceneManager : MonoBehaviour
     {
         RankingData[] ranking = new RankingData[PlayData.Instance.playerNum]; ;
 
+        for(int i = 0; i < PlayData.Instance.playerNum; i++)
+        {
+            ranking[i] = new RankingData();
+        }
+
         for (int i = 0; i < PlayData.Instance.playerNum; i++)
         {
             switch (i)
@@ -529,6 +542,8 @@ public class PlaySceneManager : MonoBehaviour
     /// <param name="dummy">ダメージ量でソートされたデータ</param>
     private void DeathPlayerSort(ref RankingData[] ranking, RankingData[] dummy)
     {
+        int count = 0;
+
         for (int i = 0; i < PlayData.Instance.playerNum; i++)
         {
             for (int j = 0; j < PlayData.Instance.playerNum; j++)
@@ -537,17 +552,17 @@ public class PlaySceneManager : MonoBehaviour
                 if (DeathNumber[i] == dummy[j].PlayerName_data)
                 {
                     ranking[PlayData.Instance.playerNum - i - 1] = dummy[j];
+
+                    count++;
                 }
             }
         }
 
-        this.NotDeathPlayerSort(ref ranking, dummy);
+        this.NotDeathPlayerSort(ref ranking, dummy, count);
     }
 
-    private void NotDeathPlayerSort(ref RankingData[] ranking, RankingData[] dummy)
+    private void NotDeathPlayerSort(ref RankingData[] ranking, RankingData[] dummy, int count)
     {
-        int count = 1;
-
         for (int i = 0; i < PlayData.Instance.playerNum; i++)
         {
             for (int j = 0; j < PlayData.Instance.playerNum; j++)
@@ -561,7 +576,7 @@ public class PlaySceneManager : MonoBehaviour
                 //死んでなかったら
                 if(j == PlayData.Instance.playerNum - 1)
                 {
-                    ranking[DeathNumber.Length + count] = dummy[i];
+                    ranking[count] = dummy[i];
 
                     count++;
                 }
