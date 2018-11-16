@@ -354,7 +354,6 @@
     <None Include="Assets\ーCredit\Assets.txt" />
     <None Include="Assets\ーCredit\BGM.txt" />
     <None Include="Assets\ーCredit\SE.txt" />
-    <None Include="Assets\ーCredit\参考サイト.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
