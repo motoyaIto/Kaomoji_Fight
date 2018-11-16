@@ -9,7 +9,8 @@ using Cinemachine;
 using System.Linq;
 using UnityEngine.SceneManagement;
 
-public class ResultSceneManager : MonoBehaviour {
+public class ResultSceneManager : MonoBehaviour
+{
 
     // UIキャンバス
     private GameObject canvas;
@@ -25,39 +26,50 @@ public class ResultSceneManager : MonoBehaviour {
     // 鳴らすかもしれない音
     private AudioSource As;
     private AudioClip se;
-        
+
 
     private void Awake()
     {
         // 音を鳴らす準備
         As = this.GetComponent<AudioSource>();
+        As.volume = .1f;
+        se = (AudioClip)Resources.Load("Sound/SE/Select/crrect");
     }
 
-    void Start () {
+    void Start()
+    {
         // UIオブジェクトを設定
         canvas = GameObject.Find("ResultUI").transform.gameObject;
 
         // 遊んだ時間の取得
-        time = ResultData.Instance.PlayingTime;
+
 
         // リザルトの表示
         ResultRender();
+        DataRender();
     }
-	
-	void Update () {
+
+    void Update()
+    {
         // タイトルシーンへ戻る
-        if(XCI.GetButton(XboxButton.B, XboxController.First))
+        if (XCI.GetButton(XboxButton.B, XboxController.First))
         {
+            As.PlayOneShot(se);
             //SceneManager.LoadScene("Title");
         }
-	}
+    }
 
     private void ResultRender()
     {
         for (int i = 0; i < PlayData.Instance.playerNum; i++)
         {
             // 順位表示
+            canvas.transform.GetChild(1).transform.GetChild(i).transform.gameObject.SetActive(true);
+            TextMeshProUGUI playerName = canvas.transform.GetChild(1).transform.GetChild(i).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            playerName.text = i + ":";
 
+            // プレイヤーの顔表示
+            PlayerSpriteRender(i);
         }
     }
 
@@ -77,10 +89,33 @@ public class ResultSceneManager : MonoBehaviour {
 
         // 時間表示
         TextMeshProUGUI timer = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
-        timer.text = min + ":" + second;
+        timer.text = min + ":";
+        if (second < 10) { timer.text += "0" + second; } else { timer.text += second; }
 
         // ダメージを一番与えたプレイヤーの表示
         TextMeshProUGUI player = GameObject.Find("Name").GetComponent<TextMeshProUGUI>();
-        //player.text=
+        player.text = "しょぼん";
+    }
+
+    private void PlayerSpriteRender(int num)
+    {
+        GameObject playerFace;
+        switch (num)
+        {
+            case 0:
+                playerFace = GameObject.Find("FirstPlayerFace").transform.gameObject;
+                break;
+            case 1:
+                playerFace = GameObject.Find("SecondPlayerFace").transform.gameObject;
+                break;
+            case 2:
+                playerFace = GameObject.Find("ThirdPlayerFace").transform.gameObject;
+                break;
+            case 3:
+                playerFace = GameObject.Find("ForthPlayerFace").transform.gameObject;
+                break;
+            default:
+                break;
+        }
     }
 }
