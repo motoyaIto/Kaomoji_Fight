@@ -546,42 +546,58 @@ Prefab:
     - target: {fileID: 114634871479644170, guid: db5134a8095053c45bbe59d0eed59fb0,
         type: 2}
       propertyPath: m_havePropertiesChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114634871479644170, guid: db5134a8095053c45bbe59d0eed59fb0,
         type: 2}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114427154931313622, guid: db5134a8095053c45bbe59d0eed59fb0,
         type: 2}
       propertyPath: m_havePropertiesChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114427154931313622, guid: db5134a8095053c45bbe59d0eed59fb0,
         type: 2}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114878035030335684, guid: db5134a8095053c45bbe59d0eed59fb0,
         type: 2}
       propertyPath: m_havePropertiesChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114878035030335684, guid: db5134a8095053c45bbe59d0eed59fb0,
         type: 2}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114329388132434608, guid: db5134a8095053c45bbe59d0eed59fb0,
         type: 2}
       propertyPath: m_havePropertiesChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114329388132434608, guid: db5134a8095053c45bbe59d0eed59fb0,
         type: 2}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193813849473986, guid: db5134a8095053c45bbe59d0eed59fb0, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1170890642309904, guid: db5134a8095053c45bbe59d0eed59fb0, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350215047239688, guid: db5134a8095053c45bbe59d0eed59fb0, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1013057037010864, guid: db5134a8095053c45bbe59d0eed59fb0, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db5134a8095053c45bbe59d0eed59fb0, type: 2}

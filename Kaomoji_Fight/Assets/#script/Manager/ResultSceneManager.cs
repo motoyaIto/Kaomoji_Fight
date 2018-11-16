@@ -43,6 +43,13 @@ public class ResultSceneManager : MonoBehaviour
 
         // 遊んだ時間の取得
 
+
+        // リストの管理
+        for(int i = 0; i < PlayData.Instance.playerNum; i++)
+        {
+            players.Add(null);
+        }
+
         // リザルトの表示
         ResultRender();
         DataRender();
@@ -65,7 +72,7 @@ public class ResultSceneManager : MonoBehaviour
             // 順位表示
             canvas.transform.GetChild(1).transform.GetChild(i).transform.gameObject.SetActive(true);
             TextMeshProUGUI playerName = canvas.transform.GetChild(1).transform.GetChild(i).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-            playerName.text = i + ":";
+            playerName.text = players[i].PlayersName.ToString();
 
             // プレイヤーの顔表示
             PlayerSpriteRender(i);

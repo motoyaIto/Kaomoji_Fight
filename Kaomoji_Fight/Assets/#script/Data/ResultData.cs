@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class ResultData
 {
-    public int[] Ranking;      //ランキング
     public float Time;         //時間
 
-    public float MAXDamage;                //与えた合計が一番大きかった数値
+    public int MAXDamage;                //与えた合計が一番大きかった数値
     public string MAXDamage_playerName;    //与えた合計が一番大きかった数値のプレイヤー名
 
-    public string[] PlayersName;   //名前
-    public Sprite[] PlayersFace;   //顔
+    public RankingData[] Ranking;     //ランキング
+   
 
 
     public static ResultData Instance
@@ -19,17 +18,15 @@ public class ResultData
         get;
         private set;
     }
-    public ResultData(int[] ranking = null, float time = 0.00f, float MAXdamage = 0, string MAXdamage_playerName = null, string[] playersName = null, Sprite[] playersFace = null)
+    public ResultData(float time = 0.00f, int MAXdamage = 0, string MAXdamage_playerName = null, RankingData[] ranking = null)
     {
         Instance = this;
 
-        Ranking = ranking;
         Time = time;
 
         MAXDamage = MAXdamage;
         MAXDamage_playerName = MAXdamage_playerName;
 
-        PlayersName = playersName;
-        PlayersFace = playersFace;
+        Ranking = ranking;
     }
 }
