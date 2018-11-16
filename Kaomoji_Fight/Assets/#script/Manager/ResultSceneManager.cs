@@ -72,7 +72,7 @@ public class ResultSceneManager : MonoBehaviour
             // 順位表示
             canvas.transform.GetChild(1).transform.GetChild(i).transform.gameObject.SetActive(true);
             TextMeshProUGUI playerName = canvas.transform.GetChild(1).transform.GetChild(i).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-            playerName.text = players[i].PlayersName.ToString();
+            playerName.text = players[i].Ranking[i].PlayerName_data;
 
             // プレイヤーの顔表示
             PlayerSpriteRender(i);
