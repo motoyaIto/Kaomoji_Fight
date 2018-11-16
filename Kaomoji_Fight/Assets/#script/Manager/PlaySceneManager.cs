@@ -132,31 +132,23 @@ public class PlaySceneManager : MonoBehaviour
             switch (i)
             {
                 case 0:
-                    P1.Player_obj = this.CreatePlayer(P1, i);
+                    P1.Player_obj = this.CreatePlayer(P1, i, (Material)Resources.Load("Material/P1Color"));
                     P1.HPgage_obj = this.CreateHPgage(P1, new Vector3(HPgage_size.sizeDelta.x / 2, Screen.height - 10, 0f));
-
-                    Material P1mate = Resources.Load<Material>("Material/P1Color");
-                    Renderer P1objMat = P1.Player_obj.GetComponent<Renderer>();
-                    P1objMat.material = P1mate;
 
                     //カメラのターゲットに設定
                     CameraSet(P1, i);
                     break;
 
                 case 1:
-                    P2.Player_obj = this.CreatePlayer(P2, i);
+                    P2.Player_obj = this.CreatePlayer(P2, i, (Material)Resources.Load("Material/P2Color"));
                     P2.HPgage_obj = this.CreateHPgage(P2, new Vector3(Screen.width - HPgage_size.sizeDelta.x / 2, Screen.height - 10, 0));
-
-                    Material P2mate = Resources.Load<Material>("Material/P2Color");
-                    Renderer P2objMat = P2.Player_obj.GetComponent<Renderer>();
-                    P2objMat.material = P2mate;
 
                     //カメラのターゲットに設定
                     CameraSet(P2, i);
                     break;
 
                 case 2:
-                    P3.Player_obj = this.CreatePlayer(P3, i);
+                    P3.Player_obj = this.CreatePlayer(P3, i, (Material)Resources.Load("Material/P3Color"));
                     P3.HPgage_obj = this.CreateHPgage(P3, new Vector3(HPgage_size.sizeDelta.x / 2, 10, 0));
 
                     //カメラのターゲットに設定
@@ -164,7 +156,7 @@ public class PlaySceneManager : MonoBehaviour
                     break;
 
                 case 3:
-                    P4.Player_obj = this.CreatePlayer(P4, i);
+                    P4.Player_obj = this.CreatePlayer(P4, i, (Material)Resources.Load("Material/P4Color"));
                     P4.HPgage_obj = this.CreateHPgage(P4, new Vector3(Screen.width - HPgage_size.sizeDelta.x / 2, 10, 0));
 
                     //カメラのターゲットに設定
@@ -231,12 +223,12 @@ public class PlaySceneManager : MonoBehaviour
     /// </summary>
     /// <param name="player_data">プレイヤーデータ</param>
     /// <returns>プレイヤー</returns>
-    private GameObject CreatePlayer(PlayerData player_data, int num)
+    private GameObject CreatePlayer(PlayerData player_data, int num, Material player_mate)
     {
         //プレイヤーを生成
         GameObject player = Instantiate(player_data.Player_obj, player_data.InitialPos_Data, Quaternion.identity);
         //プレイヤーの設定
-        this.SetPlayerStatus(player, player_data, num);
+        this.SetPlayerStatus(player, player_data, num, player_mate);
 
         return player;
 
@@ -249,7 +241,7 @@ public class PlaySceneManager : MonoBehaviour
     /// </summary>
     /// <param name="player">プレイヤーオブジェクト</param>
     /// <param name="player_data">プレイヤーデータ</param>
-    private void SetPlayerStatus(GameObject player, PlayerData player_data, int num)
+    private void SetPlayerStatus(GameObject player, PlayerData player_data, int num, Material player_mate)
     {
         //キャラの顔をセット
         SpriteRenderer playerFace = player.GetComponent<SpriteRenderer>();
@@ -282,6 +274,9 @@ public class PlaySceneManager : MonoBehaviour
 
             break;
         }
+
+        player_mate.SetColor("_EmissionColor", new Color(player_data.Color_Data.r, player_data.Color_Data.g, player_data.Color_Data.b, player_data.Color_Data.a));
+        player.transform.GetComponent<Renderer>().material = player_mate;
     }
 
     /// <summary>
@@ -407,23 +402,23 @@ public class PlaySceneManager : MonoBehaviour
             switch (num)
             {
                 case 0:
-                    P1.Player_obj = this.CreatePlayer(P1, num);
+                    P1.Player_obj = this.CreatePlayer(P1, num, (Material)Resources.Load("Material/P1Color"));
                     CameraSet(P1, num);
                     break;
 
                 case 1:
-                    P2.Player_obj = this.CreatePlayer(P2, num);
+                    P2.Player_obj = this.CreatePlayer(P2, num, (Material)Resources.Load("Material/P2Color"));
                     CameraSet(P2, num);
 
                     break;
 
                 case 2:
-                    P3.Player_obj = this.CreatePlayer(P3, num);
+                    P3.Player_obj = this.CreatePlayer(P3, num, (Material)Resources.Load("Material/P3Color"));
                     CameraSet(P3, num);
                     break;
 
                 case 3:
-                    P4.Player_obj = this.CreatePlayer(P4, num);
+                    P4.Player_obj = this.CreatePlayer(P4, num, (Material)Resources.Load("Material/P4Color"));
                     CameraSet(P4, num);
                     break;
 
