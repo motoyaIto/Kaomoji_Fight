@@ -51,7 +51,7 @@ public class ResultSceneManager : MonoBehaviour
         if (XCI.GetButton(XboxButton.B, XboxController.First))
         {
             As.PlayOneShot(se);
-            //SceneManager.LoadScene("Title");
+            SceneManager.LoadScene("Title");
         }
     }
 
