@@ -133,7 +133,7 @@ public class ResultSceneManager : MonoBehaviour
         for (int i = 0; i < PlayData.Instance.playerNum; i++)
         {
             // 順位表示
-            TextMeshProUGUI playerName = canvas2.transform.GetChild(0).transform.GetChild(i).transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI playerName = canvas2.transform.GetChild(0).transform.GetChild(i).transform.GetChild(3).GetComponent<TextMeshProUGUI>();
             playerName.text = ResultData.Instance.Ranking[i].PlayerName_data;
 
             // プレイヤーの顔表示
