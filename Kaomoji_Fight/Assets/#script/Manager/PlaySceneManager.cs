@@ -121,8 +121,12 @@ public class PlaySceneManager : MonoBehaviour
         GameObject HPgage = Resources.Load<GameObject>("prefab/UI/HPgage");
         RectTransform HPgage_size = HPgage.transform.GetComponent<RectTransform>();
 
-        float UICanvases_width = UICanvases.transform.GetComponent<RectTransform>().rect.width;
-        float residualFlame = (UICanvases_width - HPgage_size.sizeDelta.x * PlayData.Instance.playerNum) / (PlayData.Instance.playerNum + 1);
+        Transform UICAnvases_trans = UICanvases.transform;      //UIのトランスフォーム
+        RectTransform UICanvases_rect = UICAnvases_trans.GetComponent<RectTransform>();//UIのレクトトランスフォーム
+
+        Vector3 UICanvases_BR = new Vector3(UICanvases.transform.position.x + UICanvases_rect.rect.width / 2, UICanvases.transform.position.y - UICanvases_rect.rect.height / 2, 0f);//UIキャンバスの右下
+        Vector3 HPGage_UICanvasesBR = new Vector3(UICanvases_BR.x - HPgage_size.rect.width / 2, UICanvases_BR.y + HPgage_size.rect.height / 2, 0);
+        // float residualFlame = (UICanvases_rect.rect.width - HPgage_size.sizeDelta.x * PlayData.Instance.playerNum) / (PlayData.Instance.playerNum + 1);
 
         //プレイヤーとHPを生成
         for (int i = 0; i < PlayData.Instance.playerNum; i++)
@@ -132,15 +136,16 @@ public class PlaySceneManager : MonoBehaviour
             {
                 case 0:
                     P1.Player_obj = this.CreatePlayer(P1, i, (Material)Resources.Load("Material/P1Color"));
-                    P1.HPgage_obj = this.CreateHPgage(P1, new Vector3(UICanvases_width - ((HPgage_size.sizeDelta.x / 2) + HPgage_size.sizeDelta.x * 4) + residualFlame * 1, 10, 0f));
+                    P1.HPgage_obj = this.CreateHPgage(P1, new Vector3(HPGage_UICanvasesBR.x - HPgage_size.rect.width * 4, HPGage_UICanvasesBR.y, 0));
 
+                    
                     //カメラのターゲットに設定
                     CameraSet(P1, i);
                     break;
 
                 case 1:
                     P2.Player_obj = this.CreatePlayer(P2, i, (Material)Resources.Load("Material/P2Color"));
-                    P2.HPgage_obj = this.CreateHPgage(P2, new Vector3(UICanvases_width - ((HPgage_size.sizeDelta.x / 2) + HPgage_size.sizeDelta.x * 3) + residualFlame * 2, 10, 0));
+                    P2.HPgage_obj = this.CreateHPgage(P2, new Vector3(HPGage_UICanvasesBR.x - HPgage_size.rect.width * 3, HPGage_UICanvasesBR.y, 0));
 
                     //カメラのターゲットに設定
                     CameraSet(P2, i);
@@ -148,7 +153,7 @@ public class PlaySceneManager : MonoBehaviour
 
                 case 2:
                     P3.Player_obj = this.CreatePlayer(P3, i, (Material)Resources.Load("Material/P3Color"));
-                    P3.HPgage_obj = this.CreateHPgage(P3, new Vector3(UICanvases_width - ((HPgage_size.sizeDelta.x / 2) + HPgage_size.sizeDelta.x * 2) + residualFlame * 3, 10, 0));
+                    P3.HPgage_obj = this.CreateHPgage(P3, new Vector3(HPGage_UICanvasesBR.x - HPgage_size.rect.width * 2, HPGage_UICanvasesBR.y, 0));
 
                     //カメラのターゲットに設定
                     CameraSet(P3, i);
@@ -156,7 +161,7 @@ public class PlaySceneManager : MonoBehaviour
 
                 case 3:
                     P4.Player_obj = this.CreatePlayer(P4, i, (Material)Resources.Load("Material/P4Color"));
-                    P4.HPgage_obj = this.CreateHPgage(P4, new Vector3(UICanvases_width - ((HPgage_size.sizeDelta.x / 2) + HPgage_size.sizeDelta.x * 1) + residualFlame * 4, 10, 0));
+                    P4.HPgage_obj = this.CreateHPgage(P4, new Vector3(HPGage_UICanvasesBR.x - HPgage_size.rect.width * 1, HPGage_UICanvasesBR.y, 0));
 
                     //カメラのターゲットに設定
                     CameraSet(P4, i);
@@ -475,8 +480,8 @@ public class PlaySceneManager : MonoBehaviour
         
 
        resultdata = new ResultData(endtime, MAXDamage, MAXDamagePlayer, ranking);
-        SceneManagerController.LoadScene();
-        SceneManagerController.ChangeScene();
+        //SceneManagerController.LoadScene();
+        //SceneManagerController.ChangeScene();
     }
 
     /// <summary>
