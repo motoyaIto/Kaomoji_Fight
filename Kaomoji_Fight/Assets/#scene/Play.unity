@@ -365,38 +365,38 @@ Prefab:
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
       propertyPath: Players.Array.data[1].m_name
-      value: fgo
+      value: a
       objectReference: {fileID: 0}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
       propertyPath: Players.Array.data[1].m_nameColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
-        type: 2}
-      propertyPath: Players.Array.data[1].m_nameColor.g
-      value: 0.029411793
-      objectReference: {fileID: 0}
-    - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
-        type: 2}
-      propertyPath: Players.Array.data[1].m_nameColor.b
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
+      propertyPath: Players.Array.data[1].m_nameColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
+        type: 2}
+      propertyPath: Players.Array.data[1].m_nameColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
+        type: 2}
       propertyPath: Players.Array.data[1].m_nameColor.a
-      value: 0.978
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
       propertyPath: Players.Array.data[1].m_playerFace
       value: 
-      objectReference: {fileID: 21300000, guid: 9da15a9a43bade84da998958df517a01,
+      objectReference: {fileID: 21300000, guid: 7cd53ecc3afe3904f9040caf85e84ef4,
         type: 3}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
       propertyPath: Players.Array.data[1].m_initialPos.x
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
@@ -406,7 +406,7 @@ Prefab:
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
       propertyPath: Players.Array.data[1].m_controller
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
@@ -416,32 +416,32 @@ Prefab:
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
       propertyPath: Players.Array.data[2].m_name
-      value: js
+      value: b
       objectReference: {fileID: 0}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
       propertyPath: Players.Array.data[2].m_nameColor.g
-      value: 0.2794118
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
       propertyPath: Players.Array.data[2].m_nameColor.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
       propertyPath: Players.Array.data[2].m_nameColor.r
-      value: 0.44896212
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
       propertyPath: Players.Array.data[2].m_nameColor.a
-      value: 0.978
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
       propertyPath: Players.Array.data[2].m_initialPos.x
-      value: 25
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
@@ -451,17 +451,17 @@ Prefab:
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
       propertyPath: Players.Array.data[2].m_controller
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
       propertyPath: Players.Array.data[3].m_name
-      value: vb
+      value: c
       objectReference: {fileID: 0}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
       propertyPath: Players.Array.data[3].m_nameColor.a
-      value: 0.978
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
@@ -471,18 +471,18 @@ Prefab:
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
       propertyPath: Players.Array.data[3].m_nameColor.b
-      value: 0.07352942
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
       propertyPath: Players.Array.data[3].m_nameColor.g
-      value: 0.40051904
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
       propertyPath: Players.Array.data[2].m_playerFace
       value: 
-      objectReference: {fileID: 21300000, guid: 05cfddccb7107e1489f22c369f4c5184,
+      objectReference: {fileID: 21300000, guid: 7cd53ecc3afe3904f9040caf85e84ef4,
         type: 3}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
@@ -493,7 +493,7 @@ Prefab:
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
       propertyPath: Players.Array.data[3].m_initialPos.x
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
@@ -503,7 +503,7 @@ Prefab:
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
       propertyPath: Players.Array.data[3].m_controller
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114896293155825972, guid: c9529d12034635d4e9fedc91c9d6163e,
         type: 2}
