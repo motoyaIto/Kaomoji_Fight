@@ -875,7 +875,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8874105642c576247b677f08980c68e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 0}
 --- !u!224 &1424469464
 RectTransform:
   m_ObjectHideFlags: 0
