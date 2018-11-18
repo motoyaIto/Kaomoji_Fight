@@ -357,12 +357,17 @@
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> master
     <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\Anton OFL.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\Bangers - OFL.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\NotoSans - License.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\Oswald Bold - OFL.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\characters.txt" />
+<<<<<<< HEAD
+=======
 =======
     <None Include="Assets\Plugins\SkySerie Freebie\Hdri setup.txt" />
 >>>>>>> master
@@ -372,6 +377,7 @@
     <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\NotoSans - License.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald Bold - OFL.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples &amp; Extras\Fonts\characters.txt" />
+>>>>>>> master
 >>>>>>> master
     <None Include="Assets\Plugins\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />

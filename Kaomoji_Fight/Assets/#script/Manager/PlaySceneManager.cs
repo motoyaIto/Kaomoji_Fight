@@ -53,7 +53,7 @@ public class PlaySceneManager : MonoBehaviour
     {
 
         //エフェクトを設定
-        dedEffect = (GameObject)Resources.Load("prefab/Effect/Star_Burst_02");
+        dedEffect = Resources.Load<GameObject>("prefab/Effect/Star_Burst_02");
         //UIオブジェクトを設定
         UICanvases = GameObject.Find("UI").transform.gameObject;
 
@@ -119,14 +119,18 @@ public class PlaySceneManager : MonoBehaviour
         death_count = PlayData.Instance.playerNum;
 
         GameObject HPgage = Resources.Load<GameObject>("prefab/UI/HPgage");
-        RectTransform HPgage_size = HPgage.transform.GetComponent<RectTransform>();
+        RectTransform HPgage_rectTrans = HPgage.transform.GetComponent<RectTransform>();
 
-        Transform UICAnvases_trans = UICanvases.transform;      //UIのトランスフォーム
-        RectTransform UICanvases_rect = UICAnvases_trans.GetComponent<RectTransform>();//UIのレクトトランスフォーム
+        RectTransform UICanvases_recttrans = UICanvases.GetComponent<RectTransform>();
 
-        Vector3 UICanvases_BR = new Vector3(UICAnvases_trans.position.x + UICAnvases_trans.position.x, UICAnvases_trans.position.y - UICAnvases_trans.position.y, 0f);//UIキャンバスの右下
-        Vector3 HPGage_UICanvasesBR = new Vector3(UICanvases_BR.x - HPgage_size.rect.width / 2, UICanvases_BR.y + HPgage_size.rect.height / 2, 0);
-        // float residualFlame = (UICanvases_rect.rect.width - HPgage_size.sizeDelta.x * PlayData.Instance.playerNum) / (PlayData.Instance.playerNum + 1);
+        //HPゲージのキャンバス内サイズ
+        Vector3 HPgagesize_in_UICanvas = new Vector3(HPgage_rectTrans.rect.width * UICanvases_recttrans.localScale.x, HPgage_rectTrans.rect.height * UICanvases_recttrans.localScale.y, 0);
+
+        //HPゲージとHPゲージの間の余白
+        float remainder = (Screen.width - HPgagesize_in_UICanvas.x * PlayData.Instance.playerNum) / (PlayData.Instance.playerNum + 1);
+
+        Debug.Log("HPgage" + HPgage_rectTrans.rect.width);
+        Debug.Log("UIcanvas" + UICanvases_recttrans.localScale.x);
 
         //プレイヤーとHPを生成
         for (int i = 0; i < PlayData.Instance.playerNum; i++)
@@ -136,8 +140,7 @@ public class PlaySceneManager : MonoBehaviour
             {
                 case 0:
                     P1.Player_obj = this.CreatePlayer(P1, i, (Material)Resources.Load("Material/P1Color"));
-                    P1.HPgage_obj = this.CreateHPgage(P1, new Vector3(UICanvases_BR.x - HPgage_size.sizeDelta.x / 2, UICanvases_BR.y, 0));
-
+                    P1.HPgage_obj = this.CreateHPgage(P1, new Vector3(HPgagesize_in_UICanvas.x / 2 + remainder, HPgagesize_in_UICanvas.y / 2, 0));
                     
                     //カメラのターゲットに設定
                     CameraSet(P1, i);
@@ -145,7 +148,7 @@ public class PlaySceneManager : MonoBehaviour
 
                 case 1:
                     P2.Player_obj = this.CreatePlayer(P2, i, (Material)Resources.Load("Material/P2Color"));
-                    P2.HPgage_obj = this.CreateHPgage(P2, new Vector3(HPGage_UICanvasesBR.x, HPGage_UICanvasesBR.y, 0));
+                    P2.HPgage_obj = this.CreateHPgage(P2, new Vector3(HPgagesize_in_UICanvas.x / 2 + remainder * 2 + HPgagesize_in_UICanvas.x, HPgagesize_in_UICanvas.y / 2, 0));
 
                     //カメラのターゲットに設定
                     CameraSet(P2, i);
@@ -153,7 +156,7 @@ public class PlaySceneManager : MonoBehaviour
 
                 case 2:
                     P3.Player_obj = this.CreatePlayer(P3, i, (Material)Resources.Load("Material/P3Color"));
-                    P3.HPgage_obj = this.CreateHPgage(P3, new Vector3(HPGage_UICanvasesBR.x, HPGage_UICanvasesBR.y, 0));
+                    P3.HPgage_obj = this.CreateHPgage(P3, new Vector3(HPgagesize_in_UICanvas.x / 2 + remainder * 3 + HPgagesize_in_UICanvas.x * 2, HPgagesize_in_UICanvas.y / 2, 0));
 
                     //カメラのターゲットに設定
                     CameraSet(P3, i);
@@ -161,7 +164,7 @@ public class PlaySceneManager : MonoBehaviour
 
                 case 3:
                     P4.Player_obj = this.CreatePlayer(P4, i, (Material)Resources.Load("Material/P4Color"));
-                    P4.HPgage_obj = this.CreateHPgage(P4, new Vector3(HPGage_UICanvasesBR.x, HPGage_UICanvasesBR.y, 0));
+                    P4.HPgage_obj = this.CreateHPgage(P4, new Vector3(HPgagesize_in_UICanvas.x / 2 + remainder * 4 + HPgagesize_in_UICanvas.x * 3, HPgagesize_in_UICanvas.y / 2, 0));
 
                     //カメラのターゲットに設定
                     CameraSet(P4, i);
