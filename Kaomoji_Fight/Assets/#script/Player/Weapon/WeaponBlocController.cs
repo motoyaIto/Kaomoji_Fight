@@ -20,13 +20,12 @@ public class WeaponBlocController : MonoBehaviour
     private string onwer;                   //所有者の名前
     private bool weapon_throw = false;      //武器を投げた(true)投げてない(false)
 
-    [SerializeField]
-    public GameObject hitEffect;        // ヒットエフェクト
+    private GameObject hitEffect;           // ヒットエフェクト
    
 
     private void Awake()
     {
-        hitEffect = Resources.Load<GameObject>("prefab/Effect/Wave_01");        
+        hitEffect = Resources.Load<GameObject>("prefab/Effect/Wave_01");
     }
 
     // Use this for initialization
@@ -56,7 +55,6 @@ public class WeaponBlocController : MonoBehaviour
         {
             Destroy(this.transform.gameObject);
         }
-
     }
 
     //座標を入れる
