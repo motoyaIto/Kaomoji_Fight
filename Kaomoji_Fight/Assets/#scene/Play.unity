@@ -890,7 +890,7 @@ Prefab:
     - target: {fileID: 223463241528545588, guid: 78d1e039b7f3eda4aa36763dc47e6a87,
         type: 2}
       propertyPath: m_RenderMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224928270772413562, guid: 78d1e039b7f3eda4aa36763dc47e6a87,
         type: 2}
@@ -911,6 +911,11 @@ Prefab:
         type: 2}
       propertyPath: m_ScreenMatchMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224359487328429212, guid: 78d1e039b7f3eda4aa36763dc47e6a87,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 188
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 78d1e039b7f3eda4aa36763dc47e6a87, type: 2}
