@@ -535,7 +535,7 @@ Camera:
   m_GameObject: {fileID: 1121753501}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 3
   m_BackGroundColor: {r: 0.7175516, g: 0.67768764, b: 0.88620687, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -673,6 +673,16 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114634871479644170, guid: db5134a8095053c45bbe59d0eed59fb0,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114634871479644170, guid: db5134a8095053c45bbe59d0eed59fb0,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114878035030335684, guid: db5134a8095053c45bbe59d0eed59fb0,
         type: 2}
       propertyPath: m_havePropertiesChanged
@@ -702,36 +712,6 @@ Prefab:
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114634871479644170, guid: db5134a8095053c45bbe59d0eed59fb0,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114634871479644170, guid: db5134a8095053c45bbe59d0eed59fb0,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1608895181171888, guid: db5134a8095053c45bbe59d0eed59fb0, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350215047239688, guid: db5134a8095053c45bbe59d0eed59fb0, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1170890642309904, guid: db5134a8095053c45bbe59d0eed59fb0, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1193813849473986, guid: db5134a8095053c45bbe59d0eed59fb0, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1013057037010864, guid: db5134a8095053c45bbe59d0eed59fb0, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db5134a8095053c45bbe59d0eed59fb0, type: 2}

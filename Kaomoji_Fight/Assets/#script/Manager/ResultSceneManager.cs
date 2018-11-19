@@ -52,6 +52,7 @@ public class ResultSceneManager : MonoBehaviour
         {
             As.PlayOneShot(se);
             //SceneManager.LoadScene("Title");
+            SceneManagerController.ChangeScene();
         }
     }
 
