@@ -15,8 +15,6 @@ public class ResultSceneManager : MonoBehaviour
     // UIキャンバス
     private GameObject canvas;
 
-    private GameObject canvas2;
-
     // プレイタイム
     private float time;
     private int min;
@@ -37,19 +35,14 @@ public class ResultSceneManager : MonoBehaviour
     void Start()
     {
         // UIオブジェクトを設定
-        //canvas = GameObject.Find("ResultUI").transform.gameObject;
-        canvas2 = GameObject.Find("ResultUI_2").transform.gameObject;
+        canvas = GameObject.Find("ResultUI").transform.gameObject;
 
         // 遊んだ時間の取得
         time = ResultData.Instance.Time;
 
         // リザルトの表示
-        //DataRender();
-        //ResultRender();
-
-
-        // 仮表示
-        ResultRender2();
+        DataRender();
+        ResultRender();
     }
 
     void Update()
@@ -125,46 +118,4 @@ public class ResultSceneManager : MonoBehaviour
                 break;
         }
     }
-
-
-    /**********************************************************/
-    private void ResultRender2()
-    {
-        for (int i = 0; i < PlayData.Instance.playerNum; i++)
-        {
-            // 順位表示
-            TextMeshProUGUI playerName = canvas2.transform.GetChild(0).transform.GetChild(i).transform.GetChild(3).GetComponent<TextMeshProUGUI>();
-            playerName.text = ResultData.Instance.Ranking[i].PlayerName_data;
-
-            // プレイヤーの顔表示
-            PlayerSpriteRender2(i);
-        }
-    }
-
-    private void PlayerSpriteRender2(int num)
-    {
-        GameObject playerFace;
-        switch (num)
-        {
-            case 0:
-                playerFace = GameObject.Find("FirstImage").transform.gameObject;
-                playerFace.GetComponent<Image>().sprite = ResultData.Instance.Ranking[num].PlayerFace_data;
-                break;
-            case 1:
-                playerFace = GameObject.Find("SecondImage").transform.gameObject;
-                playerFace.GetComponent<Image>().sprite = ResultData.Instance.Ranking[num].PlayerFace_data;
-                break;
-            case 2:
-                playerFace = GameObject.Find("ThirdImage").transform.gameObject;
-                playerFace.GetComponent<Image>().sprite = ResultData.Instance.Ranking[num].PlayerFace_data;
-                break;
-            case 3:
-                playerFace = GameObject.Find("ForthImage").transform.gameObject;
-                playerFace.GetComponent<Image>().sprite = ResultData.Instance.Ranking[num].PlayerFace_data;
-                break;
-            default:
-                break;
-        }
-    }
-    /**********************************************************/
 }
