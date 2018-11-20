@@ -218,9 +218,17 @@ public class PlaySceneManager : MonoBehaviour
         }
 
         // プレイヤーが独り、または時間が来たらリザルトに遷移
-        if (death_count == 1 || DownTimer_cs.DownTimer_time < 0)
+        if ((death_count == 1 || DownTimer_cs.DownTimer_time < 0) && PlayData.Instance.playerNum != 1)
         {
             this.EndFight(DownTimer_cs.DownTimer_time);
+        }
+        else
+        {
+            if(XCI.GetButton(XboxButton.Start, XboxController.First))
+            {
+                SceneManager.LoadScene("Title");
+                
+            }
         }
     }
 
