@@ -8,7 +8,7 @@ public class WeaponBlocController : MonoBehaviour
     private float DamageValue = 5.0f;
 
     private Vector3 Death_LUpos = new Vector3(-150f, 50f, 0f);    // オブジェクトが破棄されるエリアの左上
-    private Vector3 Death_RDpos = new Vector3(200f, -60f, 0f);   // オブジェクトが破棄されるエリアの右下
+    private Vector3 Death_RDpos = new Vector3(200f, -80f, 0f);   // オブジェクトが破棄されるエリアの右下
 
     private GameObject Weapon;
 
