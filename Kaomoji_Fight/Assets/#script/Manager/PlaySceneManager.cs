@@ -47,7 +47,9 @@ public class PlaySceneManager : MonoBehaviour
     public GameObject dedEffect;        // 死亡エフェクト
 
     private ResultData resultdata;//resultデータ
-    //private EffectControll effectControll;  //エフェクト
+                                  //private EffectControll effectControll;  //エフェクト
+
+    private RankingData[] ranking = null;
 
     private void Awake()
     {
@@ -189,43 +191,45 @@ public class PlaySceneManager : MonoBehaviour
 
     void Update()
     {
-        for(int i = 0; i < PlayData.Instance.playerNum; i++)
+        if (ranking == null)
         {
-            // 一時停止
-            if (XCI.GetButtonDown(XboxButton.Start, controller[i]))
+            for (int i = 0; i < PlayData.Instance.playerNum; i++)
             {
-                if (!pause)
+                // 一時停止
+                if (XCI.GetButtonDown(XboxButton.Start, controller[i]))
                 {
-                    Pause(.0f);
-                    pause = true;
+                    if (!pause)
+                    {
+                        Pause(.0f);
+                        pause = true;
+                    }
+                    else
+                    {
+                        Pause(1.0f);
+                        pause = false;
+                    }
+
                 }
-                else
+
+                // 死んだプレイヤーの蘇生
+                if (death_player[i] == false && TrueDeath[i] == false)
                 {
-                    Pause(1.0f);
-                    pause = false;
+                    RegenerationPlayer(i);
                 }
-                
             }
 
-            // 死んだプレイヤーの蘇生
-            if (death_player[i] == false && TrueDeath[i] == false)
+            // プレイヤーが独り、または時間が来たらリザルトに遷移
+            if ((death_count == 1 || DownTimer_cs.DownTimer_time <= 0) && PlayData.Instance.playerNum != 1)
             {
-                RegenerationPlayer(i);
+                this.EndFight(DownTimer_cs.DownTimer_time);
+            }
+
+            //1人プレイの時の終了処理
+            if (XCI.GetButton(XboxButton.Start, XboxController.First) && PlayData.Instance.playerNum == 1)
+            {
+                SceneManager.LoadScene("Title");
             }
         }
-
-        // プレイヤーが独り、または時間が来たらリザルトに遷移
-        if ((death_count == 1 || DownTimer_cs.DownTimer_time <= 0) && PlayData.Instance.playerNum != 1)
-        {
-            this.EndFight(DownTimer_cs.DownTimer_time);
-        }
-        
-        //1人プレイの時の終了処理
-        if(XCI.GetButton(XboxButton.Start, XboxController.First) && PlayData.Instance.playerNum == 1)
-        {
-            SceneManager.LoadScene("Title");
-        }
-        
     }
 
 
@@ -466,7 +470,7 @@ public class PlaySceneManager : MonoBehaviour
     /// <param name="endtime">ゲーム終了時の残りタイム</param>
     public void EndFight(float endtime)
     {
-        RankingData[] ranking = new RankingData[PlayData.Instance.playerNum];   //ランキング順
+        ranking = new RankingData[PlayData.Instance.playerNum];   //ランキング順
         RankingData[] dummy = new RankingData[PlayData.Instance.playerNum];     //データ置き場
 
         int MAXDamage = 0;              //最大合計ダメージ値
