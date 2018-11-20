@@ -483,8 +483,8 @@ public class PlaySceneManager : MonoBehaviour
         
 
        resultdata = new ResultData(endtime, MAXDamage, MAXDamagePlayer, ranking);
-        //SceneManagerController.LoadScene();
-        //SceneManagerController.ChangeScene();
+        SceneManagerController.LoadScene();
+        SceneManagerController.ChangeScene();
     }
 
     /// <summary>
