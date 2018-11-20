@@ -138,7 +138,10 @@ public class PlaySceneManager : MonoBehaviour
             switch (i)
             {
                 case 0:
-                    P1.Player_obj = this.CreatePlayer(P1, i, (Material)Resources.Load("Material/P1Color"));
+                    P1.Mate_Data = (Material)Resources.Load("Material/P1Color");
+                    P1.Mate_Data.SetColor("_EmissionColor", new Color(P1.Color_Data.r, P1.Color_Data.g, P1.Color_Data.b, P1.Color_Data.a));
+
+                    P1.Player_obj = this.CreatePlayer(P1, i);
                     P1.HPgage_obj = this.CreateHPgage(P1, new Vector3(HPgagesize_in_UICanvas.x / 2 + remainder, HPgagesize_in_UICanvas.y / 2, 0));
                     
                     //カメラのターゲットに設定
@@ -146,7 +149,10 @@ public class PlaySceneManager : MonoBehaviour
                     break;
 
                 case 1:
-                    P2.Player_obj = this.CreatePlayer(P2, i, (Material)Resources.Load("Material/P2Color"));
+                    P2.Mate_Data = (Material)Resources.Load("Material/P2Color");
+                    P2.Mate_Data.SetColor("_EmissionColor", new Color(P2.Color_Data.r, P2.Color_Data.g, P2.Color_Data.b, P2.Color_Data.a));
+
+                    P2.Player_obj = this.CreatePlayer(P2, i);
                     P2.HPgage_obj = this.CreateHPgage(P2, new Vector3(HPgagesize_in_UICanvas.x / 2 + remainder * 2 + HPgagesize_in_UICanvas.x, HPgagesize_in_UICanvas.y / 2, 0));
 
                     //カメラのターゲットに設定
@@ -154,7 +160,10 @@ public class PlaySceneManager : MonoBehaviour
                     break;
 
                 case 2:
-                    P3.Player_obj = this.CreatePlayer(P3, i, (Material)Resources.Load("Material/P3Color"));
+                    P3.Mate_Data = (Material)Resources.Load("Material/P3Color");
+                    P3.Mate_Data.SetColor("_EmissionColor", new Color(P3.Color_Data.r, P3.Color_Data.g, P3.Color_Data.b, P3.Color_Data.a));
+
+                    P3.Player_obj = this.CreatePlayer(P3, i);
                     P3.HPgage_obj = this.CreateHPgage(P3, new Vector3(HPgagesize_in_UICanvas.x / 2 + remainder * 3 + HPgagesize_in_UICanvas.x * 2, HPgagesize_in_UICanvas.y / 2, 0));
 
                     //カメラのターゲットに設定
@@ -162,7 +171,10 @@ public class PlaySceneManager : MonoBehaviour
                     break;
 
                 case 3:
-                    P4.Player_obj = this.CreatePlayer(P4, i, (Material)Resources.Load("Material/P4Color"));
+                    P4.Mate_Data = (Material)Resources.Load("Material/P4Color");
+                    P4.Mate_Data.SetColor("_EmissionColor", new Color(P4.Color_Data.r, P4.Color_Data.g, P4.Color_Data.b, P4.Color_Data.a));
+
+                    P4.Player_obj = this.CreatePlayer(P4, i);
                     P4.HPgage_obj = this.CreateHPgage(P4, new Vector3(HPgagesize_in_UICanvas.x / 2 + remainder * 4 + HPgagesize_in_UICanvas.x * 3, HPgagesize_in_UICanvas.y / 2, 0));
 
                     //カメラのターゲットに設定
@@ -238,12 +250,12 @@ public class PlaySceneManager : MonoBehaviour
     /// </summary>
     /// <param name="player_data">プレイヤーデータ</param>
     /// <returns>プレイヤー</returns>
-    private GameObject CreatePlayer(PlayerData player_data, int num, Material player_mate)
+    private GameObject CreatePlayer(PlayerData player_data, int num)
     {
         //プレイヤーを生成
         GameObject player = Instantiate(player_data.Player_obj, player_data.InitialPos_Data, Quaternion.identity);
         //プレイヤーの設定
-        this.SetPlayerStatus(player, player_data, num, player_mate);
+        this.SetPlayerStatus(player, player_data, num);
 
         return player;
 
@@ -256,7 +268,7 @@ public class PlaySceneManager : MonoBehaviour
     /// </summary>
     /// <param name="player">プレイヤーオブジェクト</param>
     /// <param name="player_data">プレイヤーデータ</param>
-    private void SetPlayerStatus(GameObject player, PlayerData player_data, int num, Material player_mate)
+    private void SetPlayerStatus(GameObject player, PlayerData player_data, int num)
     {
         //キャラの顔をセット
         SpriteRenderer playerFace = player.GetComponent<SpriteRenderer>();
@@ -290,8 +302,8 @@ public class PlaySceneManager : MonoBehaviour
             break;
         }
 
-        player_mate.SetColor("_EmissionColor", new Color(player_data.Color_Data.r, player_data.Color_Data.g, player_data.Color_Data.b, player_data.Color_Data.a));
-        player.transform.GetComponent<Renderer>().material = player_mate;
+       
+        player.transform.GetComponent<Renderer>().material = player_data.Mate_Data;
     }
 
     /// <summary>
@@ -417,23 +429,23 @@ public class PlaySceneManager : MonoBehaviour
             switch (num)
             {
                 case 0:
-                    P1.Player_obj = this.CreatePlayer(P1, num, (Material)Resources.Load("Material/P1Color"));
+                    P1.Player_obj = this.CreatePlayer(P1, num);
                     CameraSet(P1, num);
                     break;
 
                 case 1:
-                    P2.Player_obj = this.CreatePlayer(P2, num, (Material)Resources.Load("Material/P2Color"));
+                    P2.Player_obj = this.CreatePlayer(P2, num);
                     CameraSet(P2, num);
 
                     break;
 
                 case 2:
-                    P3.Player_obj = this.CreatePlayer(P3, num, (Material)Resources.Load("Material/P3Color"));
+                    P3.Player_obj = this.CreatePlayer(P3, num);
                     CameraSet(P3, num);
                     break;
 
                 case 3:
-                    P4.Player_obj = this.CreatePlayer(P4, num, (Material)Resources.Load("Material/P4Color"));
+                    P4.Player_obj = this.CreatePlayer(P4, num);
                     CameraSet(P4, num);
                     break;
 

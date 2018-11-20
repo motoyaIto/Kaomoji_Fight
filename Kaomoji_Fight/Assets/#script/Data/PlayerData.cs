@@ -14,6 +14,7 @@ public class PlayerData{
     private string m_name;          //プレイヤー名
     [SerializeField]
     private Color m_nameColor;      //HPバーに表示される名前の色
+    private Material m_mate;        //material
 
     [SerializeField]
     private Sprite m_playerFace;    //プレイヤーの顔文字
@@ -92,6 +93,17 @@ public class PlayerData{
         }
     }
 
+    public Material Mate_Data
+    {
+        get
+        {
+            return m_mate;
+        }
+        set
+        {
+            m_mate = value;
+        }
+    }
     public Sprite PlayerFace_Data
     {
         get
