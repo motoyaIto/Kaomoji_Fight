@@ -644,7 +644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 257500d7f36219840a14be1a76304d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hue: 155
+  hue: 320
 --- !u!114 &343454622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1298,7 +1298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 257500d7f36219840a14be1a76304d80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hue: 35
+  hue: 200
 --- !u!114 &550933927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3826,6 +3826,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 933d89c59ff2c0c449bd879bb1fd2a61, type: 3}
   - {fileID: 21300000, guid: f258c7b022e81f34396fa2c6a3dbbdfb, type: 3}
   - {fileID: 21300000, guid: b1eabb65da407e74cbec8c90b008eff9, type: 3}
+  Players_color:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 0, g: 0.7758621, b: 0, a: 1}
+  - {r: 0.8413793, g: 0.5939148, b: 0.032995265, a: 1}
 --- !u!4 &1565067915
 Transform:
   m_ObjectHideFlags: 0
@@ -3966,7 +3971,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1229564129286754, guid: c9529d12034635d4e9fedc91c9d6163e, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c9529d12034635d4e9fedc91c9d6163e, type: 2}
