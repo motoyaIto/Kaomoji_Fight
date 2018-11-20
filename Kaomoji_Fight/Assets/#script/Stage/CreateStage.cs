@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-
+using TMPro;
 
 public class CreateStage : MonoBehaviour
 {
@@ -110,7 +110,7 @@ public class CreateStage : MonoBehaviour
                 //ボックスの下のテキストを取得する
                 GameObject textdata = StageBlock.transform.Find("Text").gameObject;
                 //テキストに文字を書き込む
-                textdata.GetComponent<TextMesh>().text = mozi;
+                textdata.GetComponent<TextMeshPro>().text = mozi;
                 StageBlock.name = "StageBlock" + "(" + mozi + ")";
                 // RectTransformを追加
                 StageBlock.AddComponent<RectTransform>();
