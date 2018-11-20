@@ -20,9 +20,14 @@ public class ResultSceneManager : MonoBehaviour
     private int min;
     private int second;
 
+    // プレイ人数
+    private int playerNum = 0;
+
     // 鳴らすかもしれない音
     private AudioSource As;
     private AudioClip se;
+
+    private bool changescene_flag = false;
 
     private void Awake()
     {
@@ -38,7 +43,10 @@ public class ResultSceneManager : MonoBehaviour
         canvas = GameObject.Find("ResultUI").transform.gameObject;
 
         // 遊んだ時間の取得
-        time = ResultData.Instance.Time;
+        time = 180.0f - ResultData.Instance.Time;
+
+        // プレイ人数の取得
+        playerNum = ResultData.Instance.Ranking.Length;
 
         // リザルトの表示
         DataRender();
@@ -48,25 +56,27 @@ public class ResultSceneManager : MonoBehaviour
     void Update()
     {
         // タイトルシーンへ戻る
-        if (XCI.GetButton(XboxButton.B, XboxController.First))
+        if (XCI.GetButton(XboxButton.B, XboxController.First) && !changescene_flag)
         {
+            changescene_flag = true;
             As.PlayOneShot(se);
-            //SceneManager.LoadScene("Title");
+            SceneManagerController.LoadScene();
             SceneManagerController.ChangeScene();
         }
     }
 
     private void ResultRender()
     {
-        for (int i = 0; i < PlayData.Instance.playerNum; i++)
+        for (int i = 1; i <= playerNum; i++)
         {
+            int j = playerNum - i;
             // 順位表示
-            canvas.transform.GetChild(1).transform.GetChild(i).transform.gameObject.SetActive(true);
-            TextMeshProUGUI playerName = canvas.transform.GetChild(1).transform.GetChild(i).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-            playerName.text = ResultData.Instance.Ranking[i].PlayerName_data;
+            canvas.transform.GetChild(1).transform.GetChild(i - 1).transform.gameObject.SetActive(true);
+            TextMeshProUGUI playerName = canvas.transform.GetChild(1).transform.GetChild(i - 1).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+            playerName.text = ResultData.Instance.Ranking[j].PlayerName_data;
 
             // プレイヤーの顔表示
-            PlayerSpriteRender(i);
+            PlayerSpriteRender(i, j);
         }
     }
 
@@ -94,26 +104,26 @@ public class ResultSceneManager : MonoBehaviour
         player.text = ResultData.Instance.MAXDamage_playerName;
     }
 
-    private void PlayerSpriteRender(int num)
+    private void PlayerSpriteRender(int rank, int data)
     {
         GameObject playerFace;
-        switch (num)
+        switch (rank)
         {
-            case 0:
-                playerFace = GameObject.Find("FirstPlayerFace").transform.gameObject;
-                playerFace.GetComponent<Image>().sprite = ResultData.Instance.Ranking[num].PlayerFace_data;
-                break;
             case 1:
-                playerFace = GameObject.Find("SecondPlayerFace").transform.gameObject;
-                playerFace.GetComponent<Image>().sprite = ResultData.Instance.Ranking[num].PlayerFace_data;
+                playerFace = GameObject.Find("FirstPlayerFace").transform.gameObject;
+                playerFace.GetComponent<Image>().sprite = ResultData.Instance.Ranking[data].PlayerFace_data;
                 break;
             case 2:
-                playerFace = GameObject.Find("ThirdPlayerFace").transform.gameObject;
-                playerFace.GetComponent<Image>().sprite = ResultData.Instance.Ranking[num].PlayerFace_data;
+                playerFace = GameObject.Find("SecondPlayerFace").transform.gameObject;
+                playerFace.GetComponent<Image>().sprite = ResultData.Instance.Ranking[data].PlayerFace_data;
                 break;
             case 3:
+                playerFace = GameObject.Find("ThirdPlayerFace").transform.gameObject;
+                playerFace.GetComponent<Image>().sprite = ResultData.Instance.Ranking[data].PlayerFace_data;
+                break;
+            case 4:
                 playerFace = GameObject.Find("ForthPlayerFace").transform.gameObject;
-                playerFace.GetComponent<Image>().sprite = ResultData.Instance.Ranking[num].PlayerFace_data;
+                playerFace.GetComponent<Image>().sprite = ResultData.Instance.Ranking[data].PlayerFace_data;
                 break;
             default:
                 break;
