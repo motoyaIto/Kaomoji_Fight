@@ -7,12 +7,14 @@ public class WeaponBlocController : MonoBehaviour
     [SerializeField]
     private float DamageValue = 5.0f;
 
-    private Vector3 Death_LUpos = new Vector3(-150f, 50f, 0f);    // オブジェクトが破棄されるエリアの左上
+    private Vector3 Death_LUpos = new Vector3(-150f, 100f, 0f);    // オブジェクトが破棄されるエリアの左上
     private Vector3 Death_RDpos = new Vector3(200f, -80f, 0f);   // オブジェクトが破棄されるエリアの右下
 
     private GameObject Weapon;
 
     private Player parent;                  //親となるプレイヤー
+    private string parentName;              //↑の名前
+
     private Rigidbody2D rig2d;
 
     private bool AttackFlag = false;        //攻撃する(true)しない(false)
@@ -36,6 +38,7 @@ public class WeaponBlocController : MonoBehaviour
 
         // 持たれているプレイヤーを取得
         parent = this.transform.parent.GetComponent<Player>();
+        parentName = parent.name;
 
         // タグの設定
         this.tag = "Weapon";
@@ -90,7 +93,7 @@ public class WeaponBlocController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(parent.name != collision.gameObject.name && weapon_throw && collision.transform.tag != "Stage")
+        if (parentName != collision.gameObject.name && weapon_throw && collision.transform.tag != "Stage")
         {
             var hitobj = Instantiate(hitEffect, this.transform.position + transform.forward, Quaternion.identity) as GameObject;
             Destroy(this.gameObject);
