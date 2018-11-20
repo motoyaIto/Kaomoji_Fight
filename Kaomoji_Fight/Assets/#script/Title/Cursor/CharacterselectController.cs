@@ -83,9 +83,9 @@ public class CharacterselectController : CursorController
         TManager_cs.SetPlayerFace(CNConvert(controllerNumber), face);
 
         //カーソルを薄くする
-        Color cursor_color = this.GetComponent<Renderer>().material.color;
+        Material cursor_mate = this.transform.GetComponent<Renderer>().material;
 
-        cursor_color = new Color(cursor_color.r, cursor_color.g, cursor_color.b, 127);
+        cursor_mate.SetColor("_Color", new Color(cursor_mate.color.r, cursor_mate.color.g, cursor_mate.color.b, 0.5f));
         selectFace = true;  
     }
 
