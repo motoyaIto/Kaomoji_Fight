@@ -36,7 +36,7 @@ public class DownTimer : MonoBehaviour {
     {
         int remainingTime = (int)(TimeLimit - nowTime);//残り秒
 
-        //残り時間が無くなったらリザルトシーンに遷移する
+        //残り時間が無くなったらタイマーを止める
         if (remainingTime <= 0)
         {
             DownTimer_State = false;

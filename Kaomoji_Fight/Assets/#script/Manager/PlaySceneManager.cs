@@ -129,9 +129,6 @@ public class PlaySceneManager : MonoBehaviour
         //HPゲージとHPゲージの間の余白
         float remainder = (Screen.width - HPgagesize_in_UICanvas.x * PlayData.Instance.playerNum) / (PlayData.Instance.playerNum + 1);
 
-        Debug.Log("HPgage" + HPgage_rectTrans.rect.width);
-        Debug.Log("UIcanvas" + UICanvases_recttrans.localScale.x);
-
         //プレイヤーとHPを生成
         for (int i = 0; i < PlayData.Instance.playerNum; i++)
         {
@@ -218,18 +215,17 @@ public class PlaySceneManager : MonoBehaviour
         }
 
         // プレイヤーが独り、または時間が来たらリザルトに遷移
-        if ((death_count == 1 || DownTimer_cs.DownTimer_time < 0) && PlayData.Instance.playerNum != 1)
+        if ((death_count == 1 || DownTimer_cs.DownTimer_time <= 0) && PlayData.Instance.playerNum != 1)
         {
             this.EndFight(DownTimer_cs.DownTimer_time);
         }
-        else
+        
+        //1人プレイの時の終了処理
+        if(XCI.GetButton(XboxButton.Start, XboxController.First) && PlayData.Instance.playerNum == 1)
         {
-            if(XCI.GetButton(XboxButton.Start, XboxController.First))
-            {
-                SceneManager.LoadScene("Title");
-                
-            }
+            SceneManager.LoadScene("Title");
         }
+        
     }
 
 
