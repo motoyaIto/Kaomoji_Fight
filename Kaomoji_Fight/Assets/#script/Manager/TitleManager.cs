@@ -142,6 +142,7 @@ public class TitleManager : MonoBehaviour{
 
                 playdata = new PlayData(Stage_name, playerdata);
 
+                SceneManagerController.LoadScene();
                 SceneManagerController.ChangeScene();
                 break;
         }
@@ -197,7 +198,7 @@ public class TitleManager : MonoBehaviour{
 
         for(int i = 0; i < playerNum; i++)
         {
-            playerdata[i] = new PlayerData(players_name[i], Players_color[i], playersface[i], new Vector3(10 * (i + 1), 50, 0), XboxController.First + i, 100);
+            playerdata[i] = new PlayerData(players_name[i], Players_color[i], playersface[i], new Vector3(10 * (i + 1), 30, 0), XboxController.First + i, 100);
         }
     }
    
