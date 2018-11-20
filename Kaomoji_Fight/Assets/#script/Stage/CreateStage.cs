@@ -51,7 +51,8 @@ public class CreateStage : MonoBehaviour
         "ッ"
     };
 
-    private GameObject StageBlock;//ステージ
+    private GameObject StageBlock;  //ステージ
+    private Material Weapon_mate;   //武器material 
 
 
     void Start()
@@ -76,7 +77,8 @@ public class CreateStage : MonoBehaviour
         StageBlocks = new GameObject[textnam];
         //文字を表示するボックスをResourcesから読み込む
         StageBlock = (GameObject)Resources.Load("prefab/Stage/StageBlock");
-        
+        Weapon_mate = Resources.Load<Material>("Material/StageBlock_Weapon");
+
 
 
 
@@ -118,7 +120,7 @@ public class CreateStage : MonoBehaviour
                 if (Array.IndexOf(WEAPO_MOZI, mozi) >= 0)
                 {
                     //武器の文字用マテリアルに変更
-                    Material StageBlock_WeaponMateral = (Material)Resources.Load("Material/StageBlock_Weapon");
+                    Material StageBlock_WeaponMateral = Weapon_mate;
                    StageBlock.GetComponent<Renderer>().material = StageBlock_WeaponMateral;
                     
 
