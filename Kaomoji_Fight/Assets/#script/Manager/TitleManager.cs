@@ -11,6 +11,7 @@ public class TitleManager : MonoBehaviour{
         PLAYERNUM,
         STAGESELECT,
         CHARACTERSELECT,
+        CHANGESCENE,
 
         MAX
     }
@@ -19,7 +20,7 @@ public class TitleManager : MonoBehaviour{
     private SELECTMODE Nextmode;               //次のページ
 
     private bool ControllerLock = false;//コントローラーをロックする(true)しない(false)
-    private bool Flickpage = true;     //次のページ(true)前のページ(false)
+    private bool Flickpage = true;      //次のページ(true)前のページ(false)
 
     //各ギズモ
     [SerializeField]
@@ -133,17 +134,25 @@ public class TitleManager : MonoBehaviour{
                     }
                 }
 
-                mode = SELECTMODE.MAX;
+                mode = SELECTMODE.CHANGESCENE;
 
                 break;
 
-            case SELECTMODE.MAX:
+            case SELECTMODE.CHANGESCENE:
+
                 CreatePlayer_data();
 
                 playdata = new PlayData(Stage_name, playerdata);
 
                 SceneManagerController.LoadScene();
                 SceneManagerController.ChangeScene();
+
+                mode = SELECTMODE.MAX;
+
+                break;
+
+            case SELECTMODE.MAX:
+               
                 break;
         }
         
