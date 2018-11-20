@@ -10,11 +10,15 @@ public class MoveScript1 : MonoBehaviour {
     Rigidbody2D rb2d;
     bool jump = false;
 
+    private Vector3 def;
+
     // Use this for initialization
     void Start()
     {
         //コンポーネント読み込み
         rb2d = GetComponent<Rigidbody2D>();
+
+        def = transform.localScale;
     }
 
 
@@ -26,10 +30,12 @@ public class MoveScript1 : MonoBehaviour {
         if (Input.GetKey(KeyCode.RightArrow))
         {
             direction = 1f;
+            transform.localScale = new Vector3(def.x, def.y, def.z);
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
             direction = -1f;
+            transform.localScale = new Vector3(-def.x, def.y, def.z);
         }
         else
         {
