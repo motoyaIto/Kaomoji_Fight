@@ -74,11 +74,18 @@ public class CharacterselectController : CursorController
 
     protected override void Decide()
     {
+        //選択した番号を取得
         int number = ((NumberLine * NowNumberColumn)) + (NowNumberLine + 1);
 
+        //顔のテクスチャーを取得
         Sprite face = Resources.Load<Sprite>("textures/use/Player/Player" + number.ToString());
+        //マネージャーに登録
         TManager_cs.SetPlayerFace(CNConvert(controllerNumber), face);
 
+        //カーソルを薄くする
+        Material cursor_mate = this.transform.GetComponent<Renderer>().material;
+
+        cursor_mate.SetColor("_Color", new Color(cursor_mate.color.r, cursor_mate.color.g, cursor_mate.color.b, 0.5f));
         selectFace = true;  
     }
 
