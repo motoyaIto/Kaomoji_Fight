@@ -524,7 +524,7 @@ public class PlaySceneManager : MonoBehaviour
         this.DeathPlayerSort(dummy);
         
 
-       resultdata = new ResultData(endtime, MAXDamage, MAXDamagePlayer);
+       resultdata = new ResultData(endtime, MAXDamage, MAXDamagePlayer,ranking);
 
         GameSet.SetActive(true);
 
