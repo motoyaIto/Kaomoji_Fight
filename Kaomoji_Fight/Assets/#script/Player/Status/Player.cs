@@ -24,8 +24,6 @@ public class Player : RaycastController {
     private float direction = 0;            // 方向
     private float thrust = 1000f;           // 投擲物の推進力
 
-    private int give_damage = 0;        // 他のプレイヤーにどれだけダメージを与えたか
-
     private GameObject weapon;
 
     private bool HaveWeapon = false;        //武器を持っている(true)いない(false)
@@ -393,18 +391,6 @@ public class Player : RaycastController {
         }
     }
 
-    public int DamageCount
-    {
-        set
-        {
-            give_damage += value;
-        }
-        get
-        {
-            return give_damage;
-        }
-    }
-    
     /// <summary>
     /// 音を鳴らす
     /// </summary>
