@@ -43,8 +43,12 @@ public class Player : RaycastController {
     private PlaySceneManager PSM;
 
     private new AudioSource audio;
+    private AudioClip pickUp_ac;            //拾う
     private AudioClip shot_ac;              // 投げる音
+    private AudioClip walk_ac;              //歩く
     private AudioClip jump_ac;              // ジャンプ
+    
+    
     
     #endregion
 
@@ -52,7 +56,9 @@ public class Player : RaycastController {
     private void Awake()
     {
         audio = this.GetComponent<AudioSource>();
+        pickUp_ac = (AudioClip)Resources.Load("Sound/SE/Move/pickUp");      //拾う音
         shot_ac = (AudioClip)Resources.Load("Sound/SE/Shooting/launcher");   //投げる音
+        walk_ac = (AudioClip)Resources.Load("Sound/SE/Move/walk");          //歩く音
         jump_ac = (AudioClip)Resources.Load("Sound/SE/Jump/jump");           //ジャンプ音       
     }
 
@@ -79,14 +85,22 @@ public class Player : RaycastController {
         Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, ControlerNamber), XCI.GetAxis(XboxAxis.LeftStickY, ControlerNamber));
         if (input.x > .0f)
         {
+            //歩く音
+            if (direction == 0) { this.PlaySound(walk_ac, 0.2f); }
+
             direction = 1f;
         }
         else if (input.x < .0f)
         {
+            //歩く音
+            if (direction == 0) { this.PlaySound(walk_ac, 0.2f); }
+
             direction = -1f;
         }
         else
         {
+            //歩く音を止める
+            audio.Stop();
             direction = 0f;
         }
 
@@ -251,6 +265,9 @@ public class Player : RaycastController {
         //武器を持っていなかったら
         if (HaveWeapon == false && block_cs.Weapon == true)
         {
+            //拾う音
+            this.PlaySound(pickUp_ac, .2f);
+
             //床を武器として取得
             weapon = Object.Instantiate(block) as GameObject;
             weapon.transform.parent = transform;
@@ -386,5 +403,17 @@ public class Player : RaycastController {
         {
             return give_damage;
         }
+    }
+    
+    /// <summary>
+    /// 音を鳴らす
+    /// </summary>
+    /// <param name="clip">音</param>
+    /// <param name="volume">ボリューム</param>
+    private void PlaySound(AudioClip clip, float volume)
+    {
+        audio.volume = volume;
+        audio.PlayOneShot(clip);
+        audio.volume = 1.0f;
     }   
 }
