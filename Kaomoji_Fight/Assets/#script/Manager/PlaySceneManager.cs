@@ -506,17 +506,25 @@ public class PlaySceneManager : MonoBehaviour
         dummy = GetInitializeRankingData();
 
         //与えたダメージ順にソート
-        Array.Sort(dummy, (a, b) => a.AttackDamage_data - b.AttackDamage_data);
+        Array.Sort(dummy, (a, b) => b.AttackDamage_data - a.AttackDamage_data);
 
         //最大ダメージ値とプレイヤー名を獲得
         MAXDamage = dummy[0].AttackDamage_data;
         MAXDamagePlayer = dummy[0].PlayerName_data;
 
+        //ランキングデータの初期化
+        ranking = new RankingData[PlayData.Instance.playerNum]; ;
+
+        for (int i = 0; i < PlayData.Instance.playerNum; i++)
+        {
+            ranking[i] = new RankingData();
+        }
+
         //死んだ順で並べ直してランキングに格納
-        this.DeathPlayerSort(ref ranking, dummy);
+        this.DeathPlayerSort(dummy);
         
 
-       resultdata = new ResultData(endtime, MAXDamage, MAXDamagePlayer, ranking);
+       resultdata = new ResultData(endtime, MAXDamage, MAXDamagePlayer);
 
         GameSet.SetActive(true);
 
@@ -528,11 +536,11 @@ public class PlaySceneManager : MonoBehaviour
     /// <returns>各プレイヤーのデータ</returns>
     private RankingData[] GetInitializeRankingData()
     {
-        RankingData[] ranking = new RankingData[PlayData.Instance.playerNum]; ;
+        RankingData[] playerdata = new RankingData[PlayData.Instance.playerNum]; ;
 
         for(int i = 0; i < PlayData.Instance.playerNum; i++)
         {
-            ranking[i] = new RankingData();
+            playerdata[i] = new RankingData();
         }
 
         for (int i = 0; i < PlayData.Instance.playerNum; i++)
@@ -540,32 +548,32 @@ public class PlaySceneManager : MonoBehaviour
             switch (i)
             {
                 case 0:
-                    ranking[0].PlayerName_data = P1.Name_Data;
-                    ranking[0].PlayerFace_data = P1.PlayerFace_Data;
-                    ranking[0].AttackDamage_data = PlayData.Instance.PlayersData[i].DamageCount;
+                    playerdata[0].PlayerName_data = P1.Name_Data;
+                    playerdata[0].PlayerFace_data = P1.PlayerFace_Data;
+                    playerdata[0].AttackDamage_data = PlayData.Instance.PlayersData[i].DamageCount;
                     break;
 
                 case 1:
-                    ranking[1].PlayerName_data = P2.Name_Data;
-                    ranking[1].PlayerFace_data = P2.PlayerFace_Data;
-                    ranking[1].AttackDamage_data = PlayData.Instance.PlayersData[i].DamageCount;
+                    playerdata[1].PlayerName_data = P2.Name_Data;
+                    playerdata[1].PlayerFace_data = P2.PlayerFace_Data;
+                    playerdata[1].AttackDamage_data = PlayData.Instance.PlayersData[i].DamageCount;
                     break;
 
                 case 2:
-                    ranking[2].PlayerName_data = P3.Name_Data;
-                    ranking[2].PlayerFace_data = P3.PlayerFace_Data;
-                    ranking[2].AttackDamage_data = PlayData.Instance.PlayersData[i].DamageCount;
+                    playerdata[2].PlayerName_data = P3.Name_Data;
+                    playerdata[2].PlayerFace_data = P3.PlayerFace_Data;
+                    playerdata[2].AttackDamage_data = PlayData.Instance.PlayersData[i].DamageCount;
                     break;
 
                 case 3:
-                    ranking[3].PlayerName_data = P4.Name_Data;
-                    ranking[3].PlayerFace_data = P4.PlayerFace_Data;
-                    ranking[3].AttackDamage_data = PlayData.Instance.PlayersData[i].DamageCount;
+                    playerdata[3].PlayerName_data = P4.Name_Data;
+                    playerdata[3].PlayerFace_data = P4.PlayerFace_Data;
+                    playerdata[3].AttackDamage_data = PlayData.Instance.PlayersData[i].DamageCount;
                     break;
             }
         }
 
-        return ranking;
+        return playerdata;
     }
 
     /// <summary>
@@ -573,25 +581,31 @@ public class PlaySceneManager : MonoBehaviour
     /// </summary>
     /// <param name="ranking">ランキング</param>
     /// <param name="dummy">ダメージ量でソートされたデータ</param>
-    private void DeathPlayerSort(ref RankingData[] ranking, RankingData[] dummy)
+    private void DeathPlayerSort(RankingData[] dummy)
     {
         int count = 0;
 
-        for (int i = 0; i < PlayData.Instance.playerNum; i++)
+        for (int i = PlayData.Instance.playerNum - 1; i >= 0; i--)
         {
             for (int j = 0; j < PlayData.Instance.playerNum; j++)
             {
-                //i番目に殺された奴と同じ名前のを格納
-                if (DeathNumber[i] == dummy[j].PlayerName_data)
+                //死んでいてダメージ量が低い順
+                if(dummy[i].PlayerName_data == DeathNumber[j])
                 {
-                    ranking[PlayData.Instance.playerNum - i - 1] = dummy[j];
-
                     count++;
+                    ranking[PlayData.Instance.playerNum - i - 1] = dummy[j];
+                    i--;
+                    j = 0;
+
+                    if (i < 0)
+                    {
+                        break;
+                    }
                 }
             }
         }
 
-        this.NotDeathPlayerSort(ref ranking, dummy, count);
+        this.NotDeathPlayerSort(dummy, count);
     }
 
     /// <summary>
@@ -600,7 +614,7 @@ public class PlaySceneManager : MonoBehaviour
     /// <param name="ranking">ランキング</param>
     /// <param name="dummy">死んだ順</param>
     /// <param name="count">死んでいるプレイヤーの数</param>
-    private void NotDeathPlayerSort(ref RankingData[] ranking, RankingData[] dummy, int count)
+    private void NotDeathPlayerSort(RankingData[] dummy, int count)
     {
         for (int i = 0; i < PlayData.Instance.playerNum; i++)
         {
@@ -609,17 +623,22 @@ public class PlaySceneManager : MonoBehaviour
                 //i番目に殺された奴と同じ名前だったら次へ
                 if (dummy[i].PlayerName_data == DeathNumber[j] )
                 {
-                    break;
-                }
+                    i++;
 
-                //死んでなかったら
-                if(j == PlayData.Instance.playerNum - 1)
-                {
-                    ranking[count] = dummy[i];
+                    j = 0;
 
-                    count++;
+                    //プレイヤーの数をオーバーしたら返す
+                    if(i >= PlayData.Instance.playerNum)
+                    {
+                        return;
+                    }
                 }
             }
+
+            //死んでいなかったら
+            ranking[count] = dummy[i];
+
+            count++;
         }
     }
 
