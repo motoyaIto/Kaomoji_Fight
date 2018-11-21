@@ -103,6 +103,10 @@ public class ResultSceneManager : MonoBehaviour
         // ダメージを一番与えたプレイヤーの表示
         TextMeshProUGUI player = GameObject.Find("Name").GetComponent<TextMeshProUGUI>();
         player.text = ResultData.Instance.MAXDamage_playerName;
+
+        // ダメージ値の表示
+        TextMeshProUGUI damage = GameObject.Find("MaxDamage").GetComponent<TextMeshProUGUI>();
+        damage.text = ResultData.Instance.MAXDamage + "";
     }
 
     private void PlayerSpriteRender(int rank, int data)

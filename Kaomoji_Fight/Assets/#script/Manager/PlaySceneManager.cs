@@ -532,28 +532,24 @@ public class PlaySceneManager : MonoBehaviour
                     ranking[0].PlayerName_data = P1.Name_Data;
                     ranking[0].PlayerFace_data = P1.PlayerFace_Data;
                     ranking[0].AttackDamage_data = P1.Player_obj.GetComponent<Player>().DamageCount;
-
                     break;
 
                 case 1:
                     ranking[1].PlayerName_data = P2.Name_Data;
                     ranking[1].PlayerFace_data = P2.PlayerFace_Data;
                     ranking[1].AttackDamage_data = P2.Player_obj.GetComponent<Player>().DamageCount;
-
                     break;
 
                 case 2:
                     ranking[2].PlayerName_data = P3.Name_Data;
                     ranking[2].PlayerFace_data = P3.PlayerFace_Data;
                     ranking[2].AttackDamage_data = P3.Player_obj.GetComponent<Player>().DamageCount;
-
                     break;
 
                 case 3:
                     ranking[3].PlayerName_data = P4.Name_Data;
                     ranking[3].PlayerFace_data = P4.PlayerFace_Data;
                     ranking[3].AttackDamage_data = P4.Player_obj.GetComponent<Player>().DamageCount;
-
                     break;
             }
         }
