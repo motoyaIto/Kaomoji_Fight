@@ -56,7 +56,7 @@ public class ResultSceneManager : MonoBehaviour
     void Update()
     {
         // タイトルシーンへ戻る
-        if (XCI.GetButton(XboxButton.B, XboxController.First) && !changescene_flag)
+        if ((Input.GetKeyDown(KeyCode.Space) || XCI.GetButton(XboxButton.B, XboxController.First)) && !changescene_flag)
         {
             changescene_flag = true;
             As.PlayOneShot(se);
@@ -106,7 +106,7 @@ public class ResultSceneManager : MonoBehaviour
 
         // ダメージ値の表示
         TextMeshProUGUI damage = GameObject.Find("MaxDamage").GetComponent<TextMeshProUGUI>();
-        damage.text = ResultData.Instance.MAXDamage + "";
+        damage.text = ResultData.Instance.MAXDamage + " ダメージ";
     }
 
     private void PlayerSpriteRender(int rank, int data)

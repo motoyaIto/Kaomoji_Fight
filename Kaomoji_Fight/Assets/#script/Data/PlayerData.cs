@@ -30,6 +30,8 @@ public class PlayerData{
     [SerializeField]
     private float m_hp = 100;//HP量
 
+    private int m_give_damage;        // 他のプレイヤーにどれだけダメージを与えたか
+
     private Slider m_hpSlider;
 
     //コンストラクタ
@@ -42,6 +44,7 @@ public class PlayerData{
         m_initialPos = initialPos;
         m_controller = controller;
         m_hp = hp;
+        m_give_damage = 0;
     }
 
     public void LoadGameObject()
@@ -154,4 +157,17 @@ public class PlayerData{
             return m_hp;
         }
     }
+
+    public int DamageCount
+    {
+        set
+        {
+            m_give_damage += value;
+        }
+        get
+        {
+            return m_give_damage;
+        }
+    }
+
 }
