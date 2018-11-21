@@ -55,7 +55,9 @@ public class TitleManager : MonoBehaviour{
 
     // Use this for initialization
     void Start() {
-        
+        //シーンのロード
+        SceneManagerController.LoadScene();
+
     }
 	// Update is called once per frame
 	void Update () {
@@ -144,7 +146,7 @@ public class TitleManager : MonoBehaviour{
 
                 playdata = new PlayData(Stage_name, playerdata);
 
-                SceneManagerController.LoadScene();
+                //シーン切替
                 SceneManagerController.ChangeScene();
 
                 mode = SELECTMODE.MAX;

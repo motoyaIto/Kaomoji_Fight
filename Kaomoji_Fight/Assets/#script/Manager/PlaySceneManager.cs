@@ -14,6 +14,8 @@ using System;
 public class PlaySceneManager : MonoBehaviour
 {
     private GameObject UICanvases;      //UI用キャンバス
+    [SerializeField]
+    private GameObject GameSet;        //ゲーム終了時に表示する
 
     private GameObject DownTimer_obj;   //ダウンタイマー
     private DownTimer DownTimer_cs;     //ダウンタイマーのcs
@@ -48,12 +50,11 @@ public class PlaySceneManager : MonoBehaviour
 
     private ResultData resultdata;//resultデータ
                                   //private EffectControll effectControll;  //エフェクト
-
+    private IEnumerator changescene = null;
     private RankingData[] ranking = null;
 
     private void Awake()
     {
-
         //エフェクトを設定
         dedEffect = Resources.Load<GameObject>("prefab/Effect/Star_Burst_02");
         //UIオブジェクトを設定
@@ -258,8 +259,6 @@ public class PlaySceneManager : MonoBehaviour
         this.SetPlayerStatus(player, player_data, num);
 
         return player;
-
-       
     }
 
    
@@ -482,6 +481,9 @@ public class PlaySceneManager : MonoBehaviour
     /// <param name="endtime">ゲーム終了時の残りタイム</param>
     public void EndFight(float endtime)
     {
+        changescene = this.ChangeScene();
+        StartCoroutine(changescene);
+
         ranking = new RankingData[PlayData.Instance.playerNum];   //ランキング順
         RankingData[] dummy = new RankingData[PlayData.Instance.playerNum];     //データ置き場
 
@@ -503,8 +505,10 @@ public class PlaySceneManager : MonoBehaviour
         
 
        resultdata = new ResultData(endtime, MAXDamage, MAXDamagePlayer, ranking);
-        SceneManagerController.LoadScene();
-        SceneManagerController.ChangeScene();
+
+        GameSet.SetActive(true);
+
+
     }
 
     /// <summary>
@@ -583,6 +587,12 @@ public class PlaySceneManager : MonoBehaviour
         this.NotDeathPlayerSort(ref ranking, dummy, count);
     }
 
+    /// <summary>
+    /// 死んでないプレイヤーを設定
+    /// </summary>
+    /// <param name="ranking">ランキング</param>
+    /// <param name="dummy">死んだ順</param>
+    /// <param name="count">死んでいるプレイヤーの数</param>
     private void NotDeathPlayerSort(ref RankingData[] ranking, RankingData[] dummy, int count)
     {
         for (int i = 0; i < PlayData.Instance.playerNum; i++)
@@ -604,5 +614,13 @@ public class PlaySceneManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    private IEnumerator ChangeScene()
+    {
+       
+        SceneManagerController.LoadScene();
+        yield return new WaitForSeconds(3.0f);
+        SceneManagerController.ChangeScene();
     }
 }

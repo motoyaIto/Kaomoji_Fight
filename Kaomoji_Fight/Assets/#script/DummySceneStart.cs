@@ -19,7 +19,7 @@ public class DummySceneStart : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        SceneManagerController.LoadScene();
+        //SceneManagerController.LoadScene();
 		
 	}
 	
