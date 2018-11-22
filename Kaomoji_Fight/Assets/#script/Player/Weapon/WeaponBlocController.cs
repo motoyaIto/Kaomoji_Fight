@@ -26,12 +26,14 @@ public class WeaponBlocController : MonoBehaviour
     private bool weapon_throw = false;      //武器を投げた(true)投げてない(false)
 
     private GameObject hitEffect;           // ヒットエフェクト
-   
+    private GameObject self_destruct_effect;// 自爆エフェクト
+
 
     private void Awake()
     {
         PSManager_cs = GameObject.Find("PlaySceneManager").GetComponent<PlaySceneManager>();
         hitEffect = Resources.Load<GameObject>("prefab/Effect/Wave_01");
+        self_destruct_effect = Resources.Load<GameObject>("prefab/Effect/Explosion");
     }
 
     // Use this for initialization
@@ -91,6 +93,7 @@ public class WeaponBlocController : MonoBehaviour
         switch (this.transform.GetChild(0).GetComponent<TextMeshPro>().text)
         {
             case "じ":
+                var hitobj = Instantiate(self_destruct_effect, this.transform.position + transform.forward, Quaternion.identity) as GameObject;
                 DamageValue = 50;
                 PSManager_cs.Player_ReceiveDamage(parent, this.gameObject, 0);
 
