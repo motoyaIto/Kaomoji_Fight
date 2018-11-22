@@ -339,7 +339,7 @@ public class PlaySceneManager : MonoBehaviour
         string giveDamagePlayer = weapon.GetComponent<WeaponBlocController>().Owner_Data;
 
         //自爆
-        if(weapon.transform.GetChild(0).GetComponent<TextMeshPro>().text == "じ")
+        if(weapon.transform.GetChild(0).GetComponent<TextMeshPro>().text == "じ" || weapon.transform.GetChild(0).GetComponent<TextMeshPro>().text == "ジ")
         {
             // ダメージを受けたプレイヤーデータを取得する
             PlayerData player_data = CheckDamagePlayer(damagePlayer.name);
