@@ -339,7 +339,7 @@ public class PlaySceneManager : MonoBehaviour
         string giveDamagePlayer = weapon.GetComponent<WeaponBlocController>().Owner_Data;
 
         //自爆
-        if(weapon.transform.GetChild(0).GetComponent<TextMeshPro>().text == "じ" || weapon.transform.GetChild(0).GetComponent<TextMeshPro>().text == "ジ")
+        if(weapon.transform.GetChild(0).GetComponent<TextMeshPro>().text == "じ" || weapon.transform.GetChild(0).GetComponent<TextMeshPro>().text == "ジ" || weapon.transform.GetChild(0).GetComponent<TextMeshPro>().text == "し" || weapon.transform.GetChild(0).GetComponent<TextMeshPro>().text == "シ")
         {
             // ダメージを受けたプレイヤーデータを取得する
             PlayerData player_data = CheckDamagePlayer(damagePlayer.name);
@@ -551,10 +551,10 @@ public class PlaySceneManager : MonoBehaviour
         }
 
         //死んだ順で並べ直してランキングに格納
-        this.DeathPlayerSort(dummy);
+        //this.DeathPlayerSort(dummy);
         
 
-       resultdata = new ResultData(endtime, MAXDamage, MAXDamagePlayer,ranking);
+       resultdata = new ResultData(endtime, MAXDamage, MAXDamagePlayer,dummy);
 
         GameSet.SetActive(true);
 

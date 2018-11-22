@@ -402,4 +402,12 @@ public class Player : RaycastController {
         audio.PlayOneShot(clip);
         audio.volume = 1.0f;
     }   
+
+    public int PlayerNumber_data
+    {
+        get
+        {
+            return CNConvert(ControlerNamber);
+        }
+    }
 }
