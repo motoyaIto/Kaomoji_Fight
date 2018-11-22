@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
+using TMPro;
 
 //[RequireComponent(typeof(Contoroller2d))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -41,10 +42,12 @@ public class Player : RaycastController {
     private PlaySceneManager PSM;
 
     private new AudioSource audio;
+    private new AudioSource audio2;
     private AudioClip pickUp_ac;            //拾う
     private AudioClip shot_ac;              // 投げる音
     private AudioClip walk_ac;              //歩く
     private AudioClip jump_ac;              // ジャンプ
+    private AudioClip bomb_ac;
     
     
     
@@ -54,10 +57,12 @@ public class Player : RaycastController {
     private void Awake()
     {
         audio = this.GetComponent<AudioSource>();
+        audio2 = this.GetComponent<AudioSource>();
         pickUp_ac = (AudioClip)Resources.Load("Sound/SE/Move/pickUp");      //拾う音
         shot_ac = (AudioClip)Resources.Load("Sound/SE/Shooting/launcher");   //投げる音
         walk_ac = (AudioClip)Resources.Load("Sound/SE/Move/walk");          //歩く音
-        jump_ac = (AudioClip)Resources.Load("Sound/SE/Jump/jump");           //ジャンプ音       
+        jump_ac = (AudioClip)Resources.Load("Sound/SE/Jump/jump");           //ジャンプ音  
+        bomb_ac = Resources.Load<AudioClip>("Sound/SE/Deth/ded2");
     }
 
     new void Start()
@@ -84,21 +89,21 @@ public class Player : RaycastController {
         if (input.x > .0f)
         {
             //歩く音
-            if (direction == 0) { this.PlaySound(walk_ac, 0.2f); }
+          //  if (direction == 0) { this.PlaySound(audio2, walk_ac, 0.2f); }
 
             direction = 1f;
         }
         else if (input.x < .0f)
         {
             //歩く音
-            if (direction == 0) { this.PlaySound(walk_ac, 0.2f); }
+           // if (direction == 0) { this.PlaySound(audio2, walk_ac, 0.2f); }
 
             direction = -1f;
         }
         else
         {
             //歩く音を止める
-            audio.Stop();
+            //audio2.Stop();
             direction = 0f;
         }
 
@@ -180,8 +185,16 @@ public class Player : RaycastController {
             //武器を投げる
             if (XCI.GetButtonDown(XboxButton.B, ControlerNamber))
             {
-                audio.volume = .15f;
-                audio.PlayOneShot(shot_ac);
+                if (weapon.transform.GetChild(0).GetComponent<TextMeshPro>().text != "し" && weapon.transform.GetChild(0).GetComponent<TextMeshPro>().text != "シ" && weapon.transform.GetChild(0).GetComponent<TextMeshPro>().text != "じ" && weapon.transform.GetChild(0).GetComponent<TextMeshPro>().text != "ジ")
+                {
+                    audio.volume = .15f;
+                    audio.PlayOneShot(shot_ac);
+                }
+                else
+                {
+                    audio.volume = .2f;
+                    audio.PlayOneShot(bomb_ac);
+                }
 
                 ChangeWeaponState(false);
                 WeaponBlocController WB = weapon.GetComponent<WeaponBlocController>();
@@ -264,7 +277,7 @@ public class Player : RaycastController {
         if (HaveWeapon == false && block_cs.Weapon == true)
         {
             //拾う音
-            this.PlaySound(pickUp_ac, .2f);
+            this.PlaySound(audio, pickUp_ac, .2f);
 
             //床を武器として取得
             weapon = Object.Instantiate(block) as GameObject;
@@ -396,11 +409,11 @@ public class Player : RaycastController {
     /// </summary>
     /// <param name="clip">音</param>
     /// <param name="volume">ボリューム</param>
-    private void PlaySound(AudioClip clip, float volume)
+    private void PlaySound(AudioSource audiosource, AudioClip clip, float volume)
     {
-        audio.volume = volume;
-        audio.PlayOneShot(clip);
-        audio.volume = 1.0f;
+        audiosource.volume = volume;
+        audiosource.PlayOneShot(clip);
+        //audiosource.volume = 1.0f;
     }   
 
     public int PlayerNumber_data
