@@ -48,6 +48,8 @@ public class WeaponBlocController : MonoBehaviour
 
         rig2d = Weapon.GetComponent<Rigidbody2D>();
         rig2d.gravityScale = .01f;
+
+        //Debug.Log(this.name.Substring(this.name.IndexOf("("), this.name.IndexOf(")")));
     }
 
     // Update is called once per frame
@@ -73,6 +75,8 @@ public class WeaponBlocController : MonoBehaviour
     {
         // 親から離れる
         this.transform.parent = null;
+
+        //switch(this.transform)
 
         Weapon.AddComponent<BoxCollider2D>();
 
