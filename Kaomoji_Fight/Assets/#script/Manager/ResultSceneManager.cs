@@ -69,15 +69,15 @@ public class ResultSceneManager : MonoBehaviour
     {
         for (int i = 0; i < playerNum; i++)
         {
-            int j = playerNum - (i + 1);
+            //int j = playerNum - (i + 1);
 
             // 順位表示
             canvas.transform.GetChild(1).transform.GetChild(i).transform.gameObject.SetActive(true);
             TextMeshProUGUI playerName = canvas.transform.GetChild(1).transform.GetChild(i).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-            playerName.text = ResultData.Instance.Ranking[j].PlayerName_data;
+            playerName.text = ResultData.Instance.Ranking[i].PlayerName_data;
 
             // プレイヤーの顔表示
-            PlayerSpriteRender(i, j);
+            PlayerSpriteRender(i, i);
         }
     }
 

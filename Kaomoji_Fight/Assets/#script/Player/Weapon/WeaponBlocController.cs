@@ -80,6 +80,7 @@ public class WeaponBlocController : MonoBehaviour
     public void Attack(Vector3 shot, float thrust)
     {
         GameObject parent = this.transform.parent.gameObject;
+        Player parent_cs = parent.GetComponent<Player>();
 
         // 親から離れる
         this.transform.parent = null;
@@ -92,11 +93,13 @@ public class WeaponBlocController : MonoBehaviour
 
         switch (this.transform.GetChild(0).GetComponent<TextMeshPro>().text)
         {
+            case "し":
+            case "シ":
             case "じ":
             case "ジ":
                 var hitobj = Instantiate(self_destruct_effect, this.transform.position + transform.forward, Quaternion.identity) as GameObject;
                 DamageValue = 50;
-                PSManager_cs.Player_ReceiveDamage(parent, this.gameObject, 0);
+                PSManager_cs.Player_ReceiveDamage(parent, this.gameObject, parent_cs.PlayerNumber_data);
 
                 Destroy(this.gameObject);
                 break;
