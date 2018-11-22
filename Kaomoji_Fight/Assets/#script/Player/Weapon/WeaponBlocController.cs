@@ -93,6 +93,7 @@ public class WeaponBlocController : MonoBehaviour
         switch (this.transform.GetChild(0).GetComponent<TextMeshPro>().text)
         {
             case "じ":
+            case "ジ":
                 var hitobj = Instantiate(self_destruct_effect, this.transform.position + transform.forward, Quaternion.identity) as GameObject;
                 DamageValue = 50;
                 PSManager_cs.Player_ReceiveDamage(parent, this.gameObject, 0);
