@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Weapon_Z
 {
+    private PlaySceneManager PSManager;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    void Start()
+    {
+
+    }
+
+    public void Attack_zi()
+    {
+        Debug.Log("じ");
+    }
 }

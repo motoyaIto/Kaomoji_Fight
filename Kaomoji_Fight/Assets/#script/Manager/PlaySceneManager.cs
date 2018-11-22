@@ -338,6 +338,36 @@ public class PlaySceneManager : MonoBehaviour
         // ダメージを与えたプレイヤーの名前
         string giveDamagePlayer = weapon.GetComponent<WeaponBlocController>().Owner_Data;
 
+        //自爆
+        if(weapon.transform.GetChild(0).GetComponent<TextMeshPro>().text == "じ")
+        {
+            // ダメージを受けたプレイヤーデータを取得する
+            PlayerData player_data = CheckDamagePlayer(damagePlayer.name);
+
+            //ダメージを受けたプレイヤーがいなかったとき
+            if (player_data == null)
+            {
+                return;
+            }
+
+            //ダメージを与える
+            HP_Slider[num].value -= weapon.GetComponent<WeaponBlocController>().DamageValue_Data;
+
+            //HPが0以下になったらplayerを殺す
+            if (HP_Slider[num].value <= 0)
+            {
+                var dedobj = Instantiate(dedEffect, damagePlayer.transform.position + transform.forward, Quaternion.identity) as GameObject;
+                TrueDeath[num] = true;
+                DeathNumber[num] = damagePlayer.name;
+                audio.volume = 0.3f;
+                audio.PlayOneShot(audioClip_ded);
+                Destroy(damagePlayer);
+                Destroy(HP_Slider[num].gameObject);
+                death_count--;
+            }
+            return;
+        }
+
         // 武器の所有者の名前とダメージを受けたプレイヤーの名前が同じならばダメージを受けない
         if (damagePlayer.name == giveDamagePlayer)
         {

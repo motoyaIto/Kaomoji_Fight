@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class WeaponBlocController : MonoBehaviour
 {
     [SerializeField]
     private float DamageValue = 5.0f;
+
+    private PlaySceneManager PSManager_cs;
 
     private Vector3 Death_LUpos = new Vector3(-150f, 100f, 0f);    // オブジェクトが破棄されるエリアの左上
     private Vector3 Death_RDpos = new Vector3(200f, -80f, 0f);   // オブジェクトが破棄されるエリアの右下
@@ -27,6 +30,7 @@ public class WeaponBlocController : MonoBehaviour
 
     private void Awake()
     {
+        PSManager_cs = GameObject.Find("PlaySceneManager").GetComponent<PlaySceneManager>();
         hitEffect = Resources.Load<GameObject>("prefab/Effect/Wave_01");
     }
 
@@ -73,10 +77,10 @@ public class WeaponBlocController : MonoBehaviour
 
     public void Attack(Vector3 shot, float thrust)
     {
+        GameObject parent = this.transform.parent.gameObject;
+
         // 親から離れる
         this.transform.parent = null;
-
-        //switch(this.transform)
 
         Weapon.AddComponent<BoxCollider2D>();
 
@@ -84,14 +88,26 @@ public class WeaponBlocController : MonoBehaviour
         weapon_throw = true;
         weapon_name = this.name;
 
-        // 動かずに投げたら
-        if(shot == Vector3.zero)
+        switch (this.transform.GetChild(0).GetComponent<TextMeshPro>().text)
         {
-            // 上に投げる
-            shot = Vector3.up;
+            case "じ":
+                DamageValue = 50;
+                PSManager_cs.Player_ReceiveDamage(parent, this.gameObject, 0);
+
+                Destroy(this.gameObject);
+                break;
+
+            default:
+                // 動かずに投げたら
+                if (shot == Vector3.zero)
+                {
+                    // 上に投げる
+                    shot = Vector3.up;
+                }
+                // ⊂二二二（ ＾ω＾）二⊃ ﾌﾞｰﾝ
+                rig2d.AddForce(shot * thrust);
+                break;
         }
-        // ⊂二二二（ ＾ω＾）二⊃ ﾌﾞｰﾝ
-        rig2d.AddForce(shot * thrust);
     }
 
 
