@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class StageselectController : CursorController {
 
-    [SerializeField]
-    private GameObject stageimage;
+    //[SerializeField]
+    //private GameObject stageimage;
 
     protected override void Start()
     {
@@ -19,7 +19,6 @@ public class StageselectController : CursorController {
         //初期座標を入力
         this.transform.position = FirstTarget.transform.position + new Vector3(Difference_x * NowNumberColumn - DifferenceCursor.x, -(Difference_y * NowNumberLine));
 
-        stageimage.SetActive(true);
     }
     protected override bool SelectMyMode()
     {
@@ -45,9 +44,9 @@ public class StageselectController : CursorController {
         //左を押したときの処理
         if (Push_LeftBiutton() == true) { return; }
 
-        Image image = stageimage.transform.GetChild(0).transform.GetComponent<Image>();
-        image.sprite = Resources.Load<Sprite>("textures/StagePicture/stage" + (NumberLine * NowNumberColumn) + (NowNumberLine + 1));
-        image.color = new Color(image.color.r, image.color.g, image.color.b, 122);
+        //Image image = stageimage.transform.GetChild(0).transform.GetComponent<Image>();
+        //image.sprite = Resources.Load<Sprite>("textures/StagePicture/stage" + (NumberLine * NowNumberColumn) + (NowNumberLine + 1));
+        //image.color = new Color(image.color.r, image.color.g, image.color.b, 122);
     }
 
     protected override void Decide()
@@ -59,7 +58,6 @@ public class StageselectController : CursorController {
             number = UnityEngine.Random.Range(1, 7);
         }
 
-        stageimage.SetActive(false);
 
         TManager_cs.Stage_name_Data = "stage" + number.ToString();
 

@@ -28,6 +28,10 @@ public class WeaponBlocController : MonoBehaviour
     private GameObject hitEffect;           // ヒットエフェクト
     private GameObject self_destruct_effect;// 自爆エフェクト
 
+    // 音
+    private AudioSource As;
+    private AudioClip ac;
+
 
     private void Awake()
     {
