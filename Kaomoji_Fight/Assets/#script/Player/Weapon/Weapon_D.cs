@@ -1,17 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using System;
 
-public class Weapon_Z : WeaponBlocController
-{
-    private GameObject self_destruct_effect;// 自爆エフェクト
+public class Weapon_D : WeaponBlocController {
 
     protected override void Awake()
     {
-        self_destruct_effect = Resources.Load<GameObject>("prefab/Effect/Explosion");
-
         base.Awake();
     }
 
@@ -29,40 +23,40 @@ public class Weapon_Z : WeaponBlocController
     {
         switch (mozi)
         {
-            case "ざ":
-            case "ザ":
-                this.Attack_ZA(shot);
+            case "だ":
+            case "ダ":
+                this.Attack_DA(shot);
                 return true;
 
-            case "じ":
-            case "ジ":
-                this.Attack_ZI(shot);
+            case "ぢ":
+            case "ヂ":
+                this.Attack_DI(shot);
                 return true;
 
-            case "ず":
-            case "ズ":
-                this.Attack_ZU(shot);
+            case "づ":
+            case "ヅ":
+                this.Attack_DU(shot);
                 return true;
 
-            case "ぜ":
-            case "ゼ":
-                this.Attack_ZE(shot);
+            case "で":
+            case "デ":
+                this.Attack_DE(shot);
                 return true;
 
-            case "ぞ":
-            case "ゾ":
-                this.Attack_ZO(shot);
-                return  true;
+            case "ど":
+            case "ド":
+                this.Attack_DO(shot);
+                return true;
         }
 
         return false;
     }
 
     /// <summary>
-    /// 『ざ・ザ』で攻撃
+    /// 『だ・ダ』で攻撃
     /// </summary>
     /// <param name="shot">使用した座標</param>
-    private void Attack_ZA(Vector3 shot)
+    private void Attack_DA(Vector3 shot)
     {
         //仮//////////////////////////////////////////////////////////////////
         base.SpecifiedOperation_NoneWeapon(shot);
@@ -70,21 +64,10 @@ public class Weapon_Z : WeaponBlocController
     }
 
     /// <summary>
-    /// 『じ・ジ』で攻撃
+    /// 『ぢ・ヂ』で攻撃
     /// </summary>
     /// <param name="shot">使用した座標</param>
-    private void Attack_ZI(Vector3 shot)
-    {
-        var hitobj = Instantiate(self_destruct_effect, this.transform.position + transform.forward, Quaternion.identity) as GameObject;
-        DamageValue = 50;
-        PSManager_cs.Player_ReceiveDamage(this.transform.parent.gameObject, this.gameObject, this.transform.parent.GetComponent<Player>().PlayerNumber_data);
-    }
-
-    /// <summary>
-    /// 『ず・ズ』で攻撃
-    /// </summary>
-    /// <param name="shot">使用した座標</param>
-    private void Attack_ZU(Vector3 shot)
+    private void Attack_DI(Vector3 shot)
     {
         //仮//////////////////////////////////////////////////////////////////
         base.SpecifiedOperation_NoneWeapon(shot);
@@ -92,10 +75,10 @@ public class Weapon_Z : WeaponBlocController
     }
 
     /// <summary>
-    /// 『ぜ・ゼ』で攻撃
+    /// 『づ・ヅ』で攻撃
     /// </summary>
     /// <param name="shot">使用した座標</param>
-    private void Attack_ZE(Vector3 shot)
+    private void Attack_DU(Vector3 shot)
     {
         //仮//////////////////////////////////////////////////////////////////
         base.SpecifiedOperation_NoneWeapon(shot);
@@ -103,10 +86,21 @@ public class Weapon_Z : WeaponBlocController
     }
 
     /// <summary>
-    /// 『ぞ・ゾ』で攻撃
+    /// 『で・デ』で攻撃
     /// </summary>
     /// <param name="shot">使用した座標</param>
-    private void Attack_ZO(Vector3 shot)
+    private void Attack_DE(Vector3 shot)
+    {
+        //仮//////////////////////////////////////////////////////////////////
+        base.SpecifiedOperation_NoneWeapon(shot);
+        //仮//////////////////////////////////////////////////////////////////
+    }
+
+    /// <summary>
+    /// 『ど・ド』で攻撃
+    /// </summary>
+    /// <param name="shot">使用した座標</param>
+    private void Attack_DO(Vector3 shot)
     {
         //仮//////////////////////////////////////////////////////////////////
         base.SpecifiedOperation_NoneWeapon(shot);

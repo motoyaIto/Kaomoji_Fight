@@ -149,48 +149,59 @@ public class CreateStage : MonoBehaviour
         {
             case "あ": case "い": case "う": case "え": case "お":
             case "ア": case "イ": case "ウ": case "エ": case "オ":
+                weapon.AddComponent<Weapon_A>().enabled = false;
 
                 break;
 
             case "か": case "き": case "く": case "け": case "こ":
             case "カ": case "キ": case "ク": case "ケ": case "コ":
+                weapon.AddComponent<Weapon_K>().enabled = false;
                 break;
 
             case "さ": case "し": case "す": case "せ": case "そ":
             case "サ": case "シ": case "ス": case "セ": case "ソ":
+                weapon.AddComponent<Weapon_S>().enabled = false;
                 break;
 
             case "た": case "ち": case "つ": case "て": case "と":
             case "タ": case "チ": case "ツ": case "テ": case "ト":
+                weapon.AddComponent<Weapon_T>().enabled = false;
                 break;
 
             case "な": case "に": case "ぬ": case "ね": case "の":
             case "ナ": case "ニ": case "ヌ": case "ネ": case "ノ":
+                weapon.AddComponent<Weapon_N>().enabled = false;
                 break;
 
             case "は": case "ひ": case "ふ": case "へ": case "ほ":
             case "ハ": case "ヒ": case "フ": case "ヘ": case "ホ":
+                weapon.AddComponent<Weapon_H>().enabled = false;
                 break;
 
             case "ま": case "み": case "む": case "め": case "も":
             case "マ": case "ミ": case "ム": case "メ": case "モ":
+                weapon.AddComponent<Weapon_M>().enabled = false;
                 break;
 
             case "や": case "ゆ": case "よ":
             case "ヤ": case "ユ": case "ヨ":
+                weapon.AddComponent<Weapon_Y>().enabled = false;
                 break;
 
             case "ら": case "り": case "る": case "れ": case "ろ":
             case "ラ": case "リ": case "ル": case "レ": case "ロ":
+                weapon.AddComponent<Weapon_R>().enabled = false;
                 break;
 
             case "わ": case "を": case "ん":
             case "ワ": case "ヲ": case "ン":
+                weapon.AddComponent<Weapon_W>().enabled = false;
                 break;
 
 
             case "が": case "ぎ": case "ぐ": case "げ": case "ご":
             case "ガ": case "ギ": case "グ": case "ゲ": case "ゴ":
+                weapon.AddComponent<Weapon_G>().enabled = false;
                 break;
 
             case "ざ": case "じ": case "ず": case "ぜ": case "ぞ":
@@ -200,14 +211,17 @@ public class CreateStage : MonoBehaviour
 
             case "だ": case "ぢ": case "づ": case "で": case "ど":
             case "ダ": case "ヂ": case "ヅ": case "デ": case "ド":
+                weapon.AddComponent<Weapon_D>().enabled = false;
                 break;
 
             case "ば": case "び": case "ぶ": case "べ": case "ぼ":
             case "バ": case "ビ": case "ブ": case "ベ": case "ボ":
+                weapon.AddComponent<Weapon_B>().enabled = false;
                 break;
 
             case "ぱ": case "ぴ": case "ぷ": case "ぺ": case "ぽ":
             case "パ": case "ピ": case "プ": case "ペ": case "ポ":
+                weapon.AddComponent<Weapon_P>().enabled = false;
 
                 break;
             default:

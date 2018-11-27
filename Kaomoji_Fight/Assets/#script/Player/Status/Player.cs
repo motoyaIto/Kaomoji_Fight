@@ -23,7 +23,7 @@ public class Player : RaycastController {
     private float minflap = 400f;           // ジャンプの高さ（最小）
 
     private float direction = 0;            // 方向
-    private float thrust = 1000f;           // 投擲物の推進力
+    
 
     private GameObject weapon;
 
@@ -199,7 +199,7 @@ public class Player : RaycastController {
                 ChangeWeaponState(false);
                 WeaponBlocController WB = weapon.GetComponent<WeaponBlocController>();
 
-                WB.Attack(input, thrust);             
+                WB.Attack(input);             
             }
 
             // 武器を捨てる

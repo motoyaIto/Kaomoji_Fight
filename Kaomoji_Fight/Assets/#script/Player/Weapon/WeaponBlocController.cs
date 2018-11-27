@@ -10,7 +10,12 @@ abstract public class WeaponBlocController : MonoBehaviour
 
 
     [SerializeField]
-    protected float DamageValue = 5.0f;
+    protected float DamageValue = 5.0f;     //ダメージ量
+    private float thrust = 1000f;           // 投擲物の推進力
+
+
+
+
 
     private Vector3 Death_LUpos = new Vector3(-150f, 100f, 0f);    // オブジェクトが破棄されるエリアの左上
     private Vector3 Death_RDpos = new Vector3(200f, -80f, 0f);   // オブジェクトが破棄されるエリアの右下
@@ -65,20 +70,38 @@ abstract public class WeaponBlocController : MonoBehaviour
         rig2d.gravityScale = .01f;
     }
 
-    public abstract void Update();  
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    // 飛んでったブロックの削除
-    //    if (this.transform.position.x < Death_LUpos.x || this.transform.position.x > Death_RDpos.x || this.transform.position.y > Death_LUpos.y || this.transform.position.y < Death_RDpos.y)
-    //    {
-    //        Destroy(this.transform.gameObject);
-    //    }
-    //}
+    public virtual void Update()
+    {
+        // 飛んでったブロックの削除
+        if (this.transform.position.x < Death_LUpos.x || this.transform.position.x > Death_RDpos.x || this.transform.position.y > Death_LUpos.y || this.transform.position.y < Death_RDpos.y)
+        {
+            Destroy(this.transform.gameObject);
+        }
+    }
 
+    /// <summary>
+    /// 攻撃
+    /// </summary>
+    /// <param name="shot">使用した座標</param>
+    public void Attack(Vector3 shot)
+    {
+        if(AttackMozi(shot) == true) { return; }
 
+        this.SpecifiedOperation_NoneWeapon(shot);
+    }
 
-    public virtual void Attack(Vector3 shot, float thrust)
+    /// <summary>
+    /// 攻撃文字
+    /// </summary>
+    /// <param name="shot">使用した座標</param>
+    /// <returns>文字攻撃をしたら(true)していなかったら(fasle)</returns>
+    protected abstract bool AttackMozi(Vector3 shot);
+
+    /// <summary>
+    /// 動作指定のない武器
+    /// </summary>
+    /// <param name="shot">使用した座標</param>
+    protected void SpecifiedOperation_NoneWeapon(Vector3 shot)
     {
         //親
         GameObject parent = this.transform.parent.gameObject;
@@ -103,16 +126,15 @@ abstract public class WeaponBlocController : MonoBehaviour
         rig2d.AddForce(shot * thrust);
     }
 
-
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (parentName != collision.gameObject.name && weapon_throw && collision.transform.tag != "Stage")
-    //    {
-    //        var hitobj = Instantiate(hitEffect, this.transform.position + transform.forward, Quaternion.identity) as GameObject;
-    //        Destroy(this.gameObject);
-    //        weapon_throw = false;
-    //    }
-    //}
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (parentName != collision.gameObject.name && weapon_throw && collision.transform.tag != "Stage")
+        {
+            var hitobj = Instantiate(hitEffect, this.transform.position + transform.forward, Quaternion.identity) as GameObject;
+            Destroy(this.gameObject);
+            weapon_throw = false;
+        }
+    }
 
     //座標を入れる
     public Vector3 SetPosition
