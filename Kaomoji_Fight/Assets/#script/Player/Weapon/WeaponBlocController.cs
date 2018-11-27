@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class WeaponBlocController : MonoBehaviour
+abstract public class WeaponBlocController : MonoBehaviour
 {
-    [SerializeField]
-    private float DamageValue = 5.0f;
+    protected PlaySceneManager PSManager_cs;//プレイシーンマネージャー
+    protected string mozi;    //自分の文字
 
-    private PlaySceneManager PSManager_cs;
+
+    [SerializeField]
+    protected float DamageValue = 5.0f;
 
     private Vector3 Death_LUpos = new Vector3(-150f, 100f, 0f);    // オブジェクトが破棄されるエリアの左上
     private Vector3 Death_RDpos = new Vector3(200f, -80f, 0f);   // オブジェクトが破棄されるエリアの右下
@@ -26,23 +28,26 @@ public class WeaponBlocController : MonoBehaviour
     private bool weapon_throw = false;      //武器を投げた(true)投げてない(false)
 
     private GameObject hitEffect;           // ヒットエフェクト
-    private GameObject self_destruct_effect;// 自爆エフェクト
 
     // 音
     private AudioSource As;
     private AudioClip ac;
 
-
-    private void Awake()
+    // Use this for initialization
+    protected virtual void Awake()
     {
+        this.enabled = false;
+        //自分の文字
+        mozi = this.transform.GetChild(0).GetComponent<TextMeshPro>().text;
+
+        //サウンド
         PSManager_cs = GameObject.Find("PlaySceneManager").GetComponent<PlaySceneManager>();
         hitEffect = Resources.Load<GameObject>("prefab/Effect/Wave_01");
-        self_destruct_effect = Resources.Load<GameObject>("prefab/Effect/Explosion");
+        
     }
 
-    // Use this for initialization
-    void Start()
-    {        
+    private void OnEnable()
+    {
         Weapon = this.transform.gameObject;
         Weapon.AddComponent<Rigidbody2D>();
 
@@ -58,19 +63,56 @@ public class WeaponBlocController : MonoBehaviour
 
         rig2d = Weapon.GetComponent<Rigidbody2D>();
         rig2d.gravityScale = .01f;
-
-        //Debug.Log(this.name.Substring(this.name.IndexOf("("), this.name.IndexOf(")")));
     }
 
-    // Update is called once per frame
-    void Update()
+    public abstract void Update();  
+    //// Update is called once per frame
+    //void Update()
+    //{
+    //    // 飛んでったブロックの削除
+    //    if (this.transform.position.x < Death_LUpos.x || this.transform.position.x > Death_RDpos.x || this.transform.position.y > Death_LUpos.y || this.transform.position.y < Death_RDpos.y)
+    //    {
+    //        Destroy(this.transform.gameObject);
+    //    }
+    //}
+
+
+
+    public virtual void Attack(Vector3 shot, float thrust)
     {
-        // 飛んでったブロックの削除
-        if (this.transform.position.x < Death_LUpos.x || this.transform.position.x > Death_RDpos.x || this.transform.position.y > Death_LUpos.y || this.transform.position.y < Death_RDpos.y)
+        //親
+        GameObject parent = this.transform.parent.gameObject;
+
+        // 親から離れる
+        this.transform.parent = null;
+
+        //ウェポンにボックスコライダーをつける
+        Weapon.AddComponent<BoxCollider2D>();
+
+        AttackFlag = true;
+        weapon_throw = true;
+        weapon_name = this.name;
+
+        // 動かずに投げたら
+        if (shot == Vector3.zero)
         {
-            Destroy(this.transform.gameObject);
+            // 上に投げる
+            shot = Vector3.up;
         }
+        // ⊂二二二（ ＾ω＾）二⊃ ﾌﾞｰﾝ
+        rig2d.AddForce(shot * thrust);
     }
+
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (parentName != collision.gameObject.name && weapon_throw && collision.transform.tag != "Stage")
+    //    {
+    //        var hitobj = Instantiate(hitEffect, this.transform.position + transform.forward, Quaternion.identity) as GameObject;
+    //        Destroy(this.gameObject);
+    //        weapon_throw = false;
+    //    }
+    //}
 
     //座標を入れる
     public Vector3 SetPosition
@@ -78,57 +120,6 @@ public class WeaponBlocController : MonoBehaviour
         set
         {
             this.transform.position = value;
-        }
-    }
-
-    public void Attack(Vector3 shot, float thrust)
-    {
-        GameObject parent = this.transform.parent.gameObject;
-        Player parent_cs = parent.GetComponent<Player>();
-
-        // 親から離れる
-        this.transform.parent = null;
-
-        Weapon.AddComponent<BoxCollider2D>();
-
-        AttackFlag = true;
-        weapon_throw = true;
-        weapon_name = this.name;
-
-        switch (this.transform.GetChild(0).GetComponent<TextMeshPro>().text)
-        {
-            case "し":
-            case "シ":
-            case "じ":
-            case "ジ":
-                var hitobj = Instantiate(self_destruct_effect, this.transform.position + transform.forward, Quaternion.identity) as GameObject;
-                DamageValue = 50;
-                PSManager_cs.Player_ReceiveDamage(parent, this.gameObject, parent_cs.PlayerNumber_data);
-
-                Destroy(this.gameObject);
-                break;
-
-            default:
-                // 動かずに投げたら
-                if (shot == Vector3.zero)
-                {
-                    // 上に投げる
-                    shot = Vector3.up;
-                }
-                // ⊂二二二（ ＾ω＾）二⊃ ﾌﾞｰﾝ
-                rig2d.AddForce(shot * thrust);
-                break;
-        }
-    }
-
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (parentName != collision.gameObject.name && weapon_throw && collision.transform.tag != "Stage")
-        {
-            var hitobj = Instantiate(hitEffect, this.transform.position + transform.forward, Quaternion.identity) as GameObject;
-            Destroy(this.gameObject);
-            weapon_throw = false;
         }
     }
 
