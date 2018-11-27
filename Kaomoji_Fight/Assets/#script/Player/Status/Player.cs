@@ -193,7 +193,7 @@ public class Player : RaycastController {
                 else
                 {
                     audio.volume = .2f;
-                    audio.PlayOneShot(bomb_ac);
+                    //audio.PlayOneShot(bomb_ac);
                 }
 
                 ChangeWeaponState(false);
