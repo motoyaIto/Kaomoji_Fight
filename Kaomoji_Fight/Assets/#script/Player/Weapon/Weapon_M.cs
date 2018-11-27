@@ -1,17 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using System;
 
-public class Weapon_Z : WeaponBlocController
+public class Weapon_M : WeaponBlocController
 {
-    private GameObject self_destruct_effect;// 自爆エフェクト
-
     protected override void Awake()
     {
-        self_destruct_effect = Resources.Load<GameObject>("prefab/Effect/Explosion");
-
         base.Awake();
     }
 
@@ -29,40 +24,40 @@ public class Weapon_Z : WeaponBlocController
     {
         switch (mozi)
         {
-            case "ざ":
-            case "ザ":
-                this.Attack_ZA(shot);
+            case "ま":
+            case "マ":
+                this.Attack_MA(shot);
                 return true;
 
-            case "じ":
-            case "ジ":
-                this.Attack_ZI(shot);
+            case "み":
+            case "ミ":
+                this.Attack_MI(shot);
                 return true;
 
-            case "ず":
-            case "ズ":
-                this.Attack_ZU(shot);
+            case "む":
+            case "ム":
+                this.Attack_MU(shot);
                 return true;
 
-            case "ぜ":
-            case "ゼ":
-                this.Attack_ZE(shot);
+            case "め":
+            case "メ":
+                this.Attack_ME(shot);
                 return true;
 
-            case "ぞ":
-            case "ゾ":
-                this.Attack_ZO(shot);
-                return  true;
+            case "も":
+            case "モ":
+                this.Attack_MO(shot);
+                return true;
         }
 
         return false;
     }
 
     /// <summary>
-    /// 『ざ・ザ』で攻撃
+    /// 『ま・マ』で攻撃
     /// </summary>
     /// <param name="shot">使用した座標</param>
-    private void Attack_ZA(Vector3 shot)
+    private void Attack_MA(Vector3 shot)
     {
         //仮//////////////////////////////////////////////////////////////////
         base.SpecifiedOperation_NoneWeapon(shot);
@@ -70,21 +65,10 @@ public class Weapon_Z : WeaponBlocController
     }
 
     /// <summary>
-    /// 『じ・ジ』で攻撃
+    /// 『み・ミ』で攻撃
     /// </summary>
     /// <param name="shot">使用した座標</param>
-    private void Attack_ZI(Vector3 shot)
-    {
-        var hitobj = Instantiate(self_destruct_effect, this.transform.position + transform.forward, Quaternion.identity) as GameObject;
-        DamageValue = 50;
-        PSManager_cs.Player_ReceiveDamage(this.transform.parent.gameObject, this.gameObject, this.transform.parent.GetComponent<Player>().PlayerNumber_data);
-    }
-
-    /// <summary>
-    /// 『ず・ズ』で攻撃
-    /// </summary>
-    /// <param name="shot">使用した座標</param>
-    private void Attack_ZU(Vector3 shot)
+    private void Attack_MI(Vector3 shot)
     {
         //仮//////////////////////////////////////////////////////////////////
         base.SpecifiedOperation_NoneWeapon(shot);
@@ -92,10 +76,10 @@ public class Weapon_Z : WeaponBlocController
     }
 
     /// <summary>
-    /// 『ぜ・ゼ』で攻撃
+    /// 『む・ム』で攻撃
     /// </summary>
     /// <param name="shot">使用した座標</param>
-    private void Attack_ZE(Vector3 shot)
+    private void Attack_MU(Vector3 shot)
     {
         //仮//////////////////////////////////////////////////////////////////
         base.SpecifiedOperation_NoneWeapon(shot);
@@ -103,10 +87,21 @@ public class Weapon_Z : WeaponBlocController
     }
 
     /// <summary>
-    /// 『ぞ・ゾ』で攻撃
+    /// 『め・メ』で攻撃
     /// </summary>
     /// <param name="shot">使用した座標</param>
-    private void Attack_ZO(Vector3 shot)
+    private void Attack_ME(Vector3 shot)
+    {
+        //仮//////////////////////////////////////////////////////////////////
+        base.SpecifiedOperation_NoneWeapon(shot);
+        //仮//////////////////////////////////////////////////////////////////
+    }
+
+    /// <summary>
+    /// 『も・モ』で攻撃
+    /// </summary>
+    /// <param name="shot">使用した座標</param>
+    private void Attack_MO(Vector3 shot)
     {
         //仮//////////////////////////////////////////////////////////////////
         base.SpecifiedOperation_NoneWeapon(shot);
