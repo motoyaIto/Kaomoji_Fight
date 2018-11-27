@@ -284,9 +284,10 @@ public class Player : RaycastController {
             weapon.transform.parent = transform;
             weapon.name = "WeaponBlock" + block.name.Substring(block.name.IndexOf("("));
             weapon.tag = tag.Trim();
+
             //武器のスクリプトに張り替える
             Destroy(weapon.GetComponent<BlockController>());
-            weapon.AddComponent<WeaponBlocController>();
+            weapon.GetComponent<WeaponBlocController>().enabled = true;
 
             //床から切り抜く
             block.GetComponent<BlockController>().ChangeWeapon();
