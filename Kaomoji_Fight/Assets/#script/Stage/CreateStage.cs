@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using TMPro;
+using UnityEngine.Audio;
 
 public class CreateStage : MonoBehaviour
 {
@@ -117,8 +118,11 @@ public class CreateStage : MonoBehaviour
                  //weaponだったら
                 if (Array.IndexOf(WEAPO_MOZI, mozi) >= 0)
                 {
+                    //指定の武器用スクリプトをセットする
                     GameObject weapon = StageBlock;
                     SetWeapon_sc(mozi, weapon);
+
+                    weapon.AddComponent<AudioSource>();
 
                     //武器の文字用マテリアルに変更
                     Material StageBlock_WeaponMateral = Weapon_mate;

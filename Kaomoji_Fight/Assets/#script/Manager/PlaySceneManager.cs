@@ -9,6 +9,7 @@ using Cinemachine;
 using System.Linq;
 using UnityEngine.SceneManagement;
 using System;
+using UnityEngine.Video;
 
 
 public class PlaySceneManager : MonoBehaviour
@@ -52,6 +53,10 @@ public class PlaySceneManager : MonoBehaviour
                                   //private EffectControll effectControll;  //エフェクト
     private IEnumerator changescene = null;
     private RankingData[] ranking = null;
+
+    //背景
+    private GameObject Quad;
+   
 
     private void Awake()
     {
@@ -183,6 +188,9 @@ public class PlaySceneManager : MonoBehaviour
                     break;
             }
         }
+
+        //背景を取得
+        Quad = GameObject.Find("Quad");
     }
 
     void Start()
@@ -242,6 +250,15 @@ public class PlaySceneManager : MonoBehaviour
             {
                 SceneManager.LoadScene("Title");
             }
+        }
+
+        //背景のビデオプレイヤーを取得
+        VideoPlayer videoplayer = Quad.GetComponent<VideoPlayer>();
+
+        //ビデオの再生が終わったら消す
+        if (videoplayer.enabled == true && ((ulong)videoplayer.frame == videoplayer.frameCount))
+        {
+            videoplayer.enabled = false;
         }
     }
 

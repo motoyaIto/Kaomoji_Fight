@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Audio;
 
 abstract public class WeaponBlocController : MonoBehaviour
 {
@@ -13,7 +14,7 @@ abstract public class WeaponBlocController : MonoBehaviour
     protected float DamageValue = 5.0f;     //ダメージ量
     private float thrust = 1000f;           // 投擲物の推進力
 
-
+    protected new AudioSource audio;// オーディオ
 
 
 
@@ -46,6 +47,8 @@ abstract public class WeaponBlocController : MonoBehaviour
         mozi = this.transform.GetChild(0).GetComponent<TextMeshPro>().text;
 
         //サウンド
+        audio = this.GetComponent<AudioSource>();
+
         PSManager_cs = GameObject.Find("PlaySceneManager").GetComponent<PlaySceneManager>();
         hitEffect = Resources.Load<GameObject>("prefab/Effect/Wave_01");
         

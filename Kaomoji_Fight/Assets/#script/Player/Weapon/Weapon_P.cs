@@ -1,12 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
-public class Weapon_P : WeaponBlocController {
+public class Weapon_P : WeaponBlocController
+{
+    //背景
+    private GameObject Quad;
 
     protected override void Awake()
     {
+        Quad = GameObject.Find("Quad");
         base.Awake();
+
+        //各文字の初期化
+        switch (mozi)
+        {
+            case "ぱ":
+            case "パ":
+                break;
+
+            case "ぴ":
+            case "ピ":
+                break;
+
+            case "ぷ":
+            case "プ":
+                break;
+
+            case "ぺ":
+            case "ペ":
+                break;
+
+            case "ぽ":
+            case "ポ":
+                break;
+        }
     }
 
     public override void Update()
@@ -58,9 +87,19 @@ public class Weapon_P : WeaponBlocController {
     /// <param name="shot">使用した座標</param>
     private void Attack_PA(Vector3 shot)
     {
-        //仮//////////////////////////////////////////////////////////////////
-        base.SpecifiedOperation_NoneWeapon(shot);
-        //仮//////////////////////////////////////////////////////////////////
+        Destroy(this.gameObject);
+
+        //背景のビデオプレイヤーを取得
+        VideoPlayer videoplayer = Quad.GetComponent<VideoPlayer>();
+
+        //二重での発動を阻止
+        if (videoplayer.enabled == true) { return; }
+
+        //ビデオプレイヤーを表示に
+        videoplayer.enabled = true;
+
+        //ビデオを再生
+        videoplayer.Play();
     }
 
     /// <summary>
