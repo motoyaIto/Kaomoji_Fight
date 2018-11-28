@@ -21,15 +21,10 @@ abstract public class WeaponBlocController : MonoBehaviour
 
     private GameObject Weapon;
 
-    private Player parent;                  //親となるプレイヤー
-    private string parentName;              //↑の名前
+    private string parentName;              //親の名前
 
-    private Rigidbody2D rig2d;
-
-    private bool AttackFlag = false;        //攻撃する(true)しない(false)
-    private string weapon_name;             //持った武器の名前
     private string owner;                   //所有者の名前
-    private bool weapon_throw = false;      //武器を投げた(true)投げてない(false)
+    protected bool weapon_use = false;      //武器を投げた(true)投げてない(false)
 
     private GameObject hitEffect;           // ヒットエフェクト
 
@@ -52,20 +47,16 @@ abstract public class WeaponBlocController : MonoBehaviour
     private void OnEnable()
     {
         Weapon = this.transform.gameObject;
-        Weapon.AddComponent<Rigidbody2D>();
-
+       
         // 持たれているプレイヤーを取得
-        parent = this.transform.parent.GetComponent<Player>();
-        parentName = parent.name;
+        //parent = this.transform.parent.GetComponent<Player>();
+        parentName = this.transform.parent.GetComponent<Player>().name;
 
         // タグの設定
         this.tag = "Weapon";
 
         // レイヤーの変更
-        Weapon.layer = LayerName.Weapon;
-
-        rig2d = Weapon.GetComponent<Rigidbody2D>();
-        rig2d.gravityScale = .01f;
+        Weapon.layer = LayerName.Weapon;       
     }
 
     public virtual void Update()
@@ -101,8 +92,10 @@ abstract public class WeaponBlocController : MonoBehaviour
     /// <param name="shot">使用した座標</param>
     protected void SpecifiedOperation_NoneWeapon(Vector3 shot)
     {
-        //親
-        GameObject parent = this.transform.parent.gameObject;
+        Rigidbody2D　rig2d = Weapon.AddComponent<Rigidbody2D>();
+        rig2d.gravityScale = .01f;
+
+        this.transform.parent.GetComponent<Player>().ChangeWeapon_Data = false;
 
         // 親から離れる
         this.transform.parent = null;
@@ -110,9 +103,7 @@ abstract public class WeaponBlocController : MonoBehaviour
         //ウェポンにボックスコライダーをつける
         Weapon.AddComponent<BoxCollider2D>();
 
-        AttackFlag = true;
-        weapon_throw = true;
-        weapon_name = this.name;
+        weapon_use = true;
 
         // 動かずに投げたら
         if (shot == Vector3.zero)
@@ -122,16 +113,38 @@ abstract public class WeaponBlocController : MonoBehaviour
         }
         // ⊂二二二（ ＾ω＾）二⊃ ﾌﾞｰﾝ
         rig2d.AddForce(shot * thrust);
+
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (parentName != collision.gameObject.name && weapon_throw && collision.transform.tag != "Stage")
+        if (CheckHit_Rival(collision) == true)
         {
             var hitobj = Instantiate(hitEffect, this.transform.position + transform.forward, Quaternion.identity) as GameObject;
             Destroy(this.gameObject);
-            weapon_throw = false;
+            weapon_use = false;
         }
+    }
+
+    protected bool CheckHit_Rival(Collider2D collider)
+    {
+        if (parentName != collider.gameObject.name && weapon_use && collider.transform.tag != "Stage")
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    protected bool CheckHit_Rival(Collision2D collision)
+    {
+        if (parentName != collision.gameObject.name && weapon_use && collision.transform.tag != "Stage")
+        {
+            return true;
+        }
+
+        return false;
     }
 
     //座標を入れる
@@ -151,13 +164,6 @@ abstract public class WeaponBlocController : MonoBehaviour
         }
     }
 
-    public string HaveWeapon_Name
-    {
-        get
-        {
-            return weapon_name;
-        }
-    }
 
     public string Owner_Data
     {

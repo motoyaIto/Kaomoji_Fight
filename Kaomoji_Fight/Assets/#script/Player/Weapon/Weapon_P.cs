@@ -100,6 +100,8 @@ public class Weapon_P : WeaponBlocController
             videoplayer.Play();
         }
 
+        this.transform.parent.GetComponent<Player>().ChangeWeapon_Data = false;
+
         Destroy(this.gameObject);
     }
 

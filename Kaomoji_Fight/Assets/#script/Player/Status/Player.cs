@@ -36,6 +36,7 @@ public class Player : RaycastController {
     private string p_name;                  // プレイヤーネーム
 
     Contoroller2d controller;               // コントローラー
+    bool controller_lock = false;           //コントローラーをロックする
     Rigidbody2D rig = null;
     [HideInInspector]
     public CollisionInfo collisions;
@@ -86,28 +87,28 @@ public class Player : RaycastController {
     {
         // Controllerの左スティックのAxisを取得            
         Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, ControlerNamber), XCI.GetAxis(XboxAxis.LeftStickY, ControlerNamber));
-        if (input.x > .0f)
+        if (input.x > .0f && controller_lock == false)
         {
             //歩く音
           //  if (direction == 0) { this.PlaySound(audio2, walk_ac, 0.2f); }
 
             direction = 1f;
         }
-        else if (input.x < .0f)
+        else if (input.x < .0f && controller_lock == false)
         {
             //歩く音
            // if (direction == 0) { this.PlaySound(audio2, walk_ac, 0.2f); }
 
             direction = -1f;
         }
-        else
+        else if(controller_lock == false)
         {
             //歩く音を止める
             //audio2.Stop();
             direction = 0f;
         }
 
-        if (HaveWeapon)
+        if (HaveWeapon && controller_lock == false)
         {
             //武器の位置を持ち変える
             WeaponPositionControll(input);
@@ -117,7 +118,7 @@ public class Player : RaycastController {
         rig.velocity = new Vector2(scroll * direction, rig.velocity.y);
 
         
-        if (XCI.GetButtonDown(XboxButton.Y, ControlerNamber) && !jump)
+        if (XCI.GetButtonDown(XboxButton.Y, ControlerNamber) && !jump && controller_lock == false)
         {
             // 大ジャンプ
             audio.volume = .2f;
@@ -182,21 +183,18 @@ public class Player : RaycastController {
                 WBController.SetPosition = new Vector3(this.transform.position.x + this.transform.localScale.x + 0.5f, this.transform.position.y + this.transform.localScale.y * 2.5f, 0.0f);
             }
 
-            //武器を投げる
+            //武器を使用する
             if (XCI.GetButtonDown(XboxButton.B, ControlerNamber))
             {
-                if (weapon.transform.GetChild(0).GetComponent<TextMeshPro>().text != "し" && weapon.transform.GetChild(0).GetComponent<TextMeshPro>().text != "シ" && weapon.transform.GetChild(0).GetComponent<TextMeshPro>().text != "じ" && weapon.transform.GetChild(0).GetComponent<TextMeshPro>().text != "ジ")
+                //投てき系の音
+                string weaponName = weapon.transform.GetChild(0).GetComponent<TextMeshPro>().text;
+                if (weaponName != "じ" && weaponName != "ジ" &&
+                    weaponName != "ぱ" && weaponName != "パ")
                 {
-                    audio.volume = .15f;
-                    audio.PlayOneShot(shot_ac);
-                }
-                else
-                {
-                    audio.volume = .2f;
-                    //audio.PlayOneShot(bomb_ac);
+                    //audio.volume = .15f;
+                    //audio.PlayOneShot(shot_ac);
                 }
 
-                ChangeWeaponState(false);
                 WeaponBlocController WB = weapon.GetComponent<WeaponBlocController>();
 
                 WB.Attack(input);             
@@ -205,7 +203,7 @@ public class Player : RaycastController {
             // 武器を捨てる
             if (XCI.GetButton(XboxButton.X, ControlerNamber))
             {
-                ChangeWeaponState(false);
+                this.ChangeWeapon_Data = false;
                 Destroy(weapon);
             }
         }
@@ -353,9 +351,12 @@ public class Player : RaycastController {
         return 4;
     }
 
-    private void ChangeWeaponState(bool state)
+    public bool ChangeWeapon_Data
     {
-        HaveWeapon = state;
+        set
+        {
+            HaveWeapon = value;
+        }
     }
 
 
@@ -364,9 +365,21 @@ public class Player : RaycastController {
     /// </summary>
     public XboxController GetControllerNamber
     {
+        get
+        {
+            return ControlerNamber;
+        }
         set
         {
             ControlerNamber = value;
+        }
+    }
+
+    public float Directtion_Data
+    {
+        set
+        {
+            direction = value;
         }
     }
 
@@ -422,6 +435,14 @@ public class Player : RaycastController {
         get
         {
             return CNConvert(ControlerNamber);
+        }
+    }
+
+    public bool ControllerLock_Data
+    {
+        set
+        {
+            controller_lock = value;
         }
     }
 }
