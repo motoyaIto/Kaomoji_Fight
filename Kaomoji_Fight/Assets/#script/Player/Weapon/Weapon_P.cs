@@ -87,19 +87,20 @@ public class Weapon_P : WeaponBlocController
     /// <param name="shot">使用した座標</param>
     private void Attack_PA(Vector3 shot)
     {
-        Destroy(this.gameObject);
-
         //背景のビデオプレイヤーを取得
         VideoPlayer videoplayer = Quad.GetComponent<VideoPlayer>();
 
         //二重での発動を阻止
-        if (videoplayer.enabled == true) { return; }
+        if (videoplayer.enabled == false)
+        {
+            //ビデオプレイヤーを表示に
+            videoplayer.enabled = true;
 
-        //ビデオプレイヤーを表示に
-        videoplayer.enabled = true;
+            //ビデオを再生
+            videoplayer.Play();
+        }
 
-        //ビデオを再生
-        videoplayer.Play();
+        Destroy(this.gameObject);
     }
 
     /// <summary>
