@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kaomoji_Fight", "Kaomoji_Fight.csproj", "{3DAB67FE-294F-A2DE-16C2-F59F0D0C1BD4}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kaomoji_Fight.Plugins", "Kaomoji_Fight.Plugins.csproj", "{A11D8077-9D39-1018-BF33-07D6C5845471}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kaomoji_Fight", "Kaomoji_Fight.csproj", "{3DAB67FE-294F-A2DE-16C2-F59F0D0C1BD4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kaomoji_Fight.Editor.Plugins", "Kaomoji_Fight.Editor.Plugins.csproj", "{1F5B32EA-4CAF-E4DA-D194-0F8F1422934E}"
 EndProject
@@ -15,14 +15,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3DAB67FE-294F-A2DE-16C2-F59F0D0C1BD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3DAB67FE-294F-A2DE-16C2-F59F0D0C1BD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3DAB67FE-294F-A2DE-16C2-F59F0D0C1BD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3DAB67FE-294F-A2DE-16C2-F59F0D0C1BD4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A11D8077-9D39-1018-BF33-07D6C5845471}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A11D8077-9D39-1018-BF33-07D6C5845471}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A11D8077-9D39-1018-BF33-07D6C5845471}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A11D8077-9D39-1018-BF33-07D6C5845471}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DAB67FE-294F-A2DE-16C2-F59F0D0C1BD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DAB67FE-294F-A2DE-16C2-F59F0D0C1BD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DAB67FE-294F-A2DE-16C2-F59F0D0C1BD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DAB67FE-294F-A2DE-16C2-F59F0D0C1BD4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1F5B32EA-4CAF-E4DA-D194-0F8F1422934E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1F5B32EA-4CAF-E4DA-D194-0F8F1422934E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F5B32EA-4CAF-E4DA-D194-0F8F1422934E}.Release|Any CPU.ActiveCfg = Release|Any CPU
