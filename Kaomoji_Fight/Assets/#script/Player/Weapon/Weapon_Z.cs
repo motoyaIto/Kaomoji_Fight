@@ -8,7 +8,6 @@ using UnityEngine.Audio;
 public class Weapon_Z : WeaponBlocController
 {
     private GameObject self_destruct_effect;// 自爆エフェクト
-    private AudioClip bomb_ac;              //自爆音
 
     protected override void Awake()
     {
@@ -23,7 +22,6 @@ public class Weapon_Z : WeaponBlocController
             case "じ":
             case "ジ":
                 self_destruct_effect = Resources.Load<GameObject>("prefab/Effect/Explosion");
-                bomb_ac = Resources.Load<AudioClip>("Sound/SE/Deth/ded2");
                 break;
 
             case "ず":
@@ -100,12 +98,9 @@ public class Weapon_Z : WeaponBlocController
     /// <param name="shot">使用した座標</param>
     private void Attack_ZI(Vector3 shot)
     {
-        //audio.volume = .2f;
-        audio.PlayOneShot(bomb_ac);
-
         var hitobj = Instantiate(self_destruct_effect, this.transform.position + transform.forward, Quaternion.identity) as GameObject;
         DamageValue = 50;
-        PSManager_cs.Player_ReceiveDamage(this.transform.parent.gameObject, this.gameObject, this.transform.parent.GetComponent<Player>().PlayerNumber_data);
+        PSManager_cs.Effect_myself(this.transform.parent.gameObject, this.gameObject, this.transform.parent.GetComponent<Player>().PlayerNumber_data);
 
         Destroy(this.gameObject);
     }
