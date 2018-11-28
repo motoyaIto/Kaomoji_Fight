@@ -21,6 +21,8 @@ public class Weapon_Z : WeaponBlocController
 
             case "じ":
             case "ジ":
+                DamageValue = 50;
+
                 self_destruct_effect = Resources.Load<GameObject>("prefab/Effect/Explosion");
                 break;
 
@@ -99,8 +101,10 @@ public class Weapon_Z : WeaponBlocController
     private void Attack_ZI(Vector3 shot)
     {
         var hitobj = Instantiate(self_destruct_effect, this.transform.position + transform.forward, Quaternion.identity) as GameObject;
-        DamageValue = 50;
+       
         PSManager_cs.Effect_myself(this.transform.parent.gameObject, this.gameObject, this.transform.parent.GetComponent<Player>().PlayerNumber_data);
+
+        this.transform.parent.GetComponent<Player>().ChangeWeapon_Data = false;
 
         Destroy(this.gameObject);
     }
