@@ -122,8 +122,6 @@ public class CreateStage : MonoBehaviour
                     GameObject weapon = StageBlock;
                     SetWeapon_sc(mozi, weapon);
 
-                    weapon.AddComponent<AudioSource>();
-
                     //武器の文字用マテリアルに変更
                     Material StageBlock_WeaponMateral = Weapon_mate;
                    StageBlock.GetComponent<Renderer>().material = StageBlock_WeaponMateral;

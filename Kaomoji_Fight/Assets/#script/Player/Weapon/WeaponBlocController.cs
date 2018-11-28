@@ -14,8 +14,6 @@ abstract public class WeaponBlocController : MonoBehaviour
     protected float DamageValue = 5.0f;     //ダメージ量
     private float thrust = 1000f;           // 投擲物の推進力
 
-    protected new AudioSource audio;// オーディオ
-
 
 
     private Vector3 Death_LUpos = new Vector3(-150f, 100f, 0f);    // オブジェクトが破棄されるエリアの左上
@@ -30,7 +28,7 @@ abstract public class WeaponBlocController : MonoBehaviour
 
     private bool AttackFlag = false;        //攻撃する(true)しない(false)
     private string weapon_name;             //持った武器の名前
-    private string onwer;                   //所有者の名前
+    private string owner;                   //所有者の名前
     private bool weapon_throw = false;      //武器を投げた(true)投げてない(false)
 
     private GameObject hitEffect;           // ヒットエフェクト
@@ -45,9 +43,6 @@ abstract public class WeaponBlocController : MonoBehaviour
         this.enabled = false;
         //自分の文字
         mozi = this.transform.GetChild(0).GetComponent<TextMeshPro>().text;
-
-        //サウンド
-        audio = this.GetComponent<AudioSource>();
 
         PSManager_cs = GameObject.Find("PlaySceneManager").GetComponent<PlaySceneManager>();
         hitEffect = Resources.Load<GameObject>("prefab/Effect/Wave_01");
@@ -168,12 +163,12 @@ abstract public class WeaponBlocController : MonoBehaviour
     {
         set
         {
-            onwer = value;
+            owner = value;
         }
 
         get
         {
-            return onwer;
+            return owner;
         }
     }
 }
