@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Weapon_H : WeaponBlocController {
 
-    protected override void Awake()
+    protected override void OnEnable()
     {
-        base.Awake();
+        base.OnEnable();
     }
 
     public override void Update()

@@ -8,10 +8,11 @@ public class Weapon_P : WeaponBlocController
     //背景
     private GameObject Quad;
 
-    protected override void Awake()
+    protected override void OnEnable()
     {
+        base.OnEnable();
+
         Quad = GameObject.Find("Quad");
-        base.Awake();
 
         //各文字の初期化
         switch (mozi)
