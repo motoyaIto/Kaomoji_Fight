@@ -133,12 +133,12 @@ TextureImporter:
       name: Player1_3
       rect:
         serializedVersion: 2
-        x: 220
-        y: 6
-        width: 143
-        height: 117
+        x: 220.68355
+        y: 8.070243
+        width: 140.2462
+        height: 113.68761
       alignment: 9
-      pivot: {x: 0.49300697, y: 0.5683761}
+      pivot: {x: 0.4978135, y: 0.56672627}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -178,9 +178,9 @@ TextureImporter:
         x: 505
         y: 0
         width: 79
-        height: 201
+        height: 200
       alignment: 9
-      pivot: {x: 0.51265824, y: 0.48756218}
+      pivot: {x: 0.51265824, y: 0.48999998}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -188,6 +188,6 @@ TextureImporter:
     outline: []
     physicsShape: []
   spritePackingTag: 
-  userData: 101146991972535
+  userData: 101152802927523
   assetBundleName: 
   assetBundleVariant: 
