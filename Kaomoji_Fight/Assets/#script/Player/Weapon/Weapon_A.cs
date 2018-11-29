@@ -7,9 +7,9 @@ using XboxCtrlrInput;
 public class Weapon_A : WeaponBlocController {
 
     private float I_speed = 5.5f;
-    protected override void Awake()
+    protected override void OnEnable()
     {
-        base.Awake();
+        base.OnEnable();
     }
 
     public override void Update()

@@ -9,9 +9,9 @@ public class Weapon_Z : WeaponBlocController
 {
     private GameObject self_destruct_effect;// 自爆エフェクト
 
-    protected override void Awake()
+    protected override void OnEnable()
     {
-        base.Awake();
+        base.OnEnable();
 
         switch (mozi)
         {
