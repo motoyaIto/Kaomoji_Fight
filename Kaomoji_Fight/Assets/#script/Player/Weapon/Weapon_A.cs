@@ -6,10 +6,48 @@ using XboxCtrlrInput;
 
 public class Weapon_A : WeaponBlocController {
 
+    private GameObject A_effect;            // 爆発エフェクト
+    private float A_thrust = 2.5f;         // 爆弾の推進力
+    private bool A_firstHit_owner = false;  //オーナーに一度当たったら(true)まだだったら(false)
+    private Vector2 A_speed = Vector2.zero; //飛ばしてる弾の速度
+    private int A_count = 0;                //跳ね返った回数
+    private bool A_rebound = false;         //跳ね返った(treu)返っていない(false)
+
     private float I_speed = 5.5f;
+
     protected override void OnEnable()
     {
         base.OnEnable();
+        switch (mozi)
+        {
+            case "あ":
+            case "ア":
+                base.DamageValue = 15;
+
+                A_effect = Resources.Load<GameObject>("prefab/Effect/Explosion");
+
+                return;
+
+            case "い":
+            case "イ":
+                base.DamageValue = 10;
+                return;
+
+            case "う":
+            case "ウ":
+                return;
+
+            case "え":
+            case "エ":
+                return;
+
+            case "お":
+            case "オ":
+                return;
+
+            default:
+                return;
+        }
     }
 
     public override void Update()
@@ -18,6 +56,43 @@ public class Weapon_A : WeaponBlocController {
         {
             case "あ":
             case "ア":
+                if (weapon_use == true)
+                {
+                    Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, owner_cs.GetControllerNamber), XCI.GetAxis(XboxAxis.LeftStickY, owner_cs.GetControllerNamber));
+
+                    //Bボタンを離したときに左スティックを投げたい方向に入力していたら
+                    if (XCI.GetButtonUp(XboxButton.B, owner_cs.GetControllerNamber) && (input.x != 0 && input.y != 0))
+                    {
+                        owner_cs.ControllerLock_Data = false;
+
+                        owner_cs.ChangeWeapon_Data = false;
+
+                        // 親から離れる
+                        this.transform.parent = null;
+
+                        //ウェポンにボックスコライダーをつける
+                        this.gameObject.AddComponent<CircleCollider2D>();
+                        CircleCollider2D CCollider2D = this.gameObject.GetComponent<CircleCollider2D>();
+                        CCollider2D.isTrigger = true;
+                        
+                        //リジッドボディをセット
+                        Rigidbody2D rig2d = this.transform.gameObject.AddComponent<Rigidbody2D>();
+                        rig2d.gravityScale = .00f;
+
+                        // 投げる
+                        A_speed = input * A_thrust;
+                        this.transform.GetComponent<Rigidbody2D>().velocity = A_speed;
+                    }
+
+                    //Bボタンを離したら
+                    if(XCI.GetButtonUp(XboxButton.B, owner_cs.GetControllerNamber))
+                    {
+                        owner_cs.ControllerLock_Data = false;
+                        weapon_use = false;
+                    }
+                }
+                base.Update();
+
                 return;
 
             case "い":
@@ -27,19 +102,19 @@ public class Weapon_A : WeaponBlocController {
                     //方向に加速する
                     if (this.transform.GetComponent<RectTransform>().anchoredPosition.x > 0)
                     {
-                        this.transform.parent.GetComponent<Player>().Directtion_Data = I_speed;
+                        owner_cs.Directtion_Data = I_speed;
                     }
                     else
                     {
-                        this.transform.parent.GetComponent<Player>().Directtion_Data = -I_speed;
+                        owner_cs.Directtion_Data = -I_speed;
                     }
 
                     //Bボタンを離したら
-                    if (XCI.GetButtonUp(XboxButton.B, this.transform.parent.GetComponent<Player>().GetControllerNamber))
+                    if (XCI.GetButtonUp(XboxButton.B, owner_cs.GetControllerNamber))
                     {
-                        this.transform.parent.GetComponent<Player>().ControllerLock_Data = false;
+                        owner_cs.ControllerLock_Data = false;
 
-                        this.transform.parent.GetComponent<Player>().ChangeWeapon_Data = false;
+                        owner_cs.ChangeWeapon_Data = false;
 
                         Destroy(this.gameObject);
                     }
@@ -80,7 +155,6 @@ public class Weapon_A : WeaponBlocController {
 
             case "い":
             case "イ":
-                base.DamageValue = 10;
                 this.Attack_I(shot);
                 return true;
 
@@ -109,8 +183,28 @@ public class Weapon_A : WeaponBlocController {
     /// <param name="shot">使用した座標</param>
     private void Attack_A(Vector3 shot)
     {
+        //空中にいる間は投げれない
+        if (owner_cs.Jump_data == true)
+        {
+            return;
+        }
+
+        owner_cs.ControllerLock_Data = true;
+        owner_cs.Directtion_Data = 0.0f;
+        weapon_use = true;
+
+        //武器を真ん中でかまえる
+        foreach (Transform child in this.transform.parent.transform)
+        {
+            if (child.name == "Top")
+            {
+                this.transform.position = child.transform.position;
+            }
+        }
+
+       
         //仮//////////////////////////////////////////////////////////////////
-        base.SpecifiedOperation_NoneWeapon(shot);
+        //base.SpecifiedOperation_NoneWeapon(shot);
         //仮//////////////////////////////////////////////////////////////////
     }
 
@@ -126,7 +220,7 @@ public class Weapon_A : WeaponBlocController {
             return;
         }
 
-        this.transform.parent.GetComponent<Player>().ControllerLock_Data = true;
+        owner_cs.ControllerLock_Data = true;
 
         weapon_use = true;
 
@@ -156,10 +250,6 @@ public class Weapon_A : WeaponBlocController {
         this.gameObject.AddComponent<BoxCollider2D>();
         BoxCollider2D BCollider2D = this.gameObject.GetComponent<BoxCollider2D>();
         BCollider2D.isTrigger = true;
-
-        //仮//////////////////////////////////////////////////////////////////
-        //base.SpecifiedOperation_NoneWeapon(shot);
-        //仮//////////////////////////////////////////////////////////////////
     }
 
     /// <summary>
@@ -197,11 +287,38 @@ public class Weapon_A : WeaponBlocController {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
         switch (mozi)
         {
             case "あ":
             case "ア":
+               //当たったのがプレイヤーだったら
+                if (collision.transform.tag == "Player")
+                {
+                    //最初に投げるときのあたり判定をスキップ
+                    if (A_firstHit_owner == false)
+                    {
+                        A_firstHit_owner = true;
+
+                        return;
+                    }
+
+                    //プレイヤーにダメージを与える
+                    PSManager_cs.Player_ReceiveDamage(collision.gameObject, this.gameObject, collision.transform.GetComponent<Player>().PlayerNumber_data);
+
+                    //エフェクト
+                    var hitobj = Instantiate(A_effect, this.transform.position + transform.forward, Quaternion.identity) as GameObject;
+
+                    Destroy(this.gameObject);
+
+                    return;
+                }
+               
+                //当たったのがステージだったら
+                if (collision.transform.tag == "Stage" && A_rebound == false)
+                {
+                    A_count++;
+                    this.transform.GetComponent<Rigidbody2D>().velocity = Vector2.Reflect(A_speed, new Vector2(A_speed.x, A_speed.y * Mathf.Pow(-1, A_count)));
+                }
                 return;
 
             case "い":
@@ -210,6 +327,7 @@ public class Weapon_A : WeaponBlocController {
                 {
                     if (weapon_use == true)
                     {
+                        //プレイヤーにダメージを与える
                         PSManager_cs.Player_ReceiveDamage(collision.gameObject, this.gameObject, collision.transform.GetComponent<Player>().PlayerNumber_data);
                     }
                 }
@@ -230,8 +348,29 @@ public class Weapon_A : WeaponBlocController {
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        
+        switch (mozi)
+        {
+            case "あ":
+            case "ア":
+               if(A_rebound == true && collision.tag == "Stage")
+                {
+                    A_rebound = false;
+                }
+                return;
+
+            case "う":
+            case "ウ":
+                return;
+
+            case "え":
+            case "エ":
+                return;
+
+            case "お":
+            case "オ":
+                return;
+        }
     }
 }

@@ -21,7 +21,7 @@ public class Weapon_Z : WeaponBlocController
 
             case "じ":
             case "ジ":
-                DamageValue = 50;
+                DamageValue = 33;
 
                 self_destruct_effect = Resources.Load<GameObject>("prefab/Effect/Explosion");
                 break;
