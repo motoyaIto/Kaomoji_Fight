@@ -7,7 +7,7 @@ using XboxCtrlrInput;
 public class Weapon_A : WeaponBlocController {
 
     private GameObject A_effect;            // 爆発エフェクト
-    private float A_thrust = 2.5f;         // 爆弾の推進力
+    private float A_thrust = 2.5f;          // 爆弾の推進力
     private bool A_firstHit_owner = false;  //オーナーに一度当たったら(true)まだだったら(false)
     private Vector2 A_speed = Vector2.zero; //飛ばしてる弾の速度
     private int A_count = 0;                //跳ね返った回数
@@ -71,8 +71,7 @@ public class Weapon_A : WeaponBlocController {
                         this.transform.parent = null;
 
                         //ウェポンにボックスコライダーをつける
-                        this.gameObject.AddComponent<CircleCollider2D>();
-                        CircleCollider2D CCollider2D = this.gameObject.GetComponent<CircleCollider2D>();
+                        CircleCollider2D CCollider2D = this.gameObject.AddComponent<CircleCollider2D>();
                         CCollider2D.isTrigger = true;
                         
                         //リジッドボディをセット
@@ -301,12 +300,23 @@ public class Weapon_A : WeaponBlocController {
 
                         return;
                     }
-
                     //プレイヤーにダメージを与える
-                    PSManager_cs.Player_ReceiveDamage(collision.gameObject, this.gameObject, collision.transform.GetComponent<Player>().PlayerNumber_data);
-
+                    PSManager_cs.AllPlayer_Damage(collision.gameObject, this.gameObject, collision.transform.GetComponent<Player>().PlayerNumber_data);
+                    
                     //エフェクト
-                    var hitobj = Instantiate(A_effect, this.transform.position + transform.forward, Quaternion.identity) as GameObject;
+                    var hitEffect = Instantiate(A_effect, this.transform.position + transform.forward, Quaternion.identity) as GameObject;
+
+                    //コライダーを発生させる
+                    CircleCollider2D EffectCollider = hitEffect.GetComponent<CircleCollider2D>();
+                    EffectCollider.enabled = true;
+                    EffectCollider.isTrigger = true;
+
+                    //スクリプトを有効にする
+                    Effect_Explosion Effect_cs = hitEffect.GetComponent<Effect_Explosion>();
+                    Effect_cs.PSManager_Data = PSManager_cs;
+                    Effect_cs.OwnerName_Data = owner;
+                    Effect_cs.DamageValue_Data = DamageValue;
+                    Effect_cs.enabled = true;
 
                     Destroy(this.gameObject);
 
@@ -317,6 +327,28 @@ public class Weapon_A : WeaponBlocController {
                 if (collision.transform.tag == "Stage" && A_rebound == false)
                 {
                     A_count++;
+
+                    //10回以上跳ね返ったら爆発する
+                    if(A_count >= 10)
+                    {
+                        //エフェクト
+                        var hitEffect = Instantiate(A_effect, this.transform.position + transform.forward, Quaternion.identity) as GameObject;
+
+                        //コライダーを発生させる
+                        CircleCollider2D EffectCollider = hitEffect.GetComponent<CircleCollider2D>();
+                        EffectCollider.enabled = true;
+                        EffectCollider.isTrigger = true;
+
+                        //スクリプトを有効にする
+                        Effect_Explosion Effect_cs = hitEffect.GetComponent<Effect_Explosion>();
+                        Effect_cs.PSManager_Data = PSManager_cs;
+                        Effect_cs.OwnerName_Data = owner;
+                        Effect_cs.DamageValue_Data = DamageValue;
+                        Effect_cs.enabled = true;
+
+                        Destroy(this.gameObject);
+                    }
+
                     this.transform.GetComponent<Rigidbody2D>().velocity = Vector2.Reflect(A_speed, new Vector2(A_speed.x, A_speed.y * Mathf.Pow(-1, A_count)));
                 }
                 return;
