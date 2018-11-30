@@ -8,12 +8,19 @@ using TMPro;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : RaycastController {
 
+    //状態異常
+    private struct StateAbnormality
+    {
+        public bool Stan;//麻痺
+    }
+
     #region 変数群
     [SerializeField, Header("コントローラー番号")]
     private XboxController ControlerNamber = XboxController.First;//何番目のコントローラーを適用するか
 
     private Vector3 velocity;
 
+    private StateAbnormality state;
     private float moveSpeed = 10f;          // 移動速度
     float Avoidance_time = .0f;             // 回避時間
     private float Invincible_time = 8.0f;   // クールタイム
@@ -67,6 +74,9 @@ public class Player : RaycastController {
 
     new void Start()
     {
+        //状態異常の初期化
+        state.Stan = false;
+
         controller = GetComponent<Contoroller2d>();
         PSM = GameObject.Find("PlaySceneManager").transform.GetComponent<PlaySceneManager>();
         rig = GetComponent<Rigidbody2D>();
@@ -84,6 +94,12 @@ public class Player : RaycastController {
 
     void Update()
     {
+        //状態異常処理
+        //麻痺
+        if(state.Stan == true)
+        {
+            return;
+        }
         // Controllerの左スティックのAxisを取得            
         Vector2 input = new Vector2(XCI.GetAxis(XboxAxis.LeftStickX, ControlerNamber), XCI.GetAxis(XboxAxis.LeftStickY, ControlerNamber));
         if (input.x > .0f && controller_lock == false)
@@ -449,6 +465,14 @@ public class Player : RaycastController {
         get
         {
             return jump;
+        }
+    }
+
+    public bool Stan_Data
+    {
+        set
+        {
+            state.Stan = value;
         }
     }
 }

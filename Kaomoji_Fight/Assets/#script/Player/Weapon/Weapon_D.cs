@@ -7,6 +7,29 @@ public class Weapon_D : WeaponBlocController {
     protected override void OnEnable()
     {
         base.OnEnable();
+        switch (mozi)
+        {
+            case "だ":
+            case "ダ":
+                return;
+
+            case "ぢ":
+            case "ヂ":
+                return;
+
+            case "づ":
+            case "ヅ":
+                return;
+
+            case "で":
+            case "デ":
+                base.DamageValue = 5;
+                return;
+
+            case "ど":
+            case "ド":
+                return;
+        }
     }
 
     public override void Update()
@@ -91,8 +114,44 @@ public class Weapon_D : WeaponBlocController {
     /// <param name="shot">使用した座標</param>
     private void Attack_DE(Vector3 shot)
     {
+        //左右に入力なしで排除
+        if ((this.transform.GetComponent<RectTransform>().anchoredPosition.x > 0 || this.transform.GetComponent<RectTransform>().anchoredPosition.x < 0) == false)
+        {
+            return;
+        }
+
+        weapon_use = true;
+
+        //武器を右か左に寄せる
+        if (this.transform.GetComponent<RectTransform>().anchoredPosition.x > 0)
+        {
+            foreach (Transform child in this.transform.parent.transform)
+            {
+                if (child.name == "Right")
+                {
+                    this.transform.position = child.transform.position;
+                }
+            }
+        }
+        else
+        {
+            foreach (Transform child in this.transform.parent.transform)
+            {
+                if (child.name == "Left")
+                {
+                    this.transform.position = child.transform.position;
+                }
+            }
+        }
+
+
+        owner_cs.ChangeWeapon_Data = false;
+
+        // 親から離れる
+        this.transform.parent = null;
+
         //仮//////////////////////////////////////////////////////////////////
-        base.SpecifiedOperation_NoneWeapon(shot);
+        //base.SpecifiedOperation_NoneWeapon(shot);
         //仮//////////////////////////////////////////////////////////////////
     }
 
