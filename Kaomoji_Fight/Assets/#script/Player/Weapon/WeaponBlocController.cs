@@ -23,7 +23,8 @@ abstract public class WeaponBlocController : MonoBehaviour
 
     private string parentName;              //親の名前
 
-    private string owner;                   //所有者の名前
+    public string owner;                   //所有者の名前
+    protected Player owner_cs;              //所有者のplayerスクリプト
     protected bool weapon_use = false;      //武器を投げた(true)投げてない(false)
 
     private GameObject hitEffect;           // ヒットエフェクト
@@ -31,7 +32,7 @@ abstract public class WeaponBlocController : MonoBehaviour
     // 音
     private AudioSource As;
     private AudioClip ac;
-
+    
     // Use this for initialization
     private void Awake()
     {
@@ -40,6 +41,9 @@ abstract public class WeaponBlocController : MonoBehaviour
 
     protected virtual void OnEnable()
     {
+        //所有者のスクリプト
+        owner_cs = this.transform.parent.GetComponent<Player>();
+
         //自分の文字
         mozi = this.transform.GetChild(0).GetComponent<TextMeshPro>().text;
 
@@ -95,14 +99,14 @@ abstract public class WeaponBlocController : MonoBehaviour
         Rigidbody2D　rig2d = Weapon.AddComponent<Rigidbody2D>();
         rig2d.gravityScale = .01f;
 
-        this.transform.parent.GetComponent<Player>().ChangeWeapon_Data = false;
+        owner_cs.ChangeWeapon_Data = false;
 
         // 親から離れる
         this.transform.parent = null;
 
         //ウェポンにボックスコライダーをつける
-        Weapon.AddComponent<BoxCollider2D>();
-
+        BoxCollider2D BColider = Weapon.AddComponent<BoxCollider2D>();
+        BColider.isTrigger = true;
         weapon_use = true;
 
         // 動かずに投げたら
@@ -117,10 +121,14 @@ abstract public class WeaponBlocController : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (CheckHit_Rival(collision) == true)
         {
+            //プレイヤーにダメージを与える
+            PSManager_cs.Player_ReceiveDamage(collision.gameObject, this.gameObject, collision.GetComponent<Player>().PlayerNumber_data);
+
+            //エフェクト
             var hitobj = Instantiate(hitEffect, this.transform.position + transform.forward, Quaternion.identity) as GameObject;
             Destroy(this.gameObject);
             weapon_use = false;
@@ -137,15 +145,6 @@ abstract public class WeaponBlocController : MonoBehaviour
         return false;
     }
 
-    protected bool CheckHit_Rival(Collision2D collision)
-    {
-        if (parentName != collision.gameObject.name && weapon_use && collision.transform.tag != "Stage")
-        {
-            return true;
-        }
-
-        return false;
-    }
 
     //座標を入れる
     public Vector3 SetPosition

@@ -30,10 +30,9 @@ public class Player : RaycastController {
     private bool HaveWeapon = false;        //武器を持っている(true)いない(false)
     private bool Avoidance = false;         // 回避フラグ
     private bool jump = false;              // ジャンプ中か？
+    private bool EnteFlag = false;          //あったたオブジェクトがあるか
 
     private bool isQuitting = false;        // エディタ実行終了時か？
-
-    private string p_name;                  // プレイヤーネーム
 
     Contoroller2d controller;               // コントローラー
     bool controller_lock = false;           //コントローラーをロックする
@@ -169,7 +168,6 @@ public class Player : RaycastController {
         {
             //武器の位置を調整
             WeaponBlocController WBController = weapon.gameObject.GetComponent<WeaponBlocController>();
-            WBController.Owner_Data = p_name;
             Vector3 direction = Vector3.zero;
 
             if (velocity.x < 0.0f)
@@ -287,6 +285,8 @@ public class Player : RaycastController {
             Destroy(weapon.GetComponent<BlockController>());
             weapon.GetComponent<WeaponBlocController>().enabled = true;
 
+            //オーナー登録
+            weapon.GetComponent<WeaponBlocController>().Owner_Data = this.name;
             //床から切り抜く
             block.GetComponent<BlockController>().ChangeWeapon();
 
@@ -296,29 +296,27 @@ public class Player : RaycastController {
 
             //プレイヤーの移動する向きに合わせて位置を調整
             this.WeaponPositionControll(pos);
-
-            // 持ったプレイヤーの名前を取得
-            p_name = this.name;
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //ダメージ判定
-        if(collision.transform.tag == "Weapon" && Avoidance == false)
-        {
-            WeaponBlocController WBController = collision.gameObject.GetComponent<WeaponBlocController>();
-            if (!Avoidance)
-            {
-                PSM.Player_ReceiveDamage(this.gameObject, collision.gameObject, CNConvert(ControlerNamber));                
-            }            
-        }
-
         // ジャンプ制限
         if (collision.gameObject.CompareTag("Stage"))
         {
+            EnteFlag = true;
             jump = false;
         }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (EnteFlag == false)
+        {
+            jump = true;
+        }
+
+        EnteFlag = false;
     }
 
     private void OnApplicationQuit()
@@ -443,6 +441,14 @@ public class Player : RaycastController {
         set
         {
             controller_lock = value;
+        }
+    }
+
+    public bool Jump_data
+    {
+        get
+        {
+            return jump;
         }
     }
 }
