@@ -347,6 +347,12 @@ public class PlaySceneManager : MonoBehaviour
         return HPgage;
     }
 
+    /// <summary>
+    /// 自分にのみ効果のある処理
+    /// </summary>
+    /// <param name="owner">オーナー</param>
+    /// <param name="weapon">武器</param>
+    /// <param name="num">オーナーの番号</param>
     public void Effect_myself(GameObject owner, GameObject weapon, int num)
     {
         // ダメージを受けたプレイヤーデータを取得する
@@ -376,9 +382,12 @@ public class PlaySceneManager : MonoBehaviour
         return;
     }
 
-    /// <summary>
-    /// プレイヤーがダメージを受ける
-    /// </summary>
+   /// <summary>
+   /// 敵プレイヤーのみにダメージを与える
+   /// </summary>
+   /// <param name="damagePlayer">ダメージを受けたプレイヤー</param>
+   /// <param name="weapon">武器</param>
+   /// <param name="num">ダメージを受けたプレイヤーの番号</param>
     public void Player_ReceiveDamage(GameObject damagePlayer, GameObject weapon, int num)
     {
         // ダメージを与えたプレイヤーの名前
@@ -429,9 +438,111 @@ public class PlaySceneManager : MonoBehaviour
                 Destroy(HP_Slider[num].gameObject);
                 death_count--;
             }
-
         }
+    }
 
+    /// <summary>
+    /// どのプレイヤーもダメージを受ける
+    /// </summary>
+    /// <param name="damagePlayer">ダメージを受けたプレイヤー</param>
+    /// <param name="weapon">武器</param>
+    /// <param name="num">ダメージを受けたプレイヤーの番号</param>
+    public void AllPlayer_Damage(GameObject damagePlayer, GameObject weapon, int num)
+    {
+        // ダメージを与えたプレイヤーの名前
+        string giveDamagePlayer = weapon.GetComponent<WeaponBlocController>().Owner_Data;
+
+        {
+            //effectControll.HitEffect();
+            // ダメージ音
+            audio.volume = .3f;
+            audio.PlayOneShot(audioClip_hit);
+
+            //ダメージを与えたプレイヤーに値を加える
+            for (int i = 0; i < PlayData.Instance.playerNum; i++)
+            {
+                if (PlayData.Instance.PlayersData[i].Name_Data == giveDamagePlayer)
+                {
+                    PlayData.Instance.PlayersData[i].DamageCount = (int)weapon.GetComponent<WeaponBlocController>().DamageValue_Data;
+                }
+            }
+
+            // ダメージを受けたプレイヤーデータを取得する
+            PlayerData player_data = CheckDamagePlayer(damagePlayer.name);
+
+            //ダメージを受けたプレイヤーがいなかったとき
+            if (player_data == null)
+            {
+                return;
+            }
+
+            //ダメージを与える
+            HP_Slider[num].value -= weapon.GetComponent<WeaponBlocController>().DamageValue_Data;
+
+            //HPが0以下になったらplayerを殺す
+            if (HP_Slider[num].value <= 0)
+            {
+                var dedobj = Instantiate(dedEffect, damagePlayer.transform.position + transform.forward, Quaternion.identity) as GameObject;
+                TrueDeath[num] = true;
+                DeathNumber[num] = damagePlayer.name;
+                audio.volume = 0.3f;
+                audio.PlayOneShot(audioClip_ded);
+                Destroy(damagePlayer);
+                Destroy(HP_Slider[num].gameObject);
+                death_count--;
+            }
+        }
+    }
+
+    /// <summary>
+    /// どのプレイヤーもダメージを受ける
+    /// </summary>
+    /// <param name="damagePlayer">ダメージを受けたプレイヤー</param>
+    /// <param name="owner_name">武器のオーナーの名前</param>
+    /// <param name="weaponDamage">武器のダメージ量</param>
+    /// <param name="num">ダメージを受けたプレイヤーの番号</param>
+    public void AllPlayer_Damage(GameObject damagePlayer, string owner_name, float weaponDamage, int num)
+    {
+        {
+            //effectControll.HitEffect();
+            // ダメージ音
+            audio.volume = .3f;
+            audio.PlayOneShot(audioClip_hit);
+
+            //ダメージを与えたプレイヤーに値を加える
+            for (int i = 0; i < PlayData.Instance.playerNum; i++)
+            {
+                if (PlayData.Instance.PlayersData[i].Name_Data == owner_name)
+                {
+                    PlayData.Instance.PlayersData[i].DamageCount = (int)weaponDamage;
+                }
+            }
+
+            // ダメージを受けたプレイヤーデータを取得する
+            PlayerData player_data = CheckDamagePlayer(damagePlayer.name);
+
+            //ダメージを受けたプレイヤーがいなかったとき
+            if (player_data == null)
+            {
+                return;
+            }
+
+            //ダメージを与える
+            HP_Slider[num].value -= weaponDamage;
+
+            //HPが0以下になったらplayerを殺す
+            if (HP_Slider[num].value <= 0)
+            {
+                var dedobj = Instantiate(dedEffect, damagePlayer.transform.position + transform.forward, Quaternion.identity) as GameObject;
+                TrueDeath[num] = true;
+                DeathNumber[num] = damagePlayer.name;
+                audio.volume = 0.3f;
+                audio.PlayOneShot(audioClip_ded);
+                Destroy(damagePlayer);
+                Destroy(HP_Slider[num].gameObject);
+                death_count--;
+            }
+        }
     }
 
     /// <summary>

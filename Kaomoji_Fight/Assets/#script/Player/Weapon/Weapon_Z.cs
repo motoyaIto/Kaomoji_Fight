@@ -100,9 +100,21 @@ public class Weapon_Z : WeaponBlocController
     /// <param name="shot">使用した座標</param>
     private void Attack_ZI(Vector3 shot)
     {
-        var hitobj = Instantiate(self_destruct_effect, this.transform.position + transform.forward, Quaternion.identity) as GameObject;
-       
-        PSManager_cs.Effect_myself(this.transform.parent.gameObject, this.gameObject, this.transform.parent.GetComponent<Player>().PlayerNumber_data);
+        var hitEffect = Instantiate(self_destruct_effect, this.transform.position + transform.forward, Quaternion.identity) as GameObject;
+
+        //コライダーを発生させる
+        CircleCollider2D EffectCollider = hitEffect.GetComponent<CircleCollider2D>();
+        EffectCollider.enabled = true;
+        EffectCollider.isTrigger = true;
+
+        //スクリプトを有効にする
+        Effect_Explosion Effect_cs = hitEffect.GetComponent<Effect_Explosion>();
+        Effect_cs.PSManager_Data = PSManager_cs;
+        Effect_cs.OwnerName_Data = owner;
+        Effect_cs.DamageValue_Data = DamageValue;
+        Effect_cs.enabled = true;
+
+        //PSManager_cs.Effect_myself(this.transform.parent.gameObject, this.gameObject, this.transform.parent.GetComponent<Player>().PlayerNumber_data);
 
         this.transform.parent.GetComponent<Player>().ChangeWeapon_Data = false;
 
