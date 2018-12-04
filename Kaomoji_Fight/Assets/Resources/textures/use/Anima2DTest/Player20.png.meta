@@ -3,7 +3,22 @@ guid: 9fb8342d13c67b54c82cd01a082f9882
 timeCreated: 1543461744
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Player20_0
+    21300002: Player20_1
+    21300004: Player20_2
+    21300006: Player20_3
+    21300008: Player20_4
+    21300010: Player20_5
+    21300012: Player20_6
+    21300014: Player20_7
+    21300016: Player20_8
+    21300018: Player20_9
+    21300020: Player20_10
+    21300022: Player20_11
+    21300024: Player20_12
+    21300026: Player20_13
+    21300028: Player20_14
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -31,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -1
     wrapU: 1
@@ -40,7 +55,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,12 +82,262 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Player20_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 140.41742
+        width: 326.0011
+        height: 26.000046
+      alignment: 9
+      pivot: {x: 0.49999833, y: 0.48394454}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player20_1
+      rect:
+        serializedVersion: 2
+        x: 325.01242
+        y: 150.49844
+        width: 84.66397
+        height: 60.501556
+      alignment: 9
+      pivot: {x: 0.49002638, y: 0.54546624}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player20_2
+      rect:
+        serializedVersion: 2
+        x: 410.49844
+        y: 150.25699
+        width: 85.365295
+        height: 60.74301
+      alignment: 9
+      pivot: {x: 0.49202147, y: 0.54727304}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player20_3
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 65
+        width: 44.625397
+        height: 78.68886
+      alignment: 9
+      pivot: {x: 0.5378103, y: 0.5273936}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player20_4
+      rect:
+        serializedVersion: 2
+        x: 377.12387
+        y: 114.57748
+        width: 42.565002
+        height: 38.73678
+      alignment: 9
+      pivot: {x: 0.50219965, y: 0.5013975}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player20_5
+      rect:
+        serializedVersion: 2
+        x: 432.31116
+        y: 56.57111
+        width: 76.12799
+        height: 89.20117
+      alignment: 9
+      pivot: {x: 0.4819363, y: 0.5092858}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player20_6
+      rect:
+        serializedVersion: 2
+        x: 503.94586
+        y: 114.38394
+        width: 42.117615
+        height: 38.74301
+      alignment: 9
+      pivot: {x: 0.49988914, y: 0.50631213}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player20_7
+      rect:
+        serializedVersion: 2
+        x: 549.6632
+        y: 67.32654
+        width: 34.336792
+        height: 75.01021
+      alignment: 9
+      pivot: {x: 0.59227407, y: 0.4955787}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player20_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 60
+        width: 266
+        height: 27
+      alignment: 9
+      pivot: {x: 0.4906015, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player20_9
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 62
+        width: 33
+        height: 39
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player20_10
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 63
+        width: 33
+        height: 37
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player20_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 62.155605
+        height: 60.999996
+      alignment: 9
+      pivot: {x: 0.5067926, y: 0.442623}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player20_12
+      rect:
+        serializedVersion: 2
+        x: 63.831116
+        y: 0
+        width: 50.506638
+        height: 60.669544
+      alignment: 9
+      pivot: {x: 0.49832824, y: 0.4532752}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player20_13
+      rect:
+        serializedVersion: 2
+        x: 345.49994
+        y: 0
+        width: 60.63571
+        height: 60.662247
+      alignment: 9
+      pivot: {x: 0.49475893, y: 0.44508734}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player20_14
+      rect:
+        serializedVersion: 2
+        x: 446.51993
+        y: 0
+        width: 51.336548
+        height: 60.480087
+      alignment: 9
+      pivot: {x: 0.49633393, y: 0.4546951}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 
-  userData: 
+  userData: 101159007950362
   assetBundleName: 
   assetBundleVariant: 
