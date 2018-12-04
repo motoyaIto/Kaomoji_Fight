@@ -11,6 +11,7 @@ public class TaserNeedle : MonoBehaviour {
     private State state = State.Stan;       //状態異常：スタン 
     private float StanTime = 2.0f;          //スタンしている時間
     private float DamageValue = 5.0f;       //ダメージ量
+    private GameObject Effect;              //麻痺エフェクト
 
     private void OnEnable()
     {
@@ -29,10 +30,14 @@ public class TaserNeedle : MonoBehaviour {
             CancelInvoke();
 
             //スタン終了後に消す
-            Invoke("Destroy_ThisObj", StanTime);
+            //Invoke("Destroy_ThisObj", StanTime);
 
             //スタンを付与する
             PSManager.Player_BatStatus(collision.gameObject, owner, DamageValue, collision.GetComponent<Player>().PlayerNumber_data, state, StanTime);
+
+            Effect = Resources.Load<GameObject>("prefab/Effect/ErekiBall");
+            Effect = Instantiate(Effect, this.transform) as GameObject;
+            Effect.transform.position = new Vector3(this.transform.parent.transform.position.x, this.transform.parent.transform.position.y, 0);
         }
     }
 
