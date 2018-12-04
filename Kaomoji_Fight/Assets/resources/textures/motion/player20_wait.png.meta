@@ -1,0 +1,1003 @@
+fileFormatVersion: 2
+guid: 99c53e799173e444ca3684c85c72805d
+timeCreated: 1543904540
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: player20_wait_0
+    21300002: player20_wait_1
+    21300004: player20_wait_2
+    21300006: player20_wait_3
+    21300008: player20_wait_4
+    21300010: player20_wait_5
+    21300012: player20_wait_6
+    21300014: player20_wait_7
+    21300016: player20_wait_8
+    21300018: player20_wait_9
+    21300020: player20_wait_10
+    21300022: player20_wait_11
+    21300024: player20_wait_12
+    21300026: player20_wait_13
+    21300028: player20_wait_14
+    21300030: player20_wait_15
+    21300032: player20_wait_16
+    21300034: player20_wait_17
+    21300036: player20_wait_18
+    21300038: player20_wait_19
+    21300040: player20_wait_20
+    21300042: player20_wait_21
+    21300044: player20_wait_22
+    21300046: player20_wait_23
+    21300048: player20_wait_24
+    21300050: player20_wait_25
+    21300052: player20_wait_26
+    21300054: player20_wait_27
+    21300056: player20_wait_28
+    21300058: player20_wait_29
+    21300060: player20_wait_30
+    21300062: player20_wait_31
+    21300064: player20_wait_32
+    21300066: player20_wait_33
+    21300068: player20_wait_34
+    21300070: player20_wait_35
+    21300072: player20_wait_36
+    21300074: player20_wait_37
+    21300076: player20_wait_38
+    21300078: player20_wait_39
+    21300080: player20_wait_40
+    21300082: player20_wait_41
+    21300084: player20_wait_42
+    21300086: player20_wait_43
+    21300088: player20_wait_44
+    21300090: player20_wait_45
+    21300092: player20_wait_46
+    21300094: player20_wait_47
+    21300096: player20_wait_48
+    21300098: player20_wait_49
+    21300100: player20_wait_50
+    21300102: player20_wait_51
+    21300104: player20_wait_52
+    21300106: player20_wait_53
+    21300108: player20_wait_54
+    21300110: player20_wait_55
+    21300112: player20_wait_56
+    21300114: player20_wait_57
+    21300116: player20_wait_58
+    21300118: player20_wait_59
+    21300120: player20_wait_60
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: player20_wait_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1477
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_1
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 1477
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_2
+      rect:
+        serializedVersion: 2
+        x: 1168
+        y: 1477
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_3
+      rect:
+        serializedVersion: 2
+        x: 1752
+        y: 1477
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_4
+      rect:
+        serializedVersion: 2
+        x: 2336
+        y: 1477
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_5
+      rect:
+        serializedVersion: 2
+        x: 2920
+        y: 1477
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_6
+      rect:
+        serializedVersion: 2
+        x: 3504
+        y: 1477
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_7
+      rect:
+        serializedVersion: 2
+        x: 4088
+        y: 1477
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1266
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_9
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 1266
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_10
+      rect:
+        serializedVersion: 2
+        x: 1168
+        y: 1266
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_11
+      rect:
+        serializedVersion: 2
+        x: 1752
+        y: 1266
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_12
+      rect:
+        serializedVersion: 2
+        x: 2336
+        y: 1266
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_13
+      rect:
+        serializedVersion: 2
+        x: 2920
+        y: 1266
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_14
+      rect:
+        serializedVersion: 2
+        x: 3504
+        y: 1266
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_15
+      rect:
+        serializedVersion: 2
+        x: 4088
+        y: 1266
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1055
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_17
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 1055
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_18
+      rect:
+        serializedVersion: 2
+        x: 1168
+        y: 1055
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_19
+      rect:
+        serializedVersion: 2
+        x: 1752
+        y: 1055
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_20
+      rect:
+        serializedVersion: 2
+        x: 2336
+        y: 1055
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_21
+      rect:
+        serializedVersion: 2
+        x: 2920
+        y: 1055
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_22
+      rect:
+        serializedVersion: 2
+        x: 3504
+        y: 1055
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_23
+      rect:
+        serializedVersion: 2
+        x: 4088
+        y: 1055
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 844
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_25
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 844
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_26
+      rect:
+        serializedVersion: 2
+        x: 1168
+        y: 844
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_27
+      rect:
+        serializedVersion: 2
+        x: 1752
+        y: 844
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_28
+      rect:
+        serializedVersion: 2
+        x: 2336
+        y: 844
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_29
+      rect:
+        serializedVersion: 2
+        x: 2920
+        y: 844
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_30
+      rect:
+        serializedVersion: 2
+        x: 3504
+        y: 844
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_31
+      rect:
+        serializedVersion: 2
+        x: 4088
+        y: 844
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 633
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_33
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 633
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_34
+      rect:
+        serializedVersion: 2
+        x: 1168
+        y: 633
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_35
+      rect:
+        serializedVersion: 2
+        x: 1752
+        y: 633
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_36
+      rect:
+        serializedVersion: 2
+        x: 2336
+        y: 633
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_37
+      rect:
+        serializedVersion: 2
+        x: 2920
+        y: 633
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_38
+      rect:
+        serializedVersion: 2
+        x: 3504
+        y: 633
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_39
+      rect:
+        serializedVersion: 2
+        x: 4088
+        y: 633
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 422
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_41
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 422
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_42
+      rect:
+        serializedVersion: 2
+        x: 1168
+        y: 422
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_43
+      rect:
+        serializedVersion: 2
+        x: 1752
+        y: 422
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_44
+      rect:
+        serializedVersion: 2
+        x: 2336
+        y: 422
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_45
+      rect:
+        serializedVersion: 2
+        x: 2920
+        y: 422
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_46
+      rect:
+        serializedVersion: 2
+        x: 3504
+        y: 422
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_47
+      rect:
+        serializedVersion: 2
+        x: 4088
+        y: 422
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 211
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_49
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 211
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_50
+      rect:
+        serializedVersion: 2
+        x: 1168
+        y: 211
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_51
+      rect:
+        serializedVersion: 2
+        x: 1752
+        y: 211
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_52
+      rect:
+        serializedVersion: 2
+        x: 2336
+        y: 211
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_53
+      rect:
+        serializedVersion: 2
+        x: 2920
+        y: 211
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_54
+      rect:
+        serializedVersion: 2
+        x: 3504
+        y: 211
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_55
+      rect:
+        serializedVersion: 2
+        x: 4088
+        y: 211
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_57
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 0
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_58
+      rect:
+        serializedVersion: 2
+        x: 1168
+        y: 0
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_59
+      rect:
+        serializedVersion: 2
+        x: 1752
+        y: 0
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player20_wait_60
+      rect:
+        serializedVersion: 2
+        x: 2336
+        y: 0
+        width: 584
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
