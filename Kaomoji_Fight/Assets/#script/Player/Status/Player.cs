@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
 using TMPro;
+using Constant;
 
 //[RequireComponent(typeof(Contoroller2d))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : RaycastController {
 
     //状態異常
-    private struct StateAbnormality
+    public struct StateAbnormality
     {
         public bool Stan;//麻痺
     }

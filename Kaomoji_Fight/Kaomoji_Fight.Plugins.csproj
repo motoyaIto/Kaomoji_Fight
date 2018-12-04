@@ -398,6 +398,12 @@
     <None Include="Assets\Shader\Test\VertexShader.shader" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+<<<<<<< HEAD
+    <None Include="Assets\%E3%83%BCCredit\Assets.txt" />
+    <None Include="Assets\%E3%83%BCCredit\BGM.txt" />
+    <None Include="Assets\%E3%83%BCCredit\SE.txt" />
+    <None Include="Assets\%E3%83%BCCredit\%E7%94%BB%E5%83%8F.txt" />
+=======
     <None Include="Assets\resources\Texts\I_can_not_use_it.txt" />
     <None Include="Assets\resources\Texts\stage1.txt" />
     <None Include="Assets\resources\Texts\stage2.txt" />
@@ -410,6 +416,7 @@
     <None Include="Assets\ーCredit\Assets.txt" />
     <None Include="Assets\ーCredit\BGM.txt" />
     <None Include="Assets\ーCredit\SE.txt" />
+>>>>>>> master
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -10,6 +10,7 @@ using System.Linq;
 using UnityEngine.SceneManagement;
 using System;
 using UnityEngine.Video;
+using Constant;
 
 
 public class PlaySceneManager : MonoBehaviour
@@ -439,6 +440,72 @@ public class PlaySceneManager : MonoBehaviour
                 death_count--;
             }
         }
+    }
+
+    public void Player_BatStatus(GameObject damagePlayer, string owner_name, float damage, int num, State state, float time)
+    {
+        // ダメージを与えたプレイヤーの名前
+        string giveDamagePlayer = owner_name;
+
+        Player DamagePlayer_cs = damagePlayer.GetComponent<Player>();
+
+        switch(state)
+        {
+            case State.Stan:
+                DamagePlayer_cs.Stan_Data = true;
+                break;
+        }
+        // ダメージ音
+        audio.volume = .3f;
+        audio.PlayOneShot(audioClip_hit);
+
+        //ダメージを与えたプレイヤーに値を加える
+        for (int i = 0; i < PlayData.Instance.playerNum; i++)
+        {
+            if (PlayData.Instance.PlayersData[i].Name_Data == giveDamagePlayer)
+            {
+                PlayData.Instance.PlayersData[i].DamageCount = (int)damage;
+            }
+        }
+
+
+        //ダメージを与える
+        HP_Slider[num].value -= damage;
+
+        //HPが0以下になったらplayerを殺す
+        if (HP_Slider[num].value <= 0)
+        {
+            var dedobj = Instantiate(dedEffect, damagePlayer.transform.position + transform.forward, Quaternion.identity) as GameObject;
+            TrueDeath[num] = true;
+            DeathNumber[num] = damagePlayer.name;
+            audio.volume = 0.3f;
+            audio.PlayOneShot(audioClip_ded);
+            Destroy(damagePlayer);
+            Destroy(HP_Slider[num].gameObject);
+            death_count--;
+        }
+        else
+        {
+            StartCoroutine(Release_BatStatus(time, DamagePlayer_cs, state));
+        }
+    }
+
+    /// <summary>
+    /// 状態異常を解除する
+    /// </summary>
+    /// <param name="DamagePlayer_cs">状態異常のプレイヤー</param>
+    /// <param name="state">解除する状態異常</param>
+    private IEnumerator Release_BatStatus(float coroutineTime, Player DamagePlayer_cs, State state)
+    {
+        yield return new WaitForSeconds(coroutineTime);
+
+        switch (state)
+        {
+            case State.Stan:
+                DamagePlayer_cs.Stan_Data = false;
+                break;
+        }
+      
     }
 
     /// <summary>
