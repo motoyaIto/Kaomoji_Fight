@@ -30,7 +30,7 @@ public class TaserNeedle : MonoBehaviour {
             CancelInvoke();
 
             //スタン終了後に消す
-            //Invoke("Destroy_ThisObj", StanTime);
+            Invoke("Destroy_ThisObj", StanTime);
 
             //スタンを付与する
             PSManager.Player_BatStatus(collision.gameObject, owner, DamageValue, collision.GetComponent<Player>().PlayerNumber_data, state, StanTime);

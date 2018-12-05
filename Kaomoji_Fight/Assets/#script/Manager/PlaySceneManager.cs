@@ -442,6 +442,15 @@ public class PlaySceneManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// プレイヤーにバットステータスを与える
+    /// </summary>
+    /// <param name="damagePlayer">ダメージを受けたプレイヤー</param>
+    /// <param name="owner_name">オーナーの名前</param>
+    /// <param name="damage">ダメージ量</param>
+    /// <param name="num">プレイヤー番号</param>
+    /// <param name="state">バットステータス</param>
+    /// <param name="time">治るまでの時間</param>
     public void Player_BatStatus(GameObject damagePlayer, string owner_name, float damage, int num, State state, float time)
     {
         // ダメージを与えたプレイヤーの名前

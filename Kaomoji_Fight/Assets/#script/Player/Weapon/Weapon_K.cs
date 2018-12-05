@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Weapon_K : WeaponBlocController {
+
+    private GameObject KA_Effect;       //回復エフェクト
+    private float KA_EffectWait = 0.5f; //エフェクトの処理を待つ
 
     protected override void OnEnable()
     {
@@ -25,6 +29,9 @@ public class Weapon_K : WeaponBlocController {
         {
             case "か":
             case "カ":
+                KA_Effect = Resources.Load<GameObject>("prefab/Effect/Recovery");
+
+                DamageValue = -20;
                 this.Attack_KA(shot);
                 return true;
 
@@ -58,8 +65,18 @@ public class Weapon_K : WeaponBlocController {
     /// <param name="shot">使用した座標</param>
     private void Attack_KA(Vector3 shot)
     {
+        //回復
+        PSManager_cs.Effect_myself(this.transform.parent.gameObject, this.gameObject, this.transform.parent.GetComponent<Player>().PlayerNumber_data);
+
+        //回復エフェクト
+        KA_Effect = Instantiate(KA_Effect, this.transform) as GameObject;
+        KA_Effect.transform.position = new Vector3(this.transform.parent.transform.position.x, this.transform.position.y, 0);
+
+        //エフェクト発生を待って破棄する
+        StartCoroutine(base.DelayMethod(KA_EffectWait, () => { Destroy(this.gameObject); }));
+        this.transform.parent.GetComponent<Player>().ChangeWeapon_Data = false;
         //仮//////////////////////////////////////////////////////////////////
-        base.SpecifiedOperation_NoneWeapon(shot);
+        //base.SpecifiedOperation_NoneWeapon(shot);
         //仮//////////////////////////////////////////////////////////////////
     }
 
