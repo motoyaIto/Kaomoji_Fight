@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Weapon_D : WeaponBlocController {
 
-    GameObject D_needle;
-    Vector2 D_needleSpeed = new Vector2(50.0f, 0.0f);
+    GameObject DE_needle;
+    Vector2 DE_needleSpeed = new Vector2(50.0f, 0.0f);
 
     protected override void OnEnable()
     {
@@ -28,12 +28,12 @@ public class Weapon_D : WeaponBlocController {
             case "デ":
                 base.DamageValue = 5;
 
-                D_needle = Resources.Load<GameObject>("prefab/Weapon/Taser_needle");
-                D_needle = Instantiate(D_needle, this.transform);
-                D_needle.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.2f, 0);
-                D_needle.transform.localScale = new Vector3(D_needle.transform.localScale.x, D_needle.transform.localScale.y * 0.5f, D_needle.transform.localScale.z);
+                DE_needle = Resources.Load<GameObject>("prefab/Weapon/Taser_needle");
+                DE_needle = Instantiate(DE_needle, this.transform);
+                DE_needle.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.2f, 0);
+                DE_needle.transform.localScale = new Vector3(DE_needle.transform.localScale.x, DE_needle.transform.localScale.y * 0.5f, DE_needle.transform.localScale.z);
 
-                BoxCollider2D NeedleCollider = D_needle.GetComponent<BoxCollider2D>();
+                BoxCollider2D NeedleCollider = DE_needle.GetComponent<BoxCollider2D>();
                 NeedleCollider.isTrigger = true;
                 return;
 
@@ -134,13 +134,13 @@ public class Weapon_D : WeaponBlocController {
         weapon_use = true;
 
         //針を表示
-        D_needle.SetActive(true);
+        DE_needle.SetActive(true);
 
         //各パラメータを与える
-        TaserNeedle D_needle_cs = D_needle.GetComponent<TaserNeedle>();
-        D_needle_cs.PSManager_Data = PSManager_cs;
-        D_needle_cs.Owner_Data = base.Owner_Data;
-        D_needle_cs.DamageValue_Data = DamageValue;
+        TaserNeedle DE_needle_cs = DE_needle.GetComponent<TaserNeedle>();
+        DE_needle_cs.PSManager_Data = PSManager_cs;
+        DE_needle_cs.Owner_Data = base.Owner_Data;
+        DE_needle_cs.DamageValue_Data = DamageValue;
 
         //武器を右か左に寄せる
         if (this.transform.GetComponent<RectTransform>().anchoredPosition.x > 0)
@@ -152,7 +152,7 @@ public class Weapon_D : WeaponBlocController {
                     this.transform.position = child.transform.position;
 
                     //針を射出する
-                    D_needle.transform.GetComponent<Rigidbody2D>().velocity = D_needleSpeed;
+                    DE_needle.transform.GetComponent<Rigidbody2D>().velocity = DE_needleSpeed;
                 }
             }
         }
@@ -165,11 +165,11 @@ public class Weapon_D : WeaponBlocController {
                     this.transform.position = child.transform.position;
 
                     //射出向きを修正
-                    SpriteRenderer needleSprite = D_needle.transform.GetComponent<SpriteRenderer>();
+                    SpriteRenderer needleSprite = DE_needle.transform.GetComponent<SpriteRenderer>();
                     needleSprite.flipY = true;
 
                     //針を射出する
-                    D_needle.transform.GetComponent<Rigidbody2D>().velocity = -D_needleSpeed;
+                    DE_needle.transform.GetComponent<Rigidbody2D>().velocity = -DE_needleSpeed;
                 }
             }
         }
@@ -178,7 +178,7 @@ public class Weapon_D : WeaponBlocController {
         owner_cs.ChangeWeapon_Data = false;
 
         //針だけを飛ばす
-        D_needle.transform.parent = null;
+        DE_needle.transform.parent = null;
 
         Destroy(this.gameObject);
     }
