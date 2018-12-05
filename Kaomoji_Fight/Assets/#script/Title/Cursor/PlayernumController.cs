@@ -37,7 +37,7 @@ public class PlayernumController : CursorController {
 
     protected override void Decide()
     {
-        TManager_cs.PlayerNum_Data = (NowNumberColumn + 1) * (NowNumberLine + 1);
+        TManager_cs.PlayerNum_Data = (NowNumberColumn + 1) * (NowNumberLine + 2);
 
         TManager_cs.ChangePage(TitleManager.SELECTMODE.STAGESELECT);
     }
