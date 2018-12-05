@@ -122,7 +122,7 @@ abstract public class WeaponBlocController : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (CheckHit_Rival(collision) == true)
         {
