@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Weapon_D : WeaponBlocController {
 
+    GameObject D_needle;
+    Vector2 D_needleSpeed = new Vector2(50.0f, 0.0f);
+
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -24,6 +27,14 @@ public class Weapon_D : WeaponBlocController {
             case "で":
             case "デ":
                 base.DamageValue = 5;
+
+                D_needle = Resources.Load<GameObject>("prefab/Weapon/Taser_needle");
+                D_needle = Instantiate(D_needle, this.transform);
+                D_needle.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 0.2f, 0);
+                D_needle.transform.localScale = new Vector3(D_needle.transform.localScale.x, D_needle.transform.localScale.y * 0.5f, D_needle.transform.localScale.z);
+
+                BoxCollider2D NeedleCollider = D_needle.GetComponent<BoxCollider2D>();
+                NeedleCollider.isTrigger = true;
                 return;
 
             case "ど":
@@ -122,6 +133,15 @@ public class Weapon_D : WeaponBlocController {
 
         weapon_use = true;
 
+        //針を表示
+        D_needle.SetActive(true);
+
+        //各パラメータを与える
+        TaserNeedle D_needle_cs = D_needle.GetComponent<TaserNeedle>();
+        D_needle_cs.PSManager_Data = PSManager_cs;
+        D_needle_cs.Owner_Data = base.Owner_Data;
+        D_needle_cs.DamageValue_Data = DamageValue;
+
         //武器を右か左に寄せる
         if (this.transform.GetComponent<RectTransform>().anchoredPosition.x > 0)
         {
@@ -130,6 +150,9 @@ public class Weapon_D : WeaponBlocController {
                 if (child.name == "Right")
                 {
                     this.transform.position = child.transform.position;
+
+                    //針を射出する
+                    D_needle.transform.GetComponent<Rigidbody2D>().velocity = D_needleSpeed;
                 }
             }
         }
@@ -140,6 +163,13 @@ public class Weapon_D : WeaponBlocController {
                 if (child.name == "Left")
                 {
                     this.transform.position = child.transform.position;
+
+                    //射出向きを修正
+                    SpriteRenderer needleSprite = D_needle.transform.GetComponent<SpriteRenderer>();
+                    needleSprite.flipY = true;
+
+                    //針を射出する
+                    D_needle.transform.GetComponent<Rigidbody2D>().velocity = -D_needleSpeed;
                 }
             }
         }
@@ -147,14 +177,13 @@ public class Weapon_D : WeaponBlocController {
 
         owner_cs.ChangeWeapon_Data = false;
 
-        // 親から離れる
-        this.transform.parent = null;
+        //針だけを飛ばす
+        D_needle.transform.parent = null;
 
-        //仮//////////////////////////////////////////////////////////////////
-        //base.SpecifiedOperation_NoneWeapon(shot);
-        //仮//////////////////////////////////////////////////////////////////
+        Destroy(this.gameObject);
     }
 
+   
     /// <summary>
     /// 『ど・ド』で攻撃
     /// </summary>

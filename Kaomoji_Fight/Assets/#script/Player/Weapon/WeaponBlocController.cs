@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Audio;
+using System;
 
 abstract public class WeaponBlocController : MonoBehaviour
 {
@@ -121,7 +122,7 @@ abstract public class WeaponBlocController : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (CheckHit_Rival(collision) == true)
         {
@@ -145,6 +146,17 @@ abstract public class WeaponBlocController : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// 渡された処理を指定時間後に実行する
+    /// </summary>
+    /// <param name="waitTime">遅延時間</param>
+    /// <param name="action">実行する処理</param>
+    /// <returns></returns>
+    protected IEnumerator DelayMethod(float waitTime, Action action)
+    {
+        yield return new WaitForSeconds(waitTime);
+        action();
+    }
 
     //座標を入れる
     public Vector3 SetPosition

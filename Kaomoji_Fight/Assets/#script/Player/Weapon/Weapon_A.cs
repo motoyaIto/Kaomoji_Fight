@@ -284,13 +284,14 @@ public class Weapon_A : WeaponBlocController {
         //仮//////////////////////////////////////////////////////////////////
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
         switch (mozi)
         {
             case "あ":
             case "ア":
-               //当たったのがプレイヤーだったら
+                //当たったのがプレイヤーだったら
                 if (collision.transform.tag == "Player")
                 {
                     //最初に投げるときのあたり判定をスキップ
@@ -302,7 +303,7 @@ public class Weapon_A : WeaponBlocController {
                     }
                     //プレイヤーにダメージを与える
                     PSManager_cs.AllPlayer_Damage(collision.gameObject, this.gameObject, collision.transform.GetComponent<Player>().PlayerNumber_data);
-                    
+
                     //エフェクト
                     var hitEffect = Instantiate(A_effect, this.transform.position + transform.forward, Quaternion.identity) as GameObject;
 
@@ -322,14 +323,14 @@ public class Weapon_A : WeaponBlocController {
 
                     return;
                 }
-               
+
                 //当たったのがステージだったら
                 if (collision.transform.tag == "Stage" && A_rebound == false)
                 {
                     A_count++;
 
                     //10回以上跳ね返ったら爆発する
-                    if(A_count >= 10)
+                    if (A_count >= 10)
                     {
                         //エフェクト
                         var hitEffect = Instantiate(A_effect, this.transform.position + transform.forward, Quaternion.identity) as GameObject;
@@ -355,7 +356,7 @@ public class Weapon_A : WeaponBlocController {
 
             case "い":
             case "イ":
-                if(base.CheckHit_Rival(collision) == true)
+                if (base.CheckHit_Rival(collision) == true)
                 {
                     if (weapon_use == true)
                     {
@@ -368,14 +369,17 @@ public class Weapon_A : WeaponBlocController {
 
             case "う":
             case "ウ":
+                base.OnTriggerEnter2D(collision);
                 return;
 
             case "え":
             case "エ":
+                base.OnTriggerEnter2D(collision);
                 return;
 
             case "お":
             case "オ":
+                base.OnTriggerEnter2D(collision);
                 return;
         }
     }

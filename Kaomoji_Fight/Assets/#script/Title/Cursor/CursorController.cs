@@ -245,7 +245,7 @@ abstract public class CursorController : MonoBehaviour
         audiosource.PlayOneShot(Move_clip);
 
         //ターゲットのy座標に変更
-        this.transform.position = new Vector3(FirstTarget.transform.position.x + Difference_x * NowNumberColumn, (FirstTarget.transform.position.y + Difference_y * NowNumberLine) + 0.35f);
+        this.transform.position = new Vector3(FirstTarget.transform.position.x - 0.6f + Difference_x * NowNumberColumn, (FirstTarget.transform.position.y + Difference_y * NowNumberLine) + 0.35f);
 
         LeftStickflag = true;
     }
