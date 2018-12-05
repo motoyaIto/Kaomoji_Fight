@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Weapon_T : WeaponBlocController {
 
@@ -102,6 +103,40 @@ public class Weapon_T : WeaponBlocController {
     /// <param name="shot">使用した座標</param>
     private void Attack_TO(Vector3 shot)
     {
+        ////地上でない場合は使用できない
+        //if(owner_cs.Jump_data == true)
+        //{
+        //    return;
+        //}
+
+        //weapon_use = true;
+
+        ////武器を右か左に寄せる
+        //if (this.transform.GetComponent<RectTransform>().anchoredPosition.x > 0)
+        //{
+        //    foreach (Transform child in this.transform.parent.transform)
+        //    {
+        //        if (child.name == "Right")
+        //        {
+        //            this.transform.position = child.transform.position;
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    foreach (Transform child in this.transform.parent.transform)
+        //    {
+        //        if (child.name == "Left")
+        //        {
+        //            this.transform.position = child.transform.position;
+        //        }
+        //    }
+        //}
+
+        ////親から離れる
+        //owner_cs.ChangeWeapon_Data = false;
+        //this.transform.parent = null;
+
         //仮//////////////////////////////////////////////////////////////////
         base.SpecifiedOperation_NoneWeapon(shot);
         //仮//////////////////////////////////////////////////////////////////
