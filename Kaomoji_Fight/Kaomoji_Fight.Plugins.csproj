@@ -228,6 +228,15 @@
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>Library\UnityAssemblies\UnityEngine.StandardEvents.dll</HintPath>
+<<<<<<< HEAD
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+=======
+>>>>>>> master
     </Reference>
     <Reference Include="I18N.CJK">
       <HintPath>Assets\I18N.CJK.dll</HintPath>
@@ -243,6 +252,18 @@
     </Reference>
     <Reference Include="TextMeshPro-2017.3-Runtime">
       <HintPath>Assets\Plugins\TextMesh Pro\Plugins\Editor DLL\TextMeshPro-2017.3-Runtime.dll</HintPath>
+<<<<<<< HEAD
+    </Reference>
+    <Reference Include="PKFx-Runtime">
+      <HintPath>Assets\Plugins\Effect\PopcornFX Discovery Pack\PopcornFX\Scripts\PKFx-Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="PKFx-Helper">
+      <HintPath>Assets\Plugins\Effect\PopcornFX Discovery Pack\PopcornFX\Scripts\PKFx-Helper.dll</HintPath>
+    </Reference>
+    <Reference Include="PKFxManager">
+      <HintPath>Assets\Plugins\Effect\PopcornFX Discovery Pack\PopcornFX\Scripts\PKFxManager.dll</HintPath>
+=======
+>>>>>>> master
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -275,6 +296,17 @@
     <Compile Include="Assets\Plugins\Effect\Particle Dissolve Shader by Moonflower Carnivore\Scripts\HUDFPS.cs" />
     <Compile Include="Assets\Plugins\Effect\Particle Dissolve Shader by Moonflower Carnivore\Scripts\PDS_GameController.cs" />
     <Compile Include="Assets\Plugins\Effect\Particle Dissolve Shader by Moonflower Carnivore\Scripts\ScrollingUVs_PDS.cs" />
+    <Compile Include="Assets\Plugins\Effect\Particle Ribbon by Moonflower Carnivore\Scripts\randomParticleRotation.cs" />
+    <Compile Include="Assets\Plugins\Effect\Particle Ribbon by Moonflower Carnivore\Scripts\ReverseNormals.cs" />
+    <Compile Include="Assets\Plugins\Effect\Particle Ribbon by Moonflower Carnivore\Scripts\rotation.cs" />
+    <Compile Include="Assets\Plugins\Effect\PopcornFX Discovery Pack\DiscoveryPack_Demo\_Sources\Scripts\AddPKFxFXComponent.cs" />
+    <Compile Include="Assets\Plugins\Effect\PopcornFX Discovery Pack\DiscoveryPack_Demo\_Sources\Scripts\BounceDie.cs" />
+    <Compile Include="Assets\Plugins\Effect\PopcornFX Discovery Pack\DiscoveryPack_Demo\_Sources\Scripts\CamZoom.cs" />
+    <Compile Include="Assets\Plugins\Effect\PopcornFX Discovery Pack\DiscoveryPack_Demo\_Sources\Scripts\FPSCam.cs" />
+    <Compile Include="Assets\Plugins\Effect\PopcornFX Discovery Pack\DiscoveryPack_Demo\_Sources\Scripts\PointClickSpawn.cs" />
+    <Compile Include="Assets\Plugins\Effect\PopcornFX Discovery Pack\DiscoveryPack_Demo\_Sources\Scripts\RomanCandle.cs" />
+    <Compile Include="Assets\Plugins\Effect\PopcornFX Discovery Pack\DiscoveryPack_Demo\_Sources\Scripts\RootyTootyPointNShooty.cs" />
+    <Compile Include="Assets\Plugins\Effect\PopcornFX Discovery Pack\DiscoveryPack_Demo\_Sources\Scripts\TimedSuicide.cs" />
     <Compile Include="Assets\Plugins\Effect\UETools\Magic_Particle_Effects\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Scripts\Benchmark01_UGUI.cs" />
@@ -364,6 +396,14 @@
     <None Include="Assets\Plugins\Effect\Particle Dissolve Shader by Moonflower Carnivore\Shaders\softrim\Particle_softrim_alpha_stretch.shader" />
     <None Include="Assets\Plugins\Effect\Particle Dissolve Shader by Moonflower Carnivore\Shaders\unity5\Particle_Softrim_Dissolve_additive.shader" />
     <None Include="Assets\Plugins\Effect\Particle Dissolve Shader by Moonflower Carnivore\Shaders\unity5\Particle_Softrim_Dissolve_alpha.shader" />
+    <None Include="Assets\Plugins\Effect\Particle Ribbon by Moonflower Carnivore\Shaders\Particle Alpha Blend HDR.shader" />
+    <None Include="Assets\Plugins\Effect\Particle Ribbon by Moonflower Carnivore\readme_Simple_Particle_Ribbon.txt" />
+    <None Include="Assets\Plugins\Effect\PopcornFX Discovery Pack\DiscoveryPack_Demo\_README_FIRST.txt" />
+    <None Include="Assets\Plugins\Effect\PopcornFX Discovery Pack\PopcornFX\README.txt" />
+    <None Include="Assets\Plugins\Effect\PopcornFX Discovery Pack\PopcornFX\Resources\PKFxDepthCopyToColor.shader" />
+    <None Include="Assets\Plugins\Effect\PopcornFX Discovery Pack\PopcornFX\Resources\PKFxDistQuickDirtyBlurEffect.shader" />
+    <None Include="Assets\Plugins\Effect\PopcornFX Discovery Pack\PopcornFX\Resources\PKFxDistortionEffect.shader" />
+    <None Include="Assets\Plugins\Effect\PopcornFX Discovery Pack\PopcornFX\Resources\PkFxDepthCopy.shader" />
     <None Include="Assets\Plugins\Effect\UETools\Magic_Particle_Effects\Readme.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\Anton OFL.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Examples %26 Extras\Fonts\Bangers - OFL.txt" />
@@ -406,10 +446,16 @@
     <None Include="Assets\Shader\Test\VertexShader.shader" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+<<<<<<< HEAD
+    <None Include="Assets\ーCredit\Assets.txt" />
+    <None Include="Assets\ーCredit\BGM.txt" />
+    <None Include="Assets\ーCredit\SE.txt" />
+=======
     <None Include="Assets\%E3%83%BCCredit\Assets.txt" />
     <None Include="Assets\%E3%83%BCCredit\BGM.txt" />
     <None Include="Assets\%E3%83%BCCredit\SE.txt" />
     <None Include="Assets\%E3%83%BCCredit\%E7%94%BB%E5%83%8F.txt" />
+>>>>>>> master
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
