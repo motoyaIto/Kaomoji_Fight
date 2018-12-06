@@ -228,15 +228,12 @@
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>Library\UnityAssemblies\UnityEngine.StandardEvents.dll</HintPath>
-<<<<<<< HEAD
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Common">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
-=======
->>>>>>> master
     </Reference>
     <Reference Include="I18N.CJK">
       <HintPath>Assets\I18N.CJK.dll</HintPath>
@@ -247,18 +244,6 @@
     <Reference Include="XInputDotNetPure">
       <HintPath>Assets\Plugins\XInputDotNetPure.dll</HintPath>
     </Reference>
-<<<<<<< HEAD
-=======
-    <Reference Include="PKFx-Helper">
-      <HintPath>Assets\Plugins\Effect\PopcornFX Discovery Pack\PopcornFX\Scripts\PKFx-Helper.dll</HintPath>
-    </Reference>
-    <Reference Include="PKFx-Runtime">
-      <HintPath>Assets\Plugins\Effect\PopcornFX Discovery Pack\PopcornFX\Scripts\PKFx-Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="PKFxManager">
-      <HintPath>Assets\Plugins\Effect\PopcornFX Discovery Pack\PopcornFX\Scripts\PKFxManager.dll</HintPath>
-    </Reference>
->>>>>>> master
     <Reference Include="TextMeshPro-2017.3-Editor">
       <HintPath>Assets\Plugins\TextMesh Pro\Plugins\Editor DLL\TextMeshPro-2017.3-Editor.dll</HintPath>
     </Reference>
@@ -291,6 +276,7 @@
     <Compile Include="Assets\Plugins\Anima2D\Scripts\SpriteMesh.cs" />
     <Compile Include="Assets\Plugins\Anima2D\Scripts\SpriteMeshAnimation.cs" />
     <Compile Include="Assets\Plugins\Anima2D\Scripts\SpriteMeshInstance.cs" />
+    <Compile Include="Assets\Plugins\Effect\Almgp_particle_vol_1\script\sprite_sheet.cs" />
     <Compile Include="Assets\Plugins\Effect\KY_effects\Script\ConGUI.cs" />
     <Compile Include="Assets\Plugins\Effect\KY_effects\Script\Lighting.cs" />
     <Compile Include="Assets\Plugins\Effect\Particle Dissolve Shader by Moonflower Carnivore\Scripts\HUDFPS.cs" />
@@ -356,11 +342,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\#scene\Test\2D Animation\Samples\Fonts\LICENSE.txt" />
-    <None Include="Assets\Almgp_particle_vol_1\README.txt" />
-    <None Include="Assets\Almgp_particle_vol_1\shaders\emmision_particle.shader" />
-    <None Include="Assets\Almgp_particle_vol_1\shaders\face_power_particle.shader" />
-    <None Include="Assets\Almgp_particle_vol_1\shaders\mesh_dissolve_particel.shader" />
-    <None Include="Assets\Almgp_particle_vol_1\shaders\multypower_particle.shader" />
     <None Include="Assets\Cinemachine\ReleaseNotes.txt" />
     <None Include="Assets\Plugins\Anima2D\Examples\Shaders\Unlit-Alpha-Cull-off.shader" />
     <None Include="Assets\Plugins\Anima2D\Examples\Shaders\VertexLitOneDirectional.shader" />
@@ -369,6 +350,11 @@
     <None Include="Assets\Plugins\Anima2D\Licenses.txt" />
     <None Include="Assets\Plugins\Anima2D\Readme.txt" />
     <None Include="Assets\Plugins\Anima2D\Version.txt" />
+    <None Include="Assets\Plugins\Effect\Almgp_particle_vol_1\README.txt" />
+    <None Include="Assets\Plugins\Effect\Almgp_particle_vol_1\shaders\emmision_particle.shader" />
+    <None Include="Assets\Plugins\Effect\Almgp_particle_vol_1\shaders\face_power_particle.shader" />
+    <None Include="Assets\Plugins\Effect\Almgp_particle_vol_1\shaders\mesh_dissolve_particel.shader" />
+    <None Include="Assets\Plugins\Effect\Almgp_particle_vol_1\shaders\multypower_particle.shader" />
     <None Include="Assets\Plugins\Effect\KY_effects\MagicEffectsPackFree\ReadMe.txt" />
     <None Include="Assets\Plugins\Effect\Particle Dissolve Shader by Moonflower Carnivore\ReadMe.txt" />
     <None Include="Assets\Plugins\Effect\Particle Dissolve Shader by Moonflower Carnivore\Shaders\legacy\DissolveSoft_Alpha_Additive.shader" />
@@ -437,17 +423,10 @@
     <None Include="Assets\Shader\Test\VertexShader.shader" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
-<<<<<<< HEAD
     <None Include="Assets\ーCredit\Assets.txt" />
     <None Include="Assets\ーCredit\BGM.txt" />
     <None Include="Assets\ーCredit\SE.txt" />
     <None Include="Assets\ーCredit\画像.txt" />
-=======
-    <None Include="Assets\%E3%83%BCCredit\Assets.txt" />
-    <None Include="Assets\%E3%83%BCCredit\BGM.txt" />
-    <None Include="Assets\%E3%83%BCCredit\SE.txt" />
-    <None Include="Assets\%E3%83%BCCredit\%E7%94%BB%E5%83%8F.txt" />
->>>>>>> master
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
