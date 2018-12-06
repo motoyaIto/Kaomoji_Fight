@@ -391,6 +391,13 @@ public class PlaySceneManager : MonoBehaviour
    /// <param name="num">ダメージを受けたプレイヤーの番号</param>
     public void Player_ReceiveDamage(GameObject damagePlayer, GameObject weapon, int num)
     {
+        //無敵身代わり
+        if(damagePlayer.transform.GetComponent<Player>().Invincible_Data || damagePlayer.transform.GetComponent<Player>().Substitution_Data)
+        {
+            this.invincible_Substitution(damagePlayer);
+            return;
+        }
+
         // ダメージを与えたプレイヤーの名前
         string giveDamagePlayer = weapon.GetComponent<WeaponBlocController>().Owner_Data;
 
@@ -453,6 +460,13 @@ public class PlaySceneManager : MonoBehaviour
     /// <param name="time">治るまでの時間</param>
     public void Player_BatStatus(GameObject damagePlayer, string owner_name, float damage, int num, State state, float time)
     {
+        //無敵身代わり
+        if (damagePlayer.transform.GetComponent<Player>().Invincible_Data || damagePlayer.transform.GetComponent<Player>().Substitution_Data)
+        {
+            this.invincible_Substitution(damagePlayer);
+            return;
+        }
+
         // ダメージを与えたプレイヤーの名前
         string giveDamagePlayer = owner_name;
 
@@ -525,6 +539,13 @@ public class PlaySceneManager : MonoBehaviour
     /// <param name="num">ダメージを受けたプレイヤーの番号</param>
     public void AllPlayer_Damage(GameObject damagePlayer, GameObject weapon, int num)
     {
+        //無敵身代わり
+        if (damagePlayer.transform.GetComponent<Player>().Invincible_Data || damagePlayer.transform.GetComponent<Player>().Substitution_Data)
+        {
+            this.invincible_Substitution(damagePlayer);
+            return;
+        }
+
         // ダメージを与えたプレイヤーの名前
         string giveDamagePlayer = weapon.GetComponent<WeaponBlocController>().Owner_Data;
 
@@ -579,7 +600,13 @@ public class PlaySceneManager : MonoBehaviour
     /// <param name="num">ダメージを受けたプレイヤーの番号</param>
     public void AllPlayer_Damage(GameObject damagePlayer, string owner_name, float weaponDamage, int num)
     {
+        //無敵身代わり
+        if (damagePlayer.transform.GetComponent<Player>().Invincible_Data || damagePlayer.transform.GetComponent<Player>().Substitution_Data)
         {
+            this.invincible_Substitution(damagePlayer);
+            return;
+        }
+        
             //effectControll.HitEffect();
             // ダメージ音
             audio.volume = .3f;
@@ -617,6 +644,38 @@ public class PlaySceneManager : MonoBehaviour
                 Destroy(damagePlayer);
                 Destroy(HP_Slider[num].gameObject);
                 death_count--;
+            }
+        
+    }
+
+    
+    private void invincible_Substitution(GameObject damagePlayer)
+    {
+        //無敵
+        if (damagePlayer.transform.GetComponent<Player>().Invincible_Data)
+        {
+            return;
+        }
+
+        //身代わり
+        if (damagePlayer.transform.GetComponent<Player>().Substitution_Data)
+        {
+            foreach (Transform Child in damagePlayer.transform)
+            {
+                if (Child.name == "WeaponBlock(に)" || Child.name == "WeaponBlock(ニ)")
+                {
+                    //武器を表示
+                    Child.GetChild(0).gameObject.SetActive(true);
+
+                    //親子関係を解除
+                    Child.parent = null;
+
+                    //身代わり状態解除
+                    damagePlayer.transform.GetComponent<Player>().Substitution_Data = false;
+
+                    StartCoroutine(DelayMethod(1.5f, () => { Destroy(Child.gameObject); }));
+                    return;
+                }
             }
         }
     }
@@ -873,6 +932,18 @@ public class PlaySceneManager : MonoBehaviour
 
             count++;
         }
+    }
+
+    /// <summary>
+    /// 渡された処理を指定時間後に実行する
+    /// </summary>
+    /// <param name="waitTime">遅延時間</param>
+    /// <param name="action">実行する処理</param>
+    /// <returns></returns>
+    protected IEnumerator DelayMethod(float waitTime, Action action)
+    {
+        yield return new WaitForSeconds(waitTime);
+        action();
     }
 
     private IEnumerator ChangeScene()

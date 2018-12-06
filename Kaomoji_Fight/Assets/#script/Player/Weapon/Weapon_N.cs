@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Weapon_N : WeaponBlocController {
 
+    GameObject Effect1;     //エフェクト
+
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -30,6 +32,7 @@ public class Weapon_N : WeaponBlocController {
 
             case "に":
             case "ニ":
+                Effect1 = Resources.Load<GameObject>("prefab/Effect/True_Substitution");
                 this.Attack_NI(shot);
                 return true;
 
@@ -69,8 +72,18 @@ public class Weapon_N : WeaponBlocController {
     /// <param name="shot">使用した座標</param>
     private void Attack_NI(Vector3 shot)
     {
+        base.weapon_use = true;
+
+        //武器を非表示にする
+        this.transform.GetChild(0).gameObject.SetActive(false);
+        owner_cs.ChangeWeapon_Data = false;
+
+        owner_cs.Substitution_Data = true;
+
+        Effect1 = Instantiate(Effect1, this.transform);
+        Effect1.transform.position = this.transform.parent.position;
         //仮//////////////////////////////////////////////////////////////////
-        base.SpecifiedOperation_NoneWeapon(shot);
+        //base.SpecifiedOperation_NoneWeapon(shot);
         //仮//////////////////////////////////////////////////////////////////
     }
 

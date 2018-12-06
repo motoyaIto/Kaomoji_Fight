@@ -10,9 +10,15 @@ using Constant;
 public class Player : RaycastController {
 
     //状態異常
-    public struct StateAbnormality
+    public struct StatesAbnormality
     {
         public bool Stan;//麻痺
+    }
+
+    public struct UpStates
+    {
+        public bool Substitution;   //身代わり
+        public bool Invincible;     //無敵
     }
 
     #region 変数群
@@ -21,7 +27,9 @@ public class Player : RaycastController {
 
     private Vector3 velocity;
 
-    private StateAbnormality state;
+    private StatesAbnormality ButState;     //バットステータス
+    private UpStates statesUp;              //上昇ステータス
+
     private float moveSpeed = 10f;          // 移動速度
     float Avoidance_time = .0f;             // 回避時間
     private float Invincible_time = 8.0f;   // クールタイム
@@ -31,7 +39,7 @@ public class Player : RaycastController {
     private float minflap = 400f;           // ジャンプの高さ（最小）
 
     private float direction = 0;            // 方向
-    
+
 
     private GameObject weapon;
 
@@ -56,9 +64,9 @@ public class Player : RaycastController {
     private AudioClip walk_ac;              //歩く
     private AudioClip jump_ac;              // ジャンプ
     private AudioClip bomb_ac;
-    
-    
-    
+
+
+
     #endregion
 
 
@@ -76,7 +84,11 @@ public class Player : RaycastController {
     new void Start()
     {
         //状態異常の初期化
-        state.Stan = false;
+        ButState.Stan = false;
+
+        //上昇ステータス
+        statesUp.Invincible = false;
+        statesUp.Substitution = false;
 
         controller = GetComponent<Contoroller2d>();
         PSM = GameObject.Find("PlaySceneManager").transform.GetComponent<PlaySceneManager>();
@@ -97,7 +109,7 @@ public class Player : RaycastController {
     {
         //状態異常処理
         //麻痺
-        if(state.Stan == true)
+        if (ButState.Stan == true)
         {
             return;
         }
@@ -106,18 +118,18 @@ public class Player : RaycastController {
         if (input.x > .0f && controller_lock == false)
         {
             //歩く音
-          //  if (direction == 0) { this.PlaySound(audio2, walk_ac, 0.2f); }
+            //  if (direction == 0) { this.PlaySound(audio2, walk_ac, 0.2f); }
 
             direction = 1f;
         }
         else if (input.x < .0f && controller_lock == false)
         {
             //歩く音
-           // if (direction == 0) { this.PlaySound(audio2, walk_ac, 0.2f); }
+            // if (direction == 0) { this.PlaySound(audio2, walk_ac, 0.2f); }
 
             direction = -1f;
         }
-        else if(controller_lock == false)
+        else if (controller_lock == false)
         {
             //歩く音を止める
             //audio2.Stop();
@@ -133,7 +145,7 @@ public class Player : RaycastController {
         //キャラのy軸のdirection方向にscrollの力をかける
         rig.velocity = new Vector2(scroll * direction, rig.velocity.y);
 
-        
+
         if (XCI.GetButtonDown(XboxButton.Y, ControlerNamber) && !jump && controller_lock == false)
         {
             // 大ジャンプ
@@ -212,7 +224,7 @@ public class Player : RaycastController {
 
                 WeaponBlocController WB = weapon.GetComponent<WeaponBlocController>();
 
-                WB.Attack(input);             
+                WB.Attack(input);
             }
 
             // 武器を捨てる
@@ -267,9 +279,9 @@ public class Player : RaycastController {
 
             //rayに当たったものを取得する
             RaycastHit2D hitFoot = Physics2D.Raycast(ray.origin, Vector2.down, ray.direction.y * 0.5f);
-           
+
             //ステージから武器に変換
-            if(hitFoot.transform.tag == "Stage")
+            if (hitFoot.transform.tag == "Stage")
             {
                 this.GetWeapon(hitFoot, this.transform.position);
             }
@@ -417,7 +429,7 @@ public class Player : RaycastController {
                 {
                     weapon.transform.position = child.transform.position;
                 }
-                else if(vec2.x > .0f && vec2.y < .0f && child.name == "DownRight")//右下
+                else if (vec2.x > .0f && vec2.y < .0f && child.name == "DownRight")//右下
                 {
                     weapon.transform.position = child.transform.position;
                 }
@@ -443,7 +455,7 @@ public class Player : RaycastController {
         audiosource.volume = volume;
         audiosource.PlayOneShot(clip);
         //audiosource.volume = 1.0f;
-    }   
+    }
 
     public int PlayerNumber_data
     {
@@ -473,7 +485,31 @@ public class Player : RaycastController {
     {
         set
         {
-            state.Stan = value;
+            ButState.Stan = value;
         }
     }
+
+    public bool Substitution_Data
+    {
+        get
+        {
+            return statesUp.Substitution;
+        }
+        set
+        {
+            statesUp.Substitution = value;
+        }
+    }
+
+    public bool Invincible_Data
+    {
+        get
+        {
+            return statesUp.Invincible;
+        }
+        set
+        {
+            statesUp.Invincible = value;
+        }
+    }  
 }
