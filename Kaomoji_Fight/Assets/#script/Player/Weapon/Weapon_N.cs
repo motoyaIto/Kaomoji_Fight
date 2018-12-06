@@ -69,8 +69,15 @@ public class Weapon_N : WeaponBlocController {
     /// <param name="shot">使用した座標</param>
     private void Attack_NI(Vector3 shot)
     {
+        base.weapon_use = true;
+
+        //武器を非表示にする
+        this.transform.GetChild(0).gameObject.SetActive(false);
+        owner_cs.ChangeWeapon_Data = false;
+
+        owner_cs.Substitution_Data = true;
         //仮//////////////////////////////////////////////////////////////////
-        base.SpecifiedOperation_NoneWeapon(shot);
+        //base.SpecifiedOperation_NoneWeapon(shot);
         //仮//////////////////////////////////////////////////////////////////
     }
 
