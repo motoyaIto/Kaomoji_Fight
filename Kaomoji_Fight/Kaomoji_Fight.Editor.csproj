@@ -252,6 +252,7 @@
     </Reference>
     <Reference Include="UnityEditor.Graphs">
       <HintPath>Library\UnityAssemblies\UnityEditor.Graphs.dll</HintPath>
+<<<<<<< HEAD
     </Reference>
     <Reference Include="UnityEditor.Android.Extensions">
       <HintPath>Library\UnityAssemblies\UnityEditor.Android.Extensions.dll</HintPath>
@@ -261,6 +262,8 @@
     </Reference>
     <Reference Include="UnityEditor.WSA.Extensions">
       <HintPath>Library\UnityAssemblies\UnityEditor.WSA.Extensions.dll</HintPath>
+=======
+>>>>>>> master
     </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>Library\UnityAssemblies\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
@@ -286,12 +289,6 @@
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>Library\UnityAssemblies\UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
-    </Reference>
     <Reference Include="I18N.CJK">
       <HintPath>Assets\I18N.CJK.dll</HintPath>
     </Reference>
@@ -301,12 +298,27 @@
     <Reference Include="XInputDotNetPure">
       <HintPath>Assets\Plugins\XInputDotNetPure.dll</HintPath>
     </Reference>
+    <Reference Include="PKFx-Helper">
+      <HintPath>Assets\Plugins\Effect\PopcornFX Discovery Pack\PopcornFX\Scripts\PKFx-Helper.dll</HintPath>
+    </Reference>
+<<<<<<< HEAD
+=======
+    <Reference Include="PKFx-Runtime">
+      <HintPath>Assets\Plugins\Effect\PopcornFX Discovery Pack\PopcornFX\Scripts\PKFx-Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="PKFxManager">
+      <HintPath>Assets\Plugins\Effect\PopcornFX Discovery Pack\PopcornFX\Scripts\PKFxManager.dll</HintPath>
+    </Reference>
+    <Reference Include="PKFx-Editor">
+      <HintPath>Assets\Plugins\Effect\PopcornFX Discovery Pack\PopcornFX\Scripts\Editor\PKFx-Editor.dll</HintPath>
+    </Reference>
     <Reference Include="TextMeshPro-2017.3-Editor">
       <HintPath>Assets\Plugins\TextMesh Pro\Plugins\Editor DLL\TextMeshPro-2017.3-Editor.dll</HintPath>
     </Reference>
     <Reference Include="TextMeshPro-2017.3-Runtime">
       <HintPath>Assets\Plugins\TextMesh Pro\Plugins\Editor DLL\TextMeshPro-2017.3-Runtime.dll</HintPath>
     </Reference>
+>>>>>>> master
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Kaomoji_Fight.csproj">
@@ -454,10 +466,17 @@
     <None Include="Assets\Shader\Test\VertexShader.shader" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+<<<<<<< HEAD
     <None Include="Assets\ーCredit\Assets.txt" />
     <None Include="Assets\ーCredit\BGM.txt" />
     <None Include="Assets\ーCredit\SE.txt" />
     <None Include="Assets\ーCredit\画像.txt" />
+=======
+    <None Include="Assets\%E3%83%BCCredit\Assets.txt" />
+    <None Include="Assets\%E3%83%BCCredit\BGM.txt" />
+    <None Include="Assets\%E3%83%BCCredit\SE.txt" />
+    <None Include="Assets\%E3%83%BCCredit\%E7%94%BB%E5%83%8F.txt" />
+>>>>>>> master
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
