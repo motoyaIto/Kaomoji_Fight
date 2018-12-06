@@ -15,6 +15,39 @@ public class Weapon_A : WeaponBlocController {
 
     private float I_speed = 5.5f;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        switch (mozi)
+        {
+            case "あ":
+            case "ア":
+                //爆弾テキスト
+                Sprite sprite = Resources.Load<Sprite>("textures/use/Weapon/bomb");
+                SpriteRenderer sr = this.transform.GetChild(1).GetComponent<SpriteRenderer>();
+                sr.sprite = sprite;
+
+                break;
+
+            case "い":
+            case "イ":
+
+                break;
+
+            case "う":
+            case "ウ":
+                break;
+
+            case "え":
+            case "エ":
+                break;
+
+            case "お":
+            case "オ":
+                break;
+        }
+        
+    }
     protected override void OnEnable()
     {
         base.OnEnable();

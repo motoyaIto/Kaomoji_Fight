@@ -35,8 +35,11 @@ abstract public class WeaponBlocController : MonoBehaviour
     private AudioClip ac;
     
     // Use this for initialization
-    private void Awake()
+    protected virtual void Awake()
     {
+        //自分の文字
+        mozi = this.transform.GetChild(0).GetComponent<TextMeshPro>().text;
+
         this.enabled = false;
     }
 
@@ -45,8 +48,7 @@ abstract public class WeaponBlocController : MonoBehaviour
         //所有者のスクリプト
         owner_cs = this.transform.parent.GetComponent<Player>();
 
-        //自分の文字
-        mozi = this.transform.GetChild(0).GetComponent<TextMeshPro>().text;
+       
 
         PSManager_cs = GameObject.Find("PlaySceneManager").GetComponent<PlaySceneManager>();
         hitEffect = Resources.Load<GameObject>("prefab/Effect/Wave_01");
