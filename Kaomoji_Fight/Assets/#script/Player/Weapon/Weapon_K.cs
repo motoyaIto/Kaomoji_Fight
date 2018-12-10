@@ -8,6 +8,38 @@ public class Weapon_K : WeaponBlocController {
     private GameObject KA_Effect;       //回復エフェクト
     private float KA_EffectWait = 0.5f; //エフェクトの処理を待つ
 
+    protected override void Awake()
+    {
+        base.Awake();
+
+        switch (mozi)
+        {
+            case "か":
+            case "カ":
+                //回復テキスト
+                sprite = Resources.Load<Sprite>("textures/use/Weapon/portion");
+                Weapon_spriteFlag = true;
+                Weapon_SRenderer.sprite = sprite;
+                return;
+
+            case "き":
+            case "キ":
+                return ;
+
+            case "く":
+            case "ク":
+                return;
+
+            case "け":
+            case "ケ":
+                return;
+
+            case "こ":
+            case "コ":
+                return;
+        }
+    }
+
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -15,7 +47,34 @@ public class Weapon_K : WeaponBlocController {
 
     public override void Update()
     {
-        base.Update();
+        switch (mozi)
+        {
+            case "か":
+            case "カ":
+                //回復テキスト
+                sprite = Resources.Load<Sprite>("textures/use/Weapon/portion");
+                Weapon_spriteFlag = true;
+                Weapon_SRenderer.sprite = sprite;
+
+                base.Update();
+                return;
+
+            case "き":
+            case "キ":
+                return;
+
+            case "く":
+            case "ク":
+                return;
+
+            case "け":
+            case "ケ":
+                return;
+
+            case "こ":
+            case "コ":
+                return;
+        }
     }
 
     /// <summary>

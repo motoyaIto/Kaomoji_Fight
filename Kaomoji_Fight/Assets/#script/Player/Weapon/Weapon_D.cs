@@ -35,6 +35,11 @@ public class Weapon_D : WeaponBlocController {
 
                 BoxCollider2D NeedleCollider = DE_needle.GetComponent<BoxCollider2D>();
                 NeedleCollider.isTrigger = true;
+
+                //テーザー銃テキスト
+                sprite = Resources.Load<Sprite>("textures/use/Weapon/Taser_needle");
+                Weapon_spriteFlag = true;
+                Weapon_SRenderer.sprite = sprite;
                 return;
 
             case "ど":
@@ -45,7 +50,29 @@ public class Weapon_D : WeaponBlocController {
 
     public override void Update()
     {
-        base.Update();
+        switch (mozi)
+        {
+            case "だ":
+            case "ダ":
+                return;
+
+            case "ぢ":
+            case "ヂ":
+                return;
+
+            case "づ":
+            case "ヅ":
+                return;
+
+            case "で":
+            case "デ":
+                base.Update();
+                return;
+
+            case "ど":
+            case "ド":
+                return;
+        }
     }
 
     /// <summary>

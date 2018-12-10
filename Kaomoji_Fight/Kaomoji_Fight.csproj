@@ -228,15 +228,6 @@
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>Library\UnityAssemblies\UnityEngine.StandardEvents.dll</HintPath>
-<<<<<<< HEAD
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
-=======
->>>>>>> master
     </Reference>
     <Reference Include="I18N.CJK">
       <HintPath>Assets\I18N.CJK.dll</HintPath>
@@ -261,69 +252,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Compile Include="Assets\#scene\Test\MoveScript1.cs" />
-    <Compile Include="Assets\#scene\Test\SliderTest.cs" />
-    <Compile Include="Assets\#script\ーOther\LayerName.cs" />
-    <Compile Include="Assets\#script\ーOther\SingletonMonoBehaviour.cs" />
-    <Compile Include="Assets\#script\Camera\MultipleTargetCamera.cs" />
-    <Compile Include="Assets\#script\Constant.cs" />
-    <Compile Include="Assets\#script\Data\PlayData.cs" />
-    <Compile Include="Assets\#script\Data\PlayerData.cs" />
-    <Compile Include="Assets\#script\Data\RankingData.cs" />
-    <Compile Include="Assets\#script\Data\ResultData.cs" />
-    <Compile Include="Assets\#script\DummySceneStart.cs" />
-    <Compile Include="Assets\#script\Effect\Effect_Explosion.cs" />
-    <Compile Include="Assets\#script\Effect\EffectControll.cs" />
-    <Compile Include="Assets\#script\Effect\EffectSmoke.cs" />
-    <Compile Include="Assets\#script\Effect\TaserNeedle.cs" />
-    <Compile Include="Assets\#script\Manager\PlaySceneManager.cs" />
-    <Compile Include="Assets\#script\Manager\ResultSceneManager.cs" />
-    <Compile Include="Assets\#script\Manager\SceneManagerController.cs" />
-    <Compile Include="Assets\#script\Manager\TitleManager.cs" />
-    <Compile Include="Assets\#script\Player\Jump\Controller2D.cs" />
-    <Compile Include="Assets\#script\Player\Jump\PlatformController.cs" />
-    <Compile Include="Assets\#script\Player\Jump\RaycastController.cs" />
-    <Compile Include="Assets\#script\Player\Status\Contoroller2d.cs" />
-    <Compile Include="Assets\#script\Player\Status\Player.cs" />
-    <Compile Include="Assets\#script\Player\Weapon\Weapon_A.cs" />
-    <Compile Include="Assets\#script\Player\Weapon\Weapon_B.cs" />
-    <Compile Include="Assets\#script\Player\Weapon\Weapon_D.cs" />
-    <Compile Include="Assets\#script\Player\Weapon\Weapon_G.cs" />
-    <Compile Include="Assets\#script\Player\Weapon\Weapon_H.cs" />
-    <Compile Include="Assets\#script\Player\Weapon\Weapon_K.cs" />
-    <Compile Include="Assets\#script\Player\Weapon\Weapon_M.cs" />
-    <Compile Include="Assets\#script\Player\Weapon\Weapon_N.cs" />
-    <Compile Include="Assets\#script\Player\Weapon\Weapon_P.cs" />
-    <Compile Include="Assets\#script\Player\Weapon\Weapon_R.cs" />
-    <Compile Include="Assets\#script\Player\Weapon\Weapon_S.cs" />
-    <Compile Include="Assets\#script\Player\Weapon\Weapon_T.cs" />
-    <Compile Include="Assets\#script\Player\Weapon\Weapon_W.cs" />
-    <Compile Include="Assets\#script\Player\Weapon\Weapon_Y.cs" />
-    <Compile Include="Assets\#script\Player\Weapon\Weapon_Z.cs" />
-    <Compile Include="Assets\#script\Player\Weapon\WeaponBlocController.cs" />
-    <Compile Include="Assets\#script\ResultDummySceneStart.cs" />
-    <Compile Include="Assets\#script\Select\CharSelectControll.cs" />
-    <Compile Include="Assets\#script\Select\SelectChar.cs" />
-    <Compile Include="Assets\#script\Select\SelectPNControll.cs" />
-    <Compile Include="Assets\#script\Select\SelectStage.cs" />
-    <Compile Include="Assets\#script\Sound\PlayBGM.cs" />
-    <Compile Include="Assets\#script\Sound\ResultBGM.cs" />
-    <Compile Include="Assets\#script\Stage\BlockController.cs" />
-    <Compile Include="Assets\#script\Stage\CreateStage.cs" />
-    <Compile Include="Assets\#script\Test\TestShader.cs" />
-    <Compile Include="Assets\#script\Timer\DownTimer.cs" />
-    <Compile Include="Assets\#script\Timer\PlayTimer.cs" />
-    <Compile Include="Assets\#script\Timer\SceneTimer.cs" />
-    <Compile Include="Assets\#script\Title\Cursor\CharacterselectController.cs" />
-    <Compile Include="Assets\#script\Title\Cursor\CursorController.cs" />
-    <Compile Include="Assets\#script\Title\Cursor\CursorHue.cs" />
-    <Compile Include="Assets\#script\Title\Cursor\PlayernumController.cs" />
-    <Compile Include="Assets\#script\Title\Cursor\StageselectController.cs" />
-    <Compile Include="Assets\#script\Title\Gizmo.cs" />
-    <Compile Include="Assets\#script\Title\Sound.cs" />
-    <Compile Include="Assets\#script\Title\Title.cs" />
-=======
     <Compile Include="Assets\%23scene\Test\MoveScript1.cs" />
     <Compile Include="Assets\%23scene\Test\SliderTest.cs" />
     <Compile Include="Assets\%23script\%E3%83%BCOther\LayerName.cs" />
@@ -385,8 +313,6 @@
     <Compile Include="Assets\%23script\Title\Gizmo.cs" />
     <Compile Include="Assets\%23script\Title\Sound.cs" />
     <Compile Include="Assets\%23script\Title\Title.cs" />
-    <Compile Include="Assets\Almgp_particle_vol_1\script\sprite_sheet.cs" />
->>>>>>> master
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBlendListCamera.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineBrain.cs" />
     <Compile Include="Assets\Cinemachine\Base\Runtime\Behaviours\CinemachineClearShot.cs" />
@@ -444,16 +370,7 @@
     <Compile Include="Assets\XboxCtrlrInputExample\MovePlayer.cs" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <None Include="Assets\#scene\Test\2D Animation\Samples\Fonts\LICENSE.txt" />
-=======
     <None Include="Assets\%23scene\Test\2D Animation\Samples\Fonts\LICENSE.txt" />
-    <None Include="Assets\Almgp_particle_vol_1\README.txt" />
-    <None Include="Assets\Almgp_particle_vol_1\shaders\emmision_particle.shader" />
-    <None Include="Assets\Almgp_particle_vol_1\shaders\face_power_particle.shader" />
-    <None Include="Assets\Almgp_particle_vol_1\shaders\mesh_dissolve_particel.shader" />
-    <None Include="Assets\Almgp_particle_vol_1\shaders\multypower_particle.shader" />
->>>>>>> master
     <None Include="Assets\Cinemachine\ReleaseNotes.txt" />
     <None Include="Assets\Plugins\Anima2D\Examples\Shaders\Unlit-Alpha-Cull-off.shader" />
     <None Include="Assets\Plugins\Anima2D\Examples\Shaders\VertexLitOneDirectional.shader" />
@@ -535,17 +452,10 @@
     <None Include="Assets\Shader\Test\VertexShader.shader" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
-<<<<<<< HEAD
-    <None Include="Assets\ーCredit\Assets.txt" />
-    <None Include="Assets\ーCredit\BGM.txt" />
-    <None Include="Assets\ーCredit\SE.txt" />
-    <None Include="Assets\ーCredit\画像.txt" />
-=======
     <None Include="Assets\%E3%83%BCCredit\Assets.txt" />
     <None Include="Assets\%E3%83%BCCredit\BGM.txt" />
     <None Include="Assets\%E3%83%BCCredit\SE.txt" />
     <None Include="Assets\%E3%83%BCCredit\%E7%94%BB%E5%83%8F.txt" />
->>>>>>> master
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
