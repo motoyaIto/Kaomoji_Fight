@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
+using System;
 
 
 public class Weapon_A : WeaponBlocController {
@@ -13,7 +14,7 @@ public class Weapon_A : WeaponBlocController {
     private int A_count = 0;                //跳ね返った回数
     private bool A_rebound = false;         //跳ね返った(treu)返っていない(false)
 
-    private float I_speed = 5.5f;
+    private float I_speed = 0.5f;
 
     protected override void Awake()
     {
@@ -23,15 +24,18 @@ public class Weapon_A : WeaponBlocController {
             case "あ":
             case "ア":
                 //爆弾テキスト
-                Sprite sprite = Resources.Load<Sprite>("textures/use/Weapon/bomb");
-                SpriteRenderer sr = this.transform.GetChild(1).GetComponent<SpriteRenderer>();
-                sr.sprite = sprite;
+                sprite = Resources.Load<Sprite>("textures/use/Weapon/bomb");
+                Weapon_spriteFlag = true;
+                Weapon_SRenderer.sprite = sprite;
 
                 break;
 
             case "い":
             case "イ":
-
+                //角テキスト
+                sprite = Resources.Load<Sprite>("textures/use/Weapon/horn");
+                Weapon_spriteFlag = true;
+                Weapon_SRenderer.sprite = sprite;
                 break;
 
             case "う":
@@ -151,6 +155,8 @@ public class Weapon_A : WeaponBlocController {
                         Destroy(this.gameObject);
                     }
                 }
+                base.Update();
+
                 return;
 
             case "う":
@@ -259,6 +265,9 @@ public class Weapon_A : WeaponBlocController {
         //武器を右か左に寄せる
         if(this.transform.GetComponent<RectTransform>().anchoredPosition.x > 0)
         {
+            // 90度右に回転
+            this.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -90f));
+
             foreach (Transform child in this.transform.parent.transform)
             {
                 if (child.name == "Right")
@@ -269,6 +278,9 @@ public class Weapon_A : WeaponBlocController {
         }
         else
         {
+            // 90度左に回転
+            this.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90f));
+
             foreach (Transform child in this.transform.parent.transform)
             {
                 if (child.name == "Left")

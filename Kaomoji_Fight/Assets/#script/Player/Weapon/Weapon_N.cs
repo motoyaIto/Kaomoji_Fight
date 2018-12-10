@@ -6,6 +6,36 @@ public class Weapon_N : WeaponBlocController {
 
     GameObject Effect1;     //エフェクト
 
+    protected override void Awake()
+    {
+        base.Awake();
+        switch (mozi)
+        {
+            case "な":
+            case "ナ":
+                return;
+
+            case "に":
+            case "ニ":
+                //爆弾テキスト
+                sprite = Resources.Load<Sprite>("textures/use/Weapon/waraningyou");
+                Weapon_spriteFlag = true;
+                Weapon_SRenderer.sprite = sprite;
+                return;
+
+            case "ぬ":
+            case "ヌ":
+                return;
+
+            case "ね":
+            case "ネ":
+                return;
+
+            case "の":
+            case "ノ":
+                return;
+        }
+    }
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -13,7 +43,29 @@ public class Weapon_N : WeaponBlocController {
 
     public override void Update()
     {
-        base.Update();
+        switch (mozi)
+        {
+            case "な":
+            case "ナ":
+                return;
+
+            case "に":
+            case "ニ":
+                base.Update();
+                return;
+
+            case "ぬ":
+            case "ヌ":
+                return;
+
+            case "ね":
+            case "ネ":
+                return;
+
+            case "の":
+            case "ノ":
+                return;
+        }
     }
 
     /// <summary>
