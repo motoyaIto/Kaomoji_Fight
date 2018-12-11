@@ -10,6 +10,10 @@ abstract public class WeaponBlocController : MonoBehaviour
     protected PlaySceneManager PSManager_cs;//プレイシーンマネージャー
     protected string mozi;    //自分の文字
 
+    protected Sprite sprite;                        //テクスチャー
+    protected SpriteRenderer Weapon_SRenderer;      //武器画像を描画するレンダー
+    protected bool Weapon_SRFlag = false;          //テクスチャーのα値プラス(turue)マイナス(false)
+    protected bool Weapon_spriteFlag = false;       //武器の画像がある(true)ない(false)
 
     [SerializeField]
     protected float DamageValue = 5.0f;     //ダメージ量
@@ -40,6 +44,8 @@ abstract public class WeaponBlocController : MonoBehaviour
         //自分の文字
         mozi = this.transform.GetChild(0).GetComponent<TextMeshPro>().text;
 
+        Weapon_SRenderer = this.transform.GetChild(1).GetComponent<SpriteRenderer>();
+
         this.enabled = false;
     }
 
@@ -47,8 +53,6 @@ abstract public class WeaponBlocController : MonoBehaviour
     {
         //所有者のスクリプト
         owner_cs = this.transform.parent.GetComponent<Player>();
-
-       
 
         PSManager_cs = GameObject.Find("PlaySceneManager").GetComponent<PlaySceneManager>();
         hitEffect = Resources.Load<GameObject>("prefab/Effect/Wave_01");
@@ -72,6 +76,30 @@ abstract public class WeaponBlocController : MonoBehaviour
         if (this.transform.position.x < Death_LUpos.x || this.transform.position.x > Death_RDpos.x || this.transform.position.y > Death_LUpos.y || this.transform.position.y < Death_RDpos.y)
         {
             Destroy(this.transform.gameObject);
+        }
+
+        //テクスチャーの画像点滅
+        if(Weapon_SRenderer.enabled == true && Weapon_spriteFlag == true)
+        {
+            //α値の加算
+            if(Weapon_SRFlag == true)
+            {
+                Weapon_SRenderer.color = new Vector4(Weapon_SRenderer.color.r, Weapon_SRenderer.color.g, Weapon_SRenderer.color.b, Weapon_SRenderer.color.a + 0.01f);
+
+                if(Weapon_SRenderer.color.a >=  0.9f)
+                {
+                    Weapon_SRFlag = false;
+                }
+            }
+            else//α値のマイナス
+            {
+                Weapon_SRenderer.color = new Vector4(Weapon_SRenderer.color.r, Weapon_SRenderer.color.g, Weapon_SRenderer.color.b, Weapon_SRenderer.color.a - 0.01f);
+
+                if (Weapon_SRenderer.color.a <= 0.01f)
+                {
+                    Weapon_SRFlag = true;
+                }
+            }
         }
     }
 

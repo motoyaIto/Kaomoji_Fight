@@ -9,6 +9,39 @@ public class Weapon_Z : WeaponBlocController
 {
     private GameObject self_destruct_effect;// 自爆エフェクト
 
+    protected override void Awake()
+    {
+        base.Awake();
+
+        switch (mozi)
+        {
+            case "ざ":
+            case "ザ":
+                break;
+
+            case "じ":
+            case "ジ":
+                //爆弾テキスト
+                sprite = Resources.Load<Sprite>("textures/use/Weapon/bomb");
+                Weapon_spriteFlag = true;
+                Weapon_SRenderer.sprite = sprite;
+                break;
+
+            case "ず":
+            case "ズ":
+                break;
+
+            case "ぜ":
+            case "ゼ":
+                break;
+
+            case "ぞ":
+            case "ゾ":
+                break;
+        }
+
+
+    }
     protected override void OnEnable()
     {
         base.OnEnable();
