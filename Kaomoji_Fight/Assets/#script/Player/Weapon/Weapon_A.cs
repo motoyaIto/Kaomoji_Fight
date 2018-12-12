@@ -14,7 +14,7 @@ public class Weapon_A : WeaponBlocController {
     private int A_count = 0;                //跳ね返った回数
     private bool A_rebound = false;         //跳ね返った(treu)返っていない(false)
 
-    private float I_speed = 0.5f;
+    private float I_speed = 5.5f;           //突進スピード
 
     protected override void Awake()
     {
@@ -161,14 +161,17 @@ public class Weapon_A : WeaponBlocController {
 
             case "う":
             case "ウ":
+                base.Update();
                 return;
 
             case "え":
             case "エ":
+                base.Update();
                 return;
 
             case "お":
             case "オ":
+                base.Update();
                 return;
 
             default:
@@ -291,9 +294,8 @@ public class Weapon_A : WeaponBlocController {
         }
 
         //ウェポンにボックスコライダーをつける
-        this.gameObject.AddComponent<BoxCollider2D>();
-        BoxCollider2D BCollider2D = this.gameObject.GetComponent<BoxCollider2D>();
-        BCollider2D.isTrigger = true;
+        this.GetComponent<BoxCollider2D>().enabled = true;
+        this.GetComponent<BoxCollider2D>().isTrigger = true;
     }
 
     /// <summary>

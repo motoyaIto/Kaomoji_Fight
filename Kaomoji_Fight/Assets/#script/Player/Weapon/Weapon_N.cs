@@ -17,7 +17,7 @@ public class Weapon_N : WeaponBlocController {
 
             case "に":
             case "ニ":
-                //爆弾テキスト
+                //藁人形テキスト
                 sprite = Resources.Load<Sprite>("textures/use/Weapon/waraningyou");
                 Weapon_spriteFlag = true;
                 Weapon_SRenderer.sprite = sprite;
@@ -126,10 +126,15 @@ public class Weapon_N : WeaponBlocController {
     {
         base.weapon_use = true;
 
-        //武器を非表示にする
+        //武器を中心に寄せる
+        this.transform.position = this.transform.parent.position;
+        //文字を非表示にする
         this.transform.GetChild(0).gameObject.SetActive(false);
+
+        //他の武器を持てるようにする
         owner_cs.ChangeWeapon_Data = false;
 
+        //身代わりをオンにする
         owner_cs.Substitution_Data = true;
 
         Effect1 = Instantiate(Effect1, this.transform);

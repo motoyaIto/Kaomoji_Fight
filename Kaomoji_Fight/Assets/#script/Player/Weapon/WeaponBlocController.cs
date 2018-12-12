@@ -10,6 +10,8 @@ abstract public class WeaponBlocController : MonoBehaviour
     protected PlaySceneManager PSManager_cs;//プレイシーンマネージャー
     protected string mozi;    //自分の文字
 
+    protected GameObject Weapon;//自分のゲームオブジェクト
+
     protected Sprite sprite;                        //テクスチャー
     protected SpriteRenderer Weapon_SRenderer;      //武器画像を描画するレンダー
     protected bool Weapon_SRFlag = false;          //テクスチャーのα値プラス(turue)マイナス(false)
@@ -24,7 +26,7 @@ abstract public class WeaponBlocController : MonoBehaviour
     private Vector3 Death_LUpos = new Vector3(-150f, 100f, 0f);    // オブジェクトが破棄されるエリアの左上
     private Vector3 Death_RDpos = new Vector3(200f, -80f, 0f);   // オブジェクトが破棄されるエリアの右下
 
-    private GameObject Weapon;
+    
 
     private string parentName;              //親の名前
 
@@ -135,9 +137,9 @@ abstract public class WeaponBlocController : MonoBehaviour
         // 親から離れる
         this.transform.parent = null;
 
-        //ウェポンにボックスコライダーをつける
-        BoxCollider2D BColider = Weapon.AddComponent<BoxCollider2D>();
-        BColider.isTrigger = true;
+        //ウェポンにボックスコライダーをオンにする
+        Weapon.GetComponent<BoxCollider2D>().enabled = true;
+        Weapon.GetComponent<BoxCollider2D>().isTrigger = true;
         weapon_use = true;
 
         // 動かずに投げたら
