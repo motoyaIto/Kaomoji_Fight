@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Weapon_Y : WeaponBlocController {
 
@@ -61,6 +62,13 @@ public class Weapon_Y : WeaponBlocController {
                 Weapon = Instantiate(Weapon);
                 Weapon.transform.parent = this.transform;
                 Weapon.transform.localPosition = new Vector3(0, 0, 0);
+
+                //武器文字を調整
+                foreach(Transform Child in Weapon.transform)
+                {
+                    Child.GetChild(0).GetComponent<TextMeshPro>().text = mozi;
+                }
+                
                 return;
 
             case "ゆ":
@@ -234,7 +242,10 @@ public class Weapon_Y : WeaponBlocController {
         {
             case "や":
             case "ヤ":
-                owner_cs.ControllerLock_Data = false;
+                if (this.enabled == true)
+                {
+                    owner_cs.ControllerLock_Data = false;
+                }
                 return;
 
             case "ゆ":
