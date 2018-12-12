@@ -213,15 +213,6 @@ public class Player : RaycastController {
             //武器を使用する
             if (XCI.GetButtonDown(XboxButton.B, ControlerNamber))
             {
-                //投てき系の音
-                string weaponName = weapon.transform.GetChild(0).GetComponent<TextMeshPro>().text;
-                if (weaponName != "じ" && weaponName != "ジ" &&
-                    weaponName != "ぱ" && weaponName != "パ")
-                {
-                    //audio.volume = .15f;
-                    //audio.PlayOneShot(shot_ac);
-                }
-
                 WeaponBlocController WB = weapon.GetComponent<WeaponBlocController>();
 
                 WB.Attack(input);
@@ -323,7 +314,7 @@ public class Player : RaycastController {
             //床から切り抜く
             block.GetComponent<BlockController>().ChangeWeapon();
 
-            Destroy(weapon.GetComponent<BoxCollider2D>());
+            weapon.GetComponent<BoxCollider2D>().enabled = false;
 
             HaveWeapon = true;
 

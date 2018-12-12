@@ -4,14 +4,107 @@ using UnityEngine;
 
 public class Weapon_Y : WeaponBlocController {
 
+    float YA_count = 0;             //カウント
+    float YA_StiffnessTime = 0.8f;  //硬直時間
+    Transform YA_SpriteTransform;   //スプライトのトランスフォーム
+    protected override void Awake()
+    {
+        base.Awake();
+
+        switch (mozi)
+        {
+            case "や":
+            case "ヤ":
+                //槍テキスト
+                sprite = Resources.Load<Sprite>("textures/use/Weapon/buki_yari");
+                Weapon_spriteFlag = true;
+                Weapon_SRenderer.sprite = sprite;
+
+                //画像の角度サイズを調整
+                YA_SpriteTransform = this.transform.GetChild(1);
+                YA_SpriteTransform.rotation = Quaternion.Euler(YA_SpriteTransform.localRotation.x, YA_SpriteTransform.localRotation.y, -55);
+                YA_SpriteTransform.localScale = new Vector3(0.8f, 0.8f, 1);
+                return;
+
+            case "ゆ":
+            case "ユ":
+                return;
+
+            case "よ":
+            case "ヨ":
+                return;
+        }
+    }
+
     protected override void OnEnable()
     {
         base.OnEnable();
+
+        switch (mozi)
+        {
+            case "や":
+            case "ヤ":
+                //武器のダメージ量を設定
+                DamageValue = 8;
+
+                //文字を非表示にする
+                this.transform.GetChild(0).gameObject.SetActive(false);
+                //イズトリガーをオンに
+                this.transform.GetComponent<BoxCollider2D>().isTrigger = true;
+                //あたり判定を調整
+                this.transform.GetComponent<BoxCollider2D>().size = new Vector2(3.94f, 0.84f);
+
+                //武器を取得
+                Weapon = Resources.Load<GameObject>("prefab/Weapon/Spear");
+
+                //武器の生成
+                Weapon = Instantiate(Weapon);
+                Weapon.transform.parent = this.transform;
+                Weapon.transform.localPosition = new Vector3(0, 0, 0);
+                return;
+
+            case "ゆ":
+            case "ユ":
+                return;
+
+            case "よ":
+            case "ヨ":
+                return;
+        }
     }
 
     public override void Update()
     {
-        base.Update();
+        switch (mozi)
+        {
+            case "や":
+            case "ヤ":
+                if (weapon_use == true)
+                {
+                    YA_count += Time.deltaTime;
+
+                    //硬直時間を過ぎたら
+                    if (YA_count > YA_StiffnessTime)
+                    {
+                        owner_cs.ControllerLock_Data = false;
+                        weapon_use = false;
+
+                        this.transform.GetComponent<BoxCollider2D>().enabled = false;
+                    }
+                }
+                base.Update();
+                return;
+
+            case "ゆ":
+            case "ユ":
+                base.Update();
+                return;
+
+            case "よ":
+            case "ヨ":
+                base.Update();
+                return;
+        }
     }
 
     /// <summary>
@@ -48,8 +141,45 @@ public class Weapon_Y : WeaponBlocController {
     /// <param name="shot">使用した座標</param>
     private void Attack_YA(Vector3 shot)
     {
+        weapon_use = true;
+        owner_cs.ControllerLock_Data = true;
+        owner_cs.Directtion_Data = 0.0f;
+
+        this.transform.GetComponent<BoxCollider2D>().enabled = true;
+
+        YA_count = 0.0f;
+
+        //武器を右か左に寄せる
+        if (this.transform.GetComponent<RectTransform>().anchoredPosition.x > 0)
+        {
+            foreach (Transform child in this.transform.parent.transform)
+            {
+                if (child.name == "Right")
+                {
+                    this.transform.position = new Vector3(child.transform.position.x + 1.5f, child.transform.position.y, child.transform.position.z);
+
+                    //画像の向きを合わせる
+                    Weapon_SRenderer.flipX = false;
+                    Weapon_SRenderer.flipY = false;
+                }
+            }
+        }
+        else
+        {
+            foreach (Transform child in this.transform.parent.transform)
+            {
+                if (child.name == "Left")
+                {
+                    this.transform.position = new Vector3(child.transform.position.x - 1.5f, child.transform.position.y, child.transform.position.z);
+
+                    //画像の向きを合わせる
+                    Weapon_SRenderer.flipX = true;
+                    Weapon_SRenderer.flipY = true;
+                }
+            }
+        }
         //仮//////////////////////////////////////////////////////////////////
-        base.SpecifiedOperation_NoneWeapon(shot);
+        //base.SpecifiedOperation_NoneWeapon(shot);
         //仮//////////////////////////////////////////////////////////////////
     }
 
@@ -73,5 +203,47 @@ public class Weapon_Y : WeaponBlocController {
         //仮//////////////////////////////////////////////////////////////////
         base.SpecifiedOperation_NoneWeapon(shot);
         //仮//////////////////////////////////////////////////////////////////
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch (mozi)
+        {
+            case "や":
+            case "ヤ":
+                if (collision.tag == "Player" && collision.name != owner)
+                {
+                    //プレイヤーにダメージを与える
+                    PSManager_cs.Player_ReceiveDamage(collision.gameObject, this.gameObject, collision.transform.GetComponent<Player>().PlayerNumber_data);
+                }
+                return;
+
+            case "ゆ":
+            case "ユ":
+                return;
+
+            case "よ":
+            case "ヨ":
+                return;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        switch (mozi)
+        {
+            case "や":
+            case "ヤ":
+                owner_cs.ControllerLock_Data = false;
+                return;
+
+            case "ゆ":
+            case "ユ":
+                return;
+
+            case "よ":
+            case "ヨ":
+                return;
+        }
     }
 }
