@@ -518,7 +518,7 @@ public class PlaySceneManager : MonoBehaviour
     /// </summary>
     /// <param name="DamagePlayer_cs">状態異常のプレイヤー</param>
     /// <param name="state">解除する状態異常</param>
-    private IEnumerator Release_BatStatus(float coroutineTime, Player DamagePlayer_cs, State state)
+    public IEnumerator Release_BatStatus(float coroutineTime, Player DamagePlayer_cs, State state)
     {
         yield return new WaitForSeconds(coroutineTime);
 
@@ -526,6 +526,10 @@ public class PlaySceneManager : MonoBehaviour
         {
             case State.Stan:
                 DamagePlayer_cs.Stan_Data = false;
+                break;
+
+            case State.Sleep:
+                DamagePlayer_cs.Sleep_Data = false;
                 break;
         }
       

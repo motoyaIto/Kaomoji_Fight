@@ -2,9 +2,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Constant;
 
 public class Weapon_M : WeaponBlocController
 {
+    float MA_count = 0.0f;          //カウント
+    float MA_ouldcount = 0.0f;      //前の時間
+    float MA_StiffnessTime = 5.0f;  //硬直時間
+    float MA_MAXRecovery = 50;      //最大回復量
+    SpriteRenderer MA_Futon;                //ふとん
+
+    float test = 0;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        switch (mozi)
+        {
+            case "ま":
+            case "マ":
+                //枕テキスト
+                sprite = Resources.Load<Sprite>("textures/use/Weapon/makura");
+                Weapon_spriteFlag = true;
+                Weapon_SRenderer.sprite = sprite;
+                return;
+
+            case "み":
+            case "ミ":
+                return;
+
+            case "む":
+            case "ム":
+                return;
+
+            case "め":
+            case "メ":
+                return;
+
+            case "も":
+            case "モ":
+                return;
+        }
+    }
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -13,6 +53,54 @@ public class Weapon_M : WeaponBlocController
     public override void Update()
     {
         base.Update();
+
+        switch (mozi)
+        {
+            case "ま":
+            case "マ":
+                if (weapon_use == true)
+                {
+                    MA_count += Time.deltaTime;
+
+                    if(Mathf.Floor(MA_count * 100) / 100 > Mathf.Floor(MA_ouldcount * 100) / 100)
+                    {
+                        //回復
+                        PSManager_cs.Effect_myself(this.transform.parent.gameObject, this.gameObject, this.transform.parent.GetComponent<Player>().PlayerNumber_data);
+
+                        MA_ouldcount = MA_count;
+
+                        test += DamageValue;
+                        Debug.Log(test);
+                    }
+
+                    //制限時間を超えたら止める
+                    if (MA_count > MA_StiffnessTime)
+                    {
+                        //眠り状態を解除する
+                        owner_cs.Sleep_Data = false;
+                        owner_cs.ChangeWeapon_Data = false;
+
+                        Destroy(this.gameObject);
+                    }
+                }
+                return;
+
+            case "み":
+            case "ミ":
+                return;
+
+            case "む":
+            case "ム":
+                return;
+
+            case "め":
+            case "メ":
+                return;
+
+            case "も":
+            case "モ":
+                return;
+        }
     }
 
     /// <summary>
@@ -26,6 +114,8 @@ public class Weapon_M : WeaponBlocController
         {
             case "ま":
             case "マ":
+                DamageValue = -(MA_MAXRecovery / (MA_StiffnessTime * 98.2f));
+
                 this.Attack_MA(shot);
                 return true;
 
@@ -59,8 +149,36 @@ public class Weapon_M : WeaponBlocController
     /// <param name="shot">使用した座標</param>
     private void Attack_MA(Vector3 shot)
     {
+        weapon_use = true;
+
+        MA_count = 0.0f;
+
+        //枕の調整
+        Weapon_spriteFlag = false;
+        Weapon_SRenderer.color = new Vector4(Weapon_SRenderer.color.r, Weapon_SRenderer.color.g, Weapon_SRenderer.color.b, 1f);
+        Weapon_SRenderer.transform.position = new Vector3(Weapon_SRenderer.transform.position.x - 2.0f, Weapon_SRenderer.transform.position.y - 1.2f, Weapon_SRenderer.transform.position.z);
+        Weapon_SRenderer.transform.rotation = Quaternion.Euler(this.transform.rotation.x, this.transform.rotation.y, 90.0f);
+        Weapon_SRenderer.flipX = true;
+
+        //移動を止める
+        this.transform.parent.GetComponent<Player>().Directtion_Data = 0.0f;
+        //眠るステータスを与える
+        this.transform.parent.GetComponent<Player>().Sleep_Data = true;
+
+        //布団作成
+        Sprite FutonSprite = Resources.Load<Sprite>("textures/use/Weapon/huton");
+        MA_Futon = new GameObject("Sprite").AddComponent<SpriteRenderer>();
+        MA_Futon.sprite = FutonSprite;
+        //布団枕と一緒
+        MA_Futon.transform.parent = this.transform;
+        //布団の調整
+        MA_Futon.gameObject.transform.position = new Vector3(this.transform.position.x + 1, this.transform.position.y - 1.2f, this.transform.position.z);
+        MA_Futon.sortingOrder = 1;
+
+       
+
         //仮//////////////////////////////////////////////////////////////////
-        base.SpecifiedOperation_NoneWeapon(shot);
+        //base.SpecifiedOperation_NoneWeapon(shot);
         //仮//////////////////////////////////////////////////////////////////
     }
 

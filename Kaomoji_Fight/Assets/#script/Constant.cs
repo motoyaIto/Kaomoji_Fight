@@ -7,5 +7,6 @@ namespace Constant
     public enum State
     {
         Stan,
+        Sleep,
     }
 }
