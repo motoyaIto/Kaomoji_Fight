@@ -62,7 +62,7 @@ public class Weapon_M : WeaponBlocController
                 {
                     MA_count += Time.deltaTime;
 
-                    if(Mathf.Floor(MA_count * 100) / 100 > Mathf.Floor(MA_ouldcount * 100) / 100)
+                    if(Mathf.Floor(MA_count * 10) / 10 > Mathf.Floor(MA_ouldcount * 10) / 10)
                     {
                         //回復
                         PSManager_cs.Effect_myself(this.transform.parent.gameObject, this.gameObject, this.transform.parent.GetComponent<Player>().PlayerNumber_data);
@@ -114,7 +114,7 @@ public class Weapon_M : WeaponBlocController
         {
             case "ま":
             case "マ":
-                DamageValue = -(MA_MAXRecovery / (MA_StiffnessTime * 98.2f));
+                DamageValue = -((MA_MAXRecovery / MA_StiffnessTime) / 10);
 
                 this.Attack_MA(shot);
                 return true;
