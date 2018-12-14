@@ -8,6 +8,8 @@ public class Weapon_Y : WeaponBlocController {
     float YA_count = 0;             //カウント
     float YA_StiffnessTime = 0.8f;  //硬直時間
     Transform YA_SpriteTransform;   //スプライトのトランスフォーム
+    bool YA_setWeapon = false;      //武器を準備しているか
+
     protected override void Awake()
     {
         base.Awake();
@@ -45,6 +47,7 @@ public class Weapon_Y : WeaponBlocController {
         {
             case "や":
             case "ヤ":
+                YA_setWeapon = true;
                 //武器のダメージ量を設定
                 DamageValue = 8;
 
@@ -242,7 +245,7 @@ public class Weapon_Y : WeaponBlocController {
         {
             case "や":
             case "ヤ":
-                if (this.enabled == true)
+                if (YA_setWeapon == true)
                 {
                     owner_cs.ControllerLock_Data = false;
                 }
