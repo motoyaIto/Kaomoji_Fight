@@ -298,7 +298,7 @@ public class Player : RaycastController {
 
             //床を武器として取得
             weapon = Object.Instantiate(block) as GameObject;
-            weapon.transform.parent = transform;
+            weapon.transform.parent = this.transform;
             weapon.name = "WeaponBlock" + block.name.Substring(block.name.IndexOf("("));
             weapon.tag = tag.Trim();
 
