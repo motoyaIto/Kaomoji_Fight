@@ -143,7 +143,7 @@ MonoBehaviour:
   ranking:
   - PlayerName: "\u3044\u3068\u3046"
     PlayerFace: {fileID: 21300000, guid: 1ad6ed2cae63dc44b986424a19991098, type: 3}
-    AttackDamage: 60
+    AttackDamage: 13983
   - PlayerName: MMD
     PlayerFace: {fileID: 21300000, guid: 6f127b29cea25e9439ae52fdc387261d, type: 3}
     AttackDamage: 45
@@ -759,32 +759,12 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114634871479644170, guid: db5134a8095053c45bbe59d0eed59fb0,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114634871479644170, guid: db5134a8095053c45bbe59d0eed59fb0,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 114040885040958610, guid: db5134a8095053c45bbe59d0eed59fb0,
         type: 2}
       propertyPath: m_havePropertiesChanged
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114040885040958610, guid: db5134a8095053c45bbe59d0eed59fb0,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114427154931313622, guid: db5134a8095053c45bbe59d0eed59fb0,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114427154931313622, guid: db5134a8095053c45bbe59d0eed59fb0,
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
@@ -805,6 +785,26 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114329388132434608, guid: db5134a8095053c45bbe59d0eed59fb0,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114427154931313622, guid: db5134a8095053c45bbe59d0eed59fb0,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114427154931313622, guid: db5134a8095053c45bbe59d0eed59fb0,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114634871479644170, guid: db5134a8095053c45bbe59d0eed59fb0,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114634871479644170, guid: db5134a8095053c45bbe59d0eed59fb0,
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
