@@ -12,7 +12,8 @@ public class Player : RaycastController {
     //状態異常
     public struct StatesAbnormality
     {
-        public bool Stan;//麻痺
+        public bool Stan;   //麻痺
+        public bool Sleep;  //眠る
     }
 
     public struct UpStates
@@ -108,8 +109,8 @@ public class Player : RaycastController {
     void Update()
     {
         //状態異常処理
-        //麻痺
-        if (ButState.Stan == true)
+        //麻痺・眠り
+        if (ButState.Stan == true || ButState.Sleep == true)
         {
             return;
         }
@@ -297,7 +298,7 @@ public class Player : RaycastController {
 
             //床を武器として取得
             weapon = Object.Instantiate(block) as GameObject;
-            weapon.transform.parent = transform;
+            weapon.transform.parent = this.transform;
             weapon.name = "WeaponBlock" + block.name.Substring(block.name.IndexOf("("));
             weapon.tag = tag.Trim();
 
@@ -411,28 +412,28 @@ public class Player : RaycastController {
         {
             foreach (Transform child in this.transform)
             {
-                if (vec2.x > .0f && vec2.y > .0f && child.name == "TopRight")//右上
+                if (vec2.x > .0f && vec2.y > .0f && child.name == "TopRight")       //右上
                 {
                     weapon.transform.position = child.transform.position;
                 }
 
-                else if (vec2.x < .0f && vec2.y > .0f && child.name == "TopLeft")//左下
+                else if (vec2.x < .0f && vec2.y > .0f && child.name == "TopLeft")   //左下
                 {
                     weapon.transform.position = child.transform.position;
                 }
-                else if (vec2.x == .0f && vec2.y == .0f && child.name == "Top")//移動していない
+                else if (vec2.x == .0f && vec2.y == .0f && child.name == "Top")     //移動していない
                 {
                     weapon.transform.position = child.transform.position;
                 }
-                else if (vec2.x > .0f && vec2.y < .0f && child.name == "DownRight")//右下
+                else if (vec2.x > .0f && vec2.y < .0f && child.name == "DownRight") //右下
                 {
                     weapon.transform.position = child.transform.position;
                 }
-                else if (vec2.x < .0f && vec2.y < .0f && child.name == "DownLeft")//左下
+                else if (vec2.x < .0f && vec2.y < .0f && child.name == "DownLeft")  //左下
                 {
                     weapon.transform.position = child.transform.position;
                 }
-                else if (vec2.x == .0f && vec2.y < .0f && child.name == "Down")//下
+                else if (vec2.x == .0f && vec2.y < .0f && child.name == "Down")     //下
                 {
                     weapon.transform.position = child.transform.position;
                 }
@@ -481,6 +482,14 @@ public class Player : RaycastController {
         set
         {
             ButState.Stan = value;
+        }
+    }
+
+    public bool Sleep_Data
+    {
+        set
+        {
+            ButState.Sleep = value;
         }
     }
 

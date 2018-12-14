@@ -10,7 +10,7 @@ public class ResultDummySceneStart : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        result = new ResultData(105.0f, 50, "aaa", ranking);
+        result = new ResultData(105.0f, 10250, "aaa", ranking);
 	}
 	
 	// Update is called once per frame
