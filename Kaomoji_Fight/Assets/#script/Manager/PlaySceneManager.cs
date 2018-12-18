@@ -389,7 +389,7 @@ public class PlaySceneManager : MonoBehaviour
    /// <param name="damagePlayer">ダメージを受けたプレイヤー</param>
    /// <param name="weapon">武器</param>
    /// <param name="num">ダメージを受けたプレイヤーの番号</param>
-    public void Player_ReceiveDamage(GameObject damagePlayer, GameObject weapon, int num)
+    public void Player_ReceiveDamage(GameObject damagePlayer, GameObject weapon, int num, bool InstantDeath = false)
     {
         //無敵身代わり
         if(damagePlayer.transform.GetComponent<Player>().Invincible_Data || damagePlayer.transform.GetComponent<Player>().Substitution_Data)
@@ -408,7 +408,14 @@ public class PlaySceneManager : MonoBehaviour
         }
         else
         {
-            //effectControll.HitEffect();
+            float DamageValue = weapon.GetComponent<WeaponBlocController>().DamageValue_Data;
+
+            //即死の時
+            if(InstantDeath == true)
+            {
+                DamageValue = HP_Slider[num].value;
+            }
+
             // ダメージ音
             audio.volume = .3f;
             audio.PlayOneShot(audioClip_hit);
@@ -418,7 +425,7 @@ public class PlaySceneManager : MonoBehaviour
             {
                 if (PlayData.Instance.PlayersData[i].Name_Data == giveDamagePlayer)
                 {
-                    PlayData.Instance.PlayersData[i].DamageCount = (int)weapon.GetComponent<WeaponBlocController>().DamageValue_Data;
+                    PlayData.Instance.PlayersData[i].DamageCount = (int)DamageValue;
                 }
             }
 
@@ -432,7 +439,7 @@ public class PlaySceneManager : MonoBehaviour
             }
 
             //ダメージを与える
-            HP_Slider[num].value -= weapon.GetComponent<WeaponBlocController>().DamageValue_Data;
+            HP_Slider[num].value -= DamageValue;
 
             //HPが0以下になったらplayerを殺す
             if (HP_Slider[num].value <= 0)
