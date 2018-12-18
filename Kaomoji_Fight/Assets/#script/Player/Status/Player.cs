@@ -108,6 +108,12 @@ public class Player : RaycastController {
 
     void Update()
     {
+        // 落ちた時の対処
+        if (this.transform.position.y <= -50)
+        {
+            Destroy(this.transform.gameObject);
+        }
+
         //状態異常処理
         //麻痺・眠り
         if (ButState.Stan == true || ButState.Sleep == true)
@@ -229,13 +235,6 @@ public class Player : RaycastController {
 
         // Ｒａｙ
         this.RayController();
-
-
-        // 落ちた時の対処
-        if (this.transform.position.y <= -50)
-        {
-            Destroy(this.transform.gameObject);
-        }
     }
 
 
