@@ -70,7 +70,6 @@ public class Weapon_M : WeaponBlocController
                         MA_ouldcount = MA_count;
 
                         test += DamageValue;
-                        Debug.Log(test);
                     }
 
                     //制限時間を超えたら止める
