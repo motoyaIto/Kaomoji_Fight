@@ -9,6 +9,7 @@ public class Weapon_N : WeaponBlocController {
     private float NA_StiffnessTime = 0.5f;  //硬直時間
     private float NA_InstantDeathProbability = 0.01f;//即死の確率
     private int[] NA_InstantDeathNamber;      //ランダムで即死を与える値
+    bool NA_setWeapon = false;      //武器を準備しているか
 
     /// <summary>
     /// 武器を目的の位置にずらす
@@ -59,6 +60,7 @@ public class Weapon_N : WeaponBlocController {
     /// </summary>
     private void Initializ_NA()
     {
+        NA_setWeapon = true;
         DamageValue = 4;
         this.transform.GetComponent<BoxCollider2D>().isTrigger = true;
 
@@ -254,6 +256,10 @@ public class Weapon_N : WeaponBlocController {
     /// <param name="shot">使用した座標</param>
     private void Attack_NI(Vector3 shot)
     {
+        if(this.transform.parent.GetComponent<Player>().Substitution_Data == true)
+        {
+            Destroy(this.gameObject);
+        }
         base.weapon_use = true;
 
         //武器を中心に寄せる
@@ -354,6 +360,37 @@ public class Weapon_N : WeaponBlocController {
             }
 
             PSManager_cs.Player_ReceiveDamage(player, this.gameObject, player.GetComponent<Player>().PlayerNumber_data, InstantDeath);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        switch (mozi)
+        {
+            case "な":
+            case "ナ":
+                if (NA_setWeapon == true)
+                {
+                    owner_cs.ControllerLock_Data = false;
+                }
+                return;
+
+            case "に":
+            case "ニ":
+
+                return;
+
+            case "ぬ":
+            case "ヌ":
+                return;
+
+            case "ね":
+            case "ネ":
+                return;
+
+            case "の":
+            case "ノ":
+                return;
         }
     }
 }
