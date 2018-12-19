@@ -170,7 +170,7 @@ public class Player : RaycastController {
         }
 
         // 回避をしたい
-        if (XCI.GetAxis(XboxAxis.RightTrigger, ControlerNamber) < 0.0f && !Avoidance)
+        if (XCI.GetAxis(XboxAxis.RightTrigger, ControlerNamber) < 0.0f && !Avoidance && controller_lock == false)
         {
             // アニメーションに差し替え予定？
             if (!Avoidance)
@@ -290,7 +290,7 @@ public class Player : RaycastController {
         BlockController block_cs = block.GetComponent<BlockController>();
 
         //武器を持っていなかったら
-        if (HaveWeapon == false && block_cs.Weapon == true)
+        if (HaveWeapon == false && block_cs.Weapon == true && controller_lock == false)
         {
             //拾う音
             this.PlaySound(audio, pickUp_ac, .2f);
