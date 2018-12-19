@@ -3,7 +3,37 @@ guid: 3dfcad995d479894a8b65dc27d6b82c0
 timeCreated: 1544766074
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Player1wait_0
+    21300002: Player1wait_1
+    21300004: Player1wait_2
+    21300006: Player1wait_3
+    21300008: Player1wait_4
+    21300010: Player1wait_5
+    21300012: Player1wait_6
+    21300014: Player1wait_7
+    21300016: Player1wait_8
+    21300018: Player1wait_9
+    21300020: Player1wait_10
+    21300022: Player1wait_11
+    21300024: Player1wait_12
+    21300026: Player1wait_13
+    21300028: Player1wait_14
+    21300030: Player1wait_15
+    21300032: Player1wait_16
+    21300034: Player1wait_17
+    21300036: Player1wait_18
+    21300038: Player1wait_19
+    21300040: Player1wait_20
+    21300042: Player1wait_21
+    21300044: Player1wait_22
+    21300046: Player1wait_23
+    21300048: Player1wait_24
+    21300050: Player1wait_25
+    21300052: Player1wait_26
+    21300054: Player1wait_27
+    21300056: Player1wait_28
+    21300058: Player1wait_29
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -40,12 +70,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 50
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -67,9 +97,439 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Player1wait_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 888
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_1
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 888
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_2
+      rect:
+        serializedVersion: 2
+        x: 1226
+        y: 888
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_3
+      rect:
+        serializedVersion: 2
+        x: 1839
+        y: 888
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_4
+      rect:
+        serializedVersion: 2
+        x: 2452
+        y: 888
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_5
+      rect:
+        serializedVersion: 2
+        x: 3065
+        y: 888
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 666
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_7
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 666
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_8
+      rect:
+        serializedVersion: 2
+        x: 1226
+        y: 666
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_9
+      rect:
+        serializedVersion: 2
+        x: 1839
+        y: 666
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_10
+      rect:
+        serializedVersion: 2
+        x: 2452
+        y: 666
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_11
+      rect:
+        serializedVersion: 2
+        x: 3065
+        y: 666
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 444
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_13
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 444
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_14
+      rect:
+        serializedVersion: 2
+        x: 1226
+        y: 444
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_15
+      rect:
+        serializedVersion: 2
+        x: 1839
+        y: 444
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_16
+      rect:
+        serializedVersion: 2
+        x: 2452
+        y: 444
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_17
+      rect:
+        serializedVersion: 2
+        x: 3065
+        y: 444
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 222
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_19
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 222
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_20
+      rect:
+        serializedVersion: 2
+        x: 1226
+        y: 222
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_21
+      rect:
+        serializedVersion: 2
+        x: 1839
+        y: 222
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_22
+      rect:
+        serializedVersion: 2
+        x: 2452
+        y: 222
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_23
+      rect:
+        serializedVersion: 2
+        x: 3065
+        y: 222
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_25
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 0
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_26
+      rect:
+        serializedVersion: 2
+        x: 1226
+        y: 0
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_27
+      rect:
+        serializedVersion: 2
+        x: 1839
+        y: 0
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_28
+      rect:
+        serializedVersion: 2
+        x: 2452
+        y: 0
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Player1wait_29
+      rect:
+        serializedVersion: 2
+        x: 3065
+        y: 0
+        width: 613
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
     outline: []
     physicsShape: []
   spritePackingTag: 
