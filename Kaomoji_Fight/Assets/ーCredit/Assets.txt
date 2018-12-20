@@ -24,3 +24,7 @@ https://assetstore.unity.com/packages/vfx/particles/dl-fantasy-rpg-effects-68246
 
 -- Particle Ribbon --
 https://assetstore.unity.com/packages/vfx/particles/spells/particle-ribbon-42866
+
+
+-- Photon --
+https://assetstore.unity.com/packages/tools/network/photon-unity-networking-classic-free-1786
