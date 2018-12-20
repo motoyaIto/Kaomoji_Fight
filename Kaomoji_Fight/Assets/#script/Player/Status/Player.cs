@@ -302,7 +302,7 @@ public class Player : RaycastController {
             weapon.tag = tag.Trim();
 
             //武器画像を表示
-            SpriteRenderer weapon_sprite = weapon.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>();
+            SpriteRenderer weapon_sprite = weapon.transform.GetChild(1).GetChild(0).GetComponent<SpriteRenderer>();
             weapon_sprite.enabled = true;
 
             //武器のスクリプトに張り替える

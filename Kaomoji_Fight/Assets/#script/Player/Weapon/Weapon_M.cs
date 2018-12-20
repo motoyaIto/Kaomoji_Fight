@@ -152,6 +152,7 @@ public class Weapon_M : WeaponBlocController
 
         MA_count = 0.0f;
 
+        this.transform.position = this.transform.parent.position;
         //枕の調整
         Weapon_spriteFlag = false;
         Weapon_SRenderer.color = new Vector4(Weapon_SRenderer.color.r, Weapon_SRenderer.color.g, Weapon_SRenderer.color.b, 1f);
@@ -169,7 +170,7 @@ public class Weapon_M : WeaponBlocController
         MA_Futon = new GameObject("Sprite").AddComponent<SpriteRenderer>();
         MA_Futon.sprite = FutonSprite;
         //布団枕と一緒
-        MA_Futon.transform.parent = this.transform;
+        MA_Futon.transform.parent = Weapon_Sprites.transform;
         //布団の調整
         MA_Futon.gameObject.transform.position = new Vector3(this.transform.position.x + 1, this.transform.position.y - 1.2f, this.transform.position.z);
         MA_Futon.sortingOrder = 1;
