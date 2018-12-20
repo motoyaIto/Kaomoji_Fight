@@ -13,6 +13,7 @@ abstract public class WeaponBlocController : MonoBehaviour
     protected GameObject Weapon;//自分のゲームオブジェクト
 
     protected Sprite sprite;                        //テクスチャー
+    protected Transform Weapon_Sprites;             //スプライト群
     protected SpriteRenderer Weapon_SRenderer;      //武器画像を描画するレンダー
     protected bool Weapon_SRFlag = false;          //テクスチャーのα値プラス(turue)マイナス(false)
     protected bool Weapon_spriteFlag = false;       //武器の画像がある(true)ない(false)
@@ -46,7 +47,8 @@ abstract public class WeaponBlocController : MonoBehaviour
         //自分の文字
         mozi = this.transform.GetChild(0).GetComponent<TextMeshPro>().text;
 
-        Weapon_SRenderer = this.transform.GetChild(1).GetComponent<SpriteRenderer>();
+        Weapon_Sprites = this.transform.GetChild(1);
+        Weapon_SRenderer = Weapon_Sprites.GetChild(0).GetComponent<SpriteRenderer>();
 
         this.enabled = false;
     }
